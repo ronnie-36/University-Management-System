@@ -1,6 +1,9 @@
 from flask import *
 from flask_cors import CORS, cross_origin
 from flask_mysqldb import MySQL
+from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
+from flask_mail import Mail
+from flask_mail import Message
 
 # models
 import models.student as student
@@ -14,6 +17,7 @@ CORS(app)
 app.config.from_object('config.DevConfig')
 
 mysql = MySQL(app)
+mail = Mail(app)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -22,7 +26,8 @@ def index():
 # auth start
 app.add_url_rule('/login/<user>', view_func=auth.login, methods=['GET','POST'])
 app.add_url_rule('/logout', view_func=auth.logout, methods=['GET','POST'])
-
+app.add_url_rule('/resetpassword/<user>', view_func=auth.resetpassword, methods=['GET','POST'])
+app.add_url_rule('/reset_password/<user>/<token>', view_func=auth.reset_token,  methods=['GET','POST'])
 # auth end
 
 # student start

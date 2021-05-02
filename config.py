@@ -29,7 +29,7 @@ class ProdConfig(Config):
 class DevConfig(Config):
     FLASK_ENV = 'development'
     DEBUG = True
-    TESTING = True
+    TESTING = False
     MYSQL_HOST = db['mysql_host']
     MYSQL_USER = db['mysql_user']
     MYSQL_PASSWORD = db['mysql_password']

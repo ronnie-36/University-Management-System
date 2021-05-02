@@ -117,3 +117,89 @@ def logout():
         session.pop('id')
         session.pop('role')
     return render_template('index.html', flash = flash)
+
+
+def resetpassword(user):
+    flash="Reset link has been sent to your registered Email."
+    if request.method == 'POST':
+        # Fetch form data
+        userDetails = request.form
+        id = userDetails['user_id']
+        if(user=="student"):
+            cur = mysql.connection.cursor()
+            cur.execute("SELECT emailid FROM student WHERE student_id = '%s' "% (id))
+            rv = cur.fetchall()
+            if (rv==() ):
+                flash="Invalid Username"
+                return render_template('resetrequest.html', flash = flash, user=user)       
+            else:
+                email=rv[0][0]
+                send_reset_mail(user,email,id) 
+            cur.close()
+            return render_template('student/login.html', flash = flash)
+        elif(user=="faculty"):
+            cur = mysql.connection.cursor()
+            cur.execute("SELECT emailid FROM faculty WHERE faculty_id = '%s' "% (id))
+            rv = cur.fetchall()
+            if (rv==() ):
+                flash="Invalid Username"
+                return render_template('resetrequest.html', flash = flash, user=user)       
+            else:
+                email=rv[0][0]
+                send_reset_mail(user,email,id) 
+            cur.close()
+            return render_template('faculty/login.html', flash = flash)
+        elif(user=="admin"):
+            cur = mysql.connection.cursor()
+            cur.execute("SELECT emailid FROM admin WHERE admin_id = '%s' "% (id))
+            rv = cur.fetchall()
+            if (rv==() ):
+                flash="Invalid Username"
+                return render_template('resetrequest.html', flash = flash, user=user)       
+            else:
+                email=rv[0][0]
+                send_reset_mail(user,email,id) 
+            cur.close()
+            return render_template('admin/login.html', flash = flash)
+    flash=""
+    return render_template('resetrequest.html', flash = flash, user=user)               
+
+def reset_token(user,token):
+    user_id=verify_reset_token(token)
+    flash=""
+    if user_id is None:
+        flash="Your token is Invalid or Expired."
+        return render_template('resetrequest.html', flash = flash, user=user)
+    if request.method == 'POST':
+        # Fetch form data
+        userDetails = request.form
+        password = userDetails['password'] 
+        cpassword = userDetails['confirmpassword']
+        hashedpassword = hashlib.md5(password.encode()).hexdigest()
+        if(password!=cpassword):
+            flash="Passwords do not match. Check Password."
+            render_template('resetpassword.html', flash = flash, user=user ,token=token)
+        else:
+            if(user=="student"):
+                cur = mysql.connection.cursor()
+                cur.execute("UPDATE student SET password = %s WHERE student_id = %s",(hashedpassword, user_id))
+                mysql.connection.commit()
+                cur.close()
+                flash="Your password has been updated!"
+                return render_template('student/login.html', flash = flash)
+            elif(user=="faculty"):
+                cur = mysql.connection.cursor()
+                cur.execute("UPDATE faculty SET password = %s WHERE faculty_id = %s",(hashedpassword, user_id))
+                mysql.connection.commit()
+                cur.close()
+                flash="Your password has been updated!"
+                return render_template('faculty/login.html', flash = flash)
+            elif(user=="admin"):
+                cur = mysql.connection.cursor()
+                cur.execute("UPDATE admin SET password = %s WHERE admin_id = %s",(hashedpassword, user_id))
+                mysql.connection.commit()
+                cur.close()
+                flash="Your password has been updated!"
+                return render_template('admin/login.html', flash = flash)
+
+    return render_template('resetpassword.html', flash = flash, user=user ,token=token)   
