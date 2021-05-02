@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<section class="section loginPage">
+    <img class="wave" src="/static/img/wave.png">
+    <div>
+        <div class="imgg ">
+            <img src="/static/img/bg.svg" class="wave">
+        </div>
+        <div class="login-content">
+
+            <form id=form method="POST" action="/login/student">
+
+                <img src="/static/img/avatar.svg">
+                <h2 class="title">student</h2>
+                <div class="input-div one">
+                    <div class="i">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="ddiv">
+                        <input type="text" name="user_id" class="input" placeholder="Username">
+                    </div>
+                </div>
+                <div class="input-div pass">
+                    <div class="i">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="div">
+                        <input type="password" name="password" class="input" placeholder="Password">
+                    </div>
+                </div>
+                <a id=a style="display: block;" href="/resetrequest/student">Forgot Password?</a>
+                <input type="submit" class="btn" value="Login">
+                <!-- <a id=a href="/"  ></a> -->
+                <a id=a href="/login/faculty" style="margin: 0 0% 0 0; ">Are you Faculty?</a>
+                {% if flash != '' %}
+                <h5 style="color: rgb(255, 25, 25);">{{flash}}</h5>
+                {% endif %}
+            </form>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
