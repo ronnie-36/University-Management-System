@@ -11,15 +11,20 @@
     
       <form id=form method="POST" action="/resetpassword/{{user}}">
 
+        {% if user=="student" %}
         <img src="/static/img/avatar.svg">
+        {% elif user=="faculty" %}
+        <img src="/static/img/teacher.png">
+        {% else %}
+        <img src="/static/img/admin.png">
+        {% endif %}
         <h2 class="title">{{ user }}</h2>
         <div class="input-div one">
           <div class="i">
             <i class="fas fa-user"></i>
           </div>
           <div class="ddiv">
-            <h5>Username</h5>
-            <input type="text" name="user_id" class="input">
+            <input type="text" name="user_id" class="input" placeholder="Username">
           </div>
         </div>
         <input type="submit" class="btn" value="Request Password Reset">
