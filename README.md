@@ -1,9 +1,9 @@
 # University-Management-System
 #### This is Course project for CS-258. Project Number - P012 
   
-Krishanu Saini 190001029 
-Rahul Kumar 190001049 
-Kuldeep Singh 190001030  
+Krishanu Saini 190001029 <br>
+Rahul Kumar 190001049 <br>
+Kuldeep Singh 190001030  <br>
 Deepkamal Singh 190001011    
 <hr>
 
