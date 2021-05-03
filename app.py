@@ -40,6 +40,7 @@ app.add_url_rule('/faculty/dashboard', view_func=faculty.faculty_dashboard, meth
 
 # admin start
 app.add_url_rule('/admin/dashboard', view_func=admin.admin_dashboard, methods=['GET','POST'])
+app.add_url_rule('/admin/add_student_dashboard', view_func=admin.admin_add_student_dashboard, methods=['GET','POST'])
 # admin end  
 
 if __name__ == '__main__':
