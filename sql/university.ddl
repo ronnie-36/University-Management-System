@@ -6,7 +6,7 @@ CREATE TABLE `university`.`student` (
   `name` VARCHAR(90) NOT NULL,
   `emailid` VARCHAR(90) NOT NULL,
   `password` VARCHAR(90) NOT NULL,
-  PRIMARY KEY (`user_id`));
+  PRIMARY KEY (`student_id`));
 
 CREATE TABLE `university`.`faculty` (
   `faculty_id` VARCHAR(45) NOT NULL,
