@@ -16,3 +16,11 @@ def admin_dashboard():
         return render_template('error.html')
 
     return render_template('admin/dashboard.html')
+
+def admin_add_student_dashboard():
+    if 'id' not in session or 'role' not in session:
+        return render_template('error.html')
+    elif session['role'] != "admin":
+        return render_template('error.html')
+
+    return render_template('admin/admin_add_student_dashboard.html')
