@@ -53,7 +53,19 @@
           </div>
       </nav>
   </header>
-
+  <!--===== Flash messages S = success ('green'), otherwise ('red') =====-->
+  <div style="align-items: right; text-align: center;">
+    <div class="alert alert-warning" style="z-index: 999;">
+      {% for message in get_flashed_messages() %} 
+        {% if message[0] == 'S' %}
+          <span class="error_green" style="margin: 20px">{{message}}</span>
+        {% else %}
+          <span class="error_red" style="margin: 20px">{{message}}</span>
+        {%endif%}
+          <i class="fa fa-times" style="padding: 10px"></i>
+      {% endfor %}
+    </div>
+  </div>
   <main class="l-main">
     <!--===== HOME =====-->
   

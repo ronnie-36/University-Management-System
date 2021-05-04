@@ -1,3 +1,6 @@
+-- DDL File
+
+drop database university;
 create database university;
 use university;
 

@@ -1,0 +1,22 @@
+{% extends 'index.html' %}
+
+{% block body %}
+<section class="section loginPage">
+  <img class="wave" src="/static/img/wave.png">
+  <div>
+    <div class="imgg ">
+      <img src="/static/img/bg.svg" class="wave">
+    </div>
+    <div class="login-content">
+
+      <form id=form method="POST" action="/reset_password/{{ user }}/{{ token }}">
+        <h3>Sorry some error occurred :(</h3><br />
+        <ul>
+          <h4><li>Please make sure you're logged in.</li></h4>
+        </ul>
+      </form>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
