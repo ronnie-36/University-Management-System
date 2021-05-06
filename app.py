@@ -45,4 +45,4 @@ app.add_url_rule('/admin/add_student_dashboard', view_func=admin.admin_add_stude
 
 if __name__ == '__main__':
     flag = 0
-    app.run()
+    app.run(debug=True)

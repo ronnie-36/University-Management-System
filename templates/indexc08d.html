@@ -1,7 +1,20 @@
-{% extends 'base.html' %}
+<!doctype html>
+<html>
 
 
-{% block body %}
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Ableedu - Education HTML Responsive One Page Template</title>
+  <!-- Plugins CSS -->
+  <link href="css/plugins.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link href="css/style.css" rel="stylesheet">
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+</head>
 
 <body data-spy="scroll" data-offset="120">
   <!-- Pre Loader -->
@@ -10,7 +23,7 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
       <div class="logo"> <a href="#home">
-          <h3><img src="../static/LandingPage/images/logo1.png" alt=""></h3>
+          <h3><img src="images/logo.png" alt=""></h3>
         </a> </div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span
@@ -20,8 +33,9 @@
           <li class="nav-item"> <a href="#home" class="nav-link"> Home </a> </li>
           <li class="nav-item"> <a href="#about" class="nav-link"> About </a> </li>
           <li class="nav-item"> <a href="#services" class="nav-link"> Services </a> </li>
-          <li class="nav-item"> <a href="#portfolio" class="nav-link"> Portfolio </a> </li>
           <li class="nav-item"> <a href="#team" class="nav-link"> Our Team </a> </li>
+          <li class="nav-item"> <a href="#portfolio" class="nav-link"> Portfolio </a> </li>
+          <li class="nav-item"> <a href="#blog" class="nav-link"> Blog </a> </li>
           <li class="nav-item"> <a href="#contact" class="nav-link"> Contact </a> </li>
         </ul>
         <div class="others-option">
@@ -45,12 +59,12 @@
     <div class="slick-carousel carousel-arrows-light m-slides-0"
       data-slick='{"slidesToShow": 1, "arrows": true, "dots": true, "speed": 700,"fade": true,"cssEase": "linear"}'>
       <div class="slide-item align-v-h bg-overlay">
-        <div class="bg-img"><img src="../static/LandingPage/images/slider-img1.jpg" alt=""></div>
+        <div class="bg-img"><img src="images/slider-img1.jpg" alt=""></div>
         <div class="container">
           <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-9">
               <div class="slide-item__content">
-                <h1 class="slide-item__subtitle">Welcome to UMS</h1>
+                <h1 class="slide-item__subtitle">Welcome to Ableedu</h1>
                 <h2 class="slide-item__title">Growth You Career With Complete Courses</h2>
                 <p class="slide-item__desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum recusandae
                   placeat atque molli</p>
@@ -62,12 +76,12 @@
       </div>
       <!-- /.slide-item -->
       <div class="slide-item align-v-h bg-overlay">
-        <div class="bg-img"><img src="../static/LandingPage/images/slider-img2.jpg" alt=""></div>
+        <div class="bg-img"><img src="images/slider-img2.jpg" alt=""></div>
         <div class="container">
           <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-9">
               <div class="slide-item__content">
-                <h1 class="slide-item__subtitle">Welcome to UMS</h1>
+                <h1 class="slide-item__subtitle">Welcome to Ableedu</h1>
                 <h2 class="slide-item__title">Growth You Career With Complete Courses</h2>
                 <p class="slide-item__desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum recusandae
                   placeat atque molli</p>
@@ -87,7 +101,7 @@
         <div class="col-lg-4 col-md-6">
           <!-- Single Features Area -->
           <div class="single-feature-sec">
-            <span><img src="../static/LandingPage/images/f-icon-1.png" alt=""></span>
+            <span><img src="images/f-icon-1.png" alt=""></span>
             <h3>Arts Programs</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
               dolore</p>
@@ -97,7 +111,7 @@
         <div class="col-lg-4 col-md-6">
           <!-- Single Features Area -->
           <div class="single-feature-sec">
-            <span><img src="../static/LandingPage/images/f-icon-2.png" alt=""></span>
+            <span><img src="images/f-icon-2.png" alt=""></span>
             <h3>Foreign Language</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
               dolore</p>
@@ -107,7 +121,7 @@
         <div class="col-lg-4 col-md-6">
           <!-- Single Features Area -->
           <div class="single-feature-sec">
-            <span><img src="../static/LandingPage/images/f-icon-3.png" alt=""></span>
+            <span><img src="images/f-icon-3.png" alt=""></span>
             <h3>Sports Playing</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
               dolore</p>
@@ -123,11 +137,10 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-6">
-          <div class="about-img about-image-02"
-            style="background-image: url(../static/LandingPage/images/about-img2.jpg);">
+          <div class="about-img about-image-02" style="background-image: url(images/about-img2.jpg);">
             <div class="vdo-btn"> <a class="video-play-btn mfp-iframe"
                 href="https://www.youtube.com/embed/-ZwQtICNbRc"><i class="fas fa-play"></i></a> </div>
-            <div class="thumb"> <img src="../static/LandingPage/images/about-img.jpg" alt=""> </div>
+            <div class="thumb"> <img src="images/about-img.jpg" alt=""> </div>
           </div>
         </div>
         <div class="col-lg-6">
@@ -297,7 +310,79 @@
     </div>
   </section>
   <!-- End Services Area -->
-
+  <!-- Start Team Area -->
+  <section id="team" class="team-area">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-7">
+          <div class="section-title mb-0">
+            <h2>Our Team</h2>
+            <p>With occupancy rates at near capacity and an increasing number of complex patients, our existing
+              facilities are being enhanced and new facilities created to meet today’s needs.</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6 col-lg-3">
+          <!-- Single Team Area -->
+          <div class="team-item">
+            <img src="images/team-img1.jpg" alt="" title="">
+            <h3>Andres Pedlock</h3>
+            <span>Our Staff</span>
+            <ul>
+              <li> <a href="javascript:void(0)"> <i class="bx bxl-facebook"></i> </a> </li>
+              <li> <a href="javascript:void(0)"> <i class="bx bxl-twitter"></i> </a> </li>
+              <li> <a href="javascript:void(0)"> <i class="bx bxl-pinterest-alt"></i> </a> </li>
+              <li> <a href="javascript:void(0)"> <i class="bx bxl-linkedin"></i> </a> </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+          <!-- Single Team Area -->
+          <div class="team-item">
+            <img src="images/team-img2.jpg" alt="" title="">
+            <h3>Less Williams</h3>
+            <span>Our Staff</span>
+            <ul>
+              <li> <a href="javascript:void(0)"> <i class="bx bxl-facebook"></i> </a> </li>
+              <li> <a href="javascript:void(0)"> <i class="bx bxl-twitter"></i> </a> </li>
+              <li> <a href="javascript:void(0)"> <i class="bx bxl-pinterest-alt"></i> </a> </li>
+              <li> <a href="javascript:void(0)"> <i class="bx bxl-linkedin"></i> </a> </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+          <!-- Single Team Area -->
+          <div class="team-item">
+            <img src="images/team-img3.jpg" alt="" title="">
+            <h3>John Doe</h3>
+            <span>Our Staff</span>
+            <ul>
+              <li> <a href="javascript:void(0)"> <i class="bx bxl-facebook"></i> </a> </li>
+              <li> <a href="javascript:void(0)"> <i class="bx bxl-twitter"></i> </a> </li>
+              <li> <a href="javascript:void(0)"> <i class="bx bxl-pinterest-alt"></i> </a> </li>
+              <li> <a href="javascript:void(0)"> <i class="bx bxl-linkedin"></i> </a> </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+          <!-- Single Team Area -->
+          <div class="team-item">
+            <img src="images/team-img4.jpg" alt="" title="">
+            <h3>Jack Mehoff</h3>
+            <span>Our Staff</span>
+            <ul>
+              <li> <a href="javascript:void(0)"> <i class="bx bxl-facebook"></i> </a> </li>
+              <li> <a href="javascript:void(0)"> <i class="bx bxl-twitter"></i> </a> </li>
+              <li> <a href="javascript:void(0)"> <i class="bx bxl-pinterest-alt"></i> </a> </li>
+              <li> <a href="javascript:void(0)"> <i class="bx bxl-linkedin"></i> </a> </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Team Area -->
   <!-- Start Portfolio Area -->
   <section id="portfolio" class="portfolio-area">
     <div class="container">
@@ -313,73 +398,64 @@
       <div class="row">
         <div class="col-lg-4 col-sm-6">
           <div class="gallery-box">
-            <div class="gallery-img"> <img src="../static/LandingPage/images/portfolio/1.jpeg" alt="">
-              <div class="gallery-overlay"> <a href="../static/LandingPage/images/portfolio/1.jpeg"><i
-                    class="ti-plus"></i></a> </div>
+            <div class="gallery-img"> <img src="images/gallery-img1.jpg" alt="">
+              <div class="gallery-overlay"> <a href="images/gallery-img1.jpg"><i class="ti-plus"></i></a> </div>
             </div>
           </div>
         </div>
         <div class="col-lg-4 col-sm-6">
           <div class="gallery-box">
-            <div class="gallery-img"> <img src="../static/LandingPage/images/portfolio/2.jpeg" alt="">
-              <div class="gallery-overlay"> <a href="../static/LandingPage/images/portfolio/2.jpeg"><i
-                    class="ti-plus"></i></a> </div>
+            <div class="gallery-img"> <img src="images/gallery-img2.jpg" alt="">
+              <div class="gallery-overlay"> <a href="images/gallery-img2.jpg"><i class="ti-plus"></i></a> </div>
             </div>
           </div>
         </div>
         <div class="col-lg-4 col-sm-6">
           <div class="gallery-box">
-            <div class="gallery-img"> <img src="../static/LandingPage/images/portfolio/3.jpg" alt="">
-              <div class="gallery-overlay"> <a href="../static/LandingPage/images/portfolio/3.jpg"><i
-                    class="ti-plus"></i></a> </div>
+            <div class="gallery-img"> <img src="images/gallery-img3.jpg" alt="">
+              <div class="gallery-overlay"> <a href="images/gallery-img3.jpg"><i class="ti-plus"></i></a> </div>
             </div>
           </div>
         </div>
         <div class="col-lg-4 col-sm-6">
           <div class="gallery-box">
-            <div class="gallery-img"> <img src="../static/LandingPage/images//portfolio/4.jpeg" alt="">
-              <div class="gallery-overlay"> <a href="../static/LandingPage/images/portfolio/4.jpeg"><i
-                    class="ti-plus"></i></a> </div>
+            <div class="gallery-img"> <img src="images/gallery-img4.jpg" alt="">
+              <div class="gallery-overlay"> <a href="images/gallery-img4.jpg"><i class="ti-plus"></i></a> </div>
             </div>
           </div>
         </div>
         <div class="col-lg-4 col-sm-6">
           <div class="gallery-box">
-            <div class="gallery-img"> <img src="../static/LandingPage/images/portfolio/5.jpeg" alt="">
-              <div class="gallery-overlay"> <a href="../static/LandingPage/images/portfolio/5.jpeg"><i
-                    class="ti-plus"></i></a> </div>
+            <div class="gallery-img"> <img src="images/gallery-img5.jpg" alt="">
+              <div class="gallery-overlay"> <a href="images/gallery-img5.jpg"><i class="ti-plus"></i></a> </div>
             </div>
           </div>
         </div>
         <div class="col-lg-4 col-sm-6">
           <div class="gallery-box">
-            <div class="gallery-img"> <img src="../static/LandingPage/images/portfolio/6.jpeg" alt="">
-              <div class="gallery-overlay"> <a href="../static/LandingPage/images/portfolio/6.jpeg"><i
-                    class="ti-plus"></i></a> </div>
+            <div class="gallery-img"> <img src="images/gallery-img6.jpg" alt="">
+              <div class="gallery-overlay"> <a href="images/gallery-img6.jpg"><i class="ti-plus"></i></a> </div>
             </div>
           </div>
         </div>
         <div class="col-lg-4 col-sm-6">
           <div class="gallery-box">
-            <div class="gallery-img"> <img src="../static/LandingPage/images/portfolio/8.jpg" alt="">
-              <div class="gallery-overlay"> <a href="../static/LandingPage/images/portfolio/8.jpg"><i
-                    class="ti-plus"></i></a> </div>
+            <div class="gallery-img"> <img src="images/gallery-img7.jpg" alt="">
+              <div class="gallery-overlay"> <a href="images/gallery-img7.jpg"><i class="ti-plus"></i></a> </div>
             </div>
           </div>
         </div>
         <div class="col-lg-4 col-sm-6">
           <div class="gallery-box">
-            <div class="gallery-img"> <img src="../static/LandingPage/images/portfolio/9.jpeg" alt="">
-              <div class="gallery-overlay"> <a href="../static/LandingPage/images/portfolio/9.jpeg"><i
-                    class="ti-plus"></i></a> </div>
+            <div class="gallery-img"> <img src="images/gallery-img8.jpg" alt="">
+              <div class="gallery-overlay"> <a href="images/gallery-img8.jpg"><i class="ti-plus"></i></a> </div>
             </div>
           </div>
         </div>
         <div class="col-lg-4 col-sm-6">
           <div class="gallery-box">
-            <div class="gallery-img"> <img src="../static/LandingPage/images/portfolio/7.jpg" alt="">
-              <div class="gallery-overlay"> <a href="../static/LandingPage/images/portfolio/7.jpg"><i
-                    class="ti-plus"></i></a> </div>
+            <div class="gallery-img"> <img src="images/gallery-img9.jpg" alt="">
+              <div class="gallery-overlay"> <a href="images/gallery-img9.jpg"><i class="ti-plus"></i></a> </div>
             </div>
           </div>
         </div>
@@ -387,76 +463,75 @@
     </div>
   </section>
   <!-- End Portfolio Area -->
-
-  <!-- Start Team Area -->
-  <section id="team" class="team-area">
+  <!-- Start Pricing Area -->
+  <section class="pricing-area">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-7">
           <div class="section-title mb-0">
-            <h2>Our Team</h2>
-            <p>A team is more than a collection of people. It is a process of give and take.
-              Teamwork is the secret that makes common people achieve uncommon results.</p>
+            <h2>Pricing Plans</h2>
+            <p>With occupancy rates at near capacity and an increasing number of complex patients, our existing
+              facilities are being enhanced and new facilities created to meet today’s needs.</p>
           </div>
         </div>
       </div>
       <div class="row">
-        <div class="col-sm-6 col-lg-3">
-          <!-- Single Team Area -->
-          <div class="team-item">
-            <img src="../static/LandingPage/images/team/team-1.jpg" alt="" title="">
-            <h3>Krishanu Saini</h3>
-            <span>Web Developer</span>
+        <div class="col-lg-4 col-sm-6">
+          <!-- Single Pricing Area -->
+          <div class="single-pricing">
+            <div class="pric-logo"><i class="bx bx-book"></i></div>
+            <span>Basic</span>
+            <h2>$100</h2>
+            <p>One Time Installation</p>
             <ul>
-              <li> <a href="javascript:void(0)"> <i class="bx bxl-facebook"></i> </a> </li>
-              <li> <a href="javascript:void(0)"> <i class="bx bxl-twitter"></i> </a> </li>
-              <li> <a href="javascript:void(0)"> <i class="bx bxl-linkedin"></i> </a> </li>
+              <li><i class="fa fa-check"></i>5 Room Cleaning</li>
+              <li><i class="fa fa-check"></i>2 Bathroom Cleaning</li>
+              <li><i class="fa fa-check"></i>Window Cleaning</li>
+              <li><i class="fa fa-check"></i>Floor Cleaning</li>
+              <li><i class="fa fa-check"></i>Vacuuming</li>
             </ul>
+            <a class="btn btn__primary btn__lg" href="javascript:void(0)">Buy Now</a>
           </div>
         </div>
-        <div class="col-sm-6 col-lg-3">
-          <!-- Single Team Area -->
-          <div class="team-item">
-            <img src="../static/LandingPage/images/team/team-2.jpg" alt="" title="">
-            <h3>Kuldeep Singh</h3>
-            <span>Web Developer</span>
+        <div class="col-lg-4 col-sm-6">
+          <!-- Start Pricing Area -->
+          <div class="single-pricing active">
+            <div class="pric-logo"><i class="bx bx-book"></i></div>
+            <span>Advance</span>
+            <h2>$125</h2>
+            <p>One Time Installation</p>
             <ul>
-              <li> <a href="javascript:void(0)"> <i class="bx bxl-facebook"></i> </a> </li>
-              <li> <a href="javascript:void(0)"> <i class="bx bxl-twitter"></i> </a> </li>
-              <li> <a href="javascript:void(0)"> <i class="bx bxl-linkedin"></i> </a> </li>
+              <li><i class="fa fa-check"></i>5 Room Cleaning</li>
+              <li><i class="fa fa-check"></i>2 Bathroom Cleaning</li>
+              <li><i class="fa fa-check"></i>Window Cleaning</li>
+              <li><i class="fa fa-check"></i>Floor Cleaning</li>
+              <li><i class="fa fa-check"></i>Vacuuming</li>
             </ul>
+            <a class="btn btn__primary btn__lg" href="javascript:void(0)">Buy Now</a>
           </div>
         </div>
-        <div class="col-sm-6 col-lg-3">
-          <!-- Single Team Area -->
-          <div class="team-item">
-            <img src="../static/LandingPage/images/team/team-3.jpg" alt="" title="">
-            <h3>Rahul Kumar</h3>
-            <span>Web Developer</span>
+        <div class="col-lg-4 col-sm-6">
+          <!-- Start Pricing Area -->
+          <div class="single-pricing">
+            <div class="pric-logo"><i class="bx bx-book"></i></div>
+            <span>Ultimate</span>
+            <h2>$199</h2>
+            <p>One Time Installation</p>
             <ul>
-              <li> <a href="javascript:void(0)"> <i class="bx bxl-facebook"></i> </a> </li>
-              <li> <a href="javascript:void(0)"> <i class="bx bxl-twitter"></i> </a> </li>
-              <li> <a href="javascript:void(0)"> <i class="bx bxl-linkedin"></i> </a> </li>
+              <li><i class="fa fa-check"></i>5 Room Cleaning</li>
+              <li><i class="fa fa-check"></i>2 Bathroom Cleaning</li>
+              <li><i class="fa fa-check"></i>Window Cleaning</li>
+              <li><i class="fa fa-check"></i>Floor Cleaning</li>
+              <li><i class="fa fa-check"></i>Vacuuming</li>
             </ul>
-          </div>
-        </div>
-        <div class="col-sm-6 col-lg-3">
-          <!-- Single Team Area -->
-          <div class="team-item">
-            <img src="../static/LandingPage/images/team/team-4.jpg" alt="" title="">
-            <h3>Deepkamal Jassal</h3>
-            <span>Web Developer</span>
-            <ul>
-              <li> <a href="javascript:void(0)"> <i class="bx bxl-facebook"></i> </a> </li>
-              <li> <a href="javascript:void(0)"> <i class="bx bxl-twitter"></i> </a> </li>
-              <li> <a href="javascript:void(0)"> <i class="bx bxl-linkedin"></i> </a> </li>
-            </ul>
+            <a class="btn btn__primary btn__lg" href="javascript:void(0)">Buy Now</a>
           </div>
         </div>
       </div>
+
     </div>
   </section>
-  <!-- End Team Area -->
+  <!-- End Portfolio Area -->
   <!-- Start Blog Area -->
   <section id="blog" class="blog-sec">
     <div class="container">
@@ -473,7 +548,7 @@
         <div class="col-lg-4 col-md-6">
           <!-- Single Blog Area -->
           <div class="blog_one_single">
-            <div class="blog_one_image"> <img src="../static/LandingPage/images/blog-img1.jpg" alt=""> </div>
+            <div class="blog_one_image"> <img src="images/blog-img1.jpg" alt=""> </div>
             <div class="blog-one__content">
               <ul class="list-unstyled blog-one__meta">
                 <li><a href="news-detail.html"><i class="far fa-user-circle"></i> Admin</a></li>
@@ -494,7 +569,7 @@
         <div class="col-lg-4 col-md-6">
           <!-- Single Blog Area -->
           <div class="blog_one_single">
-            <div class="blog_one_image"> <img src="../static/LandingPage/images/blog-img2.jpg" alt=""> </div>
+            <div class="blog_one_image"> <img src="images/blog-img2.jpg" alt=""> </div>
             <div class="blog-one__content">
               <ul class="list-unstyled blog-one__meta">
                 <li><a href="news-detail.html"><i class="far fa-user-circle"></i> Admin</a></li>
@@ -515,7 +590,7 @@
         <div class="col-lg-4 col-md-6">
           <!-- Single Blog Area -->
           <div class="blog_one_single">
-            <div class="blog_one_image"> <img src="../static/LandingPage/images/blog-img3.jpg" alt=""> </div>
+            <div class="blog_one_image"> <img src="images/blog-img3.jpg" alt=""> </div>
             <div class="blog-one__content">
               <ul class="list-unstyled blog-one__meta">
                 <li><a href="news-detail.html"><i class="far fa-user-circle"></i> Admin</a></li>
@@ -556,22 +631,22 @@
             <div class="single-contact-address pb-3">
               <div class="icon"> <i class="ti-mobile"></i> </div>
               <div class="content">
-                <p>+9112-456-7890 <br>
-                  +9111-222-5555</p>
+                <p>+012-456-7890 <br>
+                  +897-6325-9595</p>
               </div>
             </div>
             <div class="single-contact-address pb-3">
               <div class="icon"> <i class="ti-email"></i> </div>
               <div class="content">
-                <p>acadsecy@iiti.ac.in <br>
-                  aoaa@iiti.ac.in</p>
+                <p>info@test.com <br>
+                  test@test.com</p>
               </div>
             </div>
             <div class="single-contact-address pb-3">
               <div class="icon"> <i class="ti-location-arrow"></i> </div>
               <div class="content">
-                <p>khandwa Road, Simrol,<br>
-                  Indore, MP</p>
+                <p>150 Main Road #200, Alexandria,<br>
+                  VA 22314, USA</p>
               </div>
             </div>
           </div>
@@ -627,8 +702,8 @@
   <!-- End Contact Area -->
   <!-- Start Map Area -->
   <div class="map-area">
-    <iframe src="https://maps.google.com/maps?q=IIT%20Indore&t=&z=11&ie=UTF8&iwloc=&output=embed" frameborder="0"
-      style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe>
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d198710.35112897935!2d-98.51489117772236!3d38.904562823631146!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54eab584e432360b%3A0x1c3bb99243deb742!2sUnited+States!5e0!3m2!1sen!2sin!4v1471865832140"></iframe>
   </div>
   <!-- End Contact Sec -->
   <!-- Copyright Wrapper Start -->
@@ -636,40 +711,35 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center">
-          <p>© Copyright <span id="year"></span> IIT Indore. UMS Designed by <a href="https://iiti.ac.in/"
-              target="_blank"><span class="color">IIT Indore</span></a>.
+          <p>© Copyright <span id="year"></span> Ableedu. Template Designed by <span class="color">SBTechnosoft</span>.
           </p>
         </div>
       </div>
     </div>
   </div>
-
-
-
   <!-- jQuery Min JS -->
   <!--jquery js -->
-  <script src="../static/LandingPage/js/jquery-min.js"></script>
-  <script src="../static/LandingPage/js/popper.min.js"></script>
+  <script src="js/jquery-min.js"></script>
+  <script src="js/popper.min.js"></script>
   <!--jquery js -->
-  <script src="../static/LandingPage/js/bootstrap.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
   <!--jquery js -->
-  <script src="../static/LandingPage/js/plugins.js"></script>
+  <script src="js/plugins.js"></script>
   <!--Fontawesome js -->
-  <script src="../static/LandingPage/js/fontawesome.js"></script>
+  <script src="js/fontawesome.js"></script>
   <!--Slick js -->
-  <script src="../static/LandingPage/js/slick.min.js"></script>
+  <script src="js/slick.min.js"></script>
   <!-- Odometer JS -->
-  <script src="../static/LandingPage/js/odometer.min.js"></script>
+  <script src="js/odometer.min.js"></script>
   <!-- Appear JS -->
-  <script src="../static/LandingPage/js/jquery.appear.js"></script>
+  <script src="js/jquery.appear.js"></script>
   <!-- MagnificPopup JS -->
-  <script src="../static/LandingPage/js/jquery.magnific-popup.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
   <!-- Form Validations -->
-  <script src="../static/LandingPage/js/form-validation.js"></script>
+  <script src="js/form-validation.js"></script>
   <!--jquery js -->
-  <script src="../static/LandingPage/js/custom.js"></script>
+  <script src="js/custom.js"></script>
 </body>
 
 
-
-{% endblock %}
+</html>

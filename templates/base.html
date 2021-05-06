@@ -1,109 +1,37 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    {% block head %}
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap" rel="stylesheet">
-    
+<head>
+  <!-- Required meta tags -->
+  {% block head %}
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- =====BOX ICONS===== -->
-    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+  <title>UMS - University Management System</title>
 
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/app.css') }}">
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/styles.css') }}">
+  <!-- Plugins CSS -->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='LandingPage/css/plugins.css') }}">
+  <!-- <link href="css/plugins.css" rel="stylesheet"> -->
 
-    <title>UMS</title>
-    {% endblock %}
-  </head>
-  <body>
+  <!-- Custom CSS -->
+  <!-- <link href="css/style.css" rel="stylesheet"> -->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='LandingPage/css/style.css') }}">
 
-     <!--===== HEADER =====-->
-     <header class="l-header">
-      <nav class="nav bd-grid">
-          <div>
-            <a href="/" class="nav__logo"><img src="/static/img/logo 1.png" width="50px" alt=""></a>
-          </div>
+  <!-- Favicon -->
+  <!-- <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico"> -->
+  <link rel="shortcut icon" type="image/x-icon"
+    href="{{ url_for('static',filename='LandingPage/images/favicon.ico') }}">
 
-          <div class="nav__menu" id="nav-menu">
-              <ul class="nav__list">
-                  <li class="nav__item"><a href="/" class="nav__link active">Home</a></li>
-                  <li class="nav__item"><a href="/#about" class="nav__link">About</a></li>
-                  <li class="nav__item"><a href="/#details" class="nav__link">Details</a></li>
-                  <li class="nav__item"><a href="/#gallery" class="nav__link">Gallery</a></li>
-                  <li class="nav__item"><a href="/#contact" class="nav__link">Contact</a></li>
-                  <!-- <div class="dropdown-content">
-                    <ul>
-                      <li class="nav__item"><a href="#" class="nav__link">Faculty</a>
-                      <li class="nav__item"><a href="#" class="nav__link">Student</a>
-                    
-                  </ul></div> -->
-                  </li>
-              </ul>
-          </div>
-
-          <div class="nav__toggle" id="nav-toggle">
-              <i class='bx bx-menu'></i>
-          </div>
-      </nav>
-  </header>
-  <!--===== Flash messages S = success ('green'), otherwise ('red') =====-->
-  <div style="align-items: right; text-align: center;">
-    <div class="alert alert-warning" style="z-index: 999;">
-      {% for message in get_flashed_messages() %} 
-        {% if message[0] == 'S' %}
-          <span class="error_green" style="margin: 20px">{{message}}</span>
-        {% else %}
-          <span class="error_red" style="margin: 20px">{{message}}</span>
-        {%endif%}
-          <i class="fa fa-times" style="padding: 10px"></i>
-      {% endfor %}
-    </div>
-  </div>
-  <main class="l-main">
-    <!--===== HOME =====-->
-  
-  <!-- Head template ends here -->
-  {% block body %}
-  <h1>Welcome to University Management System</h1>
   {% endblock %}
+</head>
 
-  </main>
+<body>
+  {% block body %}
 
-<!--===== FOOTER =====-->
-<footer class="footer">
-  <p class="footer__title">@IIT-INDORE</p>
 
-  <div class="footer__admin">
-    <a href="/login/admin" >Admin</a>
-    <a  href="/department" >Department</a>
-  </div>
-  <div class="footer__social">
-    <!-- <a href="https://www.facebook.com/studentgym/" target="_blank" class="footer__icon"><i class='bx bxl-facebook'></i></a> -->
-    <a href="https://www.instagram.com/iitindoreofficial/?hl=en" target="_blank" class="footer__icon"><i class='fab fa-instagram-square'></i></a>
-    <a href="mailto:aoaa@iiti.ac.in"" target="_blank" class="footer__icon"><i class='fa fa-envelope-square'></i></a>
-    <a href="tel:7324-306717" target="_blank" class="footer__icon"><i class='fa fa-phone'></i></a>
-  </div>
-  <p>&#169; 2021 copyright all right reserved</p>
-</footer>
 
-  <!--===== SCROLL REVEAL =====-->
-  <script src="https://unpkg.com/scrollreveal"></script>
+  {% endblock %}
+</body>
 
-  <script src="https://kit.fontawesome.com/a81368914c.js"></script>
-
-  <!--===== MAIN JS =====-->	
-  <script src="/static/js/main.js"></script>
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-    
-  </body>
 </html>
