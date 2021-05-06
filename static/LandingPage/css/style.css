@@ -320,6 +320,13 @@ section {
   border: 1px solid var(--mainColor);
   color: var(--whiteColor);
 }
+
+/* /////////////// */
+.getstarted a {
+  min-width: 120px;
+  height: 50px;
+}
+
 /*
 ================================================
 5. Slider Area CSS
