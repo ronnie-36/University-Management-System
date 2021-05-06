@@ -3,152 +3,703 @@
 
 {% block body %}
 
-  <section class="home bd-grid" id="home">
-    <div class="home__data">
-      <h1 class="home__title"><br>University <br><span class="home__title-color">Management</span> System</h1>
+<body data-spy="scroll" data-offset="120">
+  <!-- Pre Loader -->
+  <div id="dvLoading"></div>
+  <!-- Start Navbar Area -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <div class="logo"> <a href="#home">
+          <h3><img src="../static/LandingPage/images/logo1.png" alt=""></h3>
+        </a> </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span
+          class="navbar-toggler-icon"></span> </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+          <li class="nav-item"> <a href="#home" class="nav-link"> Home </a> </li>
+          <li class="nav-item"> <a href="#about" class="nav-link"> About </a> </li>
+          <li class="nav-item"> <a href="#services" class="nav-link"> Services </a> </li>
+          <li class="nav-item"> <a href="#portfolio" class="nav-link"> Portfolio </a> </li>
+          <li class="nav-item"> <a href="#team" class="nav-link"> Our Team </a> </li>
+          <li class="nav-item"> <a href="#contact" class="nav-link"> Contact </a> </li>
+        </ul>
+        <div class="others-option">
+          <div class="d-flex align-items-center">
+            <div class="option-item">
+              <ul class="social-icon">
+                <!-- <li> <a href="#"> <i class="ti-twitter"></i> </a> </li> -->
+                <li class="getstarted">
+                  <a href="javascript:void(0)" class="btn btn__primary btn__lg mr-3"> <span>Get Started</span> </a>
+                </li>
 
-      <a href="/login/student" class="button">Login</a>
-    </div>
-
-    <div class="home__social"> 
-      <a href="https://www.linkedin.com/school/iit-indore/" target="_blank" class="home__social-icon"><i class='bx bxl-linkedin'></i></a> 
-      <a href="https://www.facebook.com/studentgym/" target="_blank" class="home__social-icon"><i class='bx bxl-facebook'></i></a> 
-      <a href="https://twitter.com/iitiofficial?lang=en" target="_blank" class="home__social-icon"><i class='bx bxl-twitter'></i></a> 
-    </div>
-
-    <div class="home__img">
-      <img src="/static/img/iitGreen.png" alt="" style="max-width: 111%;">
-    </div>
-  </section>
-
-  <!--===== ABOUT =====-->
-  <section class="about section " id="about">
-    <h2 class="section-title">About</h2>
-
-    <div class="about__container bd-grid">
-      <div class="about__img work__img">
-        <img src="/static/img/about.jpeg" alt="" style="width: 400px;">
-      </div>
-
-      <div>
-        <h2 class="about__subtitle">IIT Indore</h2>
-        <p class="about__text">Indian Institute of Technology, Indore, located in Madhya Pradesh, is one of the
-          Institutes of Technology established by the Government of India in 2009.
-          <br><b style="color: #4070F4;">
-            <a href="https://www.google.com/maps/search/Indian+Institute+of+Technology+Indore/@22.52035,75.9186743,16.51z" target="_blank">Address:</a>
-          </b> Khandwa Rd, Simrol, Madhya Pradesh 453552
-          <br><b style="color: #4070F4;"> Phone:</b> 07324 306 717.</p>
-      </div>
-    </div>
-  </section>
-
-  <!--===== SKILLS =====-->
-  <section class="skills section" id="details">
-    <h2 class="section-title">Details</h2>
-
-    <div class="skills__container bd-grid">
-      <div>
-        <h2 class="skills__subtitle">Achievements</h2>
-        <p class="skills__text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit optio id vero amet,
-          alias architecto consectetur error eum eaque sit.</p>
-        <div class="skills__data">
-          <div class="skills__names">
-            <i class='fa fa-university skills__icon'></i>
-            <span class="skills__name">Campus</span>
-          </div>
-          <div class="skills__bar skills__campus">
-
-          </div>
-          <div>
-            <span class="skills__percentage">10<sub>/10</sub></span>
-          </div>
-        </div>
-        <div class="skills__data">
-          <div class="skills__names">
-            <i class='fa fa-graduation-cap  skills__icon'></i>
-            <span class="skills__name">Placement</span>
-          </div>
-          <div class="skills__bar skills__placement">
-
-          </div>
-          <div>
-            <span class="skills__percentage">10<sub>/10</sub></span>
-          </div>
-        </div>
-        <div class="skills__data">
-          <div class="skills__names">
-            <i class='fa fa-plus-square skills__icon'></i>
-            <span class="skills__name">Facilities</span>
-          </div>
-          <div class="skills__bar skills__facility">
-
-          </div>
-          <div>
-            <span class="skills__percentage">9<sub>/10</sub></span>
-          </div>
-        </div>
-        <div class="skills__data">
-          <div class="skills__names">
-            <i class='fa fa-car skills__icon'></i>
-            <span class="skills__name">Transportation</span>
-          </div>
-          <div class="skills__bar skills__transport">
-
-          </div>
-          <div>
-            <span class="skills__percentage">8.5<sub>/10</sub></span>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-
-      <div>
-        <img src="/static/img/8.jpeg" alt="" class="skills__img">
+    </div>
+  </nav>
+  <!-- End Navbar Area -->
+  <!-- Start Slider Area -->
+  <section id="home" class="slider slider-layout1">
+    <div class="slick-carousel carousel-arrows-light m-slides-0"
+      data-slick='{"slidesToShow": 1, "arrows": true, "dots": true, "speed": 700,"fade": true,"cssEase": "linear"}'>
+      <div class="slide-item align-v-h bg-overlay">
+        <div class="bg-img"><img src="../static/LandingPage/images/slider-img5.jpg" alt=""></div>
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-9">
+              <div class="slide-item__content">
+                <h1 class="slide-item__subtitle">Welcome to UMS</h1>
+                <h2 class="slide-item__title">Education is the Key to Success.</h2>
+                <p class="slide-item__desc">Education is the process of facilitating learning, or acquisition of
+                  knowledge,skills, values, beliefs, and habits.</p>
+                <a href="javascript:void(0)" class="btn btn__primary btn__lg mr-3"> <span>Get Started</span> </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.slide-item -->
+      <div class="slide-item align-v-h bg-overlay">
+        <div class="bg-img"><img src="../static/LandingPage/images/slider-img4.jpg" alt=""></div>
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-9">
+              <div class="slide-item__content">
+                <h1 class="slide-item__subtitle">Welcome to UMS</h1>
+                <h2 class="slide-item__title">Providing Higher Education</h2>
+                <p class="slide-item__desc">Any successful career starts with advanced higher education. At IIT Indore,
+                  you will have a deeper knowledge of the
+                  subjects that will be particularly useful when climbing the career ladder.</p>
+                <a href="javascript:void(0)" class="btn btn__primary btn__lg mr-3"> <span>Contact Us</span> </a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
+  <!-- End Slider Area -->
+  <!-- Start Features Area -->
+  <section class="features-area pb-0">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-6">
+          <!-- Single Features Area -->
+          <div class="single-feature-sec">
+            <span><img src="../static/LandingPage/images/f-icon-1.png" alt=""></span>
+            <h3>B.Tech/M.Tech Programs</h3>
+            <p>These include Civil Engineering, Computer Science and Engineering, Chemical Engineering, Electrical
+              Engineering, Mechanical Engineering, Electronics and Communication Engineering, MEMS, etc.</p>
+            <div></div>
+          </div>
+        </div>
 
-  <!--===== WORK =====-->
-  <section class="work section" id="gallery">
-    <h2 class="section-title">Gallery</h2>
-
-    <div class="work__container bd-grid">
-      <div class="work__img">
-        <img src="/static/img/9.jpeg" alt="">
-      </div>
-      <div class="work__img">
-        <img src="/static/img/2.jpeg" alt="">
-      </div>
-      <div class="work__img">
-        <img src="/static/img/3.jpeg" alt="">
-      </div>
-      <div class="work__img">
-        <img src="/static/img/4.jpeg" alt="">
-      </div>
-      <div class="work__img">
-        <img src="/static/img/5.jpeg" alt="">
-      </div>
-      <div class="work__img">
-        <img src="/static/img/6.jpeg" alt="">
+        <div class="col-lg-4 col-md-6">
+          <!-- Single Features Area -->
+          <div class="single-feature-sec">
+            <span><img src="../static/LandingPage/images/f-icon-3.png" alt=""></span>
+            <h3>Achievement</h3>
+            <p>IIT Indore was ranked 351-400 in the world by the Times Higher Education World University Rankings of
+              2020, 55 in Asia
+              and 61 among emerging economies. In India it was ranked 10 among engineering colleges by the National
+              Institutional
+              Ranking Framework in 2020.</p>
+            <div></div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <!-- Single Features Area -->
+          <div class="single-feature-sec">
+            <span><img src="../static/LandingPage/images/f-icon-2.png" alt=""></span>
+            <h3>Facilities</h3>
+            <p>IIT Indore provides 5 BHK unit to accommodate 5 students with one student per bedroom with following
+              facilities: Large
+              spacious rooms with Cot, Almirah, Study Table, Chair, Refrigerator, RO drinking Water, Hot
+              Water, Wi-Fi Connection & LAN port, etc.</p>
+            <div></div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
+  <!-- End Features Area -->
+  <!-- Start About Area -->
+  <section id="about" class="about-sec">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="about-img about-image-02"
+            style="background-image: url(../static/LandingPage/images/about-img4.jpg);">
 
- 
-<!--===== CONTACT =====-->
-<section class="contact section" id="contact">
-  <h2 class="section-title">Contact</h2>
+            <div class="vdo-btn"> <a class="video-play-btn mfp-iframe"
+                href="https://player.vimeo.com/video/546045332?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"><i
+                  class="fas fa-play"></i></a> </div>
+            <div class="thumb"> <img src="../static/LandingPage/images/about-img1.jpg" alt=""> </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="about-content-wrapper">
+            <div class="concern-content">
+              <div class="content">
+                <div class="section-title">
+                  <h2 class="title">We are providing best education by some experienced Staff</h2>
+                  <p><strong>Indian Institute of Technology Indore</strong> located in Madhya Pradesh, known as IIT
+                    Indore or IITI, is an institute of
+                    national importance established by the Government of India in 2009. IIT Indore started
+                    functioning from July
+                    2009.
+                  </p>
+                  <p>
+                    Since , February 2016, IIT Indore has started functioning from its permanent campus. All the
+                    Administrative Offices,
+                    Material Management Section, Finance and Account Section, The School of Basic Sciences, The School
+                    of Humanities and
+                    Social Sciences, The School of Engineering, Basic Science Labs and Engineering Labs are all
+                    established in this campus.
+                    The Central Library is also situated in this campus.
 
-  <div class="contact__container bd-grid">
-      <form action="" class="contact__form">
-          <input type="text" placeholder="Name" class="contact__input">
-          <input type="mail" placeholder="Email" class="contact__input">
-          <textarea name="" id="" cols="0" rows="10" class="contact__input"></textarea>
-          <input type="button" value="Send" class="contact__button button">
-      </form>
+                  </p>
+                  <ul class="book-list">
+                    <li> <i class="ti-check-box"></i> B.Tech/M.Tech Programs </li>
+                    <li> <i class="ti-check-box"></i> Good Infrastructure </li>
+                    <li> <i class="ti-check-box"></i> Transportation</li>
+                    <li> <i class="ti-check-box"></i> Awesome Courses</li>
+                    <li> <i class="ti-check-box"></i> Sports Playing</li>
+                    <li> <i class="ti-check-box"></i> Central Library</li>
+                    <li> <i class="ti-check-box"></i> Medical Service</li>
+                    <li> <i class="ti-check-box"></i> Online Courses</li>
+                    <li> <i class="ti-check-box"></i> Security & Safety </li>
+                    <li> <i class="ti-check-box"></i> Online Courses </li>
+                    <li> <i class="ti-check-box"></i> Good Management </li>
+                    <li> <i class="ti-check-box"></i> Customer Support </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End About Area -->
+  <!-- Start Fun Facts Area -->
+  <section class="fun-facts-area pt-100 pb-70">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-3 col-sm-6">
+          <div class="single-fun-fact">
+            <div class="icon"> <i class="fas fa-users"></i> </div>
+            <h3> <span class="odometer" data-count="2000">00</span>+ </h3>
+            <p>Students Enrolled</p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-sm-6">
+          <div class="single-fun-fact">
+            <div class="icon"> <i class="fas fa-user-tie"></i></div>
+            <h3> <span class="odometer" data-count="160">00</span>+ </h3>
+            <p>Certified Teachers</p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-sm-6">
+          <div class="single-fun-fact">
+            <div class="icon"><i class="fas fa-book"></i> </div>
+            <h3> <span class="odometer" data-count="40">00</span> </h3>
+            <p>Active Courses</p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-sm-6">
+          <div class="single-fun-fact">
+            <div class="icon"> <i class="fas fa-smile-beam"></i></div>
+            <h3> <span class="odometer" data-count="99">00</span>% </h3>
+            <p>Parents Satisfaction</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Fun Facts Area -->
+  <!-- Start Services Area -->
+  <section id="services" class="services-area">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-7">
+          <div class="section-title mb-0">
+            <h2>Services</h2>
+            <p>Services concept is used to describe the divisions or departments which provide services and
+              student support in higher education. Its purpose is to ensure the students growth and development during
+              the
+              academic experience.</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 col-md-6">
+          <!-- Single Services Area -->
+          <div class="single-service-sec">
+            <div class="inner-box">
+              <div class="shape-one"></div>
+              <div class="shape-two"></div>
+              <div class="icon-box"> <span class="icon bx bxs-graduation"></span> </div>
+              <h5>Experienced Faculty</h5>
+              <div class="text">The department has a team of well qualified faculty which leads the
+                students to acquire knowledge.</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <!-- Single Services Area -->
+          <div class="single-service-sec">
+            <div class="inner-box">
+              <div class="shape-one"></div>
+              <div class="shape-two"></div>
+              <div class="icon-box"> <span class="icon bx bx-book"></span> </div>
+              <h5>Awesome Courses</h5>
+              <div class="text">Course is defined as a specific path that something follows or the way in which
+                something develops.</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <!-- Single Services Area -->
+          <div class="single-service-sec">
+            <div class="inner-box">
+              <div class="shape-one"></div>
+              <div class="shape-two"></div>
+              <div class="icon-box"> <span class="icon bx bxs-book-reader"></span> </div>
+              <h5>Central Library</h5>
+              <div class="text">Library that is accessible by the general public and is usually founded from public
+                sources, such as taxes.</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <!-- Single Services Area -->
+          <div class="single-service-sec">
+            <div class="inner-box">
+              <div class="shape-one"></div>
+              <div class="shape-two"></div>
+              <div class="icon-box"> <span class="icon bx bx-plus-medical"></span> </div>
+              <h5>Medical Service</h5>
+              <div class="text">Medically Necessary services, including, as the context requires,
+                treatments, tests,
+                examinations or other related services.</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <!-- Single Services Area -->
+          <div class="single-service-sec">
+            <div class="inner-box">
+              <div class="shape-one"></div>
+              <div class="shape-two"></div>
+              <div class="icon-box"> <span class="icon bx bx-football"></span> </div>
+              <h5>Sports Facilities</h5>
+              <div class="text">Sports play a pivotal role in shaping one’s personality and maintaining good health.
+                which gives
+                good experience to all our
+                students.</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <!-- Single Services Area -->
+          <div class="single-service-sec">
+            <div class="inner-box">
+              <div class="shape-one"></div>
+              <div class="shape-two"></div>
+              <div class="icon-box"> <span class="icon bx bx-globe"></span> </div>
+              <h5>Online Courses</h5>
+              <div class="text">Online courses are revolutionizing formal education, and have opened a new genre of
+                outreach on cultural and scientific
+                topics.</div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </section>
+  <!-- End Services Area -->
+
+  <!-- Start Portfolio Area -->
+  <section id="portfolio" class="portfolio-area">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-7">
+          <div class="section-title mb-0">
+            <h2>Our Portfolio</h2>
+            <p>The right goals bring out the best in each of us and show our true potential. Set a goal that makes you
+              want to jump out of bed in the morning..</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 col-sm-6">
+          <div class="gallery-box">
+            <div class="gallery-img"> <img src="../static/LandingPage/images/portfolio/1.jpeg" alt="">
+              <div class="gallery-overlay"> <a href="../static/LandingPage/images/portfolio/1.jpeg"><i
+                    class="ti-plus"></i></a> </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+          <div class="gallery-box">
+            <div class="gallery-img"> <img src="../static/LandingPage/images/portfolio/2.jpeg" alt="">
+              <div class="gallery-overlay"> <a href="../static/LandingPage/images/portfolio/2.jpeg"><i
+                    class="ti-plus"></i></a> </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+          <div class="gallery-box">
+            <div class="gallery-img"> <img src="../static/LandingPage/images/portfolio/3.jpg" alt="">
+              <div class="gallery-overlay"> <a href="../static/LandingPage/images/portfolio/3.jpg"><i
+                    class="ti-plus"></i></a> </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+          <div class="gallery-box">
+            <div class="gallery-img"> <img src="../static/LandingPage/images//portfolio/4.jpeg" alt="">
+              <div class="gallery-overlay"> <a href="../static/LandingPage/images/portfolio/4.jpeg"><i
+                    class="ti-plus"></i></a> </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+          <div class="gallery-box">
+            <div class="gallery-img"> <img src="../static/LandingPage/images/portfolio/5.jpeg" alt="">
+              <div class="gallery-overlay"> <a href="../static/LandingPage/images/portfolio/5.jpeg"><i
+                    class="ti-plus"></i></a> </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+          <div class="gallery-box">
+            <div class="gallery-img"> <img src="../static/LandingPage/images/portfolio/6.jpeg" alt="">
+              <div class="gallery-overlay"> <a href="../static/LandingPage/images/portfolio/6.jpeg"><i
+                    class="ti-plus"></i></a> </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+          <div class="gallery-box">
+            <div class="gallery-img"> <img src="../static/LandingPage/images/portfolio/8.jpg" alt="">
+              <div class="gallery-overlay"> <a href="../static/LandingPage/images/portfolio/8.jpg"><i
+                    class="ti-plus"></i></a> </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+          <div class="gallery-box">
+            <div class="gallery-img"> <img src="../static/LandingPage/images/portfolio/9.jpeg" alt="">
+              <div class="gallery-overlay"> <a href="../static/LandingPage/images/portfolio/9.jpeg"><i
+                    class="ti-plus"></i></a> </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+          <div class="gallery-box">
+            <div class="gallery-img"> <img src="../static/LandingPage/images/portfolio/7.jpg" alt="">
+              <div class="gallery-overlay"> <a href="../static/LandingPage/images/portfolio/7.jpg"><i
+                    class="ti-plus"></i></a> </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Portfolio Area -->
+
+  <!-- Start Team Area -->
+  <section id="team" class="team-area">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-7">
+          <div class="section-title mb-0">
+            <h2>Our Team</h2>
+            <p>A team is more than a collection of people. It is a process of give and take.
+              Teamwork is the secret that makes common people achieve uncommon results.</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6 col-lg-3">
+          <!-- Single Team Area -->
+          <div class="team-item">
+            <img src="../static/LandingPage/images/team/team-1.jpg" alt="" title="">
+            <h3>Krishanu Saini</h3>
+            <span>Web Developer</span>
+            <ul>
+              <li> <a href="javascript:void(0)"> <i class="bx bxl-facebook"></i> </a> </li>
+              <li> <a href="javascript:void(0)"> <i class="bx bxl-twitter"></i> </a> </li>
+              <li> <a href="javascript:void(0)"> <i class="bx bxl-linkedin"></i> </a> </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+          <!-- Single Team Area -->
+          <div class="team-item">
+            <img src="../static/LandingPage/images/team/team-2.jpg" alt="" title="">
+            <h3>Kuldeep Singh</h3>
+            <span>Web Developer</span>
+            <ul>
+              <li> <a href="javascript:void(0)"> <i class="bx bxl-facebook"></i> </a> </li>
+              <li> <a href="javascript:void(0)"> <i class="bx bxl-twitter"></i> </a> </li>
+              <li> <a href="javascript:void(0)"> <i class="bx bxl-linkedin"></i> </a> </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+          <!-- Single Team Area -->
+          <div class="team-item">
+            <img src="../static/LandingPage/images/team/team-3.jpg" alt="" title="">
+            <h3>Rahul Kumar</h3>
+            <span>Web Developer</span>
+            <ul>
+              <li> <a href="javascript:void(0)"> <i class="bx bxl-facebook"></i> </a> </li>
+              <li> <a href="javascript:void(0)"> <i class="bx bxl-twitter"></i> </a> </li>
+              <li> <a href="javascript:void(0)"> <i class="bx bxl-linkedin"></i> </a> </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+          <!-- Single Team Area -->
+          <div class="team-item">
+            <img src="../static/LandingPage/images/team/team-4.jpg" alt="" title="">
+            <h3>Deepkamal Jassal</h3>
+            <span>Web Developer</span>
+            <ul>
+              <li> <a href="javascript:void(0)"> <i class="bx bxl-facebook"></i> </a> </li>
+              <li> <a href="javascript:void(0)"> <i class="bx bxl-twitter"></i> </a> </li>
+              <li> <a href="javascript:void(0)"> <i class="bx bxl-linkedin"></i> </a> </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Team Area -->
+  <!-- Start Blog Area -->
+  <section id="blog" class="blog-sec">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-7">
+          <div class="section-title mb-0">
+            <h2>Student's Feedback </h2>
+            <p>See what people say about the IIT Indore.</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 col-md-6">
+          <!-- Single Blog Area -->
+          <div class="blog_one_single">
+            <div class="blog_one_image"> <img src="../static/LandingPage/images/avatar7.png" alt=""> </div>
+            <div class="blog-one__content">
+              <ul class="list-unstyled blog-one__meta">
+                <li><a href="/#feedback"><i class="far fa-user-circle"></i> KULDEEP SINGH</a></li>
+                <li><a href="/#feedback"><i class="far fa-id-card"></i> Student</a> </li>
+              </ul>
+              <div class="blog_one_title">
+                <h3><a href="/#feedback">Is Infrastructure really good?</a></h3>
+              </div>
+              <div class="blog_one_text">
+                <p><i class="bx bxs-quote-alt-left quote-icon-left"></i>IIT Indore has definitely the best
+                  infrastructure when it comes to hostels. The main library is also being set up with
+                  well collected books and materials. The campus has the best medical facility.<i
+                    class="bx bxs-quote-alt-right quote-icon-right"></i></p>
+              </div>
+              <div class="date_btn"> <a href="/#feedback">2 May, 2021</a> </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <!-- Single Blog Area -->
+          <div class="blog_one_single">
+            <div class="blog_one_image"> <img src="../static/LandingPage/images/boy2.png" alt=""> </div>
+            <div class="blog-one__content">
+              <ul class="list-unstyled blog-one__meta">
+                <li><a href="/#feedback"><i class="far fa-user-circle"></i> KRISHANNU SAINI</a></li>
+                <li><a href="/#feedback"><i class="far fa-id-card"></i> Student</a> </li>
+              </ul>
+              <div class="blog_one_title">
+                <h3><a href="/#feedback">What about the placements?</a></h3>
+              </div>
+              <div class="blog_one_text">
+                <p><i class="bx bxs-quote-alt-left quote-icon-left"></i>In IIT Indore, the average salary package
+                  offered was 20 LPA as per the last 3 to 4 years data. Students also get good
+                  internships in companies like GS, etc.<i class="bx bxs-quote-alt-right quote-icon-right"></i></p>
+              </div>
+              <div class="date_btn"> <a href="/#feedback">4 May, 2021</a> </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <!-- Single Blog Area -->
+          <div class="blog_one_single">
+            <div class="blog_one_image"> <img src="../static/LandingPage/images/boy.png" alt=""> </div>
+            <div class="blog-one__content">
+              <ul class="list-unstyled blog-one__meta">
+                <li><a href="/#feedback"><i class="far fa-user-circle"></i> RAHUL KUMAR </a></li>
+                <li><a href="/#feedback"><i class="far fa-id-card"></i> Student</a> </li>
+              </ul>
+              <div class="blog_one_title">
+                <h3><a href="/#feedback">Does IIT Indore have permanent campus?</a></h3>
+              </div>
+              <div class="blog_one_text">
+                <p><i class="bx bxs-quote-alt-left quote-icon-left"></i>Since , February 2016, IIT Indore has started
+                  functioning from its permanent campus. ... The Central Library is also
+                  situated in this campus.<i class="bx bxs-quote-alt-right quote-icon-right"></i></p>
+              </div>
+              <div class="date_btn"> <a href="/#feedback">6 May, 2021</a> </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- End Blog Area -->
+
+
+
+  <!-- Start Contact Area -->
+  <section id="contact" class="contact-sec">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-7">
+          <div class="section-title">
+            <h2>Contact Us</h2>
+            <p>Want to get in touch? We'd love to hear from you. Here's how you can reach us...</p>
+          </div>
+        </div>
+      </div>
+      <div class="row contactformbg">
+        <div class="col-md-6">
+          <div class="contact-address">
+            <h3 class="contact-title">Contact Information</h3>
+            <div class="single-contact-address pb-3">
+              <div class="icon"> <i class="ti-mobile"></i> </div>
+              <div class="content">
+                <p>+9112-456-7890 <br>
+                  +9111-222-5555</p>
+              </div>
+            </div>
+            <div class="single-contact-address pb-3">
+              <div class="icon"> <i class="ti-email"></i> </div>
+              <div class="content">
+                <p>acadsecy@iiti.ac.in <br>
+                  aoaa@iiti.ac.in</p>
+              </div>
+            </div>
+            <div class="single-contact-address pb-3">
+              <div class="icon"> <i class="ti-location-arrow"></i> </div>
+              <div class="content">
+                <p>khandwa Road, Simrol,<br>
+                  Indore, MP</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="contact-form-wrap">
+            <form class="contact__form-panel" id="contactForm">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="single-input-item">
+                    <input type="text" name="name" id="name" class="form-control" required placeholder="Your Name">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="single-input-item">
+                    <input type="email" name="email" id="email" class="form-control" required placeholder="Your Email">
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="single-input-item">
+                    <input type="text" name="phone" id="phone" required class="form-control" placeholder="Your Phone"
+                      onkeypress="return isNumberKey(event)">
+                    <script>
+                      function isNumberKey(evt) {
+                        var charCode = (evt.which) ? evt.which : event.keyCode
+                        if (charCode > 31 && (charCode < 48 || charCode > 57))
+                          return false;
+                        return true;
+                      }
+                    </script>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="single-input-item">
+                    <textarea name="message" id="message" class="form-control" cols="30" rows="5" required
+                      placeholder="Your Message"></textarea>
+                  </div>
+                  <div class="single-input-item mb-0 mt-40">
+                    <button type="submit" id="submitbtn" class="btn btn__primary btn__lg">Submit Request</button>
+                    <div id="successmsg" class="hidden solid #bcbcbc alert alert-success"> <a href="#" class="close"
+                        data-dismiss="alert" aria-label="close">&times;</a> Thank you for contacting us!</div>
+                    <div id="errormsg" class="hidden solid #bcbcbc alert alert-danger"> <a href="#" class="close"
+                        data-dismiss="alert" aria-label="close">&times;</a> Failed to submit the form. Try again. </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Contact Area -->
+  <!-- Start Map Area -->
+  <div class="map-area">
+    <iframe src="https://maps.google.com/maps?q=IIT%20Indore&t=&z=11&ie=UTF8&iwloc=&output=embed" frameborder="0"
+      style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe>
   </div>
-</section>
-  
+  <!-- End Contact Sec -->
+  <!-- Copyright Wrapper Start -->
+  <div class="copyright">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <p>© Copyright <span id="year"></span> IIT Indore. UMS Designed by <a href="https://iiti.ac.in/"
+              target="_blank"><span class="color">IIT Indore</span></a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 
+
+
+  <!-- jQuery Min JS -->
+  <!--jquery js -->
+  <script src="../static/LandingPage/js/jquery-min.js"></script>
+  <script src="../static/LandingPage/js/popper.min.js"></script>
+  <!--jquery js -->
+  <script src="../static/LandingPage/js/bootstrap.min.js"></script>
+  <!--jquery js -->
+  <script src="../static/LandingPage/js/plugins.js"></script>
+  <!--Fontawesome js -->
+  <script src="../static/LandingPage/js/fontawesome.js"></script>
+  <!--Slick js -->
+  <script src="../static/LandingPage/js/slick.min.js"></script>
+  <!-- Odometer JS -->
+  <script src="../static/LandingPage/js/odometer.min.js"></script>
+  <!-- Appear JS -->
+  <script src="../static/LandingPage/js/jquery.appear.js"></script>
+  <!-- MagnificPopup JS -->
+  <script src="../static/LandingPage/js/jquery.magnific-popup.min.js"></script>
+  <!-- Form Validations -->
+  <script src="../static/LandingPage/js/form-validation.js"></script>
+  <!--jquery js -->
+  <script src="../static/LandingPage/js/custom.js"></script>
+
+</body>
 
 
 

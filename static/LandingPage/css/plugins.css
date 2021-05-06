@@ -1,0 +1,23 @@
+/*Bootstrap CSS*/
+@import "bootstrap.min.css";
+
+/* Animate*/
+@import "animate.min.css";
+
+/*Themify css*/
+@import "themify-icons.css";
+
+/* Slick css*/
+@import "slick.css";
+
+/* line-awesome css*/
+@import "line-awesome.min.css";
+
+/* Odometer css*/
+@import "odometer.css";
+
+/* Boxicons css */
+@import "boxicons.min.css";
+
+/*Magnific Popup icons*/
+@import "magnific-popup.css";
