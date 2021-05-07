@@ -1,9 +1,20 @@
 -- Insert valid emails accordingly for testing forgot password
+
+INSERT INTO program (name) VALUES ('btech');
+INSERT INTO program (name) VALUES ('mtech');
+INSERT INTO program (name) VALUES ('ms');
+INSERT INTO program (name) VALUES ('phd');
+
+INSERT INTO department (dept_id, name, budget) VALUES ('1','cse',120000);
+INSERT INTO department (dept_id, name, budget) VALUES ('2','mech',120000);
+INSERT INTO department (dept_id, name, budget) VALUES ('3','ee',120000);
+INSERT INTO department (dept_id, name, budget) VALUES ('4','civil',120000);
+
 INSERT INTO `university`.`faculty` (`faculty_id`, `name`, `emailid`, `password`, `address`, `DOB`) VALUES ('1', 'Shaan', 'sh@sh.com', '81dc9bdb52d04dc20036dbd8313ed055', '02-gandhi-marg new-delhi', '1980-12-30');
 INSERT INTO `university`.`faculty` (`faculty_id`, `name`, `emailid`, `password`, `address`, `DOB`) VALUES ('2', 'Rohan', 'rr@trr.com', '81dc9bdb52d04dc20036dbd8313ed055', '02-Hauz-Khas new-delhi', '1965-12-30');
 
-INSERT INTO `university`.`student` (`student_id`, `name`, `emailid`, `password`, `address`, `DOB` , `branch`, `sem`, `cpi`) VALUES ('1', 'ron', 'ron@ron.com', '81dc9bdb52d04dc20036dbd8313ed055', '100-england', '2001-01-01', 'CSE', '4', '9.80');
-INSERT INTO `university`.`student` (`student_id`, `name`, `emailid`, `password`, `address`, `DOB` , `branch`, `sem`, `cpi`) VALUES ('2', 'Ganguly', 'Ganguly@Ganguly.com', '81dc9bdb52d04dc20036dbd8313ed055', '100-london', '2004-02-21', 'EE', '2', '7.80');
+INSERT INTO `university`.`student` (`student_id`, `name`, `emailid`, `password`, `address`, `DOB` , `branch`, `sem`, `cpi`, `program`) VALUES ('1', 'ron', 'ron@ron.com', '81dc9bdb52d04dc20036dbd8313ed055', '100-england', '2001-01-01', 'cse', '4', '9.80','btech');
+INSERT INTO `university`.`student` (`student_id`, `name`, `emailid`, `password`, `address`, `DOB` , `branch`, `sem`, `cpi`, `program`) VALUES ('2', 'Ganguly', 'Ganguly@Ganguly.com', '81dc9bdb52d04dc20036dbd8313ed055', '100-london', '2004-02-21', 'cse', '2', '7.80','btech');
 
 INSERT INTO `university`.`admin` (`admin_id`, `name`, `emailid`, `password`) VALUES ('1', 'sqyw', 'sqyw@sqyw.com', '81dc9bdb52d04dc20036dbd8313ed055');
 INSERT INTO `university`.`admin` (`admin_id`, `name`, `emailid`, `password`) VALUES ('2', 'qwsr', 'qwsr@qwsr.com', '81dc9bdb52d04dc20036dbd8313ed055');
@@ -31,14 +42,46 @@ INSERT INTO teaches (faculty_id, c_id, year, notes) VALUES ('2','3',"2006-06-01"
 INSERT INTO teaches (faculty_id, c_id, year, notes) VALUES ('1','4',"2009-12-30","");
 INSERT INTO teaches (faculty_id, c_id, year, notes) VALUES ('2','5',"2010-01-30","");
 
-INSERT INTO assignment (c_id, faculty_id, created_at, end_at, text, marks_total) VALUES ('1','1',NOW(), NOW() + INTERVAL 1 DAY, 'Sort an array in O(n) using radix sort', '30');
-INSERT INTO assignment (c_id, faculty_id, created_at, end_at, text, marks_total) VALUES ('2','1',NOW() - INTERVAL 2 DAY, NOW() - INTERVAL 1 DAY, 'reverse an array in O(n)', '10');
-INSERT INTO assignment (c_id, faculty_id, created_at, end_at, text, marks_total) VALUES ('2','1',DATE_ADD(NOW(), INTERVAL 1 HOUR), DATE_ADD(NOW(), INTERVAL 3 HOUR), 'End semester exam', '60');
-INSERT INTO assignment (c_id, faculty_id, created_at, end_at, text, marks_total) VALUES ('3','2',DATE_ADD(NOW(), INTERVAL 0 HOUR), DATE_ADD(NOW(), INTERVAL 3 HOUR), 'End semester exam', '100');
+INSERT INTO assignment (sec_id, faculty_id, created_at, end_at, text, marks_total) VALUES ('1','1',NOW(), NOW() + INTERVAL 1 DAY, 'Sort an array in O(n) using radix sort', '30');
+INSERT INTO assignment (sec_id, faculty_id, created_at, end_at, text, marks_total) VALUES ('2','1',NOW() - INTERVAL 2 DAY, NOW() - INTERVAL 1 DAY, 'reverse an array in O(n)', '10');
+INSERT INTO assignment (sec_id, faculty_id, created_at, end_at, text, marks_total) VALUES ('2','1',DATE_ADD(NOW(), INTERVAL 1 HOUR), DATE_ADD(NOW(), INTERVAL 3 HOUR), 'End semester exam', '60');
+INSERT INTO assignment (sec_id, faculty_id, created_at, end_at, text, marks_total) VALUES ('3','2',DATE_ADD(NOW(), INTERVAL 0 HOUR), DATE_ADD(NOW(), INTERVAL 3 HOUR), 'End semester exam', '100');
 
 INSERT INTO submission (a_id, student_id, created_at, end_at, submitted_at, text, marks_got) VALUES ('1','1',NOW(), NOW() + INTERVAL 1 DAY, DATE_ADD(NOW(), INTERVAL 3 HOUR),'answer 1 text', '30');
 INSERT INTO submission (a_id, student_id, created_at, end_at, submitted_at, text, marks_got) VALUES ('2','1',NOW() - INTERVAL 2 DAY, NOW() - INTERVAL 1 DAY, DATE_ADD(NOW(), INTERVAL 1 HOUR),'answer 2 text', '10');
 INSERT INTO submission (a_id, student_id, created_at, end_at, submitted_at, text, marks_got) VALUES ('2','2',NOW(), NOW() + INTERVAL 1 DAY, DATE_ADD(NOW(), INTERVAL 3 HOUR),'answer 2 text', '5');
 
+INSERT INTO has_course (program, c_id, sem, branch) VALUES ('btech','1',4,'cse');
+INSERT INTO has_course (program, c_id, sem, branch) VALUES ('btech','2',2,'cse');
+INSERT INTO has_course (program, c_id, sem, branch) VALUES ('btech','3',4,'cse');
+INSERT INTO has_course (program, c_id, sem, branch) VALUES ('phd','2',4,'cse');
+INSERT INTO has_course (program, c_id, sem, branch) VALUES ('mtech','2',2,'cse');
 
+INSERT INTO final_grade (student_id, c_id, grades) VALUES ('1','1','8.00');
+INSERT INTO final_grade (student_id, c_id, grades) VALUES ('1','2','4.00');
+INSERT INTO final_grade (student_id, c_id, grades) VALUES ('2','3','5.00');
+INSERT INTO final_grade (student_id, c_id, grades) VALUES ('2','1','10.00');
 
+INSERT INTO classroom (class_id, roomno) VALUES ('1','L01');
+INSERT INTO classroom (class_id, roomno) VALUES ('2','C03');
+INSERT INTO classroom (class_id, roomno) VALUES ('3','L04');
+INSERT INTO classroom (class_id, roomno) VALUES ('4','L02');
+
+INSERT INTO section_room(sec_id, class_id) VALUES ('1','1');
+INSERT INTO section_room(sec_id, class_id) VALUES ('1','2');
+INSERT INTO section_room(sec_id, class_id) VALUES ('2','2');
+INSERT INTO section_room(sec_id, class_id) VALUES ('3','3');
+
+INSERT INTO manages (faculty_id, dept_id, `role`) VALUES ('1','1','hod');
+INSERT INTO manages (faculty_id, dept_id, `role`) VALUES ('2','2','hod');
+INSERT INTO manages (faculty_id, dept_id, `role`) VALUES ('1','3','dean');
+
+INSERT INTO offer_course (dept_id, c_id) VALUES ('1','1');
+INSERT INTO offer_course (dept_id, c_id) VALUES ('1','2');
+INSERT INTO offer_course (dept_id, c_id) VALUES ('1','3');
+INSERT INTO offer_course (dept_id, c_id) VALUES ('2','3');
+
+INSERT INTO has_program (program, dept_id) VALUES ('1','1');
+INSERT INTO has_program (program, dept_id) VALUES ('1','2');
+INSERT INTO has_program (program, dept_id) VALUES ('2','1');
+INSERT INTO has_program (program, dept_id) VALUES ('2','3');
