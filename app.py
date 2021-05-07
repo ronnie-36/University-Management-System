@@ -23,6 +23,11 @@ mail = Mail(app)
 def index():
     return render_template('index.html')
 
+
+@app.route('/getStarted', methods=['GET', 'POST'])
+def getStarted():
+    return render_template('getStarted.html')
+
 # auth start
 app.add_url_rule('/login/<user>', view_func=auth.login, methods=['GET','POST'])
 app.add_url_rule('/logout', view_func=auth.logout, methods=['GET','POST'])

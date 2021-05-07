@@ -15,7 +15,7 @@ def admin_dashboard():
     elif session['role'] != "admin":
         return render_template('error.html')
 
-    return render_template('admin/dashboard.html')
+    return render_template('admin_panel/index.html')
 
 def admin_add_student_dashboard():
     if 'id' not in session or 'role' not in session:
