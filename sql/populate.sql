@@ -81,7 +81,7 @@ INSERT INTO offer_course (dept_id, c_id) VALUES ('1','2');
 INSERT INTO offer_course (dept_id, c_id) VALUES ('1','3');
 INSERT INTO offer_course (dept_id, c_id) VALUES ('2','3');
 
-INSERT INTO has_program (program, dept_id) VALUES ('1','1');
-INSERT INTO has_program (program, dept_id) VALUES ('1','2');
-INSERT INTO has_program (program, dept_id) VALUES ('2','1');
-INSERT INTO has_program (program, dept_id) VALUES ('2','3');
+INSERT INTO has_program (program, dept_id) VALUES ('btech','1');
+INSERT INTO has_program (program, dept_id) VALUES ('btech','2');
+INSERT INTO has_program (program, dept_id) VALUES ('btech','3');
+INSERT INTO has_program (program, dept_id) VALUES ('mtech','3');

@@ -39,6 +39,7 @@
 										<th>Address</th>
 										<th>Sem</th>
 										<th>CPI</th>
+										<th class="text-right">Action</th>
 									</tr>
 								</thead>
 								{% for item in list %}
@@ -58,6 +59,16 @@
 										<td>{{ item[4] }}</td>
 										<td>{{ item[9] }}</td>
 										<td>{{ item[10] }}</td>
+										<td class="text-right">
+											<div class="actions">
+												<a href="/admin/edit-student/{{ item[0] }}" class="btn btn-sm bg-success-light mr-2">
+													<i class="fas fa-pen"></i>
+												</a>
+												<a href="/admin/delete-student/{{ item[0] }}" class="btn btn-sm bg-danger-light">
+													<i class="fas fa-trash"></i>
+												</a>
+											</div>
+										</td>
 									</tr>
 								</tbody>
 								{% endfor %}

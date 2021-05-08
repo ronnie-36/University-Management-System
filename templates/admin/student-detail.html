@@ -32,29 +32,26 @@
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>First Name</label>
-										<input type="text" class="form-control" name="first_name">
+										<input type="text" class="form-control" name="first_name" value="{{list[1]}}" disabled>
 									</div>
 								</div>
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Last Name</label>
-										<input type="text" class="form-control"  name="last_name">
+										<input type="text" class="form-control"  name="last_name" value="{{list[2]}}" disabled>
 									</div>
 								</div>
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Student Id</label>
-										<input type="text" class="form-control"  name="student_id">
+										<input type="text" class="form-control"  name="student_id" value="{{list[0]}}" disabled>
 									</div>
 								</div>
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Gender</label>
-										<select class="form-control" name="gender">
-											<option>Select Gender</option>
-											<option>Female</option>
-											<option>Male</option>
-											<option>Others</option>
+										<select class="form-control" name="gender" disabled>
+											<option selected>{{list[5]}}</option>
 										</select>
 									</div>
 								</div>
@@ -62,57 +59,42 @@
 									<div class="form-group">
 										<label>Date of Birth</label>
 										<div>
-											<input type="date" class="form-control" name="dob">
+											<input type="date" class="form-control" name="dob" value="{{list[7]}}" disabled>
 										</div>
 									</div>
 								</div>
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Mobile Number</label>
-										<input type="text" class="form-control" name="phone">
+										<input type="text" class="form-control" name="phone"value="{{list[6]}}" disabled>
 									</div>
 								</div>
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Address</label>
-										<input type="text" class="form-control" name="address">
+										<input type="text" class="form-control" name="address" value="{{list[4]}}" disabled>
 									</div>
 								</div>
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Semester</label>
-										<input type="number" class="form-control" min='0' max='10' name="sem">
+										<input type="number" class="form-control" min='0' max='10' name="sem" value="{{list[9]}}" disabled>
 									</div>
 								</div>
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Program</label>
-										<input type="text" class="form-control" name="program">
+										<input type="text" class="form-control" name="program" value="{{list[12]}}" disabled>
 									</div>
 								</div>
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Branch</label>
-										<select class="form-control"  name="branch">
+										<select class="form-control"  name="branch" disabled>
 											<option>Select Branch</option>
-											<option>cse</option>
-											<option>ee</option>
-											<option>mech</option>
-											<option>civil</option>
-											<option>mems</option>
+											<option selected>{{list[11]}}</option>
 										</select>
 									</div>
-								</div>
-								<div class="col-12 col-sm-6">
-									<div class="form-group">
-										<label>Student Image</label>
-										<input type="file" class="form-control"  name="image">
-									</div>
-								</div>
-
-								
-								<div class="col-12">
-									<button type="submit" class="btn btn-primary">Submit</button>
 								</div>
 							</div>
 						</form>
