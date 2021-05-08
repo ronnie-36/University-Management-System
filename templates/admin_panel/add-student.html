@@ -1,5 +1,113 @@
 {% extends 'admin_panel/adminbase.html' %}
 
+{% block sidebar %}
+<!-- Sidebar -->
+<div class="sidebar" id="sidebar">
+	<div class="sidebar-inner slimscroll">
+		<div id="sidebar-menu" class="sidebar-menu">
+			<ul>
+				<li class="menu-title">
+					<span>Main Menu</span>
+				</li>
+				<li class="">
+					<a href="/admin/dashboard"><i class="fas fa-th-large"></i> <span>Dashboard</span></a>
+				</li>
+				<li class="submenu active">
+					<a href="#"><i class="fas fa-user-graduate"></i> <span> Students</span> <span
+							class="menu-arrow"></span></a>
+					<ul>
+						<li><a href="/admin/student_list">Student List</a></li>
+						<li><a href="/admin/add_student" class="active">Student Add</a></li>
+						<li><a href="/admin/student_list_edit">Student Edit</a></li>
+					</ul>
+				</li>
+				<li class="submenu">
+					<a href="#"><i class="fas fa-chalkboard-teacher"></i> <span> Teachers</span> <span
+							class="menu-arrow"></span></a>
+					<ul>
+						<li><a href="teachers.html">Teacher List</a></li>
+						<li><a href="teacher-details.html">Teacher View</a></li>
+						<li><a href="add-teacher.html">Teacher Add</a></li>
+						<li><a href="edit-teacher.html">Teacher Edit</a></li>
+					</ul>
+				</li>
+				<li class="submenu">
+					<a href="#"><i class="fas fa-building"></i> <span> Departments</span> <span
+							class="menu-arrow"></span></a>
+					<ul>
+						<li><a href="departments.html">Department List</a></li>
+						<li><a href="add-department.html">Department Add</a></li>
+						<li><a href="edit-department.html">Department Edit</a></li>
+					</ul>
+				</li>
+				<li class="submenu">
+					<a href="#"><i class="fas fa-book-reader"></i> <span> Subjects</span> <span
+							class="menu-arrow"></span></a>
+					<ul>
+						<li><a href="subjects.html">Subject List</a></li>
+						<li><a href="add-subject.html">Subject Add</a></li>
+						<li><a href="edit-subject.html">Subject Edit</a></li>
+					</ul>
+				</li>
+
+				<li class="menu-title">
+					<span>Management</span>
+				</li>
+
+				<li class="submenu">
+					<a href="#"><i class="fas fa-file-invoice-dollar"></i> <span> Accounts</span> <span
+							class="menu-arrow"></span></a>
+					<ul>
+						<li><a href="fees-collections.html">Fees Collection</a></li>
+						<li><a href="expenses.html">Expenses</a></li>
+						<li><a href="salary.html">Salary</a></li>
+						<li><a href="add-fees-collection.html">Add Fees</a></li>
+						<li><a href="add-expenses.html">Add Expenses</a></li>
+						<li><a href="add-salary.html">Add Salary</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="holiday.html"><i class="fas fa-holly-berry"></i> <span>Holiday</span></a>
+				</li>
+				<li>
+					<a href="fees.html"><i class="fas fa-comment-dollar"></i> <span>Fees</span></a>
+				</li>
+				<li>
+					<a href="exam.html"><i class="fas fa-clipboard-list"></i> <span>Exam list</span></a>
+				</li>
+				<li>
+					<a href="event.html"><i class="fas fa-calendar-day"></i> <span>Events</span></a>
+				</li>
+				<li>
+					<a href="time-table.html"><i class="fas fa-table"></i> <span>Time Table</span></a>
+				</li>
+				<li>
+					<a href="library.html"><i class="fas fa-book"></i> <span>Library</span></a>
+				</li>
+
+
+
+				<li class="menu-title">
+					<span>Others</span>
+				</li>
+
+				<li>
+					<a href="sports.html"><i class="fas fa-baseball-ball"></i> <span>Sports</span></a>
+				</li>
+				<li>
+					<a href="hostel.html"><i class="fas fa-hotel"></i> <span>Hostel</span></a>
+				</li>
+				<li>
+					<a href="transport.html"><i class="fas fa-bus"></i> <span>Transport</span></a>
+				</li>
+
+			</ul>
+		</div>
+	</div>
+</div>
+{% endblock %}
+<!-- /Sidebar -->
+
 {% block pagewrapper %}
 <!-- Page Wrapper -->
 <div class="page-wrapper">
@@ -38,13 +146,13 @@
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Last Name</label>
-										<input type="text" class="form-control"  name="last_name">
+										<input type="text" class="form-control" name="last_name">
 									</div>
 								</div>
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Student Id</label>
-										<input type="text" class="form-control"  name="student_id">
+										<input type="text" class="form-control" name="student_id">
 									</div>
 								</div>
 								<div class="col-12 col-sm-6">
@@ -93,7 +201,7 @@
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Branch</label>
-										<select class="form-control"  name="branch">
+										<select class="form-control" name="branch">
 											<option>Select Branch</option>
 											<option>cse</option>
 											<option>ee</option>
@@ -106,11 +214,11 @@
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Student Image</label>
-										<input type="file" class="form-control"  name="image">
+										<input type="file" class="form-control" name="image">
 									</div>
 								</div>
 
-								
+
 								<div class="col-12">
 									<button type="submit" class="btn btn-primary">Submit</button>
 								</div>
