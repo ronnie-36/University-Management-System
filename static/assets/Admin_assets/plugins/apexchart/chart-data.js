@@ -1,5 +1,13 @@
 'use strict';
-
+const series = [{
+			name: "Boys",
+			color: '#fdbb38',
+			data: [420, 532, 516, 575, 519, 517, 454, 392, 262, 383, 446, 551, 563, 421, 563, 254, 452],
+		}, {
+			name: "Girls",
+			color: '#19affb',
+			data: [336, 612, 344, 647, 345, 563, 256, 344, 323, 300, 455, 456, 526, 652, 325, 425, 436],
+		}]
 $(document).ready(function() {
 
 	// Area chart
@@ -26,6 +34,7 @@ $(document).ready(function() {
 			color: '#FFBC53',
 			data: [24, 48, 56, 32, 34, 52, 25]
 		}],
+		series: series,
 		xaxis: {
 			categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
 		}
@@ -56,15 +65,6 @@ $(document).ready(function() {
 				columnWidth: '45%',
 			}
 		},
-		series: [{
-			name: "Boys",
-			color: '#fdbb38',
-			data: [420, 532, 516, 575, 519, 517, 454, 392, 262, 383, 446, 551, 563, 421, 563, 254, 452],
-		}, {
-			name: "Girls",
-			color: '#19affb',
-			data: [336, 612, 344, 647, 345, 563, 256, 344, 323, 300, 455, 456, 526, 652, 325, 425, 436],
-		}],
 		labels: [2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020],
 		xaxis: {
 			labels: {
