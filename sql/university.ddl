@@ -6,12 +6,57 @@ use university;
 
 CREATE TABLE program (
 	name VARCHAR(100) NOT NULL,
+    duration INT NOT NULL,
     PRIMARY KEY(name)
 );
 
+CREATE TABLE `university`.`faculty` (
+  `faculty_id` VARCHAR(45) NOT NULL,
+  `first_name` VARCHAR(90) NOT NULL,
+  `last_name` VARCHAR(90) NULL,
+  `address` VARCHAR(200),
+  `DOB` DATE DEFAULT '2001-08-28',
+  `emailid` VARCHAR(90) NOT NULL,
+  `password` VARCHAR(90) NOT NULL,
+  salary INT NOT NULL,
+  research_interests VARCHAR(200) NULL,
+  position VARCHAR(90) NOT NULL,
+  PRIMARY KEY (`faculty_id`));
+
+CREATE TABLE department (
+	dept_id VARCHAR(45) NOT NULL,
+    name VARCHAR(200) NOT NULL,
+    budget INT DEFAULT 0,
+    hod_id VARCHAR(45) NOT NULL,
+    contact_no VARCHAR(45) NOT NULL,
+    foreign key department(hod_id) references faculty(faculty_id) on update cascade on delete cascade,
+    PRIMARY KEY(dept_id)
+); 
+
+CREATE TABLE course (
+	c_id VARCHAR(45) NOT NULL,
+    name VARCHAR(90) NOT NULL,
+    description VARCHAR(200) NULL,
+    syllabus VARCHAR(700) NULL,
+    credits VARCHAR(45) NOT NULL,
+    year DATE NOT NULL,
+    notes VARCHAR(200) NOT NULL,
+    PRIMARY KEY(c_id));
+
+
+-- this is the current years courses, stores years
+CREATE TABLE section (
+	sec_id INT NOT NULL auto_increment,
+	c_id VARCHAR(45) NOT NULL,
+    year VARCHAR(11) DEFAULT '2021',
+    sem VARCHAR(45) NOT NULL,
+    notes VARCHAR(200) NOT NULL,
+    FOREIGN KEY section(c_id) references course(c_id) on update cascade on delete cascade,
+    PRIMARY KEY(sec_id));
+
 CREATE TABLE `university`.`student` (
   `student_id` VARCHAR(45) NOT NULL,
-  `name` VARCHAR(90) NOT NULL,
+  `first_name` VARCHAR(90) NOT NULL,
   `last_name` VARCHAR(90),
   `emailid` VARCHAR(90),
   `address` VARCHAR(200),
@@ -21,52 +66,24 @@ CREATE TABLE `university`.`student` (
   `password` VARCHAR(90) NOT NULL,
   sem INT DEFAULT 1,
   cpi FLOAT DEFAULT 0.00,
-  branch VARCHAR(5),
+  branch VARCHAR(45) NOT NULL,
   program VARCHAR(100) DEFAULT 'btech',
-  foreign key student(program) references program(name) on update cascade on delete cascade,
+  advisor_id VARCHAR(45),
+  TAsec_id INT,
+  CONSTRAINT advisor foreign key student(advisor_id) references faculty(faculty_id) on update cascade on delete cascade,
+  CONSTRAINT stud_prog foreign key student(program) references program(name) on update cascade on delete cascade,
+  CONSTRAINT stud_dept foreign key student(branch) references department(dept_id) on update cascade on delete cascade,
+  CONSTRAINT sec_ta foreign key student(TAsec_id) references section(sec_id) on update cascade on delete cascade,
   PRIMARY KEY (`student_id`));
-
-CREATE TABLE department (
-	dept_id VARCHAR(45) NOT NULL,
-    name VARCHAR(200) NOT NULL,
-    budget INT DEFAULT 0,
-    PRIMARY KEY(dept_id)
-);
-
-CREATE TABLE `university`.`faculty` (
-  `faculty_id` VARCHAR(45) NOT NULL,
-  `name` VARCHAR(90) NOT NULL,
-  `address` VARCHAR(200),
-  `DOB` DATE DEFAULT '2001-08-28',
-  `emailid` VARCHAR(90) NOT NULL,
-  `password` VARCHAR(90) NOT NULL,
-  dept_id varchar(45),
-  foreign key faculty(dept_id) references department(dept_id) on update cascade on delete cascade,
-  PRIMARY KEY (`faculty_id`));
 
 CREATE TABLE `university`.`admin` (
   `admin_id` VARCHAR(45) NOT NULL,
   `name` VARCHAR(90) NOT NULL,
   `emailid` VARCHAR(90) NOT NULL,
   `password` VARCHAR(90) NOT NULL,
+  `role` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`admin_id`));
   
-CREATE TABLE course (
-	c_id VARCHAR(45) NOT NULL,
-    name VARCHAR(90) NOT NULL,
-    year DATE NOT NULL,
-    notes VARCHAR(200) NOT NULL,
-    PRIMARY KEY(c_id));
-
--- this is the current years courses, stores years
-CREATE TABLE section (
-	sec_id INT NOT NULL auto_increment,
-	c_id VARCHAR(45) NOT NULL,
-    year VARCHAR(11) DEFAULT '2021',
-    notes VARCHAR(200) NOT NULL,
-    FOREIGN KEY section(c_id) references course(c_id) on update cascade on delete cascade,
-    PRIMARY KEY(sec_id));
-
 CREATE TABLE enroll (
 	sec_id INT NOT NULL,
     student_id VARCHAR(90) NOT NULL,
@@ -77,37 +94,37 @@ CREATE TABLE enroll (
     PRIMARY KEY(student_id, sec_id));
 
 CREATE TABLE teaches (
-	c_id VARCHAR(45) NOT NULL,
+	sec_id INT NOT NULL,
     faculty_id VARCHAR(90) NOT NULL,
     year DATE NOT NULL,
     notes VARCHAR(200) NOT NULL,
-    FOREIGN KEY teaches(c_id) references course(c_id) on update cascade on delete cascade,
+    FOREIGN KEY teaches(sec_id) references section(sec_id) on update cascade on delete cascade,
     FOREIGN KEY teaches(faculty_id) references faculty(faculty_id) on update cascade on delete cascade,
-    PRIMARY KEY(faculty_id, c_id));
+    PRIMARY KEY(faculty_id, sec_id));
     
 CREATE TABLE assignment (
 	a_id INT UNIQUE NOT NULL auto_increment,
     faculty_id VARCHAR(90) NOT NULL,
 	sec_id INT NOT NULL,
     created_at DATETIME,
+    start_at DATETIME,
     end_at DATETIME,
     text VARCHAR(1000),
 	marks_total INT,
-    files_link DATE,
+    files_link VARCHAR(150),
     notes VARCHAR(200),
     FOREIGN KEY (faculty_id) references faculty(faculty_id) on update cascade on delete cascade,
     FOREIGN KEY (sec_id) references section(sec_id) on update cascade on delete cascade,
     PRIMARY KEY(a_id));
     
+-- This is student assg in ER
 CREATE TABLE submission (
 	a_id INT NOT NULL,
     student_id VARCHAR(90) NOT NULL,
     submission_id INT UNIQUE NOT NULL auto_increment,
-    created_at DATETIME ,
-    end_at DATETIME ,
     submitted_at DATETIME ,
     text VARCHAR(1000) ,
-    files_link DATE ,
+    files_link VARCHAR(150) ,
 	marks_got INT ,
     notes VARCHAR(200) ,
     FOREIGN KEY (a_id) references assignment(a_id) on update cascade on delete cascade,
@@ -135,6 +152,8 @@ CREATE TABLE final_grade(
 
 CREATE TABLE classroom(
 	class_id varchar(45) NOT NULL,
+    building varchar(90) NOT NULL,
+    capacity INT NOT NULL,
     roomno VARCHAR(45) NOT NULL,
     PRIMARY KEY (class_id)
 );
@@ -142,17 +161,20 @@ CREATE TABLE classroom(
 CREATE TABLE section_room(
 	sec_id INT NOT NULL,
     class_id VARCHAR(45) NOT NULL,
+    start_time INT NOT NULL,
+    end_time INT NOT NULL,
+    day INT NOT NULL,
 	foreign key section_room(sec_id) references section(sec_id) on update cascade on delete cascade,
     foreign key section_room(class_id) references classroom(class_id) on update cascade on delete cascade,
     PRIMARY KEY (sec_id, class_id)
 );
 
-CREATE TABLE manages(
+CREATE TABLE works(
 	faculty_id VARCHAR(90) NOT NULL,
     dept_id VARCHAR(45) NOT NULL,
     role VARCHAR(200) DEFAULT "faculty",
-	foreign key manages(faculty_id) references faculty(faculty_id) on update cascade on delete cascade,
-    foreign key manages(dept_id) references department(dept_id) on update cascade on delete cascade,
+	foreign key works(faculty_id) references faculty(faculty_id) on update cascade on delete cascade,
+    foreign key works(dept_id) references department(dept_id) on update cascade on delete cascade,
     PRIMARY KEY(faculty_id, dept_id)
 );
 
@@ -172,4 +194,13 @@ CREATE TABLE has_program (
     foreign key has_program(program) references program(name) on update cascade on delete cascade,
     foreign key has_program(dept_id) references department(dept_id) on update cascade on delete cascade,
     PRIMARY KEY(program, dept_id)
+);
+
+CREATE TABLE requires (
+	prereq_id VARCHAR(45) NOT NULL,
+    maincourse_id VARCHAR(45) NOT NULL,
+    notes VARCHAR(45),
+    foreign key requires(prereq_id) references course(c_id) on update cascade on delete cascade,
+    foreign key requires(maincourse_id) references course(c_id) on update cascade on delete cascade,
+    PRIMARY KEY(prereq_id, maincourse_id)
 );

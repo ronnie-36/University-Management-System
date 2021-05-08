@@ -4,6 +4,7 @@ from flask_mysqldb import MySQL
 import hashlib
 import flask_excel as excel
 import pyexcel_xlsx
+import datetime
 
 app = Flask(__name__)
 CORS(app)
@@ -19,7 +20,43 @@ def admin_dashboard():
     elif session['role'] != "admin":
         return render_template('error.html')
 
-    return render_template('admin_panel/index.html')
+    cur = mysql.connection.cursor()
+    cur.execute(''' select count(*) from student; ''')
+    rv = cur.fetchall()
+    count_students = rv[0][0]
+    cur.execute(''' select count(*) from faculty; ''')
+    rv = cur.fetchall()
+    count_faculty = rv[0][0]
+    cur.execute(''' select count(*) from department; ''')
+    rv = cur.fetchall()
+    count_dept = rv[0][0]
+    cur.execute(''' select count(*) from course; ''')
+    rv = cur.fetchall()
+    count_course = rv[0][0]
+    cur.execute(''' select count(*) from student where sem in (1,2); ''')
+    rv = cur.fetchall()
+    countyear1 = rv[0][0]
+    cur.execute(''' select count(*) from student where sem in (3,4); ''')
+    rv = cur.fetchall()
+    countyear2 = rv[0][0]
+    cur.execute(''' select count(*) from student where sem in (5,6); ''')
+    rv = cur.fetchall()
+    countyear3 = rv[0][0]
+    cur.execute(''' select count(*) from student where sem in (7,8); ''')
+    rv = cur.fetchall()
+    countyear4 = rv[0][0]
+    mysql.connection.commit()
+    dt = datetime.datetime.now().year
+    count_year = []
+    count_year.append([(str)(dt), countyear1])
+    count_year.append([(str)(dt-1), countyear2])
+    count_year.append([(str)(dt-2), countyear3])
+    count_year.append([(str)(dt-3), countyear4])
+    cur.close()
+
+    return render_template('admin_panel/index.html', count_student = count_students,
+        count_faculty = count_faculty, count_course = count_course, count_dept = count_dept,
+        count_year = count_year)
 
 def admin_add_student():
     if 'id' not in session or 'role' not in session:
@@ -45,7 +82,7 @@ def admin_add_student():
         hashedpassword = hashlib.md5(student_id.encode()).hexdigest()
         if (gender == 'Select Gender'):
             gender = 'Male'
-        cur.execute(''' insert into student (student_id, gender, name, last_name, 
+        cur.execute(''' insert into student (student_id, gender, first_name, last_name, 
         phone, sem, program, branch, dob, address, password) values ('%s','%s','%s','%s','%d',%d,'%s','%s','%s','%s','%s');
         '''%(student_id, gender, first_name, last_name, phone, sem, program, branch, dob, address, hashedpassword))
         
@@ -132,7 +169,7 @@ def admin_student_edit(student_id):
             gender = 'Male'
         cur = mysql.connection.cursor()
         hashedpassword = hashlib.md5(student_id.encode()).hexdigest()
-        cur.execute(''' update student set name = '%s', last_name = '%s', gender = '%s', 
+        cur.execute(''' update student set first_name = '%s', last_name = '%s', gender = '%s', 
         phone = '%s', sem = %d, program = '%s', branch = '%s', dob = '%s', address = '%s'
         where student_id = '%s';
         '''%(first_name, last_name, gender, phone, sem, program, branch, dob, address, student_id))
@@ -168,11 +205,11 @@ def admin_student_view(student_id):
 
 def ExcelDownload_student():
     cur = mysql.connection.cursor()
-    cur.execute('''select student_id, name, last_name, gender, 
+    cur.execute('''select student_id, first_name, last_name, gender, 
         phone, sem, program, branch, cpi,dob, address, password from student;''')
     rv = cur.fetchall()
 
-    studentlist = [['student_id', 'name', 'last_name', 'gender', 
+    studentlist = [['student_id', 'first_name', 'last_name', 'gender', 
         'phone', 'sem', 'program', 'branch','cpi', 'dob', 'address', 'password']]
     for rows in rv:
         temp = []
@@ -185,48 +222,6 @@ def ExcelDownload_student():
     cur.close()
 
     return excel.make_response_from_array(studentlist, "xlsx")
-
-def admin_search_semester(sem):
-    if 'id' not in session or 'role' not in session:
-        return render_template('error.html')
-    elif session['role'] != "admin":
-        return render_template('error.html')
-
-    cur = mysql.connection.cursor()
-    cur.execute(''' select * from student where sem = %d; '''%(sem))
-    rv = cur.fetchall()
-    mysql.connection.commit()
-    cur.close()
-
-    return redirect(url_for('admin_student_list'), list = rv)
-
-def admin_search_year(year):
-    if 'id' not in session or 'role' not in session:
-        return render_template('error.html')
-    elif session['role'] != "admin":
-        return render_template('error.html')
-
-    cur = mysql.connection.cursor()
-    cur.execute(''' select * from student where (sem+1) / 2 = %d; '''%(year))
-    rv = cur.fetchall()
-    mysql.connection.commit()
-    cur.close()
-
-    return redirect(url_for('admin_student_list'), list = rv)
-
-def admin_search_name(name):
-    if 'id' not in session or 'role' not in session:
-        return render_template('error.html')
-    elif session['role'] != "admin":
-        return render_template('error.html')
-
-    cur = mysql.connection.cursor()
-    cur.execute(''' select * from student where name like '%s%%'; '''%(name))
-    rv = cur.fetchall()
-    mysql.connection.commit()
-    cur.close()
-
-    return redirect(url_for('admin_student_list'), list = rv)
 
 def admin_faculty_list():
     if 'id' not in session or 'role' not in session:

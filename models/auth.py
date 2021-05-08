@@ -52,7 +52,7 @@ def login(user):
         hashedpassword = hashlib.md5(password.encode()).hexdigest()
         cur = mysql.connection.cursor()
         if(user=="student"):
-            cur.execute("SELECT COUNT(*), password, name FROM student WHERE student_id = '%s' "% (user_id))
+            cur.execute("SELECT COUNT(*), password, first_name FROM student WHERE student_id = '%s' "% (user_id))
             rv = cur.fetchall()
             flag = (rv[0][0])
             dbpassword = (rv[0][1])
@@ -68,7 +68,7 @@ def login(user):
                 flash = "Wrong Id or Password!"
                 flag = 0
         elif(user=="faculty"):
-            cur.execute("SELECT COUNT(*), password, name FROM faculty WHERE faculty_id = '%s' "% (user_id))
+            cur.execute("SELECT COUNT(*), password, first_name FROM faculty WHERE faculty_id = '%s' "% (user_id))
             rv = cur.fetchall()
             flag = (rv[0][0])
             dbpassword = (rv[0][1])
