@@ -15,4 +15,4 @@ def faculty_dashboard():
     elif session['role'] != "faculty":
         return render_template('error.html')
         
-    return render_template('faculty/dashboard.html')
+    return render_template('faculty_panel/instructor_dashboard.html')
