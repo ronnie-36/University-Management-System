@@ -12,14 +12,14 @@ CREATE TABLE program (
 
 CREATE TABLE `university`.`faculty` (
   `faculty_id` VARCHAR(45) NOT NULL,
-  `first name` VARCHAR(90) NOT NULL,
-  `last name` VARCHAR(90) NOT NULL,
+  `first_name` VARCHAR(90) NOT NULL,
+  `last_name` VARCHAR(90) NULL,
   `address` VARCHAR(200),
   `DOB` DATE DEFAULT '2001-08-28',
   `emailid` VARCHAR(90) NOT NULL,
   `password` VARCHAR(90) NOT NULL,
   salary INT NOT NULL,
-  research_interests VARCHAR(200) NOT NULL,
+  research_interests VARCHAR(200) NULL,
   position VARCHAR(90) NOT NULL,
   PRIMARY KEY (`faculty_id`));
 
@@ -36,8 +36,8 @@ CREATE TABLE department (
 CREATE TABLE course (
 	c_id VARCHAR(45) NOT NULL,
     name VARCHAR(90) NOT NULL,
-    description VARCHAR(200) NOT NULL,
-    syllabus VARCHAR(700) NOT NULL,
+    description VARCHAR(200) NULL,
+    syllabus VARCHAR(700) NULL,
     credits VARCHAR(45) NOT NULL,
     year DATE NOT NULL,
     notes VARCHAR(200) NOT NULL,
@@ -49,7 +49,7 @@ CREATE TABLE section (
 	sec_id INT NOT NULL auto_increment,
 	c_id VARCHAR(45) NOT NULL,
     year VARCHAR(11) DEFAULT '2021',
-    sem INT NOT NULL,
+    sem VARCHAR(45) NOT NULL,
     notes VARCHAR(200) NOT NULL,
     FOREIGN KEY section(c_id) references course(c_id) on update cascade on delete cascade,
     PRIMARY KEY(sec_id));
@@ -66,13 +66,13 @@ CREATE TABLE `university`.`student` (
   `password` VARCHAR(90) NOT NULL,
   sem INT DEFAULT 1,
   cpi FLOAT DEFAULT 0.00,
-  dept_id VARCHAR(45) NOT NULL,
+  branch VARCHAR(45) NOT NULL,
   program VARCHAR(100) DEFAULT 'btech',
   advisor_id VARCHAR(45) NOT NULL,
   TAsec_id INT NULL,
   CONSTRAINT advisor foreign key student(advisor_id) references faculty(faculty_id) on update cascade on delete cascade,
   CONSTRAINT stud_prog foreign key student(program) references program(name) on update cascade on delete cascade,
-  CONSTRAINT stud_dept foreign key student(dept_id) references department(dept_id) on update cascade on delete cascade,
+  CONSTRAINT stud_dept foreign key student(branch) references department(dept_id) on update cascade on delete cascade,
   CONSTRAINT sec_ta foreign key student(TAsec_id) references section(sec_id) on update cascade on delete cascade,
   PRIMARY KEY (`student_id`));
 
@@ -124,7 +124,7 @@ CREATE TABLE submission (
     submission_id INT UNIQUE NOT NULL auto_increment,
     submitted_at DATETIME ,
     text VARCHAR(1000) ,
-    files_link DATE ,
+    files_link VARCHAR(150) ,
 	marks_got INT ,
     notes VARCHAR(200) ,
     FOREIGN KEY (a_id) references assignment(a_id) on update cascade on delete cascade,
@@ -161,9 +161,9 @@ CREATE TABLE classroom(
 CREATE TABLE section_room(
 	sec_id INT NOT NULL,
     class_id VARCHAR(45) NOT NULL,
-    start_time DATETIME NOT NULL,
-    end_time DATETIME NOT NULL,
-    day VARCHAR(45) NOT NULL,
+    start_time INT NOT NULL,
+    end_time INT NOT NULL,
+    day INT NOT NULL,
 	foreign key section_room(sec_id) references section(sec_id) on update cascade on delete cascade,
     foreign key section_room(class_id) references classroom(class_id) on update cascade on delete cascade,
     PRIMARY KEY (sec_id, class_id)
