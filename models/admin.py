@@ -82,7 +82,7 @@ def admin_add_student():
         hashedpassword = hashlib.md5(student_id.encode()).hexdigest()
         if (gender == 'Select Gender'):
             gender = 'Male'
-        cur.execute(''' insert into student (student_id, gender, name, last_name, 
+        cur.execute(''' insert into student (student_id, gender, first_name, last_name, 
         phone, sem, program, branch, dob, address, password) values ('%s','%s','%s','%s','%d',%d,'%s','%s','%s','%s','%s');
         '''%(student_id, gender, first_name, last_name, phone, sem, program, branch, dob, address, hashedpassword))
         
@@ -169,7 +169,7 @@ def admin_student_edit(student_id):
             gender = 'Male'
         cur = mysql.connection.cursor()
         hashedpassword = hashlib.md5(student_id.encode()).hexdigest()
-        cur.execute(''' update student set name = '%s', last_name = '%s', gender = '%s', 
+        cur.execute(''' update student set first_name = '%s', last_name = '%s', gender = '%s', 
         phone = '%s', sem = %d, program = '%s', branch = '%s', dob = '%s', address = '%s'
         where student_id = '%s';
         '''%(first_name, last_name, gender, phone, sem, program, branch, dob, address, student_id))
@@ -205,11 +205,11 @@ def admin_student_view(student_id):
 
 def ExcelDownload_student():
     cur = mysql.connection.cursor()
-    cur.execute('''select student_id, name, last_name, gender, 
+    cur.execute('''select student_id, first_name, last_name, gender, 
         phone, sem, program, branch, cpi,dob, address, password from student;''')
     rv = cur.fetchall()
 
-    studentlist = [['student_id', 'name', 'last_name', 'gender', 
+    studentlist = [['student_id', 'first_name', 'last_name', 'gender', 
         'phone', 'sem', 'program', 'branch','cpi', 'dob', 'address', 'password']]
     for rows in rv:
         temp = []
