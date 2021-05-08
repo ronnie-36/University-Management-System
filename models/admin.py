@@ -186,48 +186,6 @@ def ExcelDownload_student():
 
     return excel.make_response_from_array(studentlist, "xlsx")
 
-def admin_search_semester(sem):
-    if 'id' not in session or 'role' not in session:
-        return render_template('error.html')
-    elif session['role'] != "admin":
-        return render_template('error.html')
-
-    cur = mysql.connection.cursor()
-    cur.execute(''' select * from student where sem = %d; '''%(sem))
-    rv = cur.fetchall()
-    mysql.connection.commit()
-    cur.close()
-
-    return redirect(url_for('admin_student_list'), list = rv)
-
-def admin_search_year(year):
-    if 'id' not in session or 'role' not in session:
-        return render_template('error.html')
-    elif session['role'] != "admin":
-        return render_template('error.html')
-
-    cur = mysql.connection.cursor()
-    cur.execute(''' select * from student where (sem+1) / 2 = %d; '''%(year))
-    rv = cur.fetchall()
-    mysql.connection.commit()
-    cur.close()
-
-    return redirect(url_for('admin_student_list'), list = rv)
-
-def admin_search_name(name):
-    if 'id' not in session or 'role' not in session:
-        return render_template('error.html')
-    elif session['role'] != "admin":
-        return render_template('error.html')
-
-    cur = mysql.connection.cursor()
-    cur.execute(''' select * from student where name like '%s%%'; '''%(name))
-    rv = cur.fetchall()
-    mysql.connection.commit()
-    cur.close()
-
-    return redirect(url_for('admin_student_list'), list = rv)
-
 def admin_faculty_list():
     if 'id' not in session or 'role' not in session:
         return render_template('error.html')

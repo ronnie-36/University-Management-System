@@ -53,9 +53,6 @@ app.add_url_rule('/admin/edit-student/<student_id>', view_func=admin.admin_stude
 app.add_url_rule('/admin/delete-student/<student_id>', view_func=admin.admin_student_delete, methods=['GET','POST'])
 app.add_url_rule('/admin/student_list_edit', view_func=admin.admin_student_list_edit, methods=['GET','POST'])
 app.add_url_rule('/admin/faculty_list', view_func=admin.admin_faculty_list, methods=['GET','POST'])
-app.add_url_rule('/admin/admin_search_semester/<sem>', view_func=admin.admin_search_semester, methods=['GET','POST'])
-app.add_url_rule('/admin/admin_search_year/<year>', view_func=admin.admin_search_year, methods=['GET','POST'])
-app.add_url_rule('/admin/admin_search_name/<name>', view_func=admin.admin_search_name, methods=['GET','POST'])
 app.add_url_rule('/admin/student_excel', view_func=admin.ExcelDownload_student, methods=['GET','POST'])
 
 # admin end  
