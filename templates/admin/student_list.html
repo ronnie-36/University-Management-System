@@ -1,0 +1,52 @@
+<table>
+  <tr>
+    <td>Semester</td>
+    <td>
+      <form action="/admin/admin_search_semester/" method="GET">
+      <input type="text" placeholder="semester" />
+      <input type="hidden" name="page" value="test">
+      <input type="submit" style="display: none;">
+      </form>
+    </td>
+  </tr>
+  <tr>
+    <td>Year</td>
+    <form action="/admin/admin_search_year/" method="GET">
+    <td><input type="text" placeholder="year" /></td>
+    <input type="submit" style="display: none;">
+    </form>
+  </tr>
+  <tr>
+    <td>Name(regex)</td>
+    <form action="/admin/admin_search_name/" method="GET">
+    <td><input type="text" placeholder="name" /></td>
+    <input type="submit" style="display: none;">
+    </form>
+  </tr>
+</table>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Info</th>
+    <th>program</th>
+    <th>Branch</th>
+    <th>Semester</th>
+    <th>Profile</th>
+    <th>cpi</th>
+  </tr>
+  {% for items in list %}
+  <tr>
+    <td>{{ items[1] }}</td>
+    <td>{{ items[2] }}</td>
+    <td>{{ items[9] }}</td>
+    <td>{{ items[8] }}</td>
+    <td>{{ items[6] }}</td>
+    <td>
+      <a class="nolink" href="/admin/set_faculty_profile"
+        ><button type="button" class="btn btn-primary">Profile</button></a
+      >
+    </td>
+    <td>{{ items[7] }}</td>
+  </tr>
+  {% endfor %}
+</table>
