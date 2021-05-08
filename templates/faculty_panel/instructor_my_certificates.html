@@ -1,0 +1,196 @@
+﻿{% extends 'faculty_panel/facultybase.html' %}
+
+<!-- Sidebar -->
+{% block sidebar %}
+<nav class="vertical_nav">
+    <div class="left_section menu_left" id="js-menu">
+        <div class="left_section">
+            <ul>
+                <li class="menu--item">
+                    <a href="/faculty/dashboard" class="menu--link active" title="Dashboard">
+                        <i class="uil uil-apps menu--icon"></i>
+                        <span class="menu--label">Dashboard</span>
+                    </a>
+                </li>
+                <li class="menu--item">
+                    <a href="/faculty/courses" class="menu--link" title="Courses">
+                        <i class='uil uil-book-alt menu--icon'></i>
+                        <span class="menu--label">Courses</span>
+                    </a>
+                </li>
+                <li class="menu--item">
+                    <a href="instructor_analyics.html" class="menu--link" title="Analyics">
+                        <i class='uil uil-analysis menu--icon'></i>
+                        <span class="menu--label">Analytics</span>
+                    </a>
+                </li>
+                <li class="menu--item">
+                    <a href="/faculty/create_new_course" class="menu--link" title="Create Course">
+                        <i class='uil uil-plus-circle menu--icon'></i>
+                        <span class="menu--label">Create Assignment</span>
+                    </a>
+                </li>
+
+                <li class="menu--item">
+                    <a href="instructor_my_certificates.html" class="menu--link" title="My Certificates">
+                        <i class='uil uil-award menu--icon'></i>
+                        <span class="menu--label">Set Grades </span>
+                    </a>
+                </li>
+                <li class="menu--item">
+                    <a href="/faculty/notifications" class="menu--link" title="Notifications">
+                        <i class='uil uil-bell menu--icon'></i>
+                        <span class="menu--label">Notifications</span>
+                    </a>
+                </li>
+
+
+                <li class="menu--item">
+                    <a href="/faculty/time-table" class="menu--link" title="Statements">
+                        <i class='uil uil-file-alt menu--icon'></i>
+                        <span class="menu--label">Time-Table</span>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="left_section pt-2">
+            <ul>
+                <li class="menu--item">
+                    <a href="/faculty/setting" class="menu--link" title="Setting">
+                        <i class='uil uil-cog menu--icon'></i>
+                        <span class="menu--label">Setting</span>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+{% endblock %}
+<!-- /Sidebar -->
+
+<!-- Page Wrapper -->
+{% block wrapper %}
+<div class="wrapper">
+    <div class="sa4d25">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="st_title"><i class="uil uil-award"></i> My Certificates</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="mt-10">
+                        <div class="card_dash1">
+                            <div class="card_dash_left1">
+                                <i class="uil uil-award"></i>
+                                <h1>Jump Into New Certificate</h1>
+                            </div>
+                            <div class="card_dash_right1">
+                                <button class="create_btn_dash"
+                                    onclick="window.location.href = 'certification_center.html';">New
+                                    Certificate</button>
+                            </div>
+                        </div>
+                        <div class="table-cerificate">
+                            <div class="table-responsive">
+                                <table class="table ucp-table" id="content-table">
+                                    <thead class="thead-s">
+                                        <tr>
+                                            <th class="text-center" scope="col">Item No.</th>
+                                            <th scope="col">Title</th>
+                                            <th class="text-center" scope="col">Marks</th>
+                                            <th class="text-center" scope="col">Out Of</th>
+                                            <th class="text-center" scope="col">Upload Date</th>
+                                            <th class="text-center" scope="col">Certificate</th>
+                                            <th class="text-center" scope="col">Controls</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-center">1</td>
+                                            <td class="cell-ta">WordPress Certificate</td>
+                                            <td class="text-center">15</td>
+                                            <td class="text-center">20</td>
+                                            <td class="text-center">6 April 2019</td>
+                                            <td class="text-center"><a href="../../../html-imgs/certificate.jpg"
+                                                    target="_blank">View</a></td>
+                                            <td class="text-center">
+                                                <a href="#" title="Delete" class="gray-s"><i
+                                                        class="uil uil-trash-alt"></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">2</td>
+                                            <td class="cell-ta">WordPress Pro Certificate</td>
+                                            <td class="text-center">14</td>
+                                            <td class="text-center">20</td>
+                                            <td class="text-center">4 April 2019</td>
+                                            <td class="text-center"><a href="../../../html-imgs/certificate.jpg"
+                                                    target="_blank">View</a></td>
+                                            <td class="text-center">
+                                                <a href="#" title="Delete" class="gray-s"><i
+                                                        class="uil uil-trash-alt"></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">3</td>
+                                            <td class="cell-ta">HTML CSS Certificate</td>
+                                            <td class="text-center">18</td>
+                                            <td class="text-center">20</td>
+                                            <td class="text-center">3 April 2019</td>
+                                            <td class="text-center"><a href="../../../html-imgs/certificate.jpg"
+                                                    target="_blank">View</a></td>
+                                            <td class="text-center">
+                                                <a href="#" title="Delete" class="gray-s"><i
+                                                        class="uil uil-trash-alt"></i></a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer mt-40">
+        <div class="container-fluid">
+            <div class="row">
+
+                <div class="col-lg-12 my-2">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="fotb_left">
+                                <li>
+                                    <a href="index.html">
+                                        <div class="footer_logo">
+                                            <img src="../../static/assets/faculty_assets/images/logo1.svg" alt="">
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <p>© 2021 <strong>UMS - IIT Indore</strong>. All Rights Reserved.</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="edu_social_links">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+{% endblock %}
+<!-- /Page Wrapper -->

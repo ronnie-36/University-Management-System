@@ -1,0 +1,289 @@
+﻿{% extends 'faculty_panel/facultybase.html' %}
+
+<!-- Sidebar -->
+{% block sidebar %}
+<nav class="vertical_nav">
+    <div class="left_section menu_left" id="js-menu">
+        <div class="left_section">
+            <ul>
+                <li class="menu--item">
+                    <a href="/faculty/dashboard" class="menu--link " title="Dashboard">
+                        <i class="uil uil-apps menu--icon"></i>
+                        <span class="menu--label">Dashboard</span>
+                    </a>
+                </li>
+                <li class="menu--item">
+                    <a href="/faculty/courses" class="menu--link" title="Courses">
+                        <i class='uil uil-book-alt menu--icon'></i>
+                        <span class="menu--label">Courses</span>
+                    </a>
+                </li>
+                <li class="menu--item">
+                    <a href="instructor_analyics.html" class="menu--link" title="Analyics">
+                        <i class='uil uil-analysis menu--icon'></i>
+                        <span class="menu--label">Analytics</span>
+                    </a>
+                </li>
+                <li class="menu--item">
+                    <a href="/faculty/create_new_course" class="menu--link" title="Create Course">
+                        <i class='uil uil-plus-circle menu--icon'></i>
+                        <span class="menu--label">Create Assignment</span>
+                    </a>
+                </li>
+
+                <li class="menu--item">
+                    <a href="instructor_my_certificates.html" class="menu--link active" title="My Certificates">
+                        <i class='uil uil-award menu--icon'></i>
+                        <span class="menu--label">Set Grades </span>
+                    </a>
+                </li>
+                <li class="menu--item">
+                    <a href="/faculty/notifications" class="menu--link" title="Notifications">
+                        <i class='uil uil-bell menu--icon'></i>
+                        <span class="menu--label">Notifications</span>
+                    </a>
+                </li>
+
+
+                <li class="menu--item">
+                    <a href="/faculty/time-table" class="menu--link" title="Statements">
+                        <i class='uil uil-file-alt menu--icon'></i>
+                        <span class="menu--label">Time-Table</span>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="left_section pt-2">
+            <ul>
+                <li class="menu--item">
+                    <a href="/faculty/setting" class="menu--link" title="Setting">
+                        <i class='uil uil-cog menu--icon'></i>
+                        <span class="menu--label">Setting</span>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+{% endblock %}
+<!-- /Sidebar -->
+
+<!-- Page Wrapper -->
+{% block wrapper %}
+<div class="wrapper">
+    <div class="sa4d25">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="st_title"><i class="uil uil-file-alt"></i> Statements</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-md-7">
+                    <div class="top_countries mt-30">
+                        <div class="top_countries_title">
+                            <h2>Earnings</h2>
+                        </div>
+                        <div class="statement_content">
+                            <p class="tt-body">Your sales earnings over the last 30 days</p>
+                            <table class="statement-summary__table">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <p class="t-heading">My funds</p>
+                                        </th>
+                                        <th>
+                                            <p class="t-heading">Earnings</p>
+                                        </th>
+                                        <th>
+                                            <p class="t-heading">UMS Fees</p>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="statement-summary__funds">
+                                            <p class="js-earnings__instructor-funds-wrapper">
+                                                <span class=""></span>
+                                                <span class="js-earnngs__instructor-funds t-currency">$289.64</span>
+                                            </p>
+                                        </td>
+                                        <td class="statement-summary__earnings">
+                                            <p class="js-earnings__earnings-wrapper">
+                                                <span class="tt__earning">+</span>
+                                                <span class="js-earnings__earnings t-currency">$458.00</span>
+                                            </p>
+                                        </td>
+                                        <td class="statement-summary__fees">
+                                            <p class="js-earnings__fees-wrapper">
+                                                <span class="tt__earning">-</span>
+                                                <span class="js-earnings__fees t-currency">$154.86</span>
+                                            </p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-5">
+                    <div class="top_countries mt-30">
+                        <div class="top_countries_title">
+                            <h2>View Invoices</h2>
+                        </div>
+                        <div class="statement_invoice_content">
+                            <div class="date_selector mt-0">
+                                <div class="ui selection dropdown skills-search vchrt-dropdown invoice-dropdown">
+                                    <input name="date" type="hidden" value="default">
+                                    <i class="dropdown icon d-icon"></i>
+                                    <div class="text">Monthly Invoices</div>
+                                    <div class="menu">
+                                        <div class="item" data-value="0">April 2020</div>
+                                        <div class="item" data-value="1">March 2020</div>
+                                    </div>
+                                </div>
+                                <button class="st_download_btn"><i class="uil uil-download-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12">
+                    <ul class="more_options_tt">
+                        <li><button class="more_items_14 active">This Month</button></li>
+                        <li><button class="more_items_14">Last Month</button></li>
+                        <li>
+                            <div class="explore_search">
+                                <div class="ui search focus">
+                                    <div class="ui left icon input swdh11 swdh15">
+                                        <input class="prompt srch_explore" type="text" placeholder="Document Number">
+                                        <i class="uil uil-search-alt icon icon8"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-12 col-md-12">
+                    <div class="table-responsive mt-30">
+                        <table class="table ucp-table earning__table">
+                            <thead class="thead-s">
+                                <tr>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Order ID</th>
+                                    <th scope="col">Type</th>
+                                    <th scope="col">Title</th>
+                                    <th scope="col">Amount</th>
+                                    <th scope="col">Fees</th>
+                                    <th scope="col">Invoice</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>13 Apr 2020</td>
+                                    <td>123456</td>
+                                    <td>Sale</td>
+                                    <td>Course Title Here</td>
+                                    <td>$10</td>
+                                    <td>-$5</td>
+                                    <td><a href="#">View</a></td>
+                                </tr>
+                                <tr>
+                                    <td>12 Apr 2020</td>
+                                    <td>123456</td>
+                                    <td>Sale</td>
+                                    <td>Course Title Here</td>
+                                    <td>$10</td>
+                                    <td>-$5</td>
+                                    <td><a href="#">View</a></td>
+                                </tr>
+                                <tr>
+                                    <td>11 Apr 2020</td>
+                                    <td>123456</td>
+                                    <td>Sale</td>
+                                    <td>Course Title Here</td>
+                                    <td>$10</td>
+                                    <td>-$5</td>
+                                    <td><a href="#">View</a></td>
+                                </tr>
+                                <tr>
+                                    <td>10 Apr 2020</td>
+                                    <td>123456</td>
+                                    <td>Sale</td>
+                                    <td>Course Title Here</td>
+                                    <td>$10</td>
+                                    <td>-$5</td>
+                                    <td><a href="#">View</a></td>
+                                </tr>
+                                <tr>
+                                    <td>9 Apr 2020</td>
+                                    <td>123456</td>
+                                    <td>Sale</td>
+                                    <td>Course Title Here</td>
+                                    <td>$10</td>
+                                    <td>-$5</td>
+                                    <td><a href="#">View</a></td>
+                                </tr>
+                                <tr>
+                                    <td>8 Apr 2020</td>
+                                    <td>123456</td>
+                                    <td>Sale</td>
+                                    <td>Course Title Here</td>
+                                    <td>$10</td>
+                                    <td>-$5</td>
+                                    <td><a href="#">View</a></td>
+                                </tr>
+                                <tr>
+                                    <td>7 Apr 2020</td>
+                                    <td>123456</td>
+                                    <td>Sale</td>
+                                    <td>Course Title Here</td>
+                                    <td>$10</td>
+                                    <td>-$5</td>
+                                    <td><a href="#">View</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer mt-40">
+        <div class="container-fluid">
+            <div class="row">
+
+                <div class="col-lg-12 my-2">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="fotb_left">
+                                <li>
+                                    <a href="index.html">
+                                        <div class="footer_logo">
+                                            <img src="../../static/assets/faculty_assets/images/logo1.svg" alt="">
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <p>© 2021 <strong>UMS - IIT Indore</strong>. All Rights Reserved.</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="edu_social_links">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+{% endblock %}
+<!-- /Page Wrapper -->

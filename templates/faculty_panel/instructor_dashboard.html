@@ -1,0 +1,405 @@
+﻿{% extends 'faculty_panel/facultybase.html' %}
+
+<!-- Sidebar -->
+{% block sidebar %}
+<nav class="vertical_nav">
+    <div class="left_section menu_left" id="js-menu">
+        <div class="left_section">
+            <ul>
+                <li class="menu--item">
+                    <a href="/faculty/dashboard" class="menu--link active" title="Dashboard">
+                        <i class="uil uil-apps menu--icon"></i>
+                        <span class="menu--label">Dashboard</span>
+                    </a>
+                </li>
+                <li class="menu--item">
+                    <a href="/faculty/courses" class="menu--link" title="Courses">
+                        <i class='uil uil-book-alt menu--icon'></i>
+                        <span class="menu--label">Courses</span>
+                    </a>
+                </li>
+                <li class="menu--item">
+                    <a href="instructor_analyics.html" class="menu--link" title="Analyics">
+                        <i class='uil uil-analysis menu--icon'></i>
+                        <span class="menu--label">Analytics</span>
+                    </a>
+                </li>
+                <li class="menu--item">
+                    <a href="/faculty/create_new_course" class="menu--link" title="Create Course">
+                        <i class='uil uil-plus-circle menu--icon'></i>
+                        <span class="menu--label">Create Assignment</span>
+                    </a>
+                </li>
+
+                <li class="menu--item">
+                    <a href="instructor_my_certificates.html" class="menu--link" title="My Certificates">
+                        <i class='uil uil-award menu--icon'></i>
+                        <span class="menu--label">Set Grades </span>
+                    </a>
+                </li>
+                <li class="menu--item">
+                    <a href="/faculty/notifications" class="menu--link" title="Notifications">
+                        <i class='uil uil-bell menu--icon'></i>
+                        <span class="menu--label">Notifications</span>
+                    </a>
+                </li>
+
+
+                <li class="menu--item">
+                    <a href="/faculty/time-table" class="menu--link" title="Statements">
+                        <i class='uil uil-file-alt menu--icon'></i>
+                        <span class="menu--label">Time-Table</span>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="left_section pt-2">
+            <ul>
+                <li class="menu--item">
+                    <a href="/faculty/setting" class="menu--link" title="Setting">
+                        <i class='uil uil-cog menu--icon'></i>
+                        <span class="menu--label">Setting</span>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+{% endblock %}
+<!-- /Sidebar -->
+
+<!-- Page Wrapper -->
+{% block wrapper %}
+<div class="wrapper">
+    <div class="sa4d25">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="st_title"><i class="uil uil-apps"></i> Instructor Dashboard</h2>
+                </div>
+                <div class="col-xl-3 col-lg-6 col-md-6">
+                    <div class="card_dash">
+                        <div class="card_dash_left">
+                            <h5>Total Achievement</h5>
+                            <h2>3</h2>
+                            <span class="crdbg_1">New 1</span>
+                        </div>
+                        <div class="card_dash_right">
+                            <img src="../../static/assets/faculty_assets/images/dashboard/achievement.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6 col-md-6">
+                    <div class="card_dash">
+                        <div class="card_dash_left">
+                            <h5>Total Enroll</h5>
+                            <h2>1500</h2>
+                            <span class="crdbg_2">New 125</span>
+                        </div>
+                        <div class="card_dash_right">
+                            <img src="../../static/assets/faculty_assets/images/dashboard/graduation-cap.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6 col-md-6">
+                    <div class="card_dash">
+                        <div class="card_dash_left">
+                            <h5>Total Courses</h5>
+                            <h2>13</h2>
+                            <span class="crdbg_3">New 5</span>
+                        </div>
+                        <div class="card_dash_right">
+                            <img src="../../static/assets/faculty_assets/images/dashboard/online-course.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6 col-md-6">
+                    <div class="card_dash">
+                        <div class="card_dash_left">
+                            <h5>Total Students</h5>
+                            <h2>2650</h2>
+                            <span class="crdbg_4">New 245</span>
+                        </div>
+                        <div class="card_dash_right">
+                            <img src="../../static/assets/faculty_assets/images/dashboard/knowledge.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="card_dash1">
+                        <div class="card_dash_left1">
+                            <i class="uil uil-book-alt"></i>
+                            <h1>Jump Into Course Creation</h1>
+                        </div>
+                        <div class="card_dash_right1">
+                            <button class="create_btn_dash"
+                                onclick="window.location.href = '/faculty/create_new_course';">Create Your
+                                Course</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-4 col-lg-6 col-md-6">
+                    <div class="section3125 mt-50">
+                        <h4 class="item_title">Latest Courses performance</h4>
+                        <div class="la5lo1">
+                            <div class="owl-carousel courses_performance owl-theme">
+                                <div class="item">
+                                    <div class="fcrse_1">
+                                        <a href="#" class="fcrse_img">
+                                            <img src="../../static/assets/faculty_assets/images/courses/img-1.jpg"
+                                                alt="">
+                                            <div class="course-overlay"></div>
+                                        </a>
+                                        <div class="fcrse_content">
+                                            <div class="vdtodt">
+                                                <span class="vdt14">First 2 days 22 hours</span>
+                                            </div>
+                                            <a href="#" class="crsedt145">Complete Python Bootcamp: Go from zero to
+                                                hero in Python 3</a>
+                                            <div class="allvperf">
+                                                <div class="crse-perf-left">Enrolled</div>
+                                                <div class="crse-perf-right">1.5k</div>
+                                            </div>
+                                            <div class="allvperf">
+                                                <div class="crse-perf-left">Query</div>
+                                                <div class="crse-perf-right">150</div>
+                                            </div>
+                                            <div class="allvperf">
+                                                <div class="crse-perf-left">Total Like</div>
+                                                <div class="crse-perf-right">1k</div>
+                                            </div>
+                                            <div class="auth1lnkprce">
+                                                <a href="#" class="cr1fot50">Go to course analytics</a>
+                                                <a href="#" class="cr1fot50">See comments (875)</a>
+                                                <a href="#" class="cr1fot50">See Reviews (105)</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="fcrse_1">
+                                        <a href="#" class="fcrse_img">
+                                            <img src="../../static/assets/faculty_assets/images/courses/img-2.jpg"
+                                                alt="">
+                                            <div class="course-overlay"></div>
+                                        </a>
+                                        <div class="fcrse_content">
+                                            <div class="vdtodt">
+                                                <span class="vdt14">Second 4 days 9 hours</span>
+                                            </div>
+                                            <a href="#" class="crse14s">The Complete JavaScript Course 2020: Build
+                                                Real Projects!</a>
+                                            <div class="allvperf">
+                                                <div class="crse-perf-left">Enrolled</div>
+                                                <div class="crse-perf-right">1.5k</div>
+                                            </div>
+                                            <div class="allvperf">
+                                                <div class="crse-perf-left">Query</div>
+                                                <div class="crse-perf-right">51</div>
+                                            </div>
+                                            <div class="allvperf">
+                                                <div class="crse-perf-left">Total Like</div>
+                                                <div class="crse-perf-right">1.1k</div>
+                                            </div>
+                                            <div class="auth1lnkprce">
+                                                <a href="#" class="cr1fot50">Go to course analytics</a>
+                                                <a href="#" class="cr1fot50">See comments (915)</a>
+                                                <a href="#" class="cr1fot50">See Reviews (255)</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="fcrse_1">
+                                        <a href="#" class="fcrse_img">
+                                            <img src="../../static/assets/faculty_assets/images/courses/img-3.jpg"
+                                                alt="">
+                                            <div class="course-overlay"></div>
+                                        </a>
+                                        <div class="fcrse_content">
+                                            <div class="vdtodt">
+                                                <span class="vdt14">Third 6 days 11 hours:</span>
+                                            </div>
+                                            <a href="#" class="crse14s">Beginning C++ Programming - From Beginner to
+                                                Beyond</a>
+                                            <div class="allvperf">
+                                                <div class="crse-perf-left">Enrolled</div>
+                                                <div class="crse-perf-right">1.7k</div>
+                                            </div>
+                                            <div class="allvperf">
+                                                <div class="crse-perf-left">Query</div>
+                                                <div class="crse-perf-right">25</div>
+                                            </div>
+                                            <div class="allvperf">
+                                                <div class="crse-perf-left">Total Like</div>
+                                                <div class="crse-perf-right">1k</div>
+                                            </div>
+                                            <div class="auth1lnkprce">
+                                                <a href="#" class="cr1fot50">Go to course analytics</a>
+                                                <a href="#" class="cr1fot50">See comments (155)</a>
+                                                <a href="#" class="cr1fot50">See Reviews (15)</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-6 col-md-6">
+                    <div class="section3125 mt-50">
+                        <h4 class="item_title">Events</h4>
+                        <div class="la5lo1">
+                            <div class="owl-carousel edututs_news owl-theme">
+                                <div class="item">
+                                    <div class="fcrse_1">
+                                        <a href="#" class="fcrse_img">
+                                            <img src="../../static/assets/faculty_assets/images/courses/news-1.jpg"
+                                                alt="">
+                                        </a>
+                                        <div class="fcrse_content">
+                                            <a href="#" class="crsedt145 mt-15">COVID-19 Updates & Resources</a>
+                                            <p class="news_des45">See the latest updates to coronavirus-related
+                                                content, including changes to monetization, and access new Creator
+                                                support resources</p>
+                                            <div class="auth1lnkprce">
+                                                <a href="#" class="cr1fot50">Learn More</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="fcrse_1">
+                                        <a href="#" class="fcrse_img">
+                                            <img src="../../static/assets/faculty_assets/images/courses/news-2.jpg"
+                                                alt="">
+                                        </a>
+                                        <div class="fcrse_content">
+                                            <a href="#" class="crsedt145 mt-15">Tech talk with Mrs. JK</a>
+                                            <p class="news_des45">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                                elit. Aenean ac eleifend ante. Duis ac pulvinar felis. Sed a nibh
+                                                ligula. Mauris eget tortor id mauris tristique accumsan.</p>
+                                            <div class="auth1lnkprce">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="fcrse_1">
+                                        <a href="#" class="fcrse_img">
+                                            <img src="../../static/assets/faculty_assets/images/courses/news-1.jpg"
+                                                alt="">
+                                        </a>
+                                        <div class="fcrse_content">
+                                            <a href="#" class="crsedt145 mt-15">COVID-19 Updates - April 7</a>
+                                            <p class="news_des45">Ut porttitor mi vel orci cursus, nec elementum
+                                                neque malesuada. Phasellus imperdiet quam gravida pharetra aliquet.
+                                                Integer vel ligula eget nisl dignissim hendrerit.</p>
+                                            <div class="auth1lnkprce">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-6 col-md-6">
+                    <div class="section3125 mt-50">
+                        <h4 class="item_title">Profile Analytics</h4>
+                        <div class="la5lo1">
+                            <div class="fcrse_1">
+                                <div class="fcrse_content">
+                                    <h6 class="crsedt8145">Current Profile view</h6>
+                                    <h3 class="subcribe_title">856</h3>
+                                    <div class="allvperf">
+                                        <div class="crse-perf-left">View</div>
+                                        <div class="crse-perf-right">17k<span class="analyics_pr"><i
+                                                    class="uil uil-arrow-to-bottom"></i>75%</span></div>
+                                    </div>
+
+                                    <div class="allvperf">
+                                        <div class="crse-perf-left">Enroll<span class="per_text">(per hour)</span>
+                                        </div>
+                                        <div class="crse-perf-right">50<span class="analyics_pr"><i
+                                                    class="uil uil-top-arrow-from-top"></i>70%</span></div>
+                                    </div>
+                                    <div class="auth1lnkprce">
+                                        <a href="#" class="cr1fot50">Go to profile analytics</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section3125 mt-50">
+                        <h4 class="item_title">Submit Courses</h4>
+                        <div class="la5lo1">
+                            <div class="fcrse_1">
+                                <div class="fcrse_content">
+                                    <div class="upcming_card">
+                                        <a href="#" class="crsedt145">The Complete JavaScript Course 2020: Build
+                                            Real Projects!<span class="pndng_145">Pending</span></a>
+                                        <p class="submit-course">Submitted<span>1 days ago</span></p>
+                                        <a href="#" class="delete_link10">Delete</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section3125 mt-50">
+                        <h4 class="item_title">What's new in UMS</h4>
+                        <div class="la5lo1">
+                            <div class="fcrse_1">
+                                <div class="fcrse_content">
+                                    <a href="#" class="new_links10">Improved performance on Studio Dashboard</a>
+                                    <a href="#" class="new_links10">See more Dashboard updates</a>
+                                    <a href="#" class="new_links10">See issues-at-glance for Live</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer mt-40">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 my-2">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="fotb_left">
+                                <li>
+                                    <a href="index.html">
+                                        <div class="footer_logo">
+                                            <img src="../../static/assets/faculty_assets/images/logo1.svg" alt="">
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <p>© 2021 <strong>UMS - IIT Indore</strong>. All Rights Reserved.</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="edu_social_links">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+</div>
+{% endblock %}
+<!-- /Page Wrapper -->

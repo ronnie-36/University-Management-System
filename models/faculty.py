@@ -15,4 +15,20 @@ def faculty_dashboard():
     elif session['role'] != "faculty":
         return render_template('error.html')
         
-    return render_template('faculty/dashboard.html')
+    return render_template('faculty_panel/instructor_dashboard.html')
+
+def faculty_setting():
+    if 'id' not in session or 'role' not in session:
+        return render_template('error.html')
+    elif session['role'] != "faculty":
+        return render_template('error.html')
+        
+    return render_template('faculty_panel/setting.html')
+
+def faculty_profile():
+    if 'id' not in session or 'role' not in session:
+        return render_template('error.html')
+    elif session['role'] != "faculty":
+        return render_template('error.html')
+        
+    return render_template('faculty_panel/my_instructor_profile_view.html')

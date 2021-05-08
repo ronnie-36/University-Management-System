@@ -1,0 +1,289 @@
+﻿{% extends 'faculty_panel/facultybase.html' %}
+
+<!-- Sidebar -->
+{% block sidebar %}
+<nav class="vertical_nav">
+    <div class="left_section menu_left" id="js-menu">
+        <div class="left_section">
+            <ul>
+                <li class="menu--item">
+                    <a href="/faculty/dashboard" class="menu--link active" title="Dashboard">
+                        <i class="uil uil-apps menu--icon"></i>
+                        <span class="menu--label">Dashboard</span>
+                    </a>
+                </li>
+                <li class="menu--item">
+                    <a href="/faculty/courses" class="menu--link" title="Courses">
+                        <i class='uil uil-book-alt menu--icon'></i>
+                        <span class="menu--label">Courses</span>
+                    </a>
+                </li>
+                <li class="menu--item">
+                    <a href="instructor_analyics.html" class="menu--link" title="Analyics">
+                        <i class='uil uil-analysis menu--icon'></i>
+                        <span class="menu--label">Analytics</span>
+                    </a>
+                </li>
+                <li class="menu--item">
+                    <a href="/faculty/create_new_course" class="menu--link" title="Create Course">
+                        <i class='uil uil-plus-circle menu--icon'></i>
+                        <span class="menu--label">Create Assignment</span>
+                    </a>
+                </li>
+
+                <li class="menu--item">
+                    <a href="instructor_my_certificates.html" class="menu--link" title="My Certificates">
+                        <i class='uil uil-award menu--icon'></i>
+                        <span class="menu--label">Set Grades </span>
+                    </a>
+                </li>
+                <li class="menu--item">
+                    <a href="/faculty/notifications" class="menu--link" title="Notifications">
+                        <i class='uil uil-bell menu--icon'></i>
+                        <span class="menu--label">Notifications</span>
+                    </a>
+                </li>
+
+
+                <li class="menu--item">
+                    <a href="/faculty/time-table" class="menu--link" title="Statements">
+                        <i class='uil uil-file-alt menu--icon'></i>
+                        <span class="menu--label">Time-Table</span>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="left_section pt-2">
+            <ul>
+                <li class="menu--item">
+                    <a href="/faculty/setting" class="menu--link" title="Setting">
+                        <i class='uil uil-cog menu--icon'></i>
+                        <span class="menu--label">Setting</span>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+{% endblock %}
+<!-- /Sidebar -->
+
+<!-- Page Wrapper -->
+{% block wrapper %}
+<div class="wrapper">
+    <div class="sa4d25">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="st_title"><i class="uil uil-analysis"></i> Analyics</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-4 col-sm-6">
+                    <div class="card card-mini analysis_card">
+                        <div class="card-body">
+                            <h2 class="mb-2">839</h2>
+                            <p>Enrolled Students</p>
+                            <div class="chartjs-wrapper">
+                                <canvas id="barChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-sm-6">
+                    <div class="card card-mini analysis_card">
+                        <div class="card-body">
+                            <h2 class="mb-1">20</h2>
+                            <p>Weekly activity</p>
+                            <div class="chartjs-wrapper">
+                                <canvas id="dual-line"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-sm-6">
+                    <div class="card card-mini analysis_card">
+                        <div class="card-body">
+                            <h2 class="mb-1">20</h2>
+                            <p>Weekly Classes</p>
+                            <div class="chartjs-wrapper">
+                                <canvas id="line"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div class="card card-default analysis_card p-0" id="user-activity">
+                        <div class="row no-gutters">
+                            <div class="col-xl-8">
+                                <div class="border-right">
+                                    <div class="card-header justify-content-between">
+                                        <h2 class="m-0">Activity</h2>
+                                        <div class="date-range-report ">
+                                            <span></span>
+                                        </div>
+                                    </div>
+                                    <ul class="nav nav-tabs justify-content-between justify-content-xl-start nav-fill"
+                                        role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active pb-md-0" data-toggle="tab" href="#user" role="tab"
+                                                aria-selected="true">
+                                                <span class="type-name">Strudents</span>
+                                                <h4 class="views_title d-inline-block mt-2 mr-2 mb-3">5248</h4>
+                                                <span class="text-success1">5%
+                                                    <i class="uil uil-top-arrow-from-top"></i>
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link pb-md-0" data-toggle="tab" href="#session" role="tab"
+                                                aria-selected="false">
+                                                <span class="type-name">Classes</span>
+                                                <h4 class="views_title d-inline-block mt-2 mr-2 mb-3">20</h4>
+                                                <span class="text-success">20%
+                                                    <i class="uil uil-top-arrow-from-top"></i>
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link pb-md-0" data-toggle="tab" href="#bounce" role="tab"
+                                                aria-selected="false">
+                                                <span class="type-name">Assignment Rate</span>
+                                                <h4 class="views_title d-inline-block mt-2 mr-2 mb-3">36.9%</h4>
+                                                <span class="text-danger">7%
+                                                    <i class="uil uil-arrow-to-bottom"></i>
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link pb-md-0" data-toggle="tab" href="#session-duration"
+                                                role="tab" aria-selected="false">
+                                                <span class="type-name">Classes Duration</span>
+                                                <h4 class="views_title d-inline-block mt-2 mr-2 mb-3">4m 49s</h4>
+                                                <span class="text-success">15%
+                                                    <i class="uil uil-top-arrow-from-top"></i>
+                                                </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <div class="card-body">
+                                        <div class="tab-content" id="myTabContent">
+                                            <div class="tab-pane fade show active" id="user" role="tabpanel">
+                                                <canvas id="activity" class="chartjs p-4"
+                                                    style="height: 350px;"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer d-flex flex-wrap bg-white border-top">
+                                        <a href="#" class="text-uppercase py-3 ovrvew-1">Audience Overview</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-4">
+                                <div data-scroll-height="350">
+                                    <div class="card-header justify-content-between">
+                                        <h2 class="m-0">Current Status</h2>
+                                    </div>
+                                    <div class="curntusr145">
+                                        <p class="my-2">profile view</p>
+                                        <h4>2K</h4>
+                                    </div>
+                                    <div class="border-bottom"></div>
+                                    <div class="card-body p-5">
+                                        <canvas id="currentUser" class="chartjs" style="height:300px"></canvas>
+                                    </div>
+                                    <div class="card-footer d-flex flex-wrap bg-white">
+                                        <a href="#" class="text-uppercase py-3 ovrvew-1">Audience Overview</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="table-responsive mt-30">
+                        <table class="table ucp-table">
+                            <thead class="thead-s">
+                                <tr>
+                                    <th class="text-center" scope="col">Item No.</th>
+                                    <th class="cell-ta" scope="col">Thumbnail</th>
+                                    <th class="cell-ta" scope="col">Title</th>
+                                    <th class="text-center" scope="col">Duration</th>
+                                    <th class="text-center" scope="col">Enrolled</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-center">001</td>
+                                    <td class="cell-ta">
+                                        <div class="thumb_img"><img
+                                                src="../../static/assets/faculty_assets/images/courses/img-2.jpg"
+                                                alt=""></div>
+                                    </td>
+                                    <td class="cell-ta">Course Title Here</td>
+                                    <td class="text-center">17</td>
+                                    <td class="text-center">1150</td>
+
+                                </tr>
+                                <tr>
+                                    <td class="text-center">002</td>
+                                    <td class="cell-ta">
+                                        <div class="thumb_img"><img
+                                                src="../../static/assets/faculty_assets/images/courses/img-3.jpg"
+                                                alt=""></div>
+                                    </td>
+                                    <td class="cell-ta">Course Title Here</td>
+                                    <td class="text-center">26</td>
+                                    <td class="text-center">2150</td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer mt-40">
+        <div class="container-fluid">
+            <div class="row">
+
+                <div class="col-lg-12 my-2">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="fotb_left">
+                                <li>
+                                    <a href="index.html">
+                                        <div class="footer_logo">
+                                            <img src="../../static/assets/faculty_assets/images/logo1.svg" alt="">
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <p>© 2021 <strong>UMS - IIT Indore</strong>. All Rights Reserved.</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="edu_social_links">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-google-plus-g"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-youtube"></i></a>
+                                <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+{% endblock %}
