@@ -405,6 +405,28 @@ def admin_course_edit(c_id):
 
     return render_template('/admin/edit_course.html', list = rv[0])
 
+def admin_course_delete():
+    if 'id' not in session or 'role' not in session:
+        return render_template('error.html')
+    elif session['role'] != "admin":
+        return render_template('error.html')
+    
+    if (request.method == 'POST'):
+        c_id = request.form['c_id']
+        cur = mysql.connection.cursor()
+        cur.execute(''' delete from course where c_id = '%s' ; '''%(c_id))
+        mysql.connection.commit()
+        cur.close()
+        return redirect(url_for('admin_course_list'))
+
+    cur = mysql.connection.cursor()
+    cur.execute(''' select c_id, name, description, syllabus, year, credits from course where c_id = '%s'; '''%(c_id))
+    rv = cur.fetchall()
+    mysql.connection.commit()
+    cur.close()
+
+    return render_template('/admin/edit_course.html', list = rv[0])
+
 def admin_course_sem_assign():
     if 'id' not in session or 'role' not in session:
         return render_template('error.html')
@@ -417,9 +439,9 @@ def admin_course_sem_assign():
     course.c_id, course.name, course.credits, section.sec_id, section.sem
     FROM
         course
-            JOIN
+            LEFT JOIN
         section
-    WHERE
+    on
     course.c_id = section.c_id;''')
     rv = cur.fetchall()
     mysql.connection.commit()
@@ -462,7 +484,6 @@ def admin_course_sem_delete(c_id):
     
     return "ok no get here"
 
-
 def admin_course_student_assign():
     if 'id' not in session or 'role' not in session:
         return render_template('error.html')
@@ -472,7 +493,7 @@ def admin_course_student_assign():
     cur = mysql.connection.cursor()
     cur.execute(''' 
     select 
-	student.student_id, student.first_name, course.name, section.sec_id
+	student.student_id, student.first_name, course.name, section.sec_id, student.sem
     from
         student
             join
@@ -506,7 +527,6 @@ def admin_course_student_assign():
     course_student = sanitize_course_sem(rv)
     course_enrolled = sanitize_course_sem(cv)
     return render_template('/admin/course_student_assign.html', course_student = course_student, course_enrolled = course_enrolled)
-
 
 def admin_course_student_add(student_id):
     if 'id' not in session or 'role' not in session:

@@ -73,8 +73,9 @@
 												<a href="/admin/course_edit/{{item[0]}}" class="btn btn-sm bg-success-light mr-2">
 													<i class="fas fa-pen"></i>
 												</a>
-												<a href="#" class="btn btn-sm bg-danger-light">
-													<i class="fas fa-trash"></i>
+												<form method='POST' action="{{url_for('admin_course_delete')}}" class="btn btn-sm bg-danger-light">
+													<button name="c_id" value="{{item[0]}}"><i class="fas fa-trash"></i></button>
+												</form>
 												</a>
 											</div>
 										</td>
