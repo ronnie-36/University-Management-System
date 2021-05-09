@@ -29,9 +29,9 @@ CREATE TABLE department (
 	dept_id VARCHAR(45) NOT NULL,
     name VARCHAR(200) NOT NULL,
     budget INT DEFAULT 0,
-    hod_id VARCHAR(45) NOT NULL,
+    hod_id VARCHAR(45),
     contact_no VARCHAR(45) NOT NULL,
-    foreign key department(hod_id) references faculty(faculty_id) on update cascade on delete cascade,
+    foreign key department(hod_id) references faculty(faculty_id) on update cascade on delete set null,
     PRIMARY KEY(dept_id)
 ); 
 
@@ -74,10 +74,10 @@ CREATE TABLE student (
   program VARCHAR(100) DEFAULT 'btech',
   advisor_id VARCHAR(45),
   TAsec_id INT,
-  CONSTRAINT advisor foreign key student(advisor_id) references faculty(faculty_id) on update cascade on delete cascade,
+  CONSTRAINT advisor foreign key student(advisor_id) references faculty(faculty_id) on update cascade on delete set null,
   CONSTRAINT stud_prog foreign key student(program) references program(name) on update cascade on delete cascade,
   CONSTRAINT stud_dept foreign key student(branch) references department(dept_id) on update cascade on delete cascade,
-  CONSTRAINT sec_ta foreign key student(TAsec_id) references section(sec_id) on update cascade on delete cascade,
+  CONSTRAINT sec_ta foreign key student(TAsec_id) references section(sec_id) on update cascade on delete set null,
   PRIMARY KEY (`student_id`));
 
 CREATE TABLE `admin` (

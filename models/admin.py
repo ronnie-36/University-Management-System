@@ -397,6 +397,20 @@ def admin_faculty_edit(faculty_id):
     mysql.connection.commit()
     cur.close()
     return render_template('/admin/edit-faculty.html', facultyDetails = faculty[0], department = department, deptList=depts)
+
+def admin_faculty_delete():
+    if 'id' not in session or 'role' not in session:
+        return render_template('error.html')
+    elif session['role'] != "admin":
+        return render_template('error.html')
+    if(request.method == 'POST'):
+        faculty_id = str(request.json['id'])
+        cur = mysql.connection.cursor()
+        cur.execute(''' DELETE FROM faculty WHERE faculty_id= '%s'; '''%(faculty_id))
+        mysql.connection.commit()
+        cur.close()
+        return "Executed" 
+
 # faculty end
 
 # department
