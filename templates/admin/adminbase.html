@@ -175,9 +175,12 @@
                         <li class="menu-title">
                             <span>Main Menu</span>
                         </li>
+                        {% block dashboard %}
                         <li class="active">
                             <a href="/admin/dashboard"><i class="fas fa-th-large"></i> <span>Dashboard</span></a>
                         </li>
+                        {% endblock %}
+                        {% block student_sidebar %}
                         <li class="submenu">
                             <a href="#"><i class="fas fa-user-graduate"></i> <span> Students</span> <span
                                     class="menu-arrow"></span></a>
@@ -187,6 +190,8 @@
                                 <li><a href="/admin/student_list_edit">Student Edit</a></li>
                             </ul>
                         </li>
+                        {% endblock %}
+                        {% block faculty_sidebar %}
                         <li class="submenu">
                             <a href="#"><i class="fas fa-chalkboard-teacher"></i> <span> Faculty</span> <span
                                     class="menu-arrow"></span></a>
@@ -196,6 +201,8 @@
                                 <li><a href="edit-teacher.html">Faculty Edit</a></li>
                             </ul>
                         </li>
+                        {% endblock %}
+                        {% block department_sidebar %}
                         <li class="submenu">
                             <a href="#"><i class="fas fa-building"></i> <span> Departments</span> <span
                                     class="menu-arrow"></span></a>
@@ -205,15 +212,18 @@
                                 <li><a href="edit-department.html">Department Edit</a></li>
                             </ul>
                         </li>
+                        {% endblock %}
+                        {% block course_sidebar %}
                         <li class="submenu">
                             <a href="#"><i class="fas fa-book-reader"></i> <span> Courses</span> <span
                                     class="menu-arrow"></span></a>
                             <ul>
-                                <li><a href="subjects.html">Course List</a></li>
-                                <li><a href="add-subject.html">Course Add</a></li>
-                                <li><a href="edit-subject.html">Course Edit</a></li>
+                                <li><a href="/admin/course_list">Course List</a></li>
+                                <li><a href="/admin/add_course">Course Add</a></li>
+                                <li><a href="/admin/course_sem_assign">Course Edit</a></li>
                             </ul>
                         </li>
+                        {% endblock %}
                 </div>
             </div>
         </div>

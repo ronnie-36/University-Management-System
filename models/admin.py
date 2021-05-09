@@ -14,6 +14,22 @@ app.config.from_object('config.DevConfig')
 
 mysql = MySQL(app)
 
+# util
+def debug():
+    print('!!!!!!!!!!!!!!!!!!\n\n\n\n\n\n\n\n\n\n\n\n\n\n!!!!!!!!!!!!!!!')
+
+def sanitize_course_sem(rv):
+    dt = {}
+    print(rv)
+    for rows in rv:
+        if rows[0] not in dt:
+            dt[rows[0]] = []
+        dt[rows[0]].append(rows)
+    print(dt)
+    return dt
+
+
+
 def admin_dashboard():
     if 'id' not in session or 'role' not in session:
         return render_template('error.html')
@@ -291,7 +307,6 @@ def admin_add_faculty():
     cur.close()
     return render_template('admin/add-faculty.html', deptList=depts)
 
-
 def admin_faculty_list():
     if 'id' not in session or 'role' not in session:
         return render_template('error.html')
@@ -305,5 +320,131 @@ def admin_faculty_list():
     cur.close()
 
     return render_template('admin/faculty_list.html', facultyList = faculty)
+
+# department
+
+# course
+def admin_add_course():
+    if 'id' not in session or 'role' not in session:
+        return render_template('error.html')
+    elif session['role'] != "admin":
+        return render_template('error.html')
+
+    if request.method == 'POST':
+        course_details = request.form
+        c_id = course_details['c_id']
+        name = course_details['name']
+        # sem = course_details['sem']
+        # sem = (int)(sem)
+        year = (str)(datetime.datetime.now().date())
+        _credits = course_details['credits']
+        cur = mysql.connection.cursor()
+        cur.execute(''' insert ignore into course (c_id, name, credits, year) 
+                values ('%s','%s','%s','%s'); '''%(c_id, name, _credits, year))
+        mysql.connection.commit()
+        cur.close()
+        return redirect(url_for('admin_add_course'))
+
+    return render_template('admin/add_course.html')
+
+def admin_course_list():
+    if 'id' not in session or 'role' not in session:
+        return render_template('error.html')
+    elif session['role'] != "admin":
+        return render_template('error.html')
+    
+    cur = mysql.connection.cursor()
+    cur.execute(''' select * from course; ''')
+    rv = cur.fetchall()
+    mysql.connection.commit()
+    cur.close()
+
+    return render_template('/admin/course_list.html', list = rv)
+
+def ExcelDownload_course():
+    cur = mysql.connection.cursor()
+    cur.execute('''select c_id,name,description,year,credits,hours,syllabus from course;''')
+    rv = cur.fetchall()
+
+    courselist = [['c_id','name','description','year','credits','hours','syllabus']]
+    for rows in rv:
+        temp = []
+        for items in rows:
+            item = (str)(items)
+            temp.append(item)
+        courselist.append(temp)
+
+    mysql.connection.commit()
+    cur.close()
+
+    return excel.make_response_from_array(courselist, "xlsx")
+
+def admin_course_edit(c_id):
+    if 'id' not in session or 'role' not in session:
+        return render_template('error.html')
+    elif session['role'] != "admin":
+        return render_template('error.html')
+    
+    if (request.method == 'POST'):
+        course_details = request.form
+        name = course_details['name']
+        description = course_details['description']
+        syllabus = course_details['syllabus']
+        # sem = course_details['sem']
+        # sem = (int)(sem)
+        _credits = course_details['credits']
+        cur = mysql.connection.cursor()
+        cur.execute(''' update course set name = '%s', credits = '%s', description = '%s', syllabus = '%s' where c_id = '%s' ; '''%(name, _credits, description, syllabus, c_id))
+        mysql.connection.commit()
+        cur.close()
+        return redirect(url_for('admin_course_list'))
+
+    cur = mysql.connection.cursor()
+    cur.execute(''' select c_id, name, description, syllabus, year, credits from course where c_id = '%s'; '''%(c_id))
+    rv = cur.fetchall()
+    mysql.connection.commit()
+    cur.close()
+
+    return render_template('/admin/edit_course.html', list = rv[0])
+
+def admin_course_sem_assign():
+    if 'id' not in session or 'role' not in session:
+        return render_template('error.html')
+    elif session['role'] != "admin":
+        return render_template('error.html')
+    
+    cur = mysql.connection.cursor()
+    cur.execute(''' 
+    SELECT 
+    course.c_id, course.name, course.credits, section.sec_id, section.sem
+    FROM
+        course
+            JOIN
+        section
+    WHERE
+    course.c_id = section.c_id;''')
+    rv = cur.fetchall()
+    mysql.connection.commit()
+    cur.close()
+    course_sem = sanitize_course_sem(rv)
+
+    return render_template('/admin/course_section_assign.html', course_sem = course_sem)
+
+def admin_course_sem_edit(c_id):
+    if 'id' not in session or 'role' not in session:
+        return render_template('error.html')
+    elif session['role'] != "admin":
+        return render_template('error.html')
+    if request.method == 'POST':
+        details = request.form
+        sem = details['sem']
+        cur = mysql.connection.cursor()
+        cur.execute(''' insert ignore into section (c_id, sem) values ('%s','%s');'''%(c_id, sem))
+        rv = cur.fetchall()
+        mysql.connection.commit()
+        cur.close()
+        return redirect(url_for('admin_course_sem_assign'))
+    
+    return "ok no get here"
 
 # faculty end

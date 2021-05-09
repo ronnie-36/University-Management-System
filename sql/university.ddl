@@ -40,9 +40,10 @@ CREATE TABLE course (
     name VARCHAR(90) NOT NULL,
     description VARCHAR(200) NULL,
     syllabus VARCHAR(700) NULL,
-    credits VARCHAR(45) NOT NULL,
+    credits FLOAT DEFAULT 0.00,
+    hours VARCHAR(45) default '3-1-0',
     year DATE NOT NULL,
-    notes VARCHAR(200) NOT NULL,
+    notes VARCHAR(200),
     PRIMARY KEY(c_id));
 
 
@@ -51,9 +52,10 @@ CREATE TABLE section (
 	sec_id INT NOT NULL auto_increment,
 	c_id VARCHAR(45) NOT NULL,
     year VARCHAR(11) DEFAULT '2021',
-    sem VARCHAR(45) NOT NULL,
-    notes VARCHAR(200) NOT NULL,
+    sem INT NOT NULL,
+    notes VARCHAR(200),
     FOREIGN KEY section(c_id) references course(c_id) on update cascade on delete cascade,
+    constraint unique(c_id, sem),
     PRIMARY KEY(sec_id));
 
 CREATE TABLE `university`.`student` (
@@ -90,7 +92,7 @@ CREATE TABLE enroll (
 	sec_id INT NOT NULL,
     student_id VARCHAR(90) NOT NULL,
     grade FLOAT NOT NULL,
-    notes VARCHAR(200) NOT NULL,
+    notes VARCHAR(200),
     FOREIGN KEY enroll(sec_id) references section(sec_id) on update cascade on delete cascade,
     FOREIGN KEY enroll(student_id) references student(student_id) on update cascade on delete cascade,
     PRIMARY KEY(student_id, sec_id));

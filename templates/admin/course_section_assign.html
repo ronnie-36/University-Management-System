@@ -1,0 +1,102 @@
+<script>
+  function edit(){
+    var baseid = (String)(event.target.id);
+    var index = 'sem' + baseid.substr(1, baseid.length);
+    var element = document.querySelector('#'+index);
+    element.classList.toggle('disp');
+  }
+</script>
+<style>
+  .nodisp{
+    display: none;
+  }
+  .disp{
+    display: inline-block;
+    width: 100px;
+    margin-left: 2px;
+  }
+</style>
+{% extends 'admin/adminbase.html' %}
+
+{% block pagewrapper %}
+<!-- Page Wrapper -->
+<div class="page-wrapper">
+	<div class="content container-fluid">
+
+		<!-- Page Header -->
+		<div class="page-header">
+			<div class="row align-items-center">
+				<div class="col">
+					<h3 class="page-title">Course</h3>
+					<ul class="breadcrumb">
+						<li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
+						<li class="breadcrumb-item active">Course-assign</li>
+					</ul>
+				</div>
+				<div class="col-auto text-right float-right ml-auto">
+					<a href="/admin/course_excel" class="btn btn-outline-primary mr-2"><i class="fas fa-download"></i> Download</a>
+					<a href="/admin/add_course" class="btn btn-primary"><i class="fas fa-plus"></i></a>
+				</div>
+			</div>
+		</div>
+		<!-- /Page Header -->
+
+		<div class="row">
+			<div class="col-sm-12">
+
+				<div class="card card-table">
+					<div class="card-body">
+						<div class="table-responsive">
+							<table class="table table-hover table-center mb-0 datatable">
+								<thead>
+									<tr>
+										<th>Course ID</th>
+										<th>Name</th>
+										<th>Semester assigned</th>
+										<th class="text-right">Action</th>
+									</tr>
+								</thead>
+								<tbody>
+                  {% for id in course_sem %}
+                  {% set item1 = course_sem[id][0] %}
+                  <tr>
+										<td>{{item1[0]}}</td>
+										<td>
+											<h2>
+												<a>{{item1[1]}}</a>
+											</h2>
+										</td>
+                    <td>
+                  {% for item in course_sem[id] %}
+									  <button class="btn btn-info">{{item[4]}}</button>
+                  {% endfor %}
+                    </td>
+										<td class="text-right">
+											<div class="actions">
+												<form method='POST' action="/admin/course_sem_edit/{{item1[0]}}" class="btn btn-sm bg-success-light mr-2">
+													<i class="fas fa-pen" id="{{'i'~item1[0]}}" onclick="edit()"> </i> 
+                           <input type="number" id="{{'sem'~item1[0]}}" class="nodisp" min="1" max="8" name="sem" placeholder="sem"/>
+                        </form>
+											</div>
+										</td>
+									</tr>
+                  {% endfor %}
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Footer -->
+	<footer>
+		<p>Copyright © 2021 IIT Indore.</p>
+	</footer>
+	<!-- /Footer -->
+
+</div>
+
+<!-- /Page Wrapper -->
+{% endblock %}

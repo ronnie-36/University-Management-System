@@ -65,6 +65,13 @@ app.add_url_rule('/admin/add_faculty', view_func=admin.admin_add_faculty, method
 app.add_url_rule('/admin/faculty_list', view_func=admin.admin_faculty_list, methods=['GET','POST'])
 # admin faculty end
 
+app.add_url_rule('/admin/add_course', view_func=admin.admin_add_course, methods=['GET','POST'])
+app.add_url_rule('/admin/course_list', view_func=admin.admin_course_list, methods=['GET','POST'])
+app.add_url_rule('/admin/course_edit/<c_id>', view_func=admin.admin_course_edit, methods=['GET','POST'])
+app.add_url_rule('/admin/course_excel', view_func=admin.ExcelDownload_course, methods=['GET','POST'])
+app.add_url_rule('/admin/course_sem_assign', view_func=admin.admin_course_sem_assign, methods=['GET','POST'])
+app.add_url_rule('/admin/course_sem_edit/<c_id>', view_func=admin.admin_course_sem_edit, methods=['GET','POST'])
+
 # admin end  
 
 if __name__ == '__main__':
