@@ -47,4 +47,4 @@ def student_submit_course():
     elif session['role'] != "student":
         return render_template('error.html')
         
-    return render_template('student_panel/dashboard-submit-course.html')
+    return render_template('student_panel/dashboard-submit-assignment.html')
