@@ -412,7 +412,6 @@ def admin_course_delete():
         return render_template('error.html')
     
     if (request.method == 'POST'):
-        debug()
         c_id = request.form['c_id']
         cur = mysql.connection.cursor()
         cur.execute(''' delete from course where c_id = '%s' ; '''%(c_id))
@@ -427,7 +426,6 @@ def admin_course_delete():
     cur.close()
 
     return render_template('/admin/edit_course.html', list = rv[0])
-
 
 def admin_course_sem_assign():
     if 'id' not in session or 'role' not in session:
