@@ -256,6 +256,34 @@ def admin_add_faculty():
         return render_template('error.html')
     elif session['role'] != "admin":
         return render_template('error.html')
+    if request.method == 'POST':
+        faculty_details = request.form
+        first_name = faculty_details['first_name']
+        last_name = faculty_details['last_name']
+        faculty_id = faculty_details['faculty_id']
+        gender = faculty_details['gender']
+        dob = faculty_details['dob']
+        phone = faculty_details['phone']
+        address = faculty_details['address']
+        email = faculty_details['email']
+        salary = faculty_details['salary']
+        researchint = faculty_details['ri']
+        position = faculty_details['position']
+        dept_id = faculty_details['department']
+        phone = int(phone) if phone else -1
+        salary = int(salary) if salary else -1
+        cur = mysql.connection.cursor()
+        hashedpassword = hashlib.md5(faculty_id.encode()).hexdigest()
+        if(phone != -1 and len(faculty_id) > 0 and len(first_name) > 0 and len(email) > 0 and salary != -1 and len(position) > 0 and len(dob) > 0):
+            cur = mysql.connection.cursor()
+            cur.execute(''' INSERT INTO faculty (faculty_id, first_name, last_name, gender, dob, phone, address, emailid,
+            salary, research_interests, position, password) values ('%s','%s','%s','%s','%s',%d,'%s','%s','%d','%s','%s','%s');
+            '''%(faculty_id, first_name, last_name, gender, dob, phone, address, email, salary, researchint, position, hashedpassword))
+            if(dept_id!=None):
+                cur.execute(''' INSERT INTO works (faculty_id, dept_id) VALUES ('%s','%s');'''%((faculty_id,dept_id)))
+            mysql.connection.commit()
+            cur.close()
+        return redirect(url_for('admin_faculty_list'))
     cur = mysql.connection.cursor()
     cur.execute(''' select dept_id,name from department; ''')
     depts = cur.fetchall()
