@@ -208,3 +208,13 @@ CREATE TABLE requires (
     foreign key requires(maincourse_id) references course(c_id) on update cascade on delete cascade,
     PRIMARY KEY(prereq_id, maincourse_id)
 );
+
+CREATE TABLE requests (
+	r_id INT UNIQUE AUTO_INCREMENT,
+	name VARCHAR(45) NOT NULL,
+    id VARCHAR(45) NOT NULL,
+    notes VARCHAR(45),
+    dob datetime,
+    status VARCHAR(10) DEFAULT 'pending',
+    PRIMARY KEY(r_id)
+);

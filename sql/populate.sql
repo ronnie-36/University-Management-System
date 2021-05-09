@@ -93,3 +93,7 @@ INSERT INTO has_program (program, dept_id) VALUES ('btech','ce');
 INSERT INTO has_program (program, dept_id) VALUES ('mtech','ce');
 
 INSERT INTO requires (prereq_id, maincourse_id) VALUES ('1','3');
+
+INSERT INTO requests (id, name, dob, notes) VALUES ('1','ron','2021-02-20 12:00:00', 'request for OS course.');
+INSERT INTO requests (id, name, dob, notes) VALUES ('1','ron','2020-02-20 13:00:00', 'request dropping MATHS course.');
+INSERT INTO requests (id, name, dob, notes) VALUES ('2','Shyam','2021-02-20 12:00:00', 'request for login access admin.');

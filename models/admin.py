@@ -563,3 +563,38 @@ def admin_course_student_delete(student_id):
         return redirect(url_for('admin_course_student_assign'))
     
     return "ok no get here"
+
+def admin_inbox():
+    if 'id' not in session or 'role' not in session:
+        return render_template('error.html')
+    elif session['role'] != "admin":
+        return render_template('error.html')
+    
+    cur = mysql.connection.cursor()
+    cur.execute(''' select * from requests where status = 'pending' order by dob desc; ''')
+    rv = cur.fetchall()
+    mysql.connection.commit()
+    cur.close()
+
+    return render_template('/admin/inbox.html', list = rv)
+
+def admin_accepted_requests():
+    if 'id' not in session or 'role' not in session:
+        return render_template('error.html')
+    elif session['role'] != "admin":
+        return render_template('error.html')
+    if request.method == 'POST':
+        r_id = request.form['r_id']
+        cur = mysql.connection.cursor()
+        cur.execute(''' update requests set status='accepted' where r_id = '%s';'''%(r_id))
+        mysql.connection.commit()
+        cur.close()
+
+        return redirect(url_for('admin_inbox'))
+
+    cur = mysql.connection.cursor()
+    cur.execute(''' select * from requests where status = 'accepted' order by dob desc; ''')
+    rv = cur.fetchall()
+    mysql.connection.commit()
+    cur.close()
+    return render_template('/admin/inbox.html', list = rv)

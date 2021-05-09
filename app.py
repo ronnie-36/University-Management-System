@@ -77,6 +77,8 @@ app.add_url_rule('/admin/course_student_assign', view_func=admin.admin_course_st
 app.add_url_rule('/admin/course_student_add/<student_id>', view_func=admin.admin_course_student_add, methods=['GET','POST'])
 app.add_url_rule('/admin/course_student_delete/<student_id>', view_func=admin.admin_course_student_delete, methods=['GET','POST'])
 
+app.add_url_rule('/admin/all_requests', view_func=admin.admin_inbox, methods=['GET','POST'])
+app.add_url_rule('/admin/accepted_requests', view_func=admin.admin_accepted_requests, methods=['GET','POST'])
 # admin end  
 
 if __name__ == '__main__':
