@@ -222,6 +222,7 @@
                                 <li><a href="/admin/course_list">Course List</a></li>
                                 <li><a href="/admin/add_course">Course Add</a></li>
                                 <li><a href="/admin/course_sem_assign">Course Edit</a></li>
+                                <li><a href="/admin/course_student_assign">Course Assign</a></li>
                             </ul>
                         </li>
                         {% endblock %}
@@ -261,7 +262,22 @@
 
     <!-- Custom JS -->
     <script src="../../static/assets/admin_assets/js/script.js"></script>
-
+    <script>
+        $(document).on("click", "#toggle_btn", function () {
+            if ($("body").hasClass("mini-sidebar")) {
+            $("body").removeClass("mini-sidebar");
+            $(".subdrop + ul").slideDown();
+            } else {
+            $("body").addClass("mini-sidebar");
+            $(".subdrop + ul").slideUp();
+            }
+            setTimeout(function () {
+            mA.redraw();
+            mL.redraw();
+            }, 300);
+            return false;
+        });
+    </script>
     {% endblock %}
 
 </body>

@@ -1,5 +1,21 @@
 {% extends 'admin/adminbase.html' %}
-
+{% block dashboard %}
+<li>
+		<a href="/admin/dashboard"><i class="fas fa-th-large"></i> <span>Dashboard</span></a>
+</li>
+{% endblock %}
+{% block course_sidebar %}
+<li class="submenu">
+		<a href="#"><i class="fas fa-book-reader"></i> <span> Courses</span> <span
+						class="menu-arrow"></span></a>
+		<ul>
+				<li><a href="/admin/course_list" class="active">Course List</a></li>
+				<li><a href="/admin/add_course">Course Add</a></li>
+				<li><a href="/admin/course_sem_assign">Course Edit</a></li>
+				<li><a href="/admin/course_student_assign">Course Assign</a></li>
+		</ul>
+</li>
+{% endblock %}
 {% block pagewrapper %}
 <!-- Page Wrapper -->
 <div class="page-wrapper">

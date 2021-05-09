@@ -1,3 +1,21 @@
+<script>
+  function edit(){
+    var baseid = (String)(event.target.id);
+    var index = 'sem' + baseid.substr(1, baseid.length);
+    var element = document.querySelector('#'+index);
+    element.classList.toggle('disp');
+  }
+</script>
+<style>
+  .nodisp{
+    display: none;
+  }
+  .disp{
+    display: inline-block;
+    width: 100px;
+    margin-left: 2px;
+  }
+</style>
 {% extends 'admin/adminbase.html' %}
 {% block dashboard %}
 <li>
@@ -9,11 +27,11 @@
 		<a href="#"><i class="fas fa-book-reader"></i> <span> Courses</span> <span
 						class="menu-arrow"></span></a>
 		<ul>
-				<li><a href="/admin/course_list" class="active">Course List</a></li>
+				<li><a href="/admin/course_list">Course List</a></li>
 				<li><a href="/admin/add_course">Course Add</a></li>
 				<li><a href="/admin/course_sem_assign">Course Edit</a></li>
-				<li><a href="/admin/course_student_assign">Course Assign</a></li>
-		</ul>
+        <li><a href="/admin/course_student_assign" class="active">Course Assign</a></li>
+      </ul>
 </li>
 {% endblock %}
 {% block pagewrapper %}
@@ -28,7 +46,7 @@
 					<h3 class="page-title">Course</h3>
 					<ul class="breadcrumb">
 						<li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
-						<li class="breadcrumb-item active">Course</li>
+						<li class="breadcrumb-item active">Course-assign student</li>
 					</ul>
 				</div>
 				<div class="col-auto text-right float-right ml-auto">
@@ -48,37 +66,42 @@
 							<table class="table table-hover table-center mb-0 datatable">
 								<thead>
 									<tr>
-										<th>ID</th>
+										<th>Student ID</th>
 										<th>Name</th>
-										<th>Credits</th>
-										<th>Hours</th>
-										<th>Year</th>
-										<th class="text-right">Action</th>
+										<th>Sem</th>
+										<th>Courses available</th>
+										<th>Courses enrolled</th>
 									</tr>
 								</thead>
 								<tbody>
-                  {% for item in list %}
-									<tr>
-										<td>{{item[0]}}</td>
+                  {% for id in course_student %}
+                  {% set item1 = course_student[id][0] %}
+                  <tr>
+										<td>{{item1[0]}}</td>
 										<td>
 											<h2>
-												<a>{{item[1]}}</a>
+												<a>{{item1[1]}}</a>
 											</h2>
 										</td>
-										<td>{{item[4]}}</td>
-										<td>{{item[5]}}</td>
-										<td>{{item[6]}}</td>
-										<td class="text-right">
-											<div class="actions">
-												<a href="/admin/course_edit/{{item[0]}}" class="btn btn-sm bg-success-light mr-2">
-													<i class="fas fa-pen"></i>
-												</a>
-												<form method='POST' action="{{url_for('admin_course_delete')}}" class="btn btn-sm bg-danger-light">
-													<button name="c_id" value="{{item[0]}}"><i class="fas fa-trash"></i></button>
-												</form>
-												</a>
-											</div>
+										<td>
+											<h2>
+												<a>{{item1[4]}}</a>
+											</h2>
 										</td>
+                    <td>
+                  {% for item in course_student[id] %}
+                    <form method="POST" action="{{ url_for('admin_course_student_add', student_id=id) }}" style="display: inline-block  ;">
+									    <button class="btn btn-info" name="sec_id" value="{{item[3]}}">{{item[2]}}</button>
+                    </form>
+                  {% endfor %}
+                    </td>
+										<td>
+                      {% for item in course_enrolled[id] %}
+                      <form method="POST" action="{{ url_for('admin_course_student_delete', student_id=id) }}" style="display: inline-block  ;">
+                        <button class="btn btn-warning" name="sec_id" value="{{item[3]}}">{{item[2]}}</button>
+                      </form>
+                      {% endfor %}
+                        </td>
 									</tr>
                   {% endfor %}
 								</tbody>
@@ -97,5 +120,6 @@
 	<!-- /Footer -->
 
 </div>
+
 <!-- /Page Wrapper -->
 {% endblock %}

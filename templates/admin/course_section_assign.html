@@ -17,7 +17,23 @@
   }
 </style>
 {% extends 'admin/adminbase.html' %}
-
+{% block dashboard %}
+<li>
+		<a href="/admin/dashboard"><i class="fas fa-th-large"></i> <span>Dashboard</span></a>
+</li>
+{% endblock %}
+{% block course_sidebar %}
+<li class="submenu">
+		<a href="#"><i class="fas fa-book-reader"></i> <span> Courses</span> <span
+						class="menu-arrow"></span></a>
+		<ul>
+				<li><a href="/admin/course_list">Course List</a></li>
+				<li><a href="/admin/add_course">Course Add</a></li>
+				<li><a href="/admin/course_sem_assign" class="active">Course Edit</a></li>
+				<li><a href="/admin/course_student_assign">Course Assign</a></li>
+		</ul>
+</li>
+{% endblock %}
 {% block pagewrapper %}
 <!-- Page Wrapper -->
 <div class="page-wrapper">
@@ -30,7 +46,7 @@
 					<h3 class="page-title">Course</h3>
 					<ul class="breadcrumb">
 						<li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
-						<li class="breadcrumb-item active">Course-assign</li>
+						<li class="breadcrumb-item active">Course-edit semester</li>
 					</ul>
 				</div>
 				<div class="col-auto text-right float-right ml-auto">
@@ -67,12 +83,14 @@
 											</h2>
 										</td>
                     <td>
-                  {% for item in course_sem[id] %}
-									  <button class="btn btn-info">{{item[4]}}</button>
-                  {% endfor %}
+											{% for item in course_sem[id] %}
+											<form method="POST" action="{{ url_for('admin_course_sem_delete', c_id=id) }}" style="display: inline-block  ;">
+												<button class="btn btn-info" name="sem" value="{{item[4]}}">{{item[4]}}</button>
+											</form>
+										{% endfor %}
                     </td>
-										<td class="text-right">
-											<div class="actions">
+										<td class="text-right" >
+											<div class="actions" >
 												<form method='POST' action="/admin/course_sem_edit/{{item1[0]}}" class="btn btn-sm bg-success-light mr-2">
 													<i class="fas fa-pen" id="{{'i'~item1[0]}}" onclick="edit()"> </i> 
                            <input type="number" id="{{'sem'~item1[0]}}" class="nodisp" min="1" max="8" name="sem" placeholder="sem"/>

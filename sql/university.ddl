@@ -10,7 +10,7 @@ CREATE TABLE program (
     PRIMARY KEY(name)
 );
 
-CREATE TABLE `university`.`faculty` (
+CREATE TABLE faculty (
   `faculty_id` VARCHAR(45) NOT NULL,
   `first_name` VARCHAR(90) NOT NULL,
   `last_name` VARCHAR(90) DEFAULT '',
@@ -58,7 +58,7 @@ CREATE TABLE section (
     constraint unique(c_id, sem),
     PRIMARY KEY(sec_id));
 
-CREATE TABLE `university`.`student` (
+CREATE TABLE student (
   `student_id` VARCHAR(45) NOT NULL,
   `first_name` VARCHAR(90) NOT NULL,
   `last_name` VARCHAR(90),
@@ -80,7 +80,7 @@ CREATE TABLE `university`.`student` (
   CONSTRAINT sec_ta foreign key student(TAsec_id) references section(sec_id) on update cascade on delete cascade,
   PRIMARY KEY (`student_id`));
 
-CREATE TABLE `university`.`admin` (
+CREATE TABLE `admin` (
   `admin_id` VARCHAR(45) NOT NULL,
   `name` VARCHAR(90) NOT NULL,
   `emailid` VARCHAR(90) NOT NULL,
@@ -91,7 +91,7 @@ CREATE TABLE `university`.`admin` (
 CREATE TABLE enroll (
 	sec_id INT NOT NULL,
     student_id VARCHAR(90) NOT NULL,
-    grade FLOAT NOT NULL,
+    grade FLOAT default 0.00,
     notes VARCHAR(200),
     FOREIGN KEY enroll(sec_id) references section(sec_id) on update cascade on delete cascade,
     FOREIGN KEY enroll(student_id) references student(student_id) on update cascade on delete cascade,
