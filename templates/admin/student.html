@@ -175,10 +175,10 @@
 													class="btn btn-sm bg-success-light mr-2">
 													<i class="fas fa-pen"></i>
 												</a>
-												<a href="/admin/delete-student/{{ item[0] }}"
+												<form action="{{url_for('admin_delete_student', student_id=item[0] )}}"
 													class="btn btn-sm bg-danger-light">
 													<i class="fas fa-trash"></i>
-												</a>
+											</form>
 											</div>
 										</td>
 									</tr>
