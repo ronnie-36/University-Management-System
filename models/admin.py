@@ -143,7 +143,8 @@ def admin_student_delete(student_id):
         return render_template('error.html')
     elif session['role'] != "admin":
         return render_template('error.html')
-
+    if(request.method == 'POST'):
+        print('asdasd')
     cur = mysql.connection.cursor()
     cur.execute(''' delete from student where student_id = '%s'; '''%(student_id))
     cur.execute(''' select * from student; ''')
@@ -245,3 +246,11 @@ def admin_faculty_list():
 
     return render_template('admin/faculty_list.html', list = rv)
 
+def admin_modal_update():
+    if 'id' not in session or 'role' not in session:
+        return render_template('error.html')
+    elif session['role'] != "admin":
+        return render_template('error.html') 
+    if request.method == 'POST':
+        return redirect(request.referrer)
+    return render_template('/admin/modal_update.html')
