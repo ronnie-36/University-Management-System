@@ -114,7 +114,7 @@ def admin_student_list():
     mysql.connection.commit()
     cur.close()
 
-    return render_template('admin/student.html', list = rv)
+    return render_template('/admin/students_list.html', list = rv)
 
 def admin_student_list_edit():
     if 'id' not in session or 'role' not in session:
@@ -245,7 +245,7 @@ def admin_modal_update():
         mysql.connection.commit()
         cur.close()
         return redirect(request.referrer)
-        
+
     return render_template('/admin/modal_update.html', list=rv)
 
 
