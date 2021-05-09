@@ -41,7 +41,6 @@
 										<th>Address</th>
 										<th>Sem</th>
 										<th>CPI</th>
-										<th>Status</th>
 									</tr>
 								</thead>
 								{% for item in list %}
@@ -61,11 +60,6 @@
 										<td>{{ item[4] }}</td>
 										<td>{{ item[9] }}</td>
 										<td>{{ item[10] }}</td>
-										{% if item[10] > 3.30 %}
-										<td><button class="btn btn-success">PASS</button></td>
-										{% else %}
-										<td><button class="btn btn-danger">FAIL</button></td>
-										{% endif %}
 									</tr>
 								</tbody>
 								{% endfor %}

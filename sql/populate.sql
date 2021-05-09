@@ -15,16 +15,19 @@ INSERT INTO department (dept_id, name, budget, hod_id, contact_no) VALUES ('mech
 INSERT INTO department (dept_id, name, budget, hod_id, contact_no) VALUES ('ee','Electrical Engineering',120000,'3','98765');
 INSERT INTO department (dept_id, name, budget, hod_id, contact_no) VALUES ('ce','Civil Engineering',120000,'4','98765');
 
-INSERT INTO course (c_id, name, year, notes, credits) VALUES ('1','MATHS',"2001-12-30","",'3-1-0');
-INSERT INTO course (c_id, name, year, notes, credits) VALUES ('2','OS',"2006-06-24","",'2-1-0');
-INSERT INTO course (c_id, name, year, notes, credits) VALUES ('3','DSA',"2006-06-24","",'4-0-0');
-INSERT INTO course (c_id, name, year, notes, credits) VALUES ('4','Software Engg',"2009-01-30","",'3-1-0');
-INSERT INTO course (c_id, name, year, notes, credits) VALUES ('5','IC211',"2009-01-01","",'3-0-0');
+INSERT INTO course (c_id, name, year, notes, credits, hours) VALUES ('1','MATHS',"2001-12-30","",3,'3-1-0');
+INSERT INTO course (c_id, name, year, notes, credits, hours) VALUES ('2','OS',"2006-06-24","",3,'2-1-0');
+INSERT INTO course (c_id, name, year, notes, credits, hours) VALUES ('3','DSA',"2006-06-24","",4,'4-0-0');
+INSERT INTO course (c_id, name, year, notes, credits, hours) VALUES ('4','Software Engg',"2009-01-30","",1.50,'3-1-0');
+INSERT INTO course (c_id, name, year, notes, credits, hours) VALUES ('5','IC211',"2009-01-01","",3,'3-0-0');
 
-INSERT INTO section (c_id, year, notes, sem) VALUES ('1',"2009","",'Spring');
-INSERT INTO section (c_id, year, notes, sem) VALUES ('1',"2021","",'Autumn');
-INSERT INTO section (c_id, year, notes, sem) VALUES ('2',"2020","",'Autumn');
-INSERT INTO section (c_id, year, notes, sem) VALUES ('3',"2009","",'Spring');
+INSERT INTO section (c_id, year, notes, sem) VALUES ('1',"2009","",'4');
+INSERT INTO section (c_id, year, notes, sem) VALUES ('1',"2021","",'2');
+INSERT INTO section (c_id, year, notes, sem) VALUES ('2',"2020","",'4');
+INSERT INTO section (c_id, year, notes, sem) VALUES ('3',"2009","",'4');
+INSERT INTO section (c_id, year, notes, sem) VALUES ('4',"2009","",'1');
+INSERT INTO section (c_id, year, notes, sem) VALUES ('3',"2009","",'1');
+INSERT INTO section (c_id, year, notes, sem) VALUES ('4',"2009","",'2');
 
 INSERT INTO `university`.`student` (`student_id`, `first_name`, `emailid`, `password`, `address`, `DOB` , `branch`, `sem`, `cpi`, `program`, advisor_id) VALUES ('1', 'ron', 'ron@ron.com', '81dc9bdb52d04dc20036dbd8313ed055', '100-england', '2001-01-01', 'cse', '4', '9.80','btech','1');
 INSERT INTO `university`.`student` (`student_id`, `first_name`, `emailid`, `password`, `address`, `DOB` , `branch`, `sem`, `cpi`, `program`, advisor_id) VALUES ('2', 'Ganguly', 'Ganguly@Ganguly.com', '81dc9bdb52d04dc20036dbd8313ed055', '100-london', '2004-02-21', 'cse', '2', '7.80','btech','2');
