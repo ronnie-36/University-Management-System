@@ -15,4 +15,4 @@ def student_dashboard():
     elif session['role'] != "student":
         return render_template('error.html')
         
-    return render_template('student/dashboard.html')
+    return render_template('student_panel/dashboard.html')
