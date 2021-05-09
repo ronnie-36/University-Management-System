@@ -37,7 +37,7 @@ app.add_url_rule('/reset_password/<user>/<token>', view_func=auth.reset_token,  
 
 # student start
 app.add_url_rule('/student/dashboard', view_func=student.student_dashboard, methods=['GET','POST'])
-app.add_url_rule('/student/setting', view_func=student.student_setting, methods=['GET','POST'])
+# app.add_url_rule('/student/setting', view_func=student.student_setting, methods=['GET','POST'])
 app.add_url_rule('/student/profile', view_func=student.student_profile, methods=['GET','POST'])
 app.add_url_rule('/student/submit', view_func=student.student_submit_course, methods=['GET','POST'])
 app.add_url_rule('/student/enrolled-courses', view_func=student.student_enrolled_courses, methods=['GET','POST'])
