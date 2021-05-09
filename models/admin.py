@@ -45,6 +45,14 @@ def admin_dashboard():
     cur.execute(''' select count(*) from student where sem in (7,8); ''')
     rv = cur.fetchall()
     countyear4 = rv[0][0]
+    cur.execute(''' select student_id, first_name, last_name,
+    cpi, sem / 2 from student order by cpi desc; ''')
+    rv = cur.fetchall()
+    star_student = rv
+    cur.execute(''' select faculty_id, first_name, emailid,
+    dob from faculty order by dob; ''')
+    rv = cur.fetchall()
+    star_faculty = rv
     mysql.connection.commit()
     dt = datetime.datetime.now().year
     count_year = []
@@ -56,7 +64,7 @@ def admin_dashboard():
 
     return render_template('admin_panel/index.html', count_student = count_students,
         count_faculty = count_faculty, count_course = count_course, count_dept = count_dept,
-        count_year = count_year)
+        count_year = count_year, star_student = star_student, star_faculty = star_faculty)
 
 def admin_add_student():
     if 'id' not in session or 'role' not in session:

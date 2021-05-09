@@ -239,67 +239,23 @@
                   <tr>
                     <th>ID</th>
                     <th>Name</th>
-                    <th class="text-center">Marks</th>
                     <th class="text-center">Percentage</th>
-                    <th class="text-right">Year</th>
+                    <th class="text-right">sem</th>
                   </tr>
                 </thead>
                 <tbody>
+                  {% for student in star_student %}
                   <tr>
                     <td class="text-nowrap">
-                      <div>PRE2209</div>
+                      <div>{{ student[0] }}</div>
                     </td>
-                    <td class="text-nowrap">John Smith</td>
-                    <td class="text-center">1185</td>
-                    <td class="text-center">98%</td>
+                    <td class="text-nowrap">{{ student[1] }}</td>
+                    <td class="text-center">{{ student[3] }}</td>
                     <td class="text-right">
-                      <div>2019</div>
+                      <div>{{ student[4] | int }}</div>
                     </td>
                   </tr>
-                  <tr>
-                    <td class="text-nowrap">
-                      <div>PRE1245</div>
-                    </td>
-                    <td class="text-nowrap">Jolie Hoskins</td>
-                    <td class="text-center">1195</td>
-                    <td class="text-center">99.5%</td>
-                    <td class="text-right">
-                      <div>2018</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="text-nowrap">
-                      <div>PRE1625</div>
-                    </td>
-                    <td class="text-nowrap">Pennington Joy</td>
-                    <td class="text-center">1196</td>
-                    <td class="text-center">99.6%</td>
-                    <td class="text-right">
-                      <div>2017</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="text-nowrap">
-                      <div>PRE2516</div>
-                    </td>
-                    <td class="text-nowrap">Millie Marsden</td>
-                    <td class="text-center">1187</td>
-                    <td class="text-center">98.2%</td>
-                    <td class="text-right">
-                      <div>2016</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="text-nowrap">
-                      <div>PRE2209</div>
-                    </td>
-                    <td class="text-nowrap">John Smith</td>
-                    <td class="text-center">1185</td>
-                    <td class="text-center">98%</td>
-                    <td class="text-right">
-                      <div>2015</div>
-                    </td>
-                  </tr>
+                  {% endfor %}
                 </tbody>
               </table>
             </div>
@@ -372,66 +328,20 @@
                     <th>ID</th>
                     <th>Name</th>
                     <th class="text-center">Courses</th>
-                    <th class="text-center">Rating</th>
                     <th class="text-right">Year</th>
                   </tr>
                 </thead>
                 <tbody>
+                  {% for faculty in star_faculty %}
                   <tr>
                     <td class="text-nowrap">
-                      <div>PRE2209</div>
+                      <div>{{ faculty[0] }}</div>
                     </td>
-                    <td class="text-nowrap">John Smith</td>
-                    <td class="text-center">8</td>
-                    <td class="text-center">98%</td>
-                    <td class="text-right">
-                      <div>2019</div>
-                    </td>
+                    <td class="text-nowrap">{{ faculty[1] }}</td>
+                    <td class="text-center">{{ faculty[2] }}</td>
+                    <td class="text-center">{{ faculty[3] }}</td>
                   </tr>
-                  <tr>
-                    <td class="text-nowrap">
-                      <div>PRE1245</div>
-                    </td>
-                    <td class="text-nowrap">Jolie Hoskins</td>
-                    <td class="text-center">9</td>
-                    <td class="text-center">99.5%</td>
-                    <td class="text-right">
-                      <div>2018</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="text-nowrap">
-                      <div>PRE1625</div>
-                    </td>
-                    <td class="text-nowrap">Pennington Joy</td>
-                    <td class="text-center">9</td>
-                    <td class="text-center">99.6%</td>
-                    <td class="text-right">
-                      <div>2017</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="text-nowrap">
-                      <div>PRE2516</div>
-                    </td>
-                    <td class="text-nowrap">Millie Marsden</td>
-                    <td class="text-center">6</td>
-                    <td class="text-center">98.2%</td>
-                    <td class="text-right">
-                      <div>2016</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="text-nowrap">
-                      <div>PRE2209</div>
-                    </td>
-                    <td class="text-nowrap">John Smith</td>
-                    <td class="text-center">8</td>
-                    <td class="text-center">98%</td>
-                    <td class="text-right">
-                      <div>2015</div>
-                    </td>
-                  </tr>
+                  {% endfor %}
                 </tbody>
               </table>
             </div>
