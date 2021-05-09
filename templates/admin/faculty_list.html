@@ -18,14 +18,14 @@
 					<ul>
 						<li><a href="/admin/student_list">Student List</a></li>
 						<li><a href="/admin/add_student">Student Add</a></li>
-						<li><a href="/admin/student_list_edit" class="active">Student Edit</a></li>
+						<li><a href="/admin/student_list_edit">Student Edit</a></li>
 					</ul>
 				</li>
 				<li class="submenu">
 					<a href="#"><i class="fas fa-chalkboard-teacher"></i> <span> Faculty</span> <span
 							class="menu-arrow"></span></a>
 					<ul>
-						<li><a href="/admin/faculty_list">Faculty List</a></li>
+						<li><a href="/admin/faculty_list" class="active">Faculty List</a></li>
 						<li><a href="/admin/add_faculty">Faculty Add</a></li>
 						<li><a href="edit-teacher.html">Faculty Edit</a></li>
 					</ul>
@@ -63,16 +63,15 @@
 		<div class="page-header">
 			<div class="row align-items-center">
 				<div class="col">
-					<h3 class="page-title">Students</h3>
+					<h3 class="page-title">Faculty</h3>
 					<ul class="breadcrumb">
-						<li class="breadcrumb-item"><a href="\admin\dashboard">Dashboard</a></li>
-						<li class="breadcrumb-item active">Students</li>
+						<li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
+						<li class="breadcrumb-item active">Faculty</li>
 					</ul>
 				</div>
 				<div class="col-auto text-right float-right ml-auto">
-					<a href="/admin/student_excel" class="btn btn-outline-primary mr-2"><i class="fas fa-download"></i>
-						Download</a>
-					<a href="/admin/add_student" class="btn btn-primary"><i class="fas fa-plus"></i></a>
+					<a href="#" class="btn btn-outline-primary mr-2"><i class="fas fa-download"></i> Download</a>
+					<a href="add-teacher.html" class="btn btn-primary"><i class="fas fa-plus"></i></a>
 				</div>
 			</div>
 		</div>
@@ -92,44 +91,31 @@
 										<th>DOB</th>
 										<th>Mobile Number</th>
 										<th>Address</th>
-										<th>Sem</th>
-										<th>CPI</th>
-										<th class="text-right">Action</th>
+										<th>E-Mail</th>
+										<th>Position</th>
 									</tr>
 								</thead>
-								{% for item in list %}
 								<tbody>
+									{% for faculty in facultyList %}
 									<tr>
-										<td>{{ item[0] }}</td>
+										<td>{{ faculty[0] }}</td>
 										<td>
 											<h2 class="table-avatar">
-												<a href="/admin/student_view/{{ item[0] }}"
-													class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle"
+												<a href="teacher-details.html" class="avatar avatar-sm mr-2"><img
+														class="avatar-img rounded-circle"
 														src="/static/assets/Admin_assets/img/profiles/avatar-02.jpg"
 														alt="User Image"></a>
-												<a href="/admin/student_view/{{ item[0] }}">{{item[1]}}</a>
+												<a href="teacher-details.html">{{ faculty[1]+" "+faculty[2] }}</a>
 											</h2>
 										</td>
-										<td>{{item[7]}}</td>
-										<td>{{ item[6] }}</td>
-										<td>{{ item[4] }}</td>
-										<td>{{ item[9] }}</td>
-										<td>{{ item[10] }}</td>
-										<td class="text-right">
-											<div class="actions">
-												<a href="/admin/edit-student/{{ item[0] }}"
-													class="btn btn-sm bg-success-light mr-2">
-													<i class="fas fa-pen"></i>
-												</a>
-												<form method='POST' action="{{url_for('admin_student_delete', student_id=item[0] )}}"
-													class="btn btn-sm bg-danger-light">
-													<button type="submit" class="opacity: 0;"><i class="fas fa-trash"></i></button>
-											</form>
-											</div>
-										</td>
+										<td>{{ faculty[3] }}</td>
+										<td>{{ faculty[4] }}</td>
+										<td>{{ faculty[5] }}</td>
+										<td>{{ faculty[6] }}</td>
+										<td>{{ faculty[7] }}</td>
 									</tr>
+									{% endfor %}
 								</tbody>
-								{% endfor %}
 							</table>
 						</div>
 					</div>
@@ -137,4 +123,13 @@
 			</div>
 		</div>
 	</div>
-	{% endblock %}
+
+	<!-- Footer -->
+	<footer>
+		<p>Copyright © 2021 IIT Indore.</p>
+	</footer>
+	<!-- /Footer -->
+
+</div>
+<!-- /Page Wrapper -->
+{% endblock %}

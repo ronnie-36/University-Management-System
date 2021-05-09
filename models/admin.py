@@ -265,14 +265,19 @@ def admin_modal_update():
     return render_template('/admin/modal_update.html', list=rv)
 
 
-# Faculty
+# Faculty start
+
 def admin_add_faculty():
     if 'id' not in session or 'role' not in session:
         return render_template('error.html')
     elif session['role'] != "admin":
         return render_template('error.html')
-
-    return render_template('admin/admin_add_faculty_dashboard.html')
+    cur = mysql.connection.cursor()
+    cur.execute(''' select dept_id,name from department; ''')
+    depts = cur.fetchall()
+    mysql.connection.commit()
+    cur.close()
+    return render_template('admin/add-faculty.html', deptList=depts)
 
 def admin_faculty_list():
     if 'id' not in session or 'role' not in session:
@@ -281,12 +286,12 @@ def admin_faculty_list():
         return render_template('error.html')
 
     cur = mysql.connection.cursor()
-    cur.execute(''' select * from faculty; ''')
-    rv = cur.fetchall()
+    cur.execute(''' select faculty_id, first_name, last_name, DOB, phone, address, emailid, position from faculty; ''')
+    faculty = cur.fetchall()
     mysql.connection.commit()
     cur.close()
 
-    return render_template('admin/faculty_list.html', list = rv)
+    return render_template('admin/faculty_list.html', facultyList = faculty)
 
 # department
 
@@ -414,3 +419,4 @@ def admin_course_sem_edit(c_id):
     
     return "ok no get here"
 
+# faculty end
