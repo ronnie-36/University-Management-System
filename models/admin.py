@@ -62,7 +62,7 @@ def admin_dashboard():
     count_year.append([(str)(dt-3), countyear4])
     cur.close()
 
-    return render_template('admin_panel/index.html', count_student = count_students,
+    return render_template('admin/index.html', count_student = count_students,
         count_faculty = count_faculty, count_course = count_course, count_dept = count_dept,
         count_year = count_year, star_student = star_student, star_faculty = star_faculty)
 
@@ -100,7 +100,7 @@ def admin_add_student():
         cur.close()
         return redirect(url_for('admin_student_list'))
 
-    return render_template('admin_panel/add-student.html')
+    return render_template('admin/add-student.html')
 
 def admin_student_list():
     if 'id' not in session or 'role' not in session:
@@ -114,7 +114,7 @@ def admin_student_list():
     mysql.connection.commit()
     cur.close()
 
-    return render_template('admin_panel/students.html', list = rv)
+    return render_template('admin/student.html', list = rv)
 
 def admin_student_list_edit():
     if 'id' not in session or 'role' not in session:
