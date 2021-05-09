@@ -4,41 +4,36 @@
 <li class="submenu">
 	<a href="#"><i class="fas fa-chalkboard-teacher"></i> <span> Faculty</span> <span class="menu-arrow"></span></a>
 	<ul>
-		<li><a href="/admin/faculty_list">Faculty List</a></li>
-		<li><a href="/admin/add_faculty" class="active">Faculty Add</a></li>
+		<li><a href="/admin/faculty_list" class="active">Faculty List</a></li>
+		<li><a href="/admin/add_faculty">Faculty Add</a></li>
 		<li><a href="/admin/faculty_list_edit">Faculty Edit</a></li>
 	</ul>
 </li>
 {% endblock %}
-<!-- /Sidebar -->
-
 
 {% block pagewrapper %}
-
 <!-- Page Wrapper -->
 <div class="page-wrapper">
 	<div class="content container-fluid">
 
-		<!-- Page Header -->
 		<div class="page-header">
-			<div class="row align-items-center">
-				<div class="col">
-					<h3 class="page-title">Add Faculty</h3>
+			<div class="row">
+				<div class="col-sm-12">
+					<h3 class="page-title">Faculty Details</h3>
 					<ul class="breadcrumb">
 						<li class="breadcrumb-item"><a href="/admin/faculty_list">Faculty</a></li>
-						<li class="breadcrumb-item active">Add Faculty</li>
+						<li class="breadcrumb-item active">Faculty Details</li>
 					</ul>
 				</div>
 			</div>
 		</div>
-		<!-- /Page Header -->
 
 		<div class="row">
 			<div class="col-sm-12">
 
 				<div class="card">
 					<div class="card-body">
-						<form method="POST">
+						<form>
 							<div class="row">
 								<div class="col-12">
 									<h5 class="form-title"><span>Faculty Information</span></h5>
@@ -46,85 +41,71 @@
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Faculty ID</label>
-										<input type="text" class="form-control" name="faculty_id" required>
+										<input type="text" class="form-control" name="faculty_id" value="{{ facultyDetails[0] }}" disabled>
 									</div>
 								</div>
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>First Name</label>
-										<input type="text" class="form-control" name="first_name" required>
+										<input type="text" class="form-control" name="first_name" value="{{ facultyDetails[1] }}" disabled>
 									</div>
 								</div>
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Last Name</label>
-										<input type="text" class="form-control" name="last_name">
+										<input type="text" class="form-control" name="last_name" value="{{ facultyDetails[2] }}" disabled>
 									</div>
 								</div>
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Gender</label>
-										<select class="form-control" name="gender" required>
-											<option value="">Select Gender</option>
-											<option>Male</option>
-											<option>Female</option>
-											<option>Others</option>
+										<select class="form-control" name="gender" disabled>
+											<option>{{ facultyDetails[3] }}</option>
 										</select>
 									</div>
 								</div>
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Date of Birth</label>
-										<input type="date" class="form-control" name="dob">
+										<input type="date" class="form-control" name="dob" value="{{ facultyDetails[4] }}" disabled>
 									</div>
 								</div>
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Mobile</label>
-										<input type="text" class="form-control" name="phone" minlength="10"
-											maxlength="10">
+										<input type="text" class="form-control" name="phone" value="{{ facultyDetails[5] }}" disabled>
 									</div>
 								</div>
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Address</label>
-										<input class="form-control" type="text" name="address">
+										<input class="form-control" type="text" name="address" value="{{ facultyDetails[6] }}" disabled>
 									</div>
 								</div>
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Email ID</label>
-										<input type="email" class="form-control" name="email">
+										<input type="email" class="form-control" name="email" value="{{ facultyDetails[7] }}" disabled>
 									</div>
 								</div>
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Salary</label>
-										<input type="number" class="form-control" name="salary">
+										<input type="number" class="form-control" name="salary" value="{{ facultyDetails[8] }}" disabled>
 									</div>
 								</div>
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Research Interests</label>
-										<input type="text" class="form-control" name="ri">
+										<input type="text" class="form-control" name="ri" value="{{ facultyDetails[9] }}" disabled>
 									</div>
 								</div>
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Position</label>
-										<select name="position" class="form-control" required>
-											<option value="">Select Position</option>
-											<option value="Professor">
-												Professor
-											</option>
-											<option value="Associate Professor">
-												Associate Professor
-											</option>
-											<option value="Assistant Professor">
-												Assistant Professor
-											</option>
-											<option value="Visting Professor">
-												Visting Professor
+										<select name="position" class="form-control" disabled>
+											<option>
+												{{ facultyDetails[10] }}
 											</option>
 										</select>
 									</div>
@@ -132,19 +113,12 @@
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Department</label>
-										<select name="department" class="form-control" required>
-											<option value="">Select Department</option>
-											{% for dept in deptList %}
-											<option value="{{ dept[0] }}">
-												{{ dept[1] }}
+										<select name="department" class="form-control" disabled>
+											<option>
+												{{ department }}
 											</option>
-											{% endfor %}
 										</select>
 									</div>
-								</div>
-
-								<div class="col-12">
-									<button type="submit" class="btn btn-primary">Submit</button>
 								</div>
 							</div>
 						</form>
@@ -155,6 +129,11 @@
 		</div>
 	</div>
 
+	<!-- Footer -->
+	<footer>
+		<p>Copyright © 2021 IIT Indore.</p>
+	</footer>
+	<!-- /Footer -->
 </div>
 <!-- /Page Wrapper -->
 {% endblock %}

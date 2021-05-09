@@ -4,9 +4,9 @@
 <li class="submenu">
 	<a href="#"><i class="fas fa-chalkboard-teacher"></i> <span> Faculty</span> <span class="menu-arrow"></span></a>
 	<ul>
-		<li><a href="/admin/faculty_list" class="active">Faculty List</a></li>
+		<li><a href="/admin/faculty_list">Faculty List</a></li>
 		<li><a href="/admin/add_faculty">Faculty Add</a></li>
-		<li><a href="/admin/faculty_list_edit">Faculty Edit</a></li>
+		<li><a href="/admin/faculty_list_edit" class="active">Faculty Edit</a></li>
 	</ul>
 </li>
 {% endblock %}
@@ -20,15 +20,15 @@
 		<div class="page-header">
 			<div class="row align-items-center">
 				<div class="col">
-					<h3 class="page-title">Faculty</h3>
+					<h3 class="page-title">Edit Faculty</h3>
 					<ul class="breadcrumb">
 						<li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
-						<li class="breadcrumb-item active">Faculty</li>
+						<li class="breadcrumb-item active">Edit Faculty</li>
 					</ul>
 				</div>
 				<div class="col-auto text-right float-right ml-auto">
 					<a href="#" class="btn btn-outline-primary mr-2"><i class="fas fa-download"></i> Download</a>
-					<a href="add-teacher.html" class="btn btn-primary"><i class="fas fa-plus"></i></a>
+					<a href="/admin/add_faculty" class="btn btn-primary"><i class="fas fa-plus"></i></a>
 				</div>
 			</div>
 		</div>
@@ -48,12 +48,13 @@
 										<th>DOB</th>
 										<th>Mobile Number</th>
 										<th>Address</th>
-										<th>E-Mail</th>
 										<th>Position</th>
+										<th class="text-right">Action</th>
 									</tr>
 								</thead>
 								<tbody>
-									{% for faculty in facultyList %}
+									<tr>
+										{% for faculty in facultyList %}
 									<tr>
 										<td>{{ faculty[0] }}</td>
 										<td>
@@ -68,10 +69,21 @@
 										<td>{{ faculty[3] }}</td>
 										<td>{{ faculty[4] }}</td>
 										<td>{{ faculty[5] }}</td>
-										<td>{{ faculty[6] }}</td>
 										<td>{{ faculty[7] }}</td>
+										<td class="text-right">
+											<div class="actions">
+												<a href="/admin/edit-faculty/{{ faculty[0] }}" class="btn btn-sm bg-success-light mr-2">
+													<i class="fas fa-pen"></i>
+												</a>
+												<a href="#" class="btn btn-sm bg-danger-light">
+													<i class="fas fa-trash"></i>
+												</a>
+											</div>
+										</td>
 									</tr>
 									{% endfor %}
+										
+									</tr>
 								</tbody>
 							</table>
 						</div>

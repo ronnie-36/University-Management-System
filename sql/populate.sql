@@ -81,6 +81,7 @@ INSERT INTO section_room(sec_id, class_id, start_time, end_time, day) VALUES ('3
 INSERT INTO works (faculty_id, dept_id) VALUES ('1','cse');
 INSERT INTO works (faculty_id, dept_id) VALUES ('2','ee');
 INSERT INTO works (faculty_id, dept_id) VALUES ('3','ce');
+INSERT INTO works (faculty_id, dept_id) VALUES ('4','cse');
 
 INSERT INTO offer_course (dept_id, c_id) VALUES ('cse','1');
 INSERT INTO offer_course (dept_id, c_id) VALUES ('cse','2');
