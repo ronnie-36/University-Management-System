@@ -91,7 +91,7 @@ CREATE TABLE `university`.`admin` (
 CREATE TABLE enroll (
 	sec_id INT NOT NULL,
     student_id VARCHAR(90) NOT NULL,
-    grade FLOAT NOT NULL,
+    grade FLOAT default 0.00,
     notes VARCHAR(200),
     FOREIGN KEY enroll(sec_id) references section(sec_id) on update cascade on delete cascade,
     FOREIGN KEY enroll(student_id) references student(student_id) on update cascade on delete cascade,

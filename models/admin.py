@@ -20,12 +20,10 @@ def debug():
 
 def sanitize_course_sem(rv):
     dt = {}
-    print(rv)
     for rows in rv:
         if rows[0] not in dt:
             dt[rows[0]] = []
         dt[rows[0]].append(rows)
-    print(dt)
     return dt
 
 
@@ -419,4 +417,101 @@ def admin_course_sem_edit(c_id):
     
     return "ok no get here"
 
-# faculty end
+def admin_course_sem_delete(c_id):
+    if 'id' not in session or 'role' not in session:
+        return render_template('error.html')
+    elif session['role'] != "admin":
+        return render_template('error.html')
+    if request.method == 'POST':
+        details = request.form
+        sem = details['sem']
+        cur = mysql.connection.cursor()
+        cur.execute(''' delete from section where c_id = '%s' and sem = '%s';'''%(c_id, sem))
+        rv = cur.fetchall()
+        mysql.connection.commit()
+        cur.close()
+        return redirect(url_for('admin_course_sem_assign'))
+    
+    return "ok no get here"
+
+
+def admin_course_student_assign():
+    if 'id' not in session or 'role' not in session:
+        return render_template('error.html')
+    elif session['role'] != "admin":
+        return render_template('error.html')
+    
+    cur = mysql.connection.cursor()
+    cur.execute(''' 
+    select 
+	student.student_id, student.first_name, course.name, section.sec_id
+    from
+        student
+            join
+        section
+			join
+		course
+    where
+    section.sem = student.sem and
+    section.c_id = course.c_id order by student.student_id;''')
+    rv = cur.fetchall()
+
+    cur.execute(''' 
+    select 
+	student.student_id, student.first_name, course.name, section.sec_id
+    from
+        student
+            join
+        enroll
+			join
+		section
+			join
+        course
+    where
+    section.c_id = course.c_id and
+    student.student_id = enroll.student_id and
+    enroll.sec_id = section.sec_id order by student.student_id;''')
+    cv = cur.fetchall()
+
+    mysql.connection.commit()
+    cur.close()
+    course_student = sanitize_course_sem(rv)
+    course_enrolled = sanitize_course_sem(cv)
+    return render_template('/admin/course_student_assign.html', course_student = course_student, course_enrolled = course_enrolled)
+
+
+def admin_course_student_add(student_id):
+    if 'id' not in session or 'role' not in session:
+        return render_template('error.html')
+    elif session['role'] != "admin":
+        return render_template('error.html')
+
+    if request.method == 'POST':
+        details = request.form
+        sec_id = details['sec_id']
+        cur = mysql.connection.cursor()
+        cur.execute(''' insert ignore into enroll (student_id, sec_id) values ('%s','%s');'''%(student_id, sec_id))
+        rv = cur.fetchall()
+        mysql.connection.commit()
+        cur.close()
+        return redirect(url_for('admin_course_student_assign'))
+    
+    return "ok no get here"
+
+def admin_course_student_delete(student_id):
+    if 'id' not in session or 'role' not in session:
+        return render_template('error.html')
+    elif session['role'] != "admin":
+        return render_template('error.html')
+
+    if request.method == 'POST':
+        details = request.form
+        sec_id = details['sec_id']
+        cur = mysql.connection.cursor()
+        cur.execute(''' delete from enroll where student_id = '%s' and sec_id = '%s';'''%(student_id, sec_id))
+        rv = cur.fetchall()
+        mysql.connection.commit()
+        cur.close()
+        return redirect(url_for('admin_course_student_assign'))
+    
+    return "ok no get here"
