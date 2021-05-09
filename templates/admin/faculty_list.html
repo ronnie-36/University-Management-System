@@ -1,0 +1,81 @@
+{% extends 'admin/adminbase.html' %}
+
+{% block pagewrapper %}
+<!-- Page Wrapper -->
+<div class="page-wrapper">
+	<div class="content container-fluid">
+
+		<!-- Page Header -->
+		<div class="page-header">
+			<div class="row align-items-center">
+				<div class="col">
+					<h3 class="page-title">Faculty</h3>
+					<ul class="breadcrumb">
+						<li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
+						<li class="breadcrumb-item active">Faculty</li>
+					</ul>
+				</div>
+				<div class="col-auto text-right float-right ml-auto">
+					<a href="#" class="btn btn-outline-primary mr-2"><i class="fas fa-download"></i> Download</a>
+					<a href="add-teacher.html" class="btn btn-primary"><i class="fas fa-plus"></i></a>
+				</div>
+			</div>
+		</div>
+		<!-- /Page Header -->
+
+		<div class="row">
+			<div class="col-sm-12">
+
+				<div class="card card-table">
+					<div class="card-body">
+						<div class="table-responsive">
+							<table class="table table-hover table-center mb-0 datatable">
+								<thead>
+									<tr>
+										<th>ID</th>
+										<th>Name</th>
+										<th>DOB</th>
+										<th>Mobile Number</th>
+										<th>Address</th>
+										<th>E-Mail</th>
+										<th>Position</th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for faculty in facultyList %}
+									<tr>
+										<td>{{ faculty[0] }}</td>
+										<td>
+											<h2 class="table-avatar">
+												<a href="teacher-details.html" class="avatar avatar-sm mr-2"><img
+														class="avatar-img rounded-circle"
+														src="/static/assets/Admin_assets/img/profiles/avatar-02.jpg"
+														alt="User Image"></a>
+												<a href="teacher-details.html">{{ faculty[1]+" "+faculty[2] }}</a>
+											</h2>
+										</td>
+										<td>{{ faculty[3] }}</td>
+										<td>{{ faculty[4] }}</td>
+										<td>{{ faculty[5] }}</td>
+										<td>{{ faculty[6] }}</td>
+										<td>{{ faculty[7] }}</td>
+									</tr>
+									{% endfor %}
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Footer -->
+	<footer>
+		<p>Copyright © 2021 IIT Indore.</p>
+	</footer>
+	<!-- /Footer -->
+
+</div>
+<!-- /Page Wrapper -->
+{% endblock %}

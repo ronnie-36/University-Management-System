@@ -48,6 +48,8 @@ app.add_url_rule('/faculty/profile', view_func=faculty.faculty_profile, methods=
 
 # admin start
 app.add_url_rule('/admin/dashboard', view_func=admin.admin_dashboard, methods=['GET','POST'])
+
+# admin student start
 app.add_url_rule('/admin/add_student', view_func=admin.admin_add_student, methods=['GET','POST'])
 app.add_url_rule('/admin/student_list', view_func=admin.admin_student_list, methods=['GET','POST'])
 app.add_url_rule('/admin/edit-student/<student_id>', view_func=admin.admin_student_edit, methods=['GET','POST'])
@@ -56,9 +58,12 @@ app.add_url_rule('/admin/delete-student/<student_id>', view_func=admin.admin_stu
 app.add_url_rule('/admin/student_list_edit', view_func=admin.admin_student_list_edit, methods=['GET','POST'])
 app.add_url_rule('/admin/student_excel', view_func=admin.ExcelDownload_student, methods=['GET','POST'])
 app.add_url_rule('/admin/modal_update', view_func=admin.admin_modal_update, methods=['GET','POST'])
+# admin student end
 
-app.add_url_rule('/admin/faculty_list', view_func=admin.admin_faculty_list, methods=['GET','POST'])
+# admin faculty start 
 app.add_url_rule('/admin/add_faculty', view_func=admin.admin_add_faculty, methods=['GET','POST'])
+app.add_url_rule('/admin/faculty_list', view_func=admin.admin_faculty_list, methods=['GET','POST'])
+# admin faculty end
 
 # admin end  
 

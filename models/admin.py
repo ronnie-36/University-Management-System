@@ -249,7 +249,8 @@ def admin_modal_update():
     return render_template('/admin/modal_update.html', list=rv)
 
 
-# Faculty
+# Faculty start
+
 def admin_add_faculty():
     if 'id' not in session or 'role' not in session:
         return render_template('error.html')
@@ -266,10 +267,11 @@ def admin_faculty_list():
         return render_template('error.html')
 
     cur = mysql.connection.cursor()
-    cur.execute(''' select * from faculty; ''')
-    rv = cur.fetchall()
+    cur.execute(''' select faculty_id, first_name, last_name, DOB, phone, address, emailid, position from faculty; ''')
+    faculty = cur.fetchall()
     mysql.connection.commit()
     cur.close()
 
-    return render_template('admin/faculty_list.html', list = rv)
+    return render_template('admin/faculty_list.html', facultyList = faculty)
 
+# faculty end

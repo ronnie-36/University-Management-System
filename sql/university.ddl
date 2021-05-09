@@ -13,8 +13,9 @@ CREATE TABLE program (
 CREATE TABLE `university`.`faculty` (
   `faculty_id` VARCHAR(45) NOT NULL,
   `first_name` VARCHAR(90) NOT NULL,
-  `last_name` VARCHAR(90) NULL,
+  `last_name` VARCHAR(90) DEFAULT '',
   `address` VARCHAR(200),
+  `phone` VARCHAR(10),
   `DOB` DATE DEFAULT '2001-08-28',
   `emailid` VARCHAR(90) NOT NULL,
   `password` VARCHAR(90) NOT NULL,
