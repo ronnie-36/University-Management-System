@@ -18,7 +18,7 @@
 					<ul>
 						<li><a href="/admin/student_list">Student List</a></li>
 						<li><a href="/admin/add_student">Student Add</a></li>
-						<li><a href="/admin/student_list_edit" class="active">Student Edit</a></li>
+						<li><a href="/admin/student_list_edit">Student Edit</a></li>
 					</ul>
 				</li>
 				<li class="submenu">
@@ -26,7 +26,7 @@
 							class="menu-arrow"></span></a>
 					<ul>
 						<li><a href="/admin/faculty_list">Faculty List</a></li>
-						<li><a href="/admin/add_faculty">Faculty Add</a></li>
+						<li><a href="/admin/add_faculty" class="active">Faculty Add</a></li>
 						<li><a href="edit-teacher.html">Faculty Edit</a></li>
 					</ul>
 				</li>
@@ -54,7 +54,9 @@
 {% endblock %}
 <!-- /Sidebar -->
 
+
 {% block pagewrapper %}
+
 <!-- Page Wrapper -->
 <div class="page-wrapper">
 	<div class="content container-fluid">
@@ -63,10 +65,10 @@
 		<div class="page-header">
 			<div class="row align-items-center">
 				<div class="col">
-					<h3 class="page-title">Add Students</h3>
+					<h3 class="page-title">Add Faculty</h3>
 					<ul class="breadcrumb">
-						<li class="breadcrumb-item"><a href="/admin/student_list">Students</a></li>
-						<li class="breadcrumb-item active">Add Students</li>
+						<li class="breadcrumb-item"><a href="/admin/faculty_list">Faculty</a></li>
+						<li class="breadcrumb-item active">Add Faculty</li>
 					</ul>
 				</div>
 			</div>
@@ -78,35 +80,33 @@
 
 				<div class="card">
 					<div class="card-body">
-						<form method="POST">
+						<form>
 							<div class="row">
 								<div class="col-12">
-									<h5 class="form-title"><span>Student Information</span></h5>
+									<h5 class="form-title"><span>Faculty Information</span></h5>
+								</div>
+								<div class="col-12 col-sm-6">
+									<div class="form-group">
+										<label>Faculty ID</label>
+										<input type="text" class="form-control" name="faculty_id" required>
+									</div>
 								</div>
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>First Name</label>
-										<input type="text" class="form-control" name="first_name" value="{{list[1]}}">
+										<input type="text" class="form-control" name="first_name" required>
 									</div>
 								</div>
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Last Name</label>
-										<input type="text" class="form-control" name="last_name" value="{{list[2]}}">
-									</div>
-								</div>
-								<div class="col-12 col-sm-6">
-									<div class="form-group">
-										<label>Student Id</label>
-										<input type="text" class="form-control" name="student_id" value="{{list[0]}}"
-											disabled>
+										<input type="text" class="form-control" name="last_name">
 									</div>
 								</div>
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Gender</label>
-										<select class="form-control" name="gender">
-											<option selected>{{list[5]}}</option>
+										<select class="form-control">
 											<option>Male</option>
 											<option>Female</option>
 											<option>Others</option>
@@ -116,51 +116,71 @@
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Date of Birth</label>
-										<div>
-											<input type="date" class="form-control" name="dob" value="{{list[7]}}">
-										</div>
+										<input type="date" class="form-control">
 									</div>
 								</div>
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
-										<label>Mobile Number</label>
-										<input type="text" class="form-control" name="phone" value="{{list[6]}}">
+										<label>Mobile</label>
+										<input type="text" class="form-control">
 									</div>
 								</div>
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Address</label>
-										<input type="text" class="form-control" name="address" value="{{list[4]}}">
+										<input class="form-control" type="text">
 									</div>
 								</div>
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
-										<label>Semester</label>
-										<input type="number" class="form-control" min='0' max='10' name="sem"
-											value="{{list[9]}}">
+										<label>Email ID</label>
+										<input type="email" class="form-control">
 									</div>
 								</div>
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
-										<label>Program</label>
-										<input type="text" class="form-control" name="program" value="{{list[12]}}">
+										<label>Salary</label>
+										<input type="number" class="form-control">
 									</div>
 								</div>
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
-										<label>Branch</label>
-										<select class="form-control" name="branch">
-											<option>Select Branch</option>
-											<option selected>{{list[11]}}</option>
-											<option>cse</option>
-											<option>ee</option>
-											<option>mech</option>
-											<option>civil</option>
-											<option>mems</option>
-
+										<label>Research Interests</label>
+										<input type="text" class="form-control">
+									</div>
+								</div>
+								<div class="col-12 col-sm-6">
+									<div class="form-group">
+										<label>Position</label>
+										<select name="position" class="form-control">
+											<option value="Professor">
+												Professor
+											</option>
+											<option value="Associate Professor" }>
+												Associate Professor
+											</option>
+											<option value="Assistant Professor">
+												Assistant Professor
+											</option>
+											<option value="Visting Professor">
+												Visting Professor
+											</option>
 										</select>
 									</div>
 								</div>
+								<div class="col-12 col-sm-6">
+									<div class="form-group">
+										<label>Department</label>
+										<select name="department" class="form-control">
+											{% for dept in deptList %}
+											<option value="{{ dept[0] }}">
+												{{ dept[1] }}
+											</option>
+											{% endfor %}
+										</select>
+									</div>
+								</div>
+
 								<div class="col-12">
 									<button type="submit" class="btn btn-primary">Submit</button>
 								</div>
@@ -168,9 +188,11 @@
 						</form>
 					</div>
 				</div>
+
 			</div>
 		</div>
 	</div>
+
 </div>
 <!-- /Page Wrapper -->
 {% endblock %}

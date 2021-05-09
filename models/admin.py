@@ -256,8 +256,12 @@ def admin_add_faculty():
         return render_template('error.html')
     elif session['role'] != "admin":
         return render_template('error.html')
-
-    return render_template('admin/admin_add_faculty_dashboard.html')
+    cur = mysql.connection.cursor()
+    cur.execute(''' select dept_id,name from department; ''')
+    depts = cur.fetchall()
+    mysql.connection.commit()
+    cur.close()
+    return render_template('admin/add-faculty.html', deptList=depts)
 
 
 def admin_faculty_list():

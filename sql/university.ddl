@@ -16,6 +16,7 @@ CREATE TABLE `university`.`faculty` (
   `last_name` VARCHAR(90) DEFAULT '',
   `address` VARCHAR(200),
   `phone` VARCHAR(10),
+  `gender` VARCHAR(10) DEFAULT 'Male',
   `DOB` DATE DEFAULT '2001-08-28',
   `emailid` VARCHAR(90) NOT NULL,
   `password` VARCHAR(90) NOT NULL,
