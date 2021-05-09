@@ -1,5 +1,47 @@
-{% extends 'admin_panel/student.html' %}
+<style>
+  .mode {
+    border: 2px solid grey;
+    border-radius: 5px;
+    padding: 10px;
+    position: absolute;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    width: auto;
+    height: auto;
+    justify-content: space-around;
+    flex-direction: row;
+    align-content: center;
+    margin-top: 60px;
+  }
+  .input1 {
+    outline: none;
+    border: 0px;
+  }
+</style>
+{% extends '/admin_panel/students.html' %}
+
+{% block bread %}
+<ul class="breadcrumb">
+  <li class="breadcrumb-item"><a href="\admin\dashboard">Dashboard</a></li>
+  <li class="breadcrumb-item"><a href="\admin\student_list">Student</a></li>
+  <li class="breadcrumb-item active">update</li>
+</ul>
+{% endblock %} 
 
 {% block modal %}
-alkdfmadsf
+<div class="mode">
+  <form method="POST">
+    <input
+      type="number"
+      name="sem"
+      class="input1"
+      min="0"
+      max="8"
+      placeholder="sem"
+      value="0"
+    />
+    <input type="submit" class="btn btn-info" />
+  </form>
+</div>
 {% endblock %}

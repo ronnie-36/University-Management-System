@@ -102,14 +102,6 @@ def admin_add_student():
 
     return render_template('admin_panel/add-student.html')
 
-def admin_add_faculty():
-    if 'id' not in session or 'role' not in session:
-        return render_template('error.html')
-    elif session['role'] != "admin":
-        return render_template('error.html')
-
-    return render_template('admin/admin_add_faculty_dashboard.html')
-
 def admin_student_list():
     if 'id' not in session or 'role' not in session:
         return render_template('error.html')
@@ -232,6 +224,41 @@ def ExcelDownload_student():
 
     return excel.make_response_from_array(studentlist, "xlsx")
 
+def admin_modal_update():
+    if 'id' not in session or 'role' not in session:
+        return render_template('error.html')
+    elif session['role'] != "admin":
+        return render_template('error.html') 
+
+    cur = mysql.connection.cursor()
+    cur.execute(''' select * from student; ''')
+    rv = cur.fetchall()
+    mysql.connection.commit()
+    cur.close()
+
+    if request.method == 'POST':
+        form_details = request.form
+        sem = form_details['sem']
+        sem = (int)(sem)
+        cur = mysql.connection.cursor()
+        cur.execute(''' update student set sem = sem+1 where sem = %d; '''%(sem))
+        mysql.connection.commit()
+        cur.close()
+        return redirect(request.referrer)
+        
+    return render_template('/admin/modal_update.html', list=rv)
+
+
+# Faculty
+def admin_add_faculty():
+    if 'id' not in session or 'role' not in session:
+        return render_template('error.html')
+    elif session['role'] != "admin":
+        return render_template('error.html')
+
+    return render_template('admin/admin_add_faculty_dashboard.html')
+
+
 def admin_faculty_list():
     if 'id' not in session or 'role' not in session:
         return render_template('error.html')
@@ -246,11 +273,3 @@ def admin_faculty_list():
 
     return render_template('admin/faculty_list.html', list = rv)
 
-def admin_modal_update():
-    if 'id' not in session or 'role' not in session:
-        return render_template('error.html')
-    elif session['role'] != "admin":
-        return render_template('error.html') 
-    if request.method == 'POST':
-        return redirect(request.referrer)
-    return render_template('/admin/modal_update.html')

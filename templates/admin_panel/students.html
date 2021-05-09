@@ -10,10 +10,12 @@
 			<div class="row align-items-center">
 				<div class="col">
 					<h3 class="page-title">Students</h3>
+					{% block bread %}
 					<ul class="breadcrumb">
 						<li class="breadcrumb-item"><a href="\admin\dashboard">Dashboard</a></li>
 						<li class="breadcrumb-item active">Students</li>
 					</ul>
+					{% endblock %}
 				</div>
 				<div class="col-auto text-right float-right ml-auto">
 					<a href="/admin/student_excel" class="btn btn-outline-primary mr-2"><i class="fas fa-download"></i> Download</a>
