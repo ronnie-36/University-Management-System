@@ -459,6 +459,66 @@ def admin_add_department():
     mysql.connection.commit()
     cur.close()
     return render_template('admin/add-department.html', facultyList=faculty)
+
+def admin_department_list_edit():
+    if 'id' not in session or 'role' not in session:
+        return render_template('error.html')
+    elif session['role'] != "admin":
+        return render_template('error.html')
+
+    cur = mysql.connection.cursor()
+    cur.execute(''' select department.dept_id, department.name, budget, faculty.first_name,faculty.last_name,
+                (SELECT count(*) FROM student where student.branch=department.dept_id) as noofstudent 
+                from department JOIN faculty WHERE department.hod_id = faculty.faculty_id; ''')
+    departments = cur.fetchall()
+    mysql.connection.commit()
+    cur.close()
+
+    return render_template('/admin/department.html', departmentList = departments)
+
+def admin_department_edit(dept_id):
+    if 'id' not in session or 'role' not in session:
+        return render_template('error.html')
+    elif session['role'] != "admin":
+        return render_template('error.html')
+
+    if request.method == 'POST':
+        dept_details = request.form
+        name = dept_details['name']
+        contact_no = dept_details['phone']
+        budget = dept_details['budget']
+        hod_id = dept_details['hod_id']
+        budget = int(budget) if budget else 0
+        if hod_id == "" :
+            hod_id = None
+        cur = mysql.connection.cursor()
+        if(len(dept_id) > 0 and len(name) > 0 and len(contact_no) > 0):
+            cur = mysql.connection.cursor()
+            cur.execute(''' UPDATE department SET name = '%s', budget = '%d', contact_no = '%s',hod_id = '%s' 
+            WHERE dept_id = '%s';'''%(name, budget, contact_no, hod_id, dept_id ))
+            mysql.connection.commit()
+            cur.close()
+        return redirect(url_for('admin_department_list'))
+    cur = mysql.connection.cursor()
+    cur.execute(''' select * from department where dept_id = '%s'; '''%(dept_id))
+    department = cur.fetchall()
+    cur.execute(''' select faculty.faculty_id, faculty.first_name, faculty.last_name from faculty where faculty_id in (select faculty_id from works where dept_id = '%s') ; '''%(dept_id))
+    faculty = cur.fetchall()
+    cur.close()
+    return render_template('/admin/edit-department.html', facultyList=faculty, deptDetails = department[0])
+
+def admin_department_delete():
+    if 'id' not in session or 'role' not in session:
+        return render_template('error.html')
+    elif session['role'] != "admin":
+        return render_template('error.html')
+    if(request.method == 'POST'):
+        dept_id = str(request.json['id'])
+        cur = mysql.connection.cursor()
+        cur.execute(''' DELETE FROM department WHERE dept_id= '%s'; '''%(dept_id))
+        mysql.connection.commit()
+        cur.close()
+        return "Executed" 
 # department end
 
 # course
