@@ -1,7 +1,12 @@
 {% extends 'admin/adminbase.html' %}
 
+{% block dashboard %}
+<li>
+	<a href="/admin/dashboard"><i class="fas fa-th-large"></i> <span>Dashboard</span></a>
+</li>
+{% endblock %}
 {% block faculty_sidebar %}
-<li class="submenu">
+<li class="submenu active">
 	<a href="#"><i class="fas fa-chalkboard-teacher"></i> <span> Faculty</span> <span class="menu-arrow"></span></a>
 	<ul>
 		<li><a href="/admin/faculty_list" class="active">Faculty List</a></li>
@@ -58,11 +63,12 @@
 										<td>{{ faculty[0] }}</td>
 										<td>
 											<h2 class="table-avatar">
-												<a href="/admin/faculty_view/{{ faculty[0] }}" class="avatar avatar-sm mr-2"><img
-														class="avatar-img rounded-circle"
+												<a href="/admin/faculty_view/{{ faculty[0] }}"
+													class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle"
 														src="/static/assets/Admin_assets/img/profiles/avatar-02.jpg"
 														alt="User Image"></a>
-												<a href="/admin/faculty_view/{{ faculty[0] }}">{{ faculty[1]+" "+faculty[2] }}</a>
+												<a href="/admin/faculty_view/{{ faculty[0] }}">{{ faculty[1]+"
+													"+faculty[2] }}</a>
 											</h2>
 										</td>
 										<td>{{ faculty[3] }}</td>

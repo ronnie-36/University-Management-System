@@ -1,19 +1,18 @@
 {% extends 'admin/adminbase.html' %}
 {% block dashboard %}
 <li>
-		<a href="/admin/dashboard"><i class="fas fa-th-large"></i> <span>Dashboard</span></a>
+	<a href="/admin/dashboard"><i class="fas fa-th-large"></i> <span>Dashboard</span></a>
 </li>
 {% endblock %}
 {% block student_sidebar %}
-				<li class="submenu">
-					<a href="#"><i class="fas fa-user-graduate"></i> <span> Students</span> <span
-							class="menu-arrow"></span></a>
-					<ul>
-						<li><a href="/admin/student_list" class="active">Student List</a></li>
-						<li><a href="/admin/add_student">Student Add</a></li>
-						<li><a href="/admin/student_list_edit">Student Edit</a></li>
-					</ul>
-				</li>
+<li class="submenu active">
+	<a href="#"><i class="fas fa-user-graduate"></i> <span> Students</span> <span class="menu-arrow"></span></a>
+	<ul>
+		<li><a href="/admin/student_list" class="active">Student List</a></li>
+		<li><a href="/admin/add_student">Student Add</a></li>
+		<li><a href="/admin/student_list_edit">Student Edit</a></li>
+	</ul>
+</li>
 {% endblock %}
 <!-- /Sidebar -->
 
@@ -35,7 +34,8 @@
 					{% endblock %}
 				</div>
 				<div class="col-auto text-right float-right ml-auto">
-					<a href="/admin/student_excel" class="btn btn-outline-primary mr-2"><i class="fas fa-download"></i> Download</a>
+					<a href="/admin/student_excel" class="btn btn-outline-primary mr-2"><i class="fas fa-download"></i>
+						Download</a>
 					<a href="/admin/add_student" class="btn btn-primary"><i class="fas fa-plus"></i></a>
 				</div>
 			</div>
@@ -66,9 +66,10 @@
 										<td>{{ item[0] }}</td>
 										<td>
 											<h2 class="table-avatar">
-												<a href="/admin/student_view/{{ item[0] }}" class="avatar avatar-sm mr-2"><img
-														class="avatar-img rounded-circle"
-														src="/static/assets/Admin_assets/img/profiles/avatar-02.jpg" alt="User Image"></a>
+												<a href="/admin/student_view/{{ item[0] }}"
+													class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle"
+														src="/static/assets/Admin_assets/img/profiles/avatar-02.jpg"
+														alt="User Image"></a>
 												<a href="/admin/student_view/{{ item[0] }}">{{item[1]}}</a>
 											</h2>
 										</td>
@@ -93,4 +94,4 @@
 	{% block modal %}
 
 	{% endblock %}
-{% endblock %}
+	{% endblock %}

@@ -1,19 +1,18 @@
 {% extends 'admin/adminbase.html' %}
 {% block dashboard %}
 <li>
-		<a href="/admin/dashboard"><i class="fas fa-th-large"></i> <span>Dashboard</span></a>
+	<a href="/admin/dashboard"><i class="fas fa-th-large"></i> <span>Dashboard</span></a>
 </li>
 {% endblock %}
 {% block course_sidebar %}
-<li class="submenu">
-		<a href="#"><i class="fas fa-book-reader"></i> <span> Courses</span> <span
-						class="menu-arrow"></span></a>
-		<ul>
-				<li><a href="/admin/course_list">Course List</a></li>
-				<li><a href="/admin/add_course" class="active">Course Add</a></li>
-				<li><a href="/admin/course_sem_assign">Course Edit</a></li>
-				<li><a href="/admin/course_student_assign">Course Assign</a></li>
-		</ul>
+<li class="submenu active">
+	<a href="#"><i class="fas fa-book-reader"></i> <span> Courses</span> <span class="menu-arrow"></span></a>
+	<ul>
+		<li><a href="/admin/course_list">Course List</a></li>
+		<li><a href="/admin/add_course" class="active">Course Add</a></li>
+		<li><a href="/admin/course_sem_assign">Course Edit</a></li>
+		<li><a href="/admin/course_student_assign">Course Assign</a></li>
+	</ul>
 </li>
 {% endblock %}
 {% block pagewrapper %}
@@ -64,7 +63,7 @@
 										<input type="text" class="form-control" name="sem">
 									</div>
 								</div> -->
-                <div class="col-12 col-sm-6">
+								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Credits</label>
 										<input type="number" class="form-control" step="0.5" name="credits">
