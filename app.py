@@ -35,6 +35,16 @@ app.add_url_rule('/resetpassword/<user>', view_func=auth.resetpassword, methods=
 app.add_url_rule('/reset_password/<user>/<token>', view_func=auth.reset_token,  methods=['GET','POST'])
 # auth end
 
+
+
+# department start
+
+@app.route('/department', methods=['GET', 'POST'])
+def department():
+    return render_template('department/dashboard.html')
+# department end
+
+
 # student start
 app.add_url_rule('/student/dashboard', view_func=student.student_dashboard, methods=['GET','POST'])
 app.add_url_rule('/student/setting', view_func=student.student_setting, methods=['GET','POST'])
