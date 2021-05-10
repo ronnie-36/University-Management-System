@@ -252,26 +252,34 @@ def student_grades():
     cur = mysql.connection.cursor()
     cur.execute('''
     select 
-	section.sec_id, course.name, section.sem, course.credits, course.hours, student.sem, enroll.grade
+        student.student_id, assignment.a_id, course.name, submission.marks_got, assignment.marks_total,  
+        submission.marks_got/assignment.marks_total*100 as percentage, assignment.created_at
     from
+        assignment
+            join
+        section
+            join
+        course
+            join
         student
             join
-        enroll
-			join
-		section
-			join
-        course
-    where
-    section.c_id = course.c_id and
-    student.student_id = enroll.student_id and
-    enroll.sec_id = section.sec_id and
-    student.sem = section.sem and
-    student.student_id = '%s';'''%(session['id']))
+        submission
+            join
+        faculty
+    where 
+        assignment.a_id = submission.a_id and
+        student.student_id = submission.student_id and
+        section.sec_id = assignment.sec_id and
+        section.c_id = course.c_id and
+        faculty.faculty_id = assignment.faculty_id and
+        submission.marks_got > 0 and
+        student.student_id = '%s'
+        order by end_at desc;'''%(session['id']))
     rv = cur.fetchall()
     mysql.connection.commit()
     cur.close()
 
-    return render_template('student_panel/dashboard-grades.html')
+    return render_template('student_panel/dashboard-grades.html', list = rv)
 
 def student_gradesheet():
     if 'id' not in session or 'role' not in session:
