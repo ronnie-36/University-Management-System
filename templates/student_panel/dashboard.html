@@ -1,3 +1,144 @@
+<style>
+    .graph {
+      margin-bottom: 1em;
+      font: normal 100%/150% arial, helvetica, sans-serif;
+    }
+  
+    .graph caption {
+      font: bold 150%/120% arial, helvetica, sans-serif;
+      padding-bottom: 0.33em;
+    }
+  
+    .graph tbody th {
+      text-align: right;
+    }
+  
+    @supports (display: grid) {
+      @media (min-width: 32em) {
+        .graph {
+          display: block;
+          width: 250px;
+          height: 200px;
+        }
+  
+        .graph caption {
+          display: block;
+        }
+  
+        .graph thead {
+          display: none;
+        }
+  
+        .graph tbody {
+          position: relative;
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(2em, 1fr));
+          column-gap: 2.5%;
+          align-items: end;
+          height: 60%;
+          margin: 3em 0 3em 1em;
+          padding: 0 1em;
+          border-bottom: 2px solid rgba(0, 0, 0, 0.5);
+          background: repeating-linear-gradient(180deg,
+              rgba(170, 170, 170, 0.7) 0,
+              rgba(170, 170, 170, 0.7) 1px,
+              transparent 1px,
+              transparent 20%);
+        }
+  
+        .graph tbody:before,
+        .graph tbody:after {
+          position: absolute;
+          left: -3.2em;
+          width: 2.8em;
+          text-align: right;
+          font: bold 80%/120% arial, helvetica, sans-serif;
+        }
+  
+        .graph tbody:before {
+          content: "100%";
+          top: -0.6em;
+        }
+  
+        .graph tbody:after {
+          content: "0%";
+          bottom: -0.6em;
+        }
+  
+        .graph tr {
+          position: relative;
+          display: block;
+        }
+  
+        .graph tr:hover {
+          z-index: 999;
+        }
+  
+        .graph th,
+        .graph td {
+          display: block;
+          text-align: center;
+        }
+  
+        .graph tbody th {
+          position: absolute;
+          top: -3em;
+          left: 0;
+          width: 10%;
+          font-weight: normal;
+          text-align: center;
+          white-space: nowrap;
+          text-indent: 0;
+          transform: rotate(-45deg);
+        }
+  
+        .graph tbody th:after {
+          content: "";
+        }
+  
+        .graph td {
+          width: 30%;
+          height: 100%;
+          background: #f63;
+          border-radius: 0.5em 0.5em 0 0;
+          transition: background 0.5s;
+        }
+  
+        .graph tr:hover td {
+          opacity: 0.7;
+        }
+  
+        .graph td span {
+          overflow: hidden;
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          width: 0;
+          padding: 0.5em 0;
+          margin: -1em 0 0;
+          font: normal 85%/120% arial, helvetica, sans-serif;
+          /* 			background:white; */
+          /* 			box-shadow:0 0 0.25em rgba(0,0,0,0.6); */
+          font-weight: bold;
+          opacity: 0;
+          transition: opacity 0.5s;
+          color: white;
+        }
+  
+        .toggleGraph:checked+table td span,
+        .graph tr:hover td span {
+          width: 4em;
+          margin-left: -2em;
+          /* 1/2 the declared width */
+          opacity: 1;
+        }
+      }
+  
+      /* min-width:32em */
+    }
+  
+    /* grid only */
+  </style>
 {% extends 'student_panel/studentbase.html' %}
 
 <!-- Sidebar -->
@@ -90,6 +231,8 @@
 
 <!-- Page Wrapper -->
 {% block wrapper %}
+
+
 <div class="dashboard-content-wrap">
     <div class="dashboard-menu-toggler btn theme-btn theme-btn-sm lh-28 theme-btn-transparent mb-4 ml-3">
         <i class="la la-bars mr-1"></i> Dashboard Nav
@@ -102,13 +245,13 @@
                         alt="Student thumbnail image">
                 </div>
                 <div class="media-body">
-                    <h2 class="section__title fs-30">Kuldeep Singh</h2>
+                    <h2 class="section__title fs-30">{{ details[1] }}</h2>
                     <div class="rating-wrap d-flex align-items-center pt-2">
                         <div class="review-stars">
-                            <span class="rating-number">190001030</span>
+                            <span class="rating-number">Roll No - {{ details[0] }}</span>
 
                         </div>
-                        <span class="rating-total pl-1">(CSE)</span>
+                        <span class="rating-total pl-1">({{ details[11] }})</span>
                     </div><!-- end rating-wrap -->
                 </div><!-- end media-body -->
             </div><!-- end media -->
@@ -117,6 +260,8 @@
                 <span class="file-upload-text"><i class="la la-upload mr-2"></i>Upload a Resume</span>
             </div><!-- file-upload-wrap -->
         </div><!-- end breadcrumb-content -->
+        
+        {% block body1 %}
         <div class="section-block mb-5"></div>
         <div class="dashboard-heading mb-5">
             <h3 class="fs-22 font-weight-semi-bold">Dashboard</h3>
@@ -146,7 +291,7 @@
                         </div>
                         <div class="pl-4">
                             <p class="card-text fs-18">Enrolled Courses</p>
-                            <h5 class="card-title pt-2 fs-26">11</h5>
+                            <h5 class="card-title pt-2 fs-26">{{ enrolled_courses }}</h5>
                         </div>
                     </div><!-- end card-body -->
                 </div><!-- end card -->
@@ -197,7 +342,7 @@
                         </div>
                         <div class="pl-4">
                             <p class="card-text fs-18">Active Courses</p>
-                            <h5 class="card-title pt-2 fs-26">5</h5>
+                            <h5 class="card-title pt-2 fs-26">{{ active_courses }}</h5>
                         </div>
                     </div><!-- end card-body -->
                 </div><!-- end card -->
@@ -248,7 +393,7 @@
                         </div>
                         <div class="pl-4">
                             <p class="card-text fs-18">Completed Courses</p>
-                            <h5 class="card-title pt-2 fs-26">6</h5>
+                            <h5 class="card-title pt-2 fs-26">{{ completed_courses }}</h5>
                         </div>
                     </div><!-- end card-body -->
                 </div><!-- end card -->
@@ -310,7 +455,7 @@
                         </div>
                         <div class="pl-4">
                             <p class="card-text fs-18">Program</p>
-                            <h5 class="card-title pt-2 fs-26">B.TECH</h5>
+                            <h5 class="card-title pt-2 fs-26">{{ details[12] }}</h5>
                         </div>
                     </div><!-- end card-body -->
                 </div><!-- end card -->
@@ -361,7 +506,7 @@
                         </div>
                         <div class="pl-4">
                             <p class="card-text fs-18">Discipline</p>
-                            <h5 class="card-title pt-2 fs-26">CSE</h5>
+                            <h5 class="card-title pt-2 fs-26">{{ details[11] }}</h5>
                         </div>
                     </div><!-- end card-body -->
                 </div><!-- end card -->
@@ -403,15 +548,20 @@
                         </div>
                         <div class="pl-4">
                             <p class="card-text fs-18">Semester </p>
-                            <h5 class="card-title pt-2 fs-26">5th</h5>
+                            <h5 class="card-title pt-2 fs-26">{{ details[9] }}th</h5>
                         </div>
                     </div><!-- end card-body -->
                 </div><!-- end card -->
             </div><!-- end col-lg-4 -->
+
+
+
+
+
             <div class="col-lg-4 responsive-column-half">
                 <div class="card card-item">
                     <div class="card-body">
-                        <h3 class="fs-18 font-weight-semi-bold pb-4">Experience </h3>
+                        <h3 class="fs-18 font-weight-semi-bold pb-4">Placement Offers </h3>
                         <canvas id="doughnut-chart"></canvas>
                         <div id="legend" class="mt-40px text-center"></div>
                     </div>
@@ -421,7 +571,27 @@
                 <div class="card card-item">
                     <div class="card-body">
                         <h3 class="fs-18 font-weight-semi-bold pb-4">Grades </h3>
-                        <canvas id="bar-chart"></canvas>
+
+                        <table class="graph">
+                            <caption>
+                              Student Year-Wise Distribution
+                            </caption>
+                            <thead>
+                              <tr>
+                                <th scope="col">Item</th>
+                                <th scope="col">Percent</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {% for items in current_grades %}
+                              <tr style="height: {{items[1]*8~'%'}}">
+                                <th scope="row">{{items[0]}}</th>
+                                <td><span>{{items[1]}}</span></td>
+                              </tr>
+                              {% endfor %}
+                            </tbody>
+                          </table>
+
                         <ul class="chart-legend mt-40px text-center">
                             <li>Grades for this semester</li>
                         </ul>
@@ -500,28 +670,12 @@
                     </div>
                 </div><!-- end card -->
             </div><!-- end col-lg-4 -->
-            <div class="col-lg-7 responsive-column-half">
-                <div class="card card-item">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center pb-4">
-                            <h3 class="fs-18 font-weight-semi-bold pb-4">Progress Statistics</h3>
-                            <div class="select-container w-auto">
-                                <select class="select-container-select">
-                                    <option value="this-week">This Week</option>
-                                    <option value="this-month">This Month</option>
-                                    <option value="last-months">Last 6 Months</option>
-                                    <option value="this-year">This Year</option>
-                                </select>
-                            </div>
-                        </div>
-                        <canvas id="line-chart"></canvas>
-                        <ul class="chart-legend mt-40px text-center">
-                            <li> Grades for this month</li>
-                        </ul>
-                    </div>
-                </div><!-- end card -->
-            </div><!-- end col-lg-7 -->
-            <div class="col-lg-5 responsive-column-half">
+            
+
+
+
+
+            <div class="col-lg-12 responsive-column-half">
                 <div class="card card-item">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center pb-4">
@@ -597,6 +751,9 @@
                 </div><!-- end card -->
             </div><!-- end col-lg-5 -->
         </div><!-- end row -->
+
+        {% endblock %}
+
         <div class="row align-items-center dashboard-copyright-content pb-4">
             <div class="col-lg-6">
                 <p class="copy-desc">&copy; 2021 IIT Indore. All Rights Reserved. by <a href="https://iiti.ac.in/">IIT
