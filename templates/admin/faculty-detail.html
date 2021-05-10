@@ -1,7 +1,12 @@
 {% extends 'admin/adminbase.html' %}
 
+{% block dashboard %}
+<li>
+	<a href="/admin/dashboard"><i class="fas fa-th-large"></i> <span>Dashboard</span></a>
+</li>
+{% endblock %}
 {% block faculty_sidebar %}
-<li class="submenu">
+<li class="submenu active">
 	<a href="#"><i class="fas fa-chalkboard-teacher"></i> <span> Faculty</span> <span class="menu-arrow"></span></a>
 	<ul>
 		<li><a href="/admin/faculty_list" class="active">Faculty List</a></li>
@@ -41,19 +46,22 @@
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Faculty ID</label>
-										<input type="text" class="form-control" name="faculty_id" value="{{ facultyDetails[0] }}" disabled>
+										<input type="text" class="form-control" name="faculty_id"
+											value="{{ facultyDetails[0] }}" disabled>
 									</div>
 								</div>
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>First Name</label>
-										<input type="text" class="form-control" name="first_name" value="{{ facultyDetails[1] }}" disabled>
+										<input type="text" class="form-control" name="first_name"
+											value="{{ facultyDetails[1] }}" disabled>
 									</div>
 								</div>
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Last Name</label>
-										<input type="text" class="form-control" name="last_name" value="{{ facultyDetails[2] }}" disabled>
+										<input type="text" class="form-control" name="last_name"
+											value="{{ facultyDetails[2] }}" disabled>
 									</div>
 								</div>
 								<div class="col-12 col-sm-6">
@@ -67,37 +75,43 @@
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Date of Birth</label>
-										<input type="date" class="form-control" name="dob" value="{{ facultyDetails[4] }}" disabled>
+										<input type="date" class="form-control" name="dob"
+											value="{{ facultyDetails[4] }}" disabled>
 									</div>
 								</div>
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Mobile</label>
-										<input type="text" class="form-control" name="phone" value="{{ facultyDetails[5] }}" disabled>
+										<input type="text" class="form-control" name="phone"
+											value="{{ facultyDetails[5] }}" disabled>
 									</div>
 								</div>
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Address</label>
-										<input class="form-control" type="text" name="address" value="{{ facultyDetails[6] }}" disabled>
+										<input class="form-control" type="text" name="address"
+											value="{{ facultyDetails[6] }}" disabled>
 									</div>
 								</div>
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Email ID</label>
-										<input type="email" class="form-control" name="email" value="{{ facultyDetails[7] }}" disabled>
+										<input type="email" class="form-control" name="email"
+											value="{{ facultyDetails[7] }}" disabled>
 									</div>
 								</div>
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Salary</label>
-										<input type="number" class="form-control" name="salary" value="{{ facultyDetails[8] }}" disabled>
+										<input type="number" class="form-control" name="salary"
+											value="{{ facultyDetails[8] }}" disabled>
 									</div>
 								</div>
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Research Interests</label>
-										<input type="text" class="form-control" name="ri" value="{{ facultyDetails[9] }}" disabled>
+										<input type="text" class="form-control" name="ri"
+											value="{{ facultyDetails[9] }}" disabled>
 									</div>
 								</div>
 								<div class="col-12 col-sm-6">

@@ -1,7 +1,12 @@
 {% extends 'admin/adminbase.html' %}
 
+{% block dashboard %}
+<li>
+	<a href="/admin/dashboard"><i class="fas fa-th-large"></i> <span>Dashboard</span></a>
+</li>
+{% endblock %}
 {% block faculty_sidebar %}
-<li class="submenu">
+<li class="submenu active">
 	<a href="#"><i class="fas fa-chalkboard-teacher"></i> <span> Faculty</span> <span class="menu-arrow"></span></a>
 	<ul>
 		<li><a href="/admin/faculty_list">Faculty List</a></li>

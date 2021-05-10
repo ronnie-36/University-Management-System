@@ -35,6 +35,40 @@ app.add_url_rule('/resetpassword/<user>', view_func=auth.resetpassword, methods=
 app.add_url_rule('/reset_password/<user>/<token>', view_func=auth.reset_token,  methods=['GET','POST'])
 # auth end
 
+
+
+# department start
+
+@app.route('/department', methods=['GET', 'POST'])
+def department():
+    return render_template('department/dashboard.html')
+
+@app.route('/department/cse', methods=['GET', 'POST'])
+def cse():
+    return render_template('department/cse.html')
+
+@app.route('/department/cse/program_offered', methods=['GET', 'POST'])
+def cse_program_offered():
+    return render_template('department/cse_program_offered.html')
+
+@app.route('/department/cse/course_offered', methods=['GET', 'POST'])
+def cse_course_offered():
+    return render_template('department/cse_course_offered.html')
+
+@app.route('/department/cse/faculty_list', methods=['GET', 'POST'])
+def cse_faculty_list():
+    return render_template('department/cse_faculty_list.html')
+    
+@app.route('/department/cse/student_list', methods=['GET', 'POST'])
+def cse_student_list():
+    return render_template('department/cse_student_list.html')
+
+@app.route('/department/instructor_profile_view', methods=['GET', 'POST'])
+def faculty_profile_view():
+    return render_template('department/my_instructor_profile_view.html')
+# department end
+
+
 # student start
 app.add_url_rule('/student/dashboard', view_func=student.student_dashboard, methods=['GET','POST'])
 app.add_url_rule('/student/setting', view_func=student.student_setting, methods=['GET','POST'])
