@@ -12,6 +12,10 @@ INSERT INTO `faculty` (`faculty_id`, `first_name`, `emailid`, `password`, `addre
 INSERT INTO `faculty` (`faculty_id`, `first_name`, `emailid`, `password`, `address`, `DOB`, salary, position) VALUES ('2', 'Rohan', 'rr@trr.com', '81dc9bdb52d04dc20036dbd8313ed055', '02-Hauz-Khas new-delhi', '1965-12-30', 85000, 'Assistant Professor');
 INSERT INTO `faculty` (`faculty_id`, `first_name`, `emailid`, `password`, `address`, `DOB`, salary, position) VALUES ('3', 'Mohan', 'sha@sh.com', '81dc9bdb52d04dc20036dbd8313ed055', '082-gandhi-marg new-delhi', '1990-12-30', 90000, 'Professor');
 INSERT INTO `faculty` (`faculty_id`, `first_name`, `emailid`, `password`, `address`, `DOB`, salary, position) VALUES ('4', 'Sohan', 'rar@trr.com', '81dc9bdb52d04dc20036dbd8313ed055', '012-Hauz-Khas new-delhi', '1975-12-07', 80000, 'Associate Professor');
+INSERT INTO `faculty` (`faculty_id`, `first_name`, `emailid`, `password`, `address`, `DOB`, salary, position) VALUES ('5', 'Soham', 'shm@trr.com', '81dc9bdb52d04dc134236dbd8313ed055', '21-ranjit-nagar new-delhi', '1995-12-07', 60000, 'Associate Professor');
+INSERT INTO `faculty` (`faculty_id`, `first_name`, `emailid`, `password`, `address`, `DOB`, salary, position) VALUES ('6', 'Ram', 'rm@trr.com', '81dc9bdb52d023424bd8313ed055', '211-dugri- new-delhi', '1976-12-07', 80000, 'Professor');
+INSERT INTO `faculty` (`faculty_id`, `first_name`, `emailid`, `password`, `address`, `DOB`, salary, position) VALUES ('7', 'Dinesh', 'dnsh@trr.com', '81dc9bdb234244dc20036dbd8313ed055', '32-old-delhi new-delhi', '1985-12-07', 85000, 'Professor');
+INSERT INTO `faculty` (`faculty_id`, `first_name`, `emailid`, `password`, `address`, `DOB`, salary, position) VALUES ('8', 'Archana', 'rch@trr.com', '81dc9bdb5223424dc20036dbd8313ed055', '221-ansal-plaze new-delhi', '1978-12-07', 65000, 'Associate Professor');
 
 INSERT INTO department (dept_id, name, budget, hod_id, contact_no) VALUES ('cse','Computer Science and Engineering',120000,'1','98765');
 INSERT INTO department (dept_id, name, budget, hod_id, contact_no) VALUES ('mech','Mechanical Engineering',120000,'2','98765');
