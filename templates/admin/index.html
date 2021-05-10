@@ -300,7 +300,7 @@
               </thead>
               <tbody>
                 {% for items in count_year %}
-                <tr style="height: {{items[1]~'0%'}}">
+                <tr style="height: {{2*items[1]~'0%'}}">
                   <th scope="row">{{items[0]}}</th>
                   <td><span>{{items[1]}}</span></td>
                 </tr>
