@@ -413,7 +413,24 @@ def admin_faculty_delete():
 
 # faculty end
 
-# department
+# department start
+def admin_department_list():
+    if 'id' not in session or 'role' not in session:
+        return render_template('error.html')
+    elif session['role'] != "admin":
+        return render_template('error.html')
+
+    cur = mysql.connection.cursor()
+    cur.execute(''' select department.dept_id, department.name, budget, faculty.first_name,faculty.last_name,
+                (SELECT count(*) FROM student where student.branch=department.dept_id) as noofstudent 
+                from department JOIN faculty WHERE department.hod_id = faculty.faculty_id; ''')
+    departments = cur.fetchall()
+    mysql.connection.commit()
+    cur.close()
+
+    return render_template('admin/department_list.html', departmentList = departments)
+
+# department end
 
 # course
 def admin_add_course():
