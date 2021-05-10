@@ -6,6 +6,7 @@ INSERT INTO program (name,duration) VALUES ('ms',2);
 INSERT INTO program (name,duration) VALUES ('phd',6);
 INSERT INTO program (name,duration) VALUES ('bsc',4);
 INSERT INTO program (name,duration) VALUES ('msc',2);
+INSERT INTO program (name,duration) VALUES ('mba',2);
 
 INSERT INTO `faculty` (`faculty_id`, `first_name`, `emailid`, `password`, `address`, `DOB`, salary, position) VALUES ('1', 'Shaan', 'sh@sh.com', '81dc9bdb52d04dc20036dbd8313ed055', '02-gandhi-marg new-delhi', '1980-12-30', 80000, 'Professor');
 INSERT INTO `faculty` (`faculty_id`, `first_name`, `emailid`, `password`, `address`, `DOB`, salary, position) VALUES ('2', 'Rohan', 'rr@trr.com', '81dc9bdb52d04dc20036dbd8313ed055', '02-Hauz-Khas new-delhi', '1965-12-30', 85000, 'Assistant Professor');
