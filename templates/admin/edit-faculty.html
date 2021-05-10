@@ -5,16 +5,13 @@
 	<a href="#"><i class="fas fa-chalkboard-teacher"></i> <span> Faculty</span> <span class="menu-arrow"></span></a>
 	<ul>
 		<li><a href="/admin/faculty_list">Faculty List</a></li>
-		<li><a href="/admin/add_faculty" class="active">Faculty Add</a></li>
-		<li><a href="/admin/faculty_list_edit">Faculty Edit</a></li>
+		<li><a href="/admin/add_faculty">Faculty Add</a></li>
+		<li><a href="/admin/faculty_list_edit" class="active">Faculty Edit</a></li>
 	</ul>
 </li>
 {% endblock %}
-<!-- /Sidebar -->
-
 
 {% block pagewrapper %}
-
 <!-- Page Wrapper -->
 <div class="page-wrapper">
 	<div class="content container-fluid">
@@ -23,10 +20,10 @@
 		<div class="page-header">
 			<div class="row align-items-center">
 				<div class="col">
-					<h3 class="page-title">Add Faculty</h3>
+					<h3 class="page-title">Edit Faculty</h3>
 					<ul class="breadcrumb">
 						<li class="breadcrumb-item"><a href="/admin/faculty_list">Faculty</a></li>
-						<li class="breadcrumb-item active">Add Faculty</li>
+						<li class="breadcrumb-item active">Edit Faculty</li>
 					</ul>
 				</div>
 			</div>
@@ -46,84 +43,90 @@
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Faculty ID</label>
-										<input type="text" class="form-control" name="faculty_id" required>
+										<input type="text" class="form-control" name="faculty_id"
+											value="{{ facultyDetails[0] }}" disabled>
 									</div>
 								</div>
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>First Name</label>
-										<input type="text" class="form-control" name="first_name" required>
+										<input type="text" class="form-control" name="first_name"
+											value="{{ facultyDetails[1] }}" required>
 									</div>
 								</div>
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Last Name</label>
-										<input type="text" class="form-control" name="last_name">
+										<input type="text" class="form-control" name="last_name"
+											value="{{ facultyDetails[2] }}">
 									</div>
 								</div>
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Gender</label>
-										<select class="form-control" name="gender" required>
-											<option value="">Select Gender</option>
-											<option>Male</option>
-											<option>Female</option>
-											<option>Others</option>
+										<select class="form-control" name="gender">
+											<option {% if facultyDetails[3]=="Male" %}selected{% endif %}>Male</option>
+											<option {% if facultyDetails[3]=="Female" %}selected{% endif %}>Female</option>
+											<option {% if facultyDetails[3]=="Others" %}selected{% endif %}>Others</option>
 										</select>
 									</div>
 								</div>
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Date of Birth</label>
-										<input type="date" class="form-control" name="dob">
+										<input type="date" class="form-control" name="dob"
+											value="{{ facultyDetails[4] }}">
 									</div>
 								</div>
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Mobile</label>
-										<input type="text" class="form-control" name="phone" minlength="10"
-											maxlength="10">
+										<input type="text" class="form-control" name="phone"
+											value="{{ facultyDetails[5] }}" minlength="10" maxlength="10" required>
 									</div>
 								</div>
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Address</label>
-										<input class="form-control" type="text" name="address">
+										<input class="form-control" type="text" name="address"
+											value="{{ facultyDetails[6] }}">
 									</div>
 								</div>
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Email ID</label>
-										<input type="email" class="form-control" name="email">
+										<input type="email" class="form-control" name="email"
+											value="{{ facultyDetails[7] }}">
 									</div>
 								</div>
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Salary</label>
-										<input type="number" class="form-control" name="salary">
+										<input type="number" class="form-control" name="salary"
+											value="{{ facultyDetails[8] }}">
 									</div>
 								</div>
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Research Interests</label>
-										<input type="text" class="form-control" name="ri">
+										<input type="text" class="form-control" name="ri"
+											value="{{ facultyDetails[9] }}">
 									</div>
 								</div>
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Position</label>
-										<select name="position" class="form-control" required>
-											<option value="">Select Position</option>
-											<option value="Professor">
+										<select name="position" class="form-control">
+											<option value="Professor" {% if facultyDetails[10]=="Professor" %}selected{% endif %}>
 												Professor
 											</option>
-											<option value="Associate Professor">
+											<option value="Associate Professor" {% if facultyDetails[10]=="Associate Professor" %}selected{% endif %}>
 												Associate Professor
 											</option>
-											<option value="Assistant Professor">
+											<option value="Assistant Professor" {% if facultyDetails[10]=="Assistant Professor" %}selected{% endif %}>
 												Assistant Professor
 											</option>
-											<option value="Visting Professor">
+											<option value="Visting Professor" {% if facultyDetails[10]=="Visting Professor" %}selected{% endif %}>
 												Visting Professor
 											</option>
 										</select>
@@ -135,14 +138,13 @@
 										<select name="department" class="form-control" required>
 											<option value="">Select Department</option>
 											{% for dept in deptList %}
-											<option value="{{ dept[0] }}">
+											<option value="{{ dept[0] }}" {% if dept[0] == department[0] %}selected{% endif %}>
 												{{ dept[1] }}
 											</option>
 											{% endfor %}
 										</select>
 									</div>
 								</div>
-
 								<div class="col-12">
 									<button type="submit" class="btn btn-primary">Submit</button>
 								</div>

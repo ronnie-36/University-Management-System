@@ -33,7 +33,8 @@
 
     {% block style %}
     {% endblock %}
-
+    {% block additionalscript %}
+    {% endblock %}
     {% endblock %}
 </head>
 
@@ -198,7 +199,7 @@
                             <ul>
                                 <li><a href="/admin/faculty_list">Faculty List</a></li>
                                 <li><a href="/admin/add_faculty">Faculty Add</a></li>
-                                <li><a href="edit-teacher.html">Faculty Edit</a></li>
+                                <li><a href="/admin/faculty_list_edit">Faculty Edit</a></li>
                             </ul>
                         </li>
                         {% endblock %}

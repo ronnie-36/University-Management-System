@@ -67,6 +67,10 @@ app.add_url_rule('/admin/modal_update', view_func=admin.admin_modal_update, meth
 # admin faculty start 
 app.add_url_rule('/admin/add_faculty', view_func=admin.admin_add_faculty, methods=['GET','POST'])
 app.add_url_rule('/admin/faculty_list', view_func=admin.admin_faculty_list, methods=['GET','POST'])
+app.add_url_rule('/admin/faculty_view/<faculty_id>', view_func=admin.admin_faculty_view, methods=['GET','POST'])
+app.add_url_rule('/admin/faculty_list_edit', view_func=admin.admin_faculty_list_edit, methods=['GET','POST'])
+app.add_url_rule('/admin/edit-faculty/<faculty_id>', view_func=admin.admin_faculty_edit, methods=['GET','POST'])
+app.add_url_rule('/admin/delete-faculty', view_func=admin.admin_faculty_delete, methods=['GET','POST'])
 # admin faculty end
 
 app.add_url_rule('/admin/add_course', view_func=admin.admin_add_course, methods=['GET','POST'])
