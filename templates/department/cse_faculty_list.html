@@ -1,0 +1,566 @@
+{% extends 'department/departmentbase.html' %}
+
+<!-- Sidebar -->
+{% block sidebar %}
+<nav class="vertical_nav">
+    <div class="left_section menu_left" id="js-menu">
+        <div class="left_section">
+            <ul>
+                <li class="menu--item">
+                    <a href="/department" class="menu--link" title="Home">
+                        <i class='uil uil-home-alt menu--icon'></i>
+                        <span class="menu--label">Home</span>
+                    </a>
+                </li>
+                <li class="menu--item">
+                    <a href="live_streams.html" class="menu--link" title="Live Streams">
+                        <i class='uil uil-kayak menu--icon'></i>
+                        <span class="menu--label">Student List</span>
+                    </a>
+                </li>
+
+                <li class="menu--item  menu--item__has_sub_menu ">
+                    <label class="menu--link active" title="Tests">
+                        <i class='uil uil-clipboard-alt menu--icon'></i>
+                        <span class="menu--label active">Computer Science</span>
+                    </label>
+                    <ul class="sub_menu">
+                        <li class="sub_menu--item">
+                            <a href="/department/cse/student_list" class="sub_menu--link ">Students List</a>
+                        </li>
+                        <li class="sub_menu--item">
+                            <a href="/department/cse/faculty_list" class="sub_menu--link active">Faculty List</a>
+                        </li>
+                        <li class="sub_menu--item">
+                            <a href="/department/cse/course_offered" class="sub_menu--link">Course Offered</a>
+                        </li>
+                        <li class="sub_menu--item">
+                            <a href="/department/cse/program_offered" class="sub_menu--link">Programm Offered</a>
+                        </li>
+
+                    </ul>
+                </li>
+
+                <li class="menu--item  menu--item__has_sub_menu">
+                    <label class="menu--link " title="Pages">
+                        <i class='uil uil-file menu--icon'></i>
+                        <span class="menu--label">Electrical</span>
+                    </label>
+                    <ul class="sub_menu">
+                        <li class="sub_menu--item">
+                            <a href="/department/ee/student_list" class="sub_menu--link">Students List</a>
+                        </li>
+                        <li class="sub_menu--item">
+                            <a href="/department/ee/faculty_list" class="sub_menu--link">Faculty List</a>
+                        </li>
+                        <li class="sub_menu--item">
+                            <a href="/department/ee/course_offered" class="sub_menu--link">Course Offered</a>
+                        </li>
+                        <li class="sub_menu--item">
+                            <a href="/department/ee/program_offered" class="sub_menu--link">Programm Offered</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li class="menu--item  menu--item__has_sub_menu">
+                    <label class="menu--link" title="Tests">
+                        <i class='uil uil-clipboard-alt menu--icon'></i>
+                        <span class="menu--label">Mechanical</span>
+                    </label>
+                    <ul class="sub_menu">
+                        <li class="sub_menu--item">
+                            <a href="/department/mech/student_list" class="sub_menu--link">Students List</a>
+                        </li>
+                        <li class="sub_menu--item">
+                            <a href="/department/mech/faculty_list" class="sub_menu--link">Faculty List</a>
+                        </li>
+                        <li class="sub_menu--item">
+                            <a href="/department/mech/course_offered" class="sub_menu--link">Course Offered</a>
+                        </li>
+                        <li class="sub_menu--item">
+                            <a href="/department/mech/program_offered" class="sub_menu--link">Programm Offered</a>
+                        </li>
+
+                    </ul>
+                </li>
+
+                <li class="menu--item  menu--item__has_sub_menu">
+                    <label class="menu--link" title="Pages">
+                        <i class='uil uil-file menu--icon'></i>
+                        <span class="menu--label">Civil</span>
+                    </label>
+                    <ul class="sub_menu">
+                        <li class="sub_menu--item">
+                            <a href="/department/civil/student_list" class="sub_menu--link">Students List</a>
+                        </li>
+                        <li class="sub_menu--item">
+                            <a href="/department/civil/faculty_list" class="sub_menu--link">Faculty List</a>
+                        </li>
+                        <li class="sub_menu--item">
+                            <a href="/department/civil/course_offered" class="sub_menu--link">Course Offered</a>
+                        </li>
+                        <li class="sub_menu--item">
+                            <a href="/department/civil/program_offered" class="sub_menu--link">Programm Offered</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li class="menu--item  menu--item__has_sub_menu">
+                    <label class="menu--link" title="Pages">
+                        <i class='uil uil-clipboard-alt menu--icon'></i>
+                        <span class="menu--label">MEMS</span>
+                    </label>
+                    <ul class="sub_menu">
+                        <li class="sub_menu--item">
+                            <a href="/department/mems/student_list" class="sub_menu--link">Students List</a>
+                        </li>
+                        <li class="sub_menu--item">
+                            <a href="/department/mems/faculty_list" class="sub_menu--link">Faculty List</a>
+                        </li>
+                        <li class="sub_menu--item">
+                            <a href="/department/mems/course_offered" class="sub_menu--link">Course Offered</a>
+                        </li>
+                        <li class="sub_menu--item">
+                            <a href="/department/mems/program_offered" class="sub_menu--link">Programm Offered</a>
+                        </li>
+
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="left_section">
+            <ul>
+                <li class="menu--item">
+                    <a href="all_instructor.html" class="menu--link active" title="Browse Instructors">
+                        <i class='uil uil-plus-circle menu--icon'></i>
+                        <span class="menu--label">Browse Instructors</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</nav>
+{% endblock %}
+<!-- /Sidebar -->
+
+<!-- Page Wrapper -->
+{% block wrapper %}
+<div class="wrapper">
+    <div class="sa4d25">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-12 col-lg-8">
+                    <div class="section3125">
+                        <div class="explore_search">
+                            <div class="ui search focus">
+                                <div class="ui left icon input swdh11">
+                                    <input class="prompt srch_explore" type="text" placeholder="Search Faculty...">
+                                    <i class="uil uil-search-alt icon icon2"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="_14d25">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-4">
+                                <div class="fcrse_1 mt-30">
+                                    <div class="tutor_img">
+                                        <a href="/department/instructor_profile_view"><img
+                                                src="../../static/assets/faculty_assets/images/left-imgs/img-1.jpg"
+                                                alt=""></a>
+                                    </div>
+                                    <div class="tutor_content_dt">
+                                        <div class="tutor150">
+                                            <a href="/department/instructor_profile_view" class="tutor_name">John
+                                                Doe</a>
+                                            <div class="mef78" title="Verify">
+                                                <i class="uil uil-check-circle"></i>
+                                            </div>
+                                        </div>
+                                        <div class="tutor_cate">Wordpress &amp; Plugin Tutor</div>
+                                        <ul class="tutor_social_links">
+                                            <li><a href="#" class="fb"><i class="fab fa-facebook-f"></i></a></li>
+                                            <li><a href="#" class="tw"><i class="fab fa-twitter"></i></a></li>
+                                            <li><a href="#" class="ln"><i class="fab fa-linkedin-in"></i></a></li>
+                                            <li><a href="#" class="yu"><i class="fab fa-youtube"></i></a></li>
+                                        </ul>
+                                        <div class="tut1250">
+                                            <span class="vdt15">100K Students</span>
+                                            <span class="vdt15">15 Courses</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4">
+                                <div class="fcrse_1 mt-30">
+                                    <div class="tutor_img">
+                                        <a href="/department/instructor_profile_view"><img
+                                                src="../../static/assets/faculty_assets/images/left-imgs/img-2.jpg"
+                                                alt=""></a>
+                                    </div>
+                                    <div class="tutor_content_dt">
+                                        <div class="tutor150">
+                                            <a href="/department/instructor_profile_view" class="tutor_name">Kerstin
+                                                Cable</a>
+                                            <div class="mef78" title="Verify">
+                                                <i class="uil uil-check-circle"></i>
+                                            </div>
+                                        </div>
+                                        <div class="tutor_cate">Language Learning Coach, Writer, Online Tutor</div>
+                                        <ul class="tutor_social_links">
+                                            <li><a href="#" class="fb"><i class="fab fa-facebook-f"></i></a></li>
+                                            <li><a href="#" class="tw"><i class="fab fa-twitter"></i></a></li>
+                                            <li><a href="#" class="ln"><i class="fab fa-linkedin-in"></i></a></li>
+                                            <li><a href="#" class="yu"><i class="fab fa-youtube"></i></a></li>
+                                        </ul>
+                                        <div class="tut1250">
+                                            <span class="vdt15">14K Students</span>
+                                            <span class="vdt15">11 Courses</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4">
+                                <div class="fcrse_1 mt-30">
+                                    <div class="tutor_img">
+                                        <a href="/department/instructor_profile_view"><img
+                                                src="../../static/assets/faculty_assets/images/left-imgs/img-3.jpg"
+                                                alt=""></a>
+                                    </div>
+                                    <div class="tutor_content_dt">
+                                        <div class="tutor150">
+                                            <a href="/department/instructor_profile_view" class="tutor_name">Jose
+                                                Portilla</a>
+                                            <div class="mef78" title="Verify">
+                                                <i class="uil uil-check-circle"></i>
+                                            </div>
+                                        </div>
+                                        <div class="tutor_cate">Head of Data Science, Pierian Data Inc.</div>
+                                        <ul class="tutor_social_links">
+                                            <li><a href="#" class="fb"><i class="fab fa-facebook-f"></i></a></li>
+                                            <li><a href="#" class="tw"><i class="fab fa-twitter"></i></a></li>
+                                            <li><a href="#" class="ln"><i class="fab fa-linkedin-in"></i></a></li>
+                                            <li><a href="#" class="yu"><i class="fab fa-youtube"></i></a></li>
+                                        </ul>
+                                        <div class="tut1250">
+                                            <span class="vdt15">1M Students</span>
+                                            <span class="vdt15">25 Courses</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4">
+                                <div class="fcrse_1 mt-30">
+                                    <div class="tutor_img">
+                                        <a href="/department/instructor_profile_view"><img
+                                                src="../../static/assets/faculty_assets/images/left-imgs/img-3.jpg"
+                                                alt=""></a>
+                                    </div>
+                                    <div class="tutor_content_dt">
+                                        <div class="tutor150">
+                                            <a href="#" class="tutor_name">Jose Portilla</a>
+                                            <div class="mef78" title="Verify">
+                                                <i class="uil uil-check-circle"></i>
+                                            </div>
+                                        </div>
+                                        <div class="tutor_cate">Head of Data Science, Pierian Data Inc.</div>
+                                        <ul class="tutor_social_links">
+                                            <li><a href="#" class="fb"><i class="fab fa-facebook-f"></i></a></li>
+                                            <li><a href="#" class="tw"><i class="fab fa-twitter"></i></a></li>
+                                            <li><a href="#" class="ln"><i class="fab fa-linkedin-in"></i></a></li>
+                                            <li><a href="#" class="yu"><i class="fab fa-youtube"></i></a></li>
+                                        </ul>
+                                        <div class="tut1250">
+                                            <span class="vdt15">1M Students</span>
+                                            <span class="vdt15">25 Courses</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4">
+                                <div class="fcrse_1 mt-30">
+                                    <div class="tutor_img">
+                                        <a href="/department/instructor_profile_view"><img
+                                                src="../../static/assets/faculty_assets/images/left-imgs/img-5.jpg"
+                                                alt=""></a>
+                                    </div>
+                                    <div class="tutor_content_dt">
+                                        <div class="tutor150">
+                                            <a href="/department/instructor_profile_view" class="tutor_name">Kyle
+                                                Pew</a>
+                                            <div class="mef78" title="Verify">
+                                                <i class="uil uil-check-circle"></i>
+                                            </div>
+                                        </div>
+                                        <div class="tutor_cate">Microsoft Certified Trainer - 380,000+ Udemy
+                                            Students</div>
+                                        <ul class="tutor_social_links">
+                                            <li><a href="#" class="fb"><i class="fab fa-facebook-f"></i></a></li>
+                                            <li><a href="#" class="tw"><i class="fab fa-twitter"></i></a></li>
+                                            <li><a href="#" class="ln"><i class="fab fa-linkedin-in"></i></a></li>
+                                            <li><a href="#" class="yu"><i class="fab fa-youtube"></i></a></li>
+                                        </ul>
+                                        <div class="tut1250">
+                                            <span class="vdt15">300K Students</span>
+                                            <span class="vdt15">18 Courses</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4">
+                                <div class="fcrse_1 mt-30">
+                                    <div class="tutor_img">
+                                        <a href="/department/instructor_profile_view"><img
+                                                src="../../static/assets/faculty_assets/images/left-imgs/img-7.jpg"
+                                                alt=""></a>
+                                    </div>
+                                    <div class="tutor_content_dt">
+                                        <div class="tutor150">
+                                            <a href="/department/instructor_profile_view" class="tutor_name">Jaysen
+                                                Batchelor</a>
+                                            <div class="mef78" title="Verify">
+                                                <i class="uil uil-check-circle"></i>
+                                            </div>
+                                        </div>
+                                        <div class="tutor_cate">Illustrator &amp; Designer</div>
+                                        <ul class="tutor_social_links">
+                                            <li><a href="#" class="fb"><i class="fab fa-facebook-f"></i></a></li>
+                                            <li><a href="#" class="tw"><i class="fab fa-twitter"></i></a></li>
+                                            <li><a href="#" class="ln"><i class="fab fa-linkedin-in"></i></a></li>
+                                            <li><a href="#" class="yu"><i class="fab fa-youtube"></i></a></li>
+                                        </ul>
+                                        <div class="tut1250">
+                                            <span class="vdt15">491K Students</span>
+                                            <span class="vdt15">13 Courses</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4">
+                                <div class="fcrse_1 mt-30">
+                                    <div class="tutor_img">
+                                        <a href="/department/instructor_profile_view"><img
+                                                src="../../static/assets/faculty_assets/images/left-imgs/img-8.jpg"
+                                                alt=""></a>
+                                    </div>
+                                    <div class="tutor_content_dt">
+                                        <div class="tutor150">
+                                            <a href="/department/instructor_profile_view" class="tutor_name">Quinton
+                                                Batchelor</a>
+                                            <div class="mef78" title="Verify">
+                                                <i class="uil uil-check-circle"></i>
+                                            </div>
+                                        </div>
+                                        <div class="tutor_cate">Photographer &amp; Instructor</div>
+                                        <ul class="tutor_social_links">
+                                            <li><a href="#" class="fb"><i class="fab fa-facebook-f"></i></a></li>
+                                            <li><a href="#" class="tw"><i class="fab fa-twitter"></i></a></li>
+                                            <li><a href="#" class="ln"><i class="fab fa-linkedin-in"></i></a></li>
+                                            <li><a href="#" class="yu"><i class="fab fa-youtube"></i></a></li>
+                                        </ul>
+                                        <div class="tut1250">
+                                            <span class="vdt15">364K Students</span>
+                                            <span class="vdt15">6 Courses</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4">
+                                <div class="fcrse_1 mt-30">
+                                    <div class="tutor_img">
+                                        <a href="/department/instructor_profile_view"><img
+                                                src="../../static/assets/faculty_assets/images/left-imgs/img-10.jpg"
+                                                alt=""></a>
+                                    </div>
+                                    <div class="tutor_content_dt">
+                                        <div class="tutor150">
+                                            <a href="/department/instructor_profile_view" class="tutor_name">Eli
+                                                Natoli</a>
+                                            <div class="mef78" title="Verify">
+                                                <i class="uil uil-check-circle"></i>
+                                            </div>
+                                        </div>
+                                        <div class="tutor_cate">Entrepreneur - Passionate Teacher</div>
+                                        <ul class="tutor_social_links">
+                                            <li><a href="#" class="fb"><i class="fab fa-facebook-f"></i></a></li>
+                                            <li><a href="#" class="tw"><i class="fab fa-twitter"></i></a></li>
+                                            <li><a href="#" class="ln"><i class="fab fa-linkedin-in"></i></a></li>
+                                            <li><a href="#" class="yu"><i class="fab fa-youtube"></i></a></li>
+                                        </ul>
+                                        <div class="tut1250">
+                                            <span class="vdt15">115K Students</span>
+                                            <span class="vdt15">8 Courses</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4">
+                                <div class="fcrse_1 mt-30">
+                                    <div class="tutor_img">
+                                        <a href="/department/instructor_profile_view"><img
+                                                src="../../static/assets/faculty_assets/images/left-imgs/img-11.jpg"
+                                                alt=""></a>
+                                    </div>
+                                    <div class="tutor_content_dt">
+                                        <div class="tutor150">
+                                            <a href="/department/instructor_profile_view" class="tutor_name">Sunny
+                                                William</a>
+                                            <div class="mef78" title="Verify">
+                                                <i class="uil uil-check-circle"></i>
+                                            </div>
+                                        </div>
+                                        <div class="tutor_cate">Entrepreneur - Passionate Teacher</div>
+                                        <ul class="tutor_social_links">
+                                            <li><a href="#" class="fb"><i class="fab fa-facebook-f"></i></a></li>
+                                            <li><a href="#" class="tw"><i class="fab fa-twitter"></i></a></li>
+                                            <li><a href="#" class="ln"><i class="fab fa-linkedin-in"></i></a></li>
+                                            <li><a href="#" class="yu"><i class="fab fa-youtube"></i></a></li>
+                                        </ul>
+                                        <div class="tut1250">
+                                            <span class="vdt15">615K Students</span>
+                                            <span class="vdt15">12 Courses</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4">
+                                <div class="fcrse_1 mt-30">
+                                    <div class="tutor_img">
+                                        <a href="/department/instructor_profile_view"><img
+                                                src="../../static/assets/faculty_assets/images/left-imgs/img-12.jpg"
+                                                alt=""></a>
+                                    </div>
+                                    <div class="tutor_content_dt">
+                                        <div class="tutor150">
+                                            <a href="/department/instructor_profile_view" class="tutor_name">Neha
+                                                Smith</a>
+                                            <div class="mef78" title="Verify">
+                                                <i class="uil uil-check-circle"></i>
+                                            </div>
+                                        </div>
+                                        <div class="tutor_cate">English Teacher</div>
+                                        <ul class="tutor_social_links">
+                                            <li><a href="#" class="fb"><i class="fab fa-facebook-f"></i></a></li>
+                                            <li><a href="#" class="tw"><i class="fab fa-twitter"></i></a></li>
+                                            <li><a href="#" class="ln"><i class="fab fa-linkedin-in"></i></a></li>
+                                            <li><a href="#" class="yu"><i class="fab fa-youtube"></i></a></li>
+                                        </ul>
+                                        <div class="tut1250">
+                                            <span class="vdt15">15K Students</span>
+                                            <span class="vdt15">5 Courses</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4">
+                                <div class="fcrse_1 mt-30">
+                                    <div class="tutor_img">
+                                        <a href="/department/instructor_profile_view"><img
+                                                src="../../static/assets/faculty_assets/images/left-imgs/img-13.jpg"
+                                                alt=""></a>
+                                    </div>
+                                    <div class="tutor_content_dt">
+                                        <div class="tutor150">
+                                            <a href="/department/instructor_profile_view" class="tutor_name">Sukhwinder
+                                                Singh</a>
+                                            <div class="mef78" title="Verify">
+                                                <i class="uil uil-check-circle"></i>
+                                            </div>
+                                        </div>
+                                        <div class="tutor_cate">Web Development</div>
+                                        <ul class="tutor_social_links">
+                                            <li><a href="#" class="fb"><i class="fab fa-facebook-f"></i></a></li>
+                                            <li><a href="#" class="tw"><i class="fab fa-twitter"></i></a></li>
+                                            <li><a href="#" class="ln"><i class="fab fa-linkedin-in"></i></a></li>
+                                            <li><a href="#" class="yu"><i class="fab fa-youtube"></i></a></li>
+                                        </ul>
+                                        <div class="tut1250">
+                                            <span class="vdt15">215K Students</span>
+                                            <span class="vdt15">15 Courses</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4">
+                                <div class="fcrse_1 mt-30">
+                                    <div class="tutor_img">
+                                        <a href="/department/instructor_profile_view"><img
+                                                src="../../static/assets/faculty_assets/images/left-imgs/img-14.jpg"
+                                                alt=""></a>
+                                    </div>
+                                    <div class="tutor_content_dt">
+                                        <div class="tutor150">
+                                            <a href="/department/instructor_profile_view" class="tutor_name">Saloni
+                                                Prabhakar</a>
+                                            <div class="mef78" title="Verify">
+                                                <i class="uil uil-check-circle"></i>
+                                            </div>
+                                        </div>
+                                        <div class="tutor_cate">Photographer</div>
+                                        <ul class="tutor_social_links">
+                                            <li><a href="#" class="fb"><i class="fab fa-facebook-f"></i></a></li>
+                                            <li><a href="#" class="tw"><i class="fab fa-twitter"></i></a></li>
+                                            <li><a href="#" class="ln"><i class="fab fa-linkedin-in"></i></a></li>
+                                            <li><a href="#" class="yu"><i class="fab fa-youtube"></i></a></li>
+                                        </ul>
+                                        <div class="tut1250">
+                                            <span class="vdt15">10K Students</span>
+                                            <span class="vdt15">3 Courses</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="main-loader mt-50">
+                                    <div class="spinner">
+                                        <div class="bounce1"></div>
+                                        <div class="bounce2"></div>
+                                        <div class="bounce3"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer mt-30">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 my-2">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="fotb_left">
+                                <li>
+                                    <a href="/department">
+                                        <div class="footer_logo">
+                                            <img src="../../static/assets/faculty_assets/images/logo1.svg" alt="">
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <p>© 2021 <strong>IIT Indore</strong>. All Rights Reserved.</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="edu_social_links">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+{% endblock %}
+<!-- /Page Wrapper -->

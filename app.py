@@ -58,6 +58,10 @@ def cse_faculty_list():
 @app.route('/department/cse/student_list', methods=['GET', 'POST'])
 def cse_student_list():
     return render_template('department/cse_student_list.html')
+
+@app.route('/department/instructor_profile_view', methods=['GET', 'POST'])
+def faculty_profile_view():
+    return render_template('department/my_instructor_profile_view.html')
 # department end
 
 
