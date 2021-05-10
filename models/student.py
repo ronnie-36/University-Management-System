@@ -15,7 +15,11 @@ def debug():
     print('!!!!!!!!!!!!!!!!!!\n\n\n\n\n\n\n\n\n\n\n\n\n\n!!!!!!!!!!!!!!!')
 
 
-
+# cur = mysql.connection.cursor()
+# cur.execute(''' select * from student; ''')
+# rv = cur.fetchall()
+# mysql.connection.commit()
+# cur.close()
 
 
 def student_dashboard():
@@ -238,3 +242,82 @@ def student_submit_course():
         return render_template('error.html')
         
     return render_template('student_panel/dashboard-submit-assignment.html')
+
+def student_grades():
+    if 'id' not in session or 'role' not in session:
+        return render_template('error.html')
+    elif session['role'] != "student":
+        return render_template('error.html')
+    
+    cur = mysql.connection.cursor()
+    cur.execute('''
+    select 
+	section.sec_id, course.name, section.sem, course.credits, course.hours, student.sem, enroll.grade
+    from
+        student
+            join
+        enroll
+			join
+		section
+			join
+        course
+    where
+    section.c_id = course.c_id and
+    student.student_id = enroll.student_id and
+    enroll.sec_id = section.sec_id and
+    student.sem = section.sem and
+    student.student_id = '%s';'''%(session['id']))
+    rv = cur.fetchall()
+    mysql.connection.commit()
+    cur.close()
+
+    return render_template('student_panel/dashboard-grades.html')
+
+def student_gradesheet():
+    if 'id' not in session or 'role' not in session:
+        return render_template('error.html')
+    elif session['role'] != "student":
+        return render_template('error.html')
+    
+    if request.method == 'POST':
+        sem = request.form['sem']
+        cur = mysql.connection.cursor()
+        cur.execute('''
+        select 
+                student.student_id, section.sec_id, course.name, student.sem, final_grade.grades,
+                course.credits, course.credits*final_grade.grades/10 as credits_obtained  
+        from
+            enroll
+                join
+            student
+                join
+            section
+                join
+            course
+                join
+            final_grade
+        where
+            student.student_id = enroll.student_id and 
+            enroll.sec_id = section.sec_id and
+            section.c_id = course.c_id and
+            final_grade.c_id = course.c_id and
+            student.sem = section.sem and
+            final_grade.student_id = student.student_id and
+            student.student_id = '%s' and 
+            student.sem = '%s';'''%(session['id'], sem))
+        rv = cur.fetchall()
+        print(rv)
+        debug()
+        mysql.connection.commit()
+        cur.close()
+        return render_template('student_panel/dashboard-gradesheet.html', list = rv)
+
+
+    cur = mysql.connection.cursor()
+    cur.execute(''' select * from student where student_id = '%s'; '''%(session['id']))
+    rv = cur.fetchall()
+    mysql.connection.commit()
+    cur.close()
+
+    return render_template('student_panel/dashboard-gradesheet.html', list = [])
+
