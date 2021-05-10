@@ -1,19 +1,18 @@
 {% extends 'admin/adminbase.html' %}
 {% block dashboard %}
 <li>
-		<a href="/admin/dashboard"><i class="fas fa-th-large"></i> <span>Dashboard</span></a>
+	<a href="/admin/dashboard"><i class="fas fa-th-large"></i> <span>Dashboard</span></a>
 </li>
 {% endblock %}
 {% block student_sidebar %}
-				<li class="submenu">
-					<a href="#"><i class="fas fa-user-graduate"></i> <span> Students</span> <span
-							class="menu-arrow"></span></a>
-					<ul>
-						<li><a href="/admin/student_list">Student List</a></li>
-						<li><a href="/admin/add_student" class="active">Student Add</a></li>
-						<li><a href="/admin/student_list_edit">Student Edit</a></li>
-					</ul>
-				</li>
+<li class="submenu active">
+	<a href="#"><i class="fas fa-user-graduate"></i> <span> Students</span> <span class="menu-arrow"></span></a>
+	<ul>
+		<li><a href="/admin/student_list">Student List</a></li>
+		<li><a href="/admin/add_student" class="active">Student Add</a></li>
+		<li><a href="/admin/student_list_edit">Student Edit</a></li>
+	</ul>
+</li>
 {% endblock %}
 <!-- /Sidebar -->
 
