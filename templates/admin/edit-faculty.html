@@ -1,7 +1,12 @@
 {% extends 'admin/adminbase.html' %}
 
+{% block dashboard %}
+<li>
+	<a href="/admin/dashboard"><i class="fas fa-th-large"></i> <span>Dashboard</span></a>
+</li>
+{% endblock %}
 {% block faculty_sidebar %}
-<li class="submenu">
+<li class="submenu active">
 	<a href="#"><i class="fas fa-chalkboard-teacher"></i> <span> Faculty</span> <span class="menu-arrow"></span></a>
 	<ul>
 		<li><a href="/admin/faculty_list">Faculty List</a></li>
@@ -66,8 +71,10 @@
 										<label>Gender</label>
 										<select class="form-control" name="gender">
 											<option {% if facultyDetails[3]=="Male" %}selected{% endif %}>Male</option>
-											<option {% if facultyDetails[3]=="Female" %}selected{% endif %}>Female</option>
-											<option {% if facultyDetails[3]=="Others" %}selected{% endif %}>Others</option>
+											<option {% if facultyDetails[3]=="Female" %}selected{% endif %}>Female
+											</option>
+											<option {% if facultyDetails[3]=="Others" %}selected{% endif %}>Others
+											</option>
 										</select>
 									</div>
 								</div>
@@ -117,16 +124,20 @@
 									<div class="form-group">
 										<label>Position</label>
 										<select name="position" class="form-control">
-											<option value="Professor" {% if facultyDetails[10]=="Professor" %}selected{% endif %}>
+											<option value="Professor" {% if facultyDetails[10]=="Professor" %}selected{%
+												endif %}>
 												Professor
 											</option>
-											<option value="Associate Professor" {% if facultyDetails[10]=="Associate Professor" %}selected{% endif %}>
+											<option value="Associate Professor" {% if
+												facultyDetails[10]=="Associate Professor" %}selected{% endif %}>
 												Associate Professor
 											</option>
-											<option value="Assistant Professor" {% if facultyDetails[10]=="Assistant Professor" %}selected{% endif %}>
+											<option value="Assistant Professor" {% if
+												facultyDetails[10]=="Assistant Professor" %}selected{% endif %}>
 												Assistant Professor
 											</option>
-											<option value="Visting Professor" {% if facultyDetails[10]=="Visting Professor" %}selected{% endif %}>
+											<option value="Visting Professor" {% if
+												facultyDetails[10]=="Visting Professor" %}selected{% endif %}>
 												Visting Professor
 											</option>
 										</select>
@@ -138,7 +149,8 @@
 										<select name="department" class="form-control" required>
 											<option value="">Select Department</option>
 											{% for dept in deptList %}
-											<option value="{{ dept[0] }}" {% if dept[0] == department[0] %}selected{% endif %}>
+											<option value="{{ dept[0] }}" {% if dept[0]==department[0] %}selected{%
+												endif %}>
 												{{ dept[1] }}
 											</option>
 											{% endfor %}

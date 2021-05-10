@@ -1,19 +1,18 @@
 {% extends 'admin/adminbase.html' %}
 {% block dashboard %}
 <li>
-		<a href="/admin/dashboard"><i class="fas fa-th-large"></i> <span>Dashboard</span></a>
+	<a href="/admin/dashboard"><i class="fas fa-th-large"></i> <span>Dashboard</span></a>
 </li>
 {% endblock %}
 {% block course_sidebar %}
-<li class="submenu">
-		<a href="#"><i class="fas fa-book-reader"></i> <span> Courses</span> <span
-						class="menu-arrow"></span></a>
-		<ul>
-				<li><a href="/admin/course_list" class="active">Course List</a></li>
-				<li><a href="/admin/add_course">Course Add</a></li>
-				<li><a href="/admin/course_sem_assign">Course Edit</a></li>
-				<li><a href="/admin/course_student_assign">Course Assign</a></li>
-		</ul>
+<li class="submenu active">
+	<a href="#"><i class="fas fa-book-reader"></i> <span> Courses</span> <span class="menu-arrow"></span></a>
+	<ul>
+		<li><a href="/admin/course_list">Course List</a></li>
+		<li><a href="/admin/add_course">Course Add</a></li>
+		<li><a href="/admin/course_sem_assign" class="active">Course Edit</a></li>
+		<li><a href="/admin/course_student_assign">Course Assign</a></li>
+	</ul>
 </li>
 {% endblock %}
 {% block pagewrapper %}
@@ -48,7 +47,8 @@
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Course ID</label>
-										<input type="text" class="form-control" name="c_id" value="{{list[0]}}" disabled>
+										<input type="text" class="form-control" name="c_id" value="{{list[0]}}"
+											disabled>
 									</div>
 								</div>
 								<div class="col-12 col-sm-6">
@@ -63,29 +63,31 @@
 										<input type="text" class="form-control" name="sem">
 									</div>
 								</div> -->
-                <div class="col-12 col-sm-6">
+								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Credits</label>
-										<input type="number" class="form-control" step="0.5" name="credits" value="{{list[5]}}">
+										<input type="number" class="form-control" step="0.5" name="credits"
+											value="{{list[5]}}">
 									</div>
 								</div>
-                <div class="col-12 col-sm-6">
+								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Description</label>
 										<input type="text" class="form-control" name="description" value="{{list[2]}}">
 									</div>
 								</div>
-                <div class="col-12 col-sm-6">
+								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Syllabus</label>
 										<input type="text" class="form-control" name="syllabus" value="{{list[3]}}">
 									</div>
-                  <div class="col-12 col-sm-6">
-                    <div class="form-group">
-                      <label>Start Year</label>
-                      <input type="text" class="form-control" name="date" value="{{list[4]}}" disabled>
-                    </div>
-                  </div>
+									<div class="col-12 col-sm-6">
+										<div class="form-group">
+											<label>Start Year</label>
+											<input type="text" class="form-control" name="date" value="{{list[4]}}"
+												disabled>
+										</div>
+									</div>
 								</div>
 								<div class="col-12">
 									<button type="submit" class="btn btn-primary">Submit</button>

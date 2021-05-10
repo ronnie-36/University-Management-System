@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% block head %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>UMS - Department Dashboard</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image"
+        href="{{ url_for('static',filename='assets/admin_assets/img/favicon.ico') }}">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,500" rel='stylesheet'>
+
+    <link rel="stylesheet" type="text/css"
+        href="{{ url_for('static',filename='assets/faculty_assets/vendor/unicons-2.0.1/css/unicons.css') }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ url_for('static',filename='assets/faculty_assets/css/vertical-responsive-menu.min.css') }}">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" type="text/css"
+        href="{{ url_for('static',filename='assets/faculty_assets/css/style.css') }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ url_for('static',filename='assets/faculty_assets/css/responsive.css') }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ url_for('static',filename='assets/faculty_assets/css/night-mode.css') }}">
+
+    <!-- Other CSS -->
+    <link rel="stylesheet" type="text/css"
+        href="{{ url_for('static',filename='assets/faculty_assets/vendor/fontawesome-free/css/all.min.css') }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ url_for('static',filename='assets/faculty_assets/vendor/OwlCarousel/assets/owl.carousel.css') }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ url_for('static',filename='assets/faculty_assets/vendor/OwlCarousel/assets/owl.theme.default.min.csss') }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ url_for('static',filename='assets/faculty_assets/vendor/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ url_for('static',filename='assets/faculty_assets/vendor/semantic/semantic.min.css') }}">
+
+
+    {% block style %}
+    {% endblock %}
+
+    {% endblock %}
+</head>
+
+<body>
+    <!--========== SCROLL TOP ==========-->
+    <a href="#" class="scrolltop" id="scroll-top">
+        <i class="uil uil-arrow-up"></i>
+    </a>
+
+    {% block body %}
+
+    <!-- Navbar Area -->
+    {% block nav %}
+    <header class="header clearfix">
+        <button type="button" id="toggleMenu" class="toggle_menu">
+            <i class='uil uil-bars'></i>
+        </button>
+        <button id="collapse_menu" class="collapse_menu">
+            <i class="uil uil-bars collapse_menu--icon "></i>
+            <span class="collapse_menu--label"></span>
+        </button>
+        <div class="main_logo" id="logo">
+            <a href="/"><img src="../../static/assets/faculty_assets/images/logo1.png" alt=""></a>
+            <a href="/"><img class="logo-inverse" src="../../static/assets/faculty_assets/images/logo1.png" alt=""></a>
+        </div>
+
+        <div class="header_right">
+            <ul>
+
+                <li class="ui dropdown">
+                    <a href="#" class="opts_account">
+                        <img src="../../static/assets/faculty_assets/images/hd_dp.jpg" alt="">
+                    </a>
+                    <div class="menu dropdown_account">
+                        <div class="channel_my">
+                            <div class="profile_link">
+                                <img src="../../static/assets/faculty_assets/images/hd_dp.jpg" alt="">
+                                <div class="pd_content">
+                                    <div class="rhte85">
+                                        <h6>Departments</h6>
+                                        <div class="mef78" title="Verify">
+                                            <i class='uil uil-check-circle'></i>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="night_mode_switch__btn">
+                            <a href="#" id="night-mode" class="btn-night-mode">
+                                <i class="uil uil-moon"></i> Night mode
+                                <span class="btn-night-mode-switch">
+                                    <span class="uk-switch-button"></span>
+                                </span>
+                            </a>
+                        </div>
+                        <a href="/getStarted" class="item channel_item">Back</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </header>
+    {% endblock %}
+    <!-- End Navbar Area -->
+
+    <!-- Sidebar -->
+    {% block sidebar %}
+    <nav class="vertical_nav">
+        <div class="left_section menu_left" id="js-menu">
+            <div class="left_section">
+                <ul>
+                    <li class="menu--item">
+                        <a href="/department" class="menu--link" title="Home">
+                            <i class='uil uil-home-alt menu--icon'></i>
+                            <span class="menu--label">Home</span>
+                        </a>
+                    </li>
+
+
+                    <li class="menu--item  menu--item__has_sub_menu">
+                        <label class="menu--link" title="Tests">
+                            <i class='uil uil-clipboard-alt menu--icon'></i>
+                            <span class="menu--label">Computer Science</span>
+                        </label>
+                        </a>
+                        <ul class="sub_menu">
+                            <li class="sub_menu--item">
+                                <a href="/department/cse/student_list" class="sub_menu--link">Students List</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="/department/cse/faculty_list" class="sub_menu--link">Faculty List</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="/department/cse/course_offered" class="sub_menu--link">Course Offered</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="/department/cse/program_offered" class="sub_menu--link">Programm Offered</a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                    <li class="menu--item  menu--item__has_sub_menu">
+                        <label class="menu--link" title="Pages">
+                            <i class='uil uil-clipboard-alt menu--icon'></i>
+                            <span class="menu--label">Electrical</span>
+                        </label>
+                        <ul class="sub_menu">
+                            <li class="sub_menu--item">
+                                <a href="/department/ee/student_list" class="sub_menu--link">Students List</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="/department/ee/faculty_list" class="sub_menu--link">Faculty List</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="/department/ee/course_offered" class="sub_menu--link">Course Offered</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="/department/ee/program_offered" class="sub_menu--link">Programm Offered</a>
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li class="menu--item  menu--item__has_sub_menu">
+                        <label class="menu--link" title="Tests">
+                            <i class='uil uil-clipboard-alt menu--icon'></i>
+                            <span class="menu--label">Mechanical</span>
+                        </label>
+                        <ul class="sub_menu">
+                            <li class="sub_menu--item">
+                                <a href="/department/mech/student_list" class="sub_menu--link">Students List</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="/department/mech/faculty_list" class="sub_menu--link">Faculty List</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="/department/mech/course_offered" class="sub_menu--link">Course Offered</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="/department/mech/program_offered" class="sub_menu--link">Programm Offered</a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                    <li class="menu--item  menu--item__has_sub_menu">
+                        <label class="menu--link" title="Pages">
+                            <i class='uil uil-clipboard-alt menu--icon'></i>
+                            <span class="menu--label">Civil</span>
+                        </label>
+                        <ul class="sub_menu">
+                            <li class="sub_menu--item">
+                                <a href="/department/civil/student_list" class="sub_menu--link">Students List</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="/department/civil/faculty_list" class="sub_menu--link">Faculty List</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="/department/civil/course_offered" class="sub_menu--link">Course Offered</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="/department/civil/program_offered" class="sub_menu--link">Programm Offered</a>
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li class="menu--item  menu--item__has_sub_menu">
+                        <label class="menu--link" title="Pages">
+                            <i class='uil uil-clipboard-alt menu--icon'></i>
+                            <span class="menu--label">MEMS</span>
+                        </label>
+                        <ul class="sub_menu">
+                            <li class="sub_menu--item">
+                                <a href="/department/mems/student_list" class="sub_menu--link">MEMS</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="/department/mems/student_list" class="sub_menu--link">Students List</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="/department/mems/faculty_list" class="sub_menu--link">Faculty List</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="/department/mems/course_offered" class="sub_menu--link">Course Offered</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="/department/mems/program_offered" class="sub_menu--link">Programm Offered</a>
+                            </li>
+
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+
+        </div>
+    </nav>
+    {% endblock %}
+    <!-- /Sidebar -->
+
+    <!-- Page Wrapper -->
+    {% block wrapper %}
+
+    {% endblock %}
+    <!-- /Page Wrapper -->
+
+
+    {% endblock %}
+    <!-- / body -->
+
+    {% block script %}
+    <!-- jQuery -->
+    <script src="../../static/assets/faculty_assets/js/vertical-responsive-menu.min.js"></script>
+    <script src="../../static/assets/faculty_assets/js/jquery-3.3.1.min.js"></script>
+    <script src="../../static/assets/faculty_assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../../static/assets/faculty_assets/vendor/OwlCarousel/owl.carousel.js"></script>
+    <script src="../../static/assets/faculty_assets/vendor/semantic/semantic.min.js"></script>
+    <script src="../../static/assets/faculty_assets/js/custom.js"></script>
+    <script src="../../static/assets/faculty_assets/js/night-mode.js"></script>
+    {% endblock %}
+
+</body>
+
+</html>
