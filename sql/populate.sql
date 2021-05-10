@@ -47,6 +47,9 @@ INSERT INTO `student` (`student_id`, `first_name`, `emailid`, `password`, `addre
 
 INSERT INTO `admin` (`admin_id`, `name`, `emailid`, `password`, role) VALUES ('1', 'sqyw', 'sqyw@sqyw.com', '81dc9bdb52d04dc20036dbd8313ed055', 'acad');
 INSERT INTO `admin` (`admin_id`, `name`, `emailid`, `password`, role) VALUES ('2', 'qwsr', 'qwsr@qwsr.com', '81dc9bdb52d04dc20036dbd8313ed055', 'acad');
+INSERT INTO `admin` (`admin_id`, `name`, `emailid`, `password`, role) VALUES ('3', 'qsdr', 'qsdr@qsdr.com', '81dc9bdb52d04dc2443ffefeg3545gge', 'acad');
+INSERT INTO `admin` (`admin_id`, `name`, `emailid`, `password`, role) VALUES ('4', 'sdfr', 'sdfr@sdfr.com', '81dc9bdb52d0dfgdfgdfgfg8313ed055', 'acad');
+INSERT INTO `admin` (`admin_id`, `name`, `emailid`, `password`, role) VALUES ('5', 'qbmg', 'qbmg@qbmg.com', 'gddfgfg8313ed0550036dbd8313ed055', 'acad');
 
 
 INSERT INTO enroll (sec_id, student_id, grade, notes) VALUES ('1','1',9.50,"");
@@ -54,6 +57,11 @@ INSERT INTO enroll (sec_id, student_id, grade, notes) VALUES ('1','2',8.50,"");
 INSERT INTO enroll (sec_id, student_id, grade, notes) VALUES ('3','1',4.00,"");
 INSERT INTO enroll (sec_id, student_id, grade, notes) VALUES ('2','1',10.00,"");
 INSERT INTO enroll (sec_id, student_id, grade, notes) VALUES ('3','2',9.00,"");
+INSERT INTO enroll (sec_id, student_id, grade, notes) VALUES ('2','3',7.85,"");
+INSERT INTO enroll (sec_id, student_id, grade, notes) VALUES ('2','4',9.80,"");
+INSERT INTO enroll (sec_id, student_id, grade, notes) VALUES ('3','5',8.80,"");
+INSERT INTO enroll (sec_id, student_id, grade, notes) VALUES ('4','6',7.81,"");
+INSERT INTO enroll (sec_id, student_id, grade, notes) VALUES ('1','7',7.80,"");
 
 INSERT INTO teaches (faculty_id, sec_id, year, notes) VALUES ('1','1',"2006-06-01","");
 INSERT INTO teaches (faculty_id, sec_id, year, notes) VALUES ('1','2',"2006-07-28","");
