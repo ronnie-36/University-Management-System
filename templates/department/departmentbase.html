@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>UMS - Instructor Dashboard</title>
+    <title>UMS - Department Dashboard</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" type="image"
@@ -18,17 +18,15 @@
     <link rel="stylesheet" type="text/css"
         href="{{ url_for('static',filename='assets/faculty_assets/vendor/unicons-2.0.1/css/unicons.css') }}">
     <link rel="stylesheet" type="text/css"
-        href="{{ url_for('static',filename='assets/faculty_assets/css/vertical-responsive-menu1.min.css') }}">
+        href="{{ url_for('static',filename='assets/faculty_assets/css/vertical-responsive-menu.min.css') }}">
 
     <!-- Main CSS -->
     <link rel="stylesheet" type="text/css"
-        href="{{ url_for('static',filename='assets/faculty_assets/css/instructor-dashboard.css') }}">
+        href="{{ url_for('static',filename='assets/faculty_assets/css/style.css') }}">
     <link rel="stylesheet" type="text/css"
-        href="{{ url_for('static',filename='assets/faculty_assets/css/instructor-responsive.css') }}">
+        href="{{ url_for('static',filename='assets/faculty_assets/css/responsive.css') }}">
     <link rel="stylesheet" type="text/css"
         href="{{ url_for('static',filename='assets/faculty_assets/css/night-mode.css') }}">
-    <link rel="stylesheet" type="text/css"
-        href="{{ url_for('static',filename='assets/faculty_assets/css/style.css') }}">
 
     <!-- Other CSS -->
     <link rel="stylesheet" type="text/css"
@@ -41,7 +39,6 @@
         href="{{ url_for('static',filename='assets/faculty_assets/vendor/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css"
         href="{{ url_for('static',filename='assets/faculty_assets/vendor/semantic/semantic.min.css') }}">
-
 
 
     {% block style %}
@@ -73,9 +70,6 @@
 
         <div class="header_right">
             <ul>
-                <li>
-                    <a href="/faculty/create_new_course" class="upload_btn">Create New Assignment</a>
-                </li>
 
                 <li class="ui dropdown">
                     <a href="#" class="opts_account">
@@ -115,7 +109,148 @@
 
     <!-- Sidebar -->
     {% block sidebar %}
+    <nav class="vertical_nav">
+        <div class="left_section menu_left" id="js-menu">
+            <div class="left_section">
+                <ul>
+                    <li class="menu--item">
+                        <a href="/department" class="menu--link" title="Home">
+                            <i class='uil uil-home-alt menu--icon'></i>
+                            <span class="menu--label">Home</span>
+                        </a>
+                    </li>
+                    <li class="menu--item">
+                        <a href="live_streams.html" class="menu--link" title="Live Streams">
+                            <i class='uil uil-kayak menu--icon'></i>
+                            <span class="menu--label">Student List</span>
+                        </a>
+                    </li>
 
+                    <li class="menu--item  menu--item__has_sub_menu">
+                        <a href="/department/cse" class="menu--link">
+                            <label class="menu--link" title="Tests">
+                                <i class='uil uil-clipboard-alt menu--icon'></i>
+
+                                <span class="menu--label">Computer Science</span>
+                            </label>
+                        </a>
+                        <ul class="sub_menu">
+                            <li class="sub_menu--item">
+                                <a href="/department/cse/student_list" class="sub_menu--link">Students List</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="/department/cse/faculty_list" class="sub_menu--link">Faculty List</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="/department/cse/course_offered" class="sub_menu--link">Course Offered</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="/department/cse/program_offered" class="sub_menu--link">Programm Offered</a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                    <li class="menu--item  menu--item__has_sub_menu">
+                        <label class="menu--link" title="Pages">
+                            <i class='uil uil-file menu--icon'></i>
+                            <span class="menu--label">Electrical</span>
+                        </label>
+                        <ul class="sub_menu">
+                            <li class="sub_menu--item">
+                                <a href="/department/ee/student_list" class="sub_menu--link">Students List</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="/department/ee/faculty_list" class="sub_menu--link">Faculty List</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="/department/ee/course_offered" class="sub_menu--link">Course Offered</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="/department/ee/program_offered" class="sub_menu--link">Programm Offered</a>
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li class="menu--item  menu--item__has_sub_menu">
+                        <label class="menu--link" title="Tests">
+                            <i class='uil uil-clipboard-alt menu--icon'></i>
+                            <span class="menu--label">Mechanical</span>
+                        </label>
+                        <ul class="sub_menu">
+                            <li class="sub_menu--item">
+                                <a href="/department/mech/student_list" class="sub_menu--link">Students List</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="/department/mech/faculty_list" class="sub_menu--link">Faculty List</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="/department/mech/course_offered" class="sub_menu--link">Course Offered</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="/department/mech/program_offered" class="sub_menu--link">Programm Offered</a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                    <li class="menu--item  menu--item__has_sub_menu">
+                        <label class="menu--link" title="Pages">
+                            <i class='uil uil-file menu--icon'></i>
+                            <span class="menu--label">Civil</span>
+                        </label>
+                        <ul class="sub_menu">
+                            <li class="sub_menu--item">
+                                <a href="/department/civil/student_list" class="sub_menu--link">Students List</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="/department/civil/faculty_list" class="sub_menu--link">Faculty List</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="/department/civil/course_offered" class="sub_menu--link">Course Offered</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="/department/civil/program_offered" class="sub_menu--link">Programm Offered</a>
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li class="menu--item  menu--item__has_sub_menu">
+                        <label class="menu--link" title="Pages">
+                            <i class='uil uil-clipboard-alt menu--icon'></i>
+                            <span class="menu--label">MEMS</span>
+                        </label>
+                        <ul class="sub_menu">
+                            <li class="sub_menu--item">
+                                <a href="/department/mems/student_list" class="sub_menu--link">Students List</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="/department/mems/faculty_list" class="sub_menu--link">Faculty List</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="/department/mems/course_offered" class="sub_menu--link">Course Offered</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="/department/mems/program_offered" class="sub_menu--link">Programm Offered</a>
+                            </li>
+
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="left_section">
+                <ul>
+                    <li class="menu--item">
+                        <a href="all_instructor.html" class="menu--link active" title="Browse Instructors">
+                            <i class='uil uil-plus-circle menu--icon'></i>
+                            <span class="menu--label">Browse Instructors</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
     {% endblock %}
     <!-- /Sidebar -->
 
@@ -137,7 +272,7 @@
     <script src="../../static/assets/faculty_assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="../../static/assets/faculty_assets/vendor/OwlCarousel/owl.carousel.js"></script>
     <script src="../../static/assets/faculty_assets/vendor/semantic/semantic.min.js"></script>
-    <script src="../../static/assets/faculty_assets/js/custom1.js"></script>
+    <script src="../../static/assets/faculty_assets/js/custom.js"></script>
     <script src="../../static/assets/faculty_assets/js/night-mode.js"></script>
     {% endblock %}
 

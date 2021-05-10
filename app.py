@@ -42,6 +42,22 @@ app.add_url_rule('/reset_password/<user>/<token>', view_func=auth.reset_token,  
 @app.route('/department', methods=['GET', 'POST'])
 def department():
     return render_template('department/dashboard.html')
+
+@app.route('/department/cse/program_offered', methods=['GET', 'POST'])
+def cse_program_offered():
+    return render_template('department/cse_program_offered.html')
+
+@app.route('/department/cse/course_offered', methods=['GET', 'POST'])
+def cse_course_offered():
+    return render_template('department/cse_course_offered.html')
+
+@app.route('/department/cse/faculty_list', methods=['GET', 'POST'])
+def cse_faculty_list():
+    return render_template('department/cse_faculty_list.html')
+    
+@app.route('/department/cse/student_list', methods=['GET', 'POST'])
+def cse_student_list():
+    return render_template('department/cse_student_list.html')
 # department end
 
 
