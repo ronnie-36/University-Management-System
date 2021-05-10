@@ -430,6 +430,35 @@ def admin_department_list():
 
     return render_template('admin/department_list.html', departmentList = departments)
 
+def admin_add_department(): 
+    if 'id' not in session or 'role' not in session:
+        return render_template('error.html')
+    elif session['role'] != "admin":
+        return render_template('error.html')
+    if request.method == 'POST':
+        dept_details = request.form
+        name = dept_details['name']
+        dept_id = dept_details['dept_id']
+        contact_no = dept_details['phone']
+        budget = dept_details['budget']
+        hod_id = dept_details['hod_id']
+        budget = int(budget) if budget else 0
+        if hod_id == "" :
+            hod_id = None
+        cur = mysql.connection.cursor()
+        if(len(dept_id) > 0 and len(name) > 0 and len(contact_no) > 0):
+            cur = mysql.connection.cursor()
+            cur.execute(''' INSERT INTO department (dept_id, name, budget,contact_no,hod_id) 
+            values ('%s','%s','%d','%s','%s');'''%(dept_id, name, budget, contact_no, hod_id ))
+            mysql.connection.commit()
+            cur.close()
+        return redirect(url_for('admin_department_list'))
+    cur = mysql.connection.cursor()
+    cur.execute(''' select faculty_id,first_name,last_name from faculty; ''')
+    faculty = cur.fetchall()
+    mysql.connection.commit()
+    cur.close()
+    return render_template('admin/add-department.html', facultyList=faculty)
 # department end
 
 # course
