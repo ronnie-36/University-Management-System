@@ -5,8 +5,8 @@
 	<a href="#"><i class="fas fa-building"></i> <span> Departments</span> <span class="menu-arrow"></span></a>
 	<ul>
 		<li><a href="/admin/department_list">Department List</a></li>
-		<li><a href="/admin/add_department" class="active">Department Add</a></li>
-		<li><a href="/admin/department_list_edit">Department Edit</a></li>
+		<li><a href="/admin/add_department">Department Add</a></li>
+		<li><a href="/admin/department_list_edit" class="active">Department Edit</a></li>
 	</ul>
 </li>
 {% endblock %}
@@ -20,10 +20,10 @@
 		<div class="page-header">
 			<div class="row align-items-center">
 				<div class="col">
-					<h3 class="page-title">Add Department</h3>
+					<h3 class="page-title">Edit Department</h3>
 					<ul class="breadcrumb">
-						<li class="breadcrumb-item"><a href="departments.html">Department</a></li>
-						<li class="breadcrumb-item active">Add Department</li>
+						<li class="breadcrumb-item"><a href="/admin/department_list">Department</a></li>
+						<li class="breadcrumb-item active">Edit Department</li>
 					</ul>
 				</div>
 			</div>
@@ -43,13 +43,13 @@
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Department ID</label>
-										<input type="text" class="form-control" name="dept_id" required>
+										<input type="text" class="form-control" name="dept_id" value="{{deptDetails[0]}}" disabled>
 									</div>
 								</div>
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Department Name</label>
-										<input type="text" class="form-control" name="name" required>
+										<input type="text" class="form-control" name="name" value="{{deptDetails[1]}}" required>
 									</div>
 								</div>
 								<div class="col-12 col-sm-6">
@@ -58,7 +58,7 @@
 										<select name="hod_id" class="form-control">
 											<option value="">Select HOD</option>
 											{% for faculty in facultyList %}
-											<option value="{{ faculty[0] }}">
+											<option value="{{ faculty[0] }}" {% if faculty[0] == deptDetails[3] %}selected{% endif %}>
 												{{ faculty[1] + " " + faculty[2] }}
 											</option>
 											{% endfor %}
@@ -68,14 +68,14 @@
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Department Budget</label>
-										<input type="number" class="form-control" name="budget">
+										<input type="number" class="form-control" name="budget" value="{{deptDetails[2]}}">
 									</div>
 								</div>
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Contact number</label>
 										<input type="tel" class="form-control" name="phone" pattern="[0-9]{10}"
-											maxlength="10" required>
+											maxlength="10" value="{{deptDetails[4]}}" required>
 									</div>
 								</div>
 								<div class="col-12">

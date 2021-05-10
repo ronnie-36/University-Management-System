@@ -1,0 +1,147 @@
+{% extends 'admin/adminbase.html' %}
+
+{% block department_sidebar %}
+<li class="submenu">
+    <a href="#"><i class="fas fa-building"></i> <span> Departments</span> <span class="menu-arrow"></span></a>
+    <ul>
+        <li><a href="/admin/department_list">Department List</a></li>
+        <li><a href="/admin/add_department">Department Add</a></li>
+        <li><a href="/admin/department_list_edit" class="active">Department Edit</a></li>
+    </ul>
+</li>
+{% endblock %}
+
+{% block additionalscript %}
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script type="text/javascript">
+    function ConfirmDelete(elem) {
+        sessionStorage.setItem('deleteId', $(elem).attr('data-id'));
+    }
+
+    function Delete() {
+        const Url = '/admin/delete-department';
+        axios({
+                method: 'post',
+                url: Url,
+                data: {
+                    id: sessionStorage.getItem('deleteId')
+                }
+            })
+            .then(() => {
+                $("#" + sessionStorage.getItem('deleteId')).closest('tr').css('background', 'tomato');
+                $("#" + sessionStorage.getItem('deleteId')).closest('tr').fadeOut(1000, function () {
+                    $("#" + sessionStorage.getItem('deleteId')).remove();
+                });
+            })
+            .catch(err => console.log(err))
+    }
+</script>
+{% endblock %}
+
+{% block pagewrapper %}
+<!-- Page Wrapper -->
+<div class="page-wrapper">
+    <div class="content container-fluid">
+
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="page-title">Departments</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                        <li class="breadcrumb-item active">Departments</li>
+                    </ul>
+                </div>
+                <div class="col-auto text-right float-right ml-auto">
+                    <a href="#" class="btn btn-outline-primary mr-2"><i class="fas fa-download"></i> Download</a>
+                    <a href="/admin/add_department" class="btn btn-primary"><i class="fas fa-plus"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- /Page Header -->
+
+        <div class="row">
+            <div class="col-sm-12">
+
+                <div class="card card-table">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover table-center mb-0 datatable">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>HOD</th>
+                                        <th>Budget</th>
+                                        <th>No of Students</th>
+                                        <th class="text-right">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for dept in departmentList %}
+                                    <tr>
+                                        <td>{{dept[0]}}</td>
+                                        <td>
+                                            <h2>
+                                                <a>{{dept[1]}}</a>
+                                            </h2>
+                                        </td>
+                                        <td>{{dept[3]+" "+dept[4]}}</td>
+                                        <td>{{dept[2]}}</td>
+                                        <td>{{dept[5]}}</td>
+                                        <td class="text-right">
+                                            <div class="actions">
+                                                <a href="/admin/edit-department/{{ dept[0] }}"
+                                                    class="btn btn-sm bg-success-light mr-2">
+                                                    <i class="fas fa-pen"></i>
+                                                </a>
+                                                <a data-id={{dept[0]}} href="#deleteDepartmentModal"
+                                                    onclick="ConfirmDelete(this)" class="btn btn-sm bg-danger-light"
+                                                    data-toggle="modal">
+                                                    <i class="fas fa-trash"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div id="deleteDepartmentModal" class="modal fade">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form>
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Delete Department</h4>
+                                    <button type="button" class="close" data-dismiss="modal"
+                                        aria-hidden="true">&times;</button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Are you sure you want to delete these Records?</p>
+                                    <p class="text-warning"><small>This action cannot be undone.</small></p>
+                                </div>
+                                <div class="modal-footer">
+                                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                                    <input type="submit" class="btn btn-danger" onclick="Delete()" value="Delete">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Copyright © 2021 IIT Indore.</p>
+    </footer>
+    <!-- /Footer -->
+
+</div>
+<!-- /Page Wrapper -->
+
+{% endblock %}
