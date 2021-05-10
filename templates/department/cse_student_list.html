@@ -1,4 +1,4 @@
-{% extends 'faculty_panel/facultybase.html' %}
+{% extends 'department/departmentbase.html' %}
 
 <!-- Sidebar -->
 {% block sidebar %}
@@ -7,70 +7,138 @@
         <div class="left_section">
             <ul>
                 <li class="menu--item">
-                    <a href="/faculty/dashboard" class="menu--link active" title="Dashboard">
-                        <i class="uil uil-apps menu--icon"></i>
-                        <span class="menu--label">Dashboard</span>
+                    <a href="/department" class="menu--link" title="Home">
+                        <i class='uil uil-home-alt menu--icon'></i>
+                        <span class="menu--label">Home</span>
                     </a>
                 </li>
                 <li class="menu--item">
-                    <a href="/faculty/courses" class="menu--link" title="Courses">
-                        <i class='uil uil-book-alt menu--icon'></i>
-                        <span class="menu--label">Courses</span>
-                    </a>
-                </li>
-                <li class="menu--item">
-                    <a href="instructor_analyics.html" class="menu--link" title="Analyics">
-                        <i class='uil uil-analysis menu--icon'></i>
-                        <span class="menu--label">Analytics</span>
-                    </a>
-                </li>
-                <li class="menu--item">
-                    <a href="/faculty/create_new_course" class="menu--link" title="Create Course">
-                        <i class='uil uil-plus-circle menu--icon'></i>
-                        <span class="menu--label">Create Assignment</span>
+                    <a href="live_streams.html" class="menu--link" title="Live Streams">
+                        <i class='uil uil-kayak menu--icon'></i>
+                        <span class="menu--label">Student List</span>
                     </a>
                 </li>
 
-                <li class="menu--item">
-                    <a href="instructor_my_certificates.html" class="menu--link" title="My Certificates">
-                        <i class='uil uil-award menu--icon'></i>
-                        <span class="menu--label">Set Grades </span>
-                    </a>
-                </li>
-                <li class="menu--item">
-                    <a href="/faculty/notifications" class="menu--link" title="Notifications">
-                        <i class='uil uil-bell menu--icon'></i>
-                        <span class="menu--label">Notifications</span>
-                    </a>
+                <li class="menu--item  menu--item__has_sub_menu ">
+                    <label class="menu--link active" title="Tests">
+                        <i class='uil uil-clipboard-alt menu--icon'></i>
+                        <span class="menu--label active">Computer Science</span>
+                    </label>
+                    <ul class="sub_menu">
+                        <li class="sub_menu--item">
+                            <a href="/department/cse/student_list" class="sub_menu--link active">Students List</a>
+                        </li>
+                        <li class="sub_menu--item">
+                            <a href="/department/cse/faculty_list" class="sub_menu--link">Faculty List</a>
+                        </li>
+                        <li class="sub_menu--item">
+                            <a href="/department/cse/course_offered" class="sub_menu--link">Course Offered</a>
+                        </li>
+                        <li class="sub_menu--item">
+                            <a href="/department/cse/program_offered" class="sub_menu--link">Programm Offered</a>
+                        </li>
+
+                    </ul>
                 </li>
 
+                <li class="menu--item  menu--item__has_sub_menu">
+                    <label class="menu--link " title="Pages">
+                        <i class='uil uil-file menu--icon'></i>
+                        <span class="menu--label">Electrical</span>
+                    </label>
+                    <ul class="sub_menu">
+                        <li class="sub_menu--item">
+                            <a href="/department/ee/student_list" class="sub_menu--link">Students List</a>
+                        </li>
+                        <li class="sub_menu--item">
+                            <a href="/department/ee/faculty_list" class="sub_menu--link">Faculty List</a>
+                        </li>
+                        <li class="sub_menu--item">
+                            <a href="/department/ee/course_offered" class="sub_menu--link">Course Offered</a>
+                        </li>
+                        <li class="sub_menu--item">
+                            <a href="/department/ee/program_offered" class="sub_menu--link">Programm Offered</a>
+                        </li>
 
-                <li class="menu--item">
-                    <a href="/faculty/time-table" class="menu--link" title="Statements">
-                        <i class='uil uil-file-alt menu--icon'></i>
-                        <span class="menu--label">Time-Table</span>
-                    </a>
+                    </ul>
+                </li>
+                <li class="menu--item  menu--item__has_sub_menu">
+                    <label class="menu--link" title="Tests">
+                        <i class='uil uil-clipboard-alt menu--icon'></i>
+                        <span class="menu--label">Mechanical</span>
+                    </label>
+                    <ul class="sub_menu">
+                        <li class="sub_menu--item">
+                            <a href="/department/mech/student_list" class="sub_menu--link">Students List</a>
+                        </li>
+                        <li class="sub_menu--item">
+                            <a href="/department/mech/faculty_list" class="sub_menu--link">Faculty List</a>
+                        </li>
+                        <li class="sub_menu--item">
+                            <a href="/department/mech/course_offered" class="sub_menu--link">Course Offered</a>
+                        </li>
+                        <li class="sub_menu--item">
+                            <a href="/department/mech/program_offered" class="sub_menu--link">Programm Offered</a>
+                        </li>
+
+                    </ul>
                 </li>
 
+                <li class="menu--item  menu--item__has_sub_menu">
+                    <label class="menu--link" title="Pages">
+                        <i class='uil uil-file menu--icon'></i>
+                        <span class="menu--label">Civil</span>
+                    </label>
+                    <ul class="sub_menu">
+                        <li class="sub_menu--item">
+                            <a href="/department/civil/student_list" class="sub_menu--link">Students List</a>
+                        </li>
+                        <li class="sub_menu--item">
+                            <a href="/department/civil/faculty_list" class="sub_menu--link">Faculty List</a>
+                        </li>
+                        <li class="sub_menu--item">
+                            <a href="/department/civil/course_offered" class="sub_menu--link">Course Offered</a>
+                        </li>
+                        <li class="sub_menu--item">
+                            <a href="/department/civil/program_offered" class="sub_menu--link">Programm Offered</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li class="menu--item  menu--item__has_sub_menu">
+                    <label class="menu--link" title="Pages">
+                        <i class='uil uil-clipboard-alt menu--icon'></i>
+                        <span class="menu--label">MEMS</span>
+                    </label>
+                    <ul class="sub_menu">
+                        <li class="sub_menu--item">
+                            <a href="/department/mems/student_list" class="sub_menu--link">Students List</a>
+                        </li>
+                        <li class="sub_menu--item">
+                            <a href="/department/mems/faculty_list" class="sub_menu--link">Faculty List</a>
+                        </li>
+                        <li class="sub_menu--item">
+                            <a href="/department/mems/course_offered" class="sub_menu--link">Course Offered</a>
+                        </li>
+                        <li class="sub_menu--item">
+                            <a href="/department/mems/program_offered" class="sub_menu--link">Programm Offered</a>
+                        </li>
+
+                    </ul>
+                </li>
             </ul>
         </div>
-        <div class="left_section pt-2">
+        <div class="left_section">
             <ul>
                 <li class="menu--item">
-                    <a href="/faculty/setting" class="menu--link" title="Setting">
-                        <i class='uil uil-cog menu--icon'></i>
-                        <span class="menu--label">Setting</span>
+                    <a href="all_instructor.html" class="menu--link active" title="Browse Instructors">
+                        <i class='uil uil-plus-circle menu--icon'></i>
+                        <span class="menu--label">Browse Instructors</span>
                     </a>
                 </li>
-                <li class="menu--item">
-                    <a href="#" class="menu--link" title="Setting">
-                        <i class='uil uil-cog menu--icon'></i>
-                        <span class="menu--label">Other Staffs</span>
-                    </a>
-                </li>
-
             </ul>
         </div>
+
     </div>
 </nav>
 {% endblock %}
@@ -82,14 +150,14 @@
     <div class="sa4d25">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-xl-9 col-lg-8">
+                <div class="col-xl-12 col-lg-12">
                     <div class="section3125">
-                        <h4 class="item_title">All Live Streams</h4>
+                        <h4 class="item_title">All Students</h4>
                         <div class="la5lo1">
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="stream_1 mb-30">
-                                        <a href="live_output.html" class="stream_bg">
+                                        <a href="#" class="stream_bg">
                                             <img src="../../static/assets/faculty_assets/images/left-imgs/img-1.jpg"
                                                 alt="">
                                             <h4>John Doe</h4>
@@ -99,7 +167,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="stream_1 mb-30">
-                                        <a href="live_output.html" class="stream_bg">
+                                        <a href="#" class="stream_bg">
                                             <img src="../../static/assets/faculty_assets/images/left-imgs/img-2.jpg"
                                                 alt="">
                                             <h4>Jassica</h4>
@@ -109,7 +177,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="stream_1 mb-30">
-                                        <a href="live_output.html" class="stream_bg">
+                                        <a href="#" class="stream_bg">
                                             <img src="../../static/assets/faculty_assets/images/left-imgs/img-9.jpg"
                                                 alt="">
                                             <h4>UMS</h4>
@@ -119,7 +187,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="stream_1 mb-30">
-                                        <a href="live_output.html" class="stream_bg">
+                                        <a href="#" class="stream_bg">
                                             <img src="../../static/assets/faculty_assets/images/left-imgs/img-3.jpg"
                                                 alt="">
                                             <h4>Joginder Singh</h4>
@@ -129,7 +197,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="stream_1 mb-30">
-                                        <a href="live_output.html" class="stream_bg">
+                                        <a href="#" class="stream_bg">
                                             <img src="../../static/assets/faculty_assets/images/left-imgs/img-4.jpg"
                                                 alt="">
                                             <h4>Zoena</h4>
@@ -139,7 +207,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="stream_1 mb-30">
-                                        <a href="live_output.html" class="stream_bg">
+                                        <a href="#" class="stream_bg">
                                             <img src="../../static/assets/faculty_assets/images/left-imgs/img-5.jpg"
                                                 alt="">
                                             <h4>Albert Dua</h4>
@@ -149,7 +217,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="stream_1 mb-30">
-                                        <a href="live_output.html" class="stream_bg">
+                                        <a href="#" class="stream_bg">
                                             <img src="../../static/assets/faculty_assets/images/left-imgs/img-6.jpg"
                                                 alt="">
                                             <h4>Ridhima</h4>
@@ -159,7 +227,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="stream_1 mb-30">
-                                        <a href="live_output.html" class="stream_bg">
+                                        <a href="#" class="stream_bg">
                                             <img src="../../static/assets/faculty_assets/images/left-imgs/img-7.jpg"
                                                 alt="">
                                             <h4>Amritpal</h4>
@@ -169,7 +237,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="stream_1 mb-30">
-                                        <a href="live_output.html" class="stream_bg">
+                                        <a href="#" class="stream_bg">
                                             <img src="../../static/assets/faculty_assets/images/left-imgs/img-8.jpg"
                                                 alt="">
                                             <h4>Jimmy</h4>
@@ -179,7 +247,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="stream_1 mb-30">
-                                        <a href="live_output.html" class="stream_bg">
+                                        <a href="#" class="stream_bg">
                                             <img src="../../static/assets/faculty_assets/images/left-imgs/img-11.jpg"
                                                 alt="">
                                             <h4>Quinton Batchelor</h4>
@@ -189,7 +257,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="stream_1 mb-30">
-                                        <a href="live_output.html" class="stream_bg">
+                                        <a href="#" class="stream_bg">
                                             <img src="../../static/assets/faculty_assets/images/left-imgs/img-12.jpg"
                                                 alt="">
                                             <h4>Eli Natoli</h4>
@@ -199,7 +267,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="stream_1 mb-30">
-                                        <a href="live_output.html" class="stream_bg">
+                                        <a href="#" class="stream_bg">
                                             <img src="../../static/assets/faculty_assets/images/left-imgs/img-13.jpg"
                                                 alt="">
                                             <h4>Jaysen Batchelor</h4>
@@ -209,7 +277,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="stream_1 mb-30">
-                                        <a href="live_output.html" class="stream_bg">
+                                        <a href="#" class="stream_bg">
                                             <img src="../../static/assets/faculty_assets/images/left-imgs/img-14.jpg"
                                                 alt="">
                                             <h4>Farhat Amin</h4>
@@ -219,7 +287,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="stream_1 mb-30">
-                                        <a href="live_output.html" class="stream_bg">
+                                        <a href="#" class="stream_bg">
                                             <img src="../../static/assets/faculty_assets/images/left-imgs/img-15.jpg"
                                                 alt="">
                                             <h4>Kyle Pew</h4>
@@ -229,7 +297,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="stream_1 mb-30">
-                                        <a href="live_output.html" class="stream_bg">
+                                        <a href="#" class="stream_bg">
                                             <img src="../../static/assets/faculty_assets/images/left-imgs/img-16.jpg"
                                                 alt="">
                                             <h4>Kerstin Cable</h4>
@@ -239,7 +307,27 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="stream_1 mb-30">
-                                        <a href="live_output.html" class="stream_bg">
+                                        <a href="#" class="stream_bg">
+                                            <img src="../../static/assets/faculty_assets/images/left-imgs/img-17.jpg"
+                                                alt="">
+                                            <h4>Jose Portilla</h4>
+                                            <p>SOFTWARE<span></span></p>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="stream_1 mb-30">
+                                        <a href="#" class="stream_bg">
+                                            <img src="../../static/assets/faculty_assets/images/left-imgs/img-16.jpg"
+                                                alt="">
+                                            <h4>Kerstin Cable</h4>
+                                            <p>SOFTWARE<span></span></p>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="stream_1 mb-30">
+                                        <a href="#" class="stream_bg">
                                             <img src="../../static/assets/faculty_assets/images/left-imgs/img-17.jpg"
                                                 alt="">
                                             <h4>Jose Portilla</h4>
