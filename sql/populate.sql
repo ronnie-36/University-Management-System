@@ -38,6 +38,12 @@ INSERT INTO section (c_id, year, notes, sem) VALUES ('4',"2009","",'2');
 
 INSERT INTO `student` (`student_id`, `first_name`, `emailid`, `password`, `address`, `DOB` , `branch`, `sem`, `cpi`, `program`, advisor_id) VALUES ('1', 'ron', 'ron@ron.com', '81dc9bdb52d04dc20036dbd8313ed055', '100-england', '2001-01-01', 'cse', '4', '9.80','btech','1');
 INSERT INTO `student` (`student_id`, `first_name`, `emailid`, `password`, `address`, `DOB` , `branch`, `sem`, `cpi`, `program`, advisor_id) VALUES ('2', 'Ganguly', 'Ganguly@Ganguly.com', '81dc9bdb52d04dc20036dbd8313ed055', '100-london', '2004-02-21', 'cse', '2', '7.80','btech','2');
+INSERT INTO `student` (`student_id`, `first_name`, `emailid`, `password`, `address`, `DOB` , `branch`, `sem`, `cpi`, `program`, advisor_id) VALUES ('3', 'sachin', 'sachin@sachin.com', '81dc2343rffergd433vgrsf13ed055', '100-london', '2004-02-01', 'mech', '2', '7.85','btech','2');
+INSERT INTO `student` (`student_id`, `first_name`, `emailid`, `password`, `address`, `DOB` , `branch`, `sem`, `cpi`, `program`, advisor_id) VALUES ('4', 'virat', 'virat@virat.com', '81dcfdghdfhrertewrtv6dbd8313ed055', '103-avon', '2005-04-21', 'ee', '3', '9.80','btech','3');
+INSERT INTO `student` (`student_id`, `first_name`, `emailid`, `password`, `address`, `DOB` , `branch`, `sem`, `cpi`, `program`, advisor_id) VALUES ('5', 'sundar', 'sundar@sundar.com', '8dsghdfghfghc20036dbd8313ed055', '6-ropar', '2004-06-23', 'cse', '3', '8.80','btech','3');
+INSERT INTO `student` (`student_id`, `first_name`, `emailid`, `password`, `address`, `DOB` , `branch`, `sem`, `cpi`, `program`, advisor_id) VALUES ('6', 'hina', 'hina@hina.com', '81dc9bdb52d0rwqerwdbd8313ed055', '69-delhi', '2003-09-26', 'cse', '2', '7.81','btech','4');
+INSERT INTO `student` (`student_id`, `first_name`, `emailid`, `password`, `address`, `DOB` , `branch`, `sem`, `cpi`, `program`, advisor_id) VALUES ('7', 'ritu', 'ritu@Gritu.com', '81dc9bdb52d04dc2gdgdf6dbd8313ed055', '71-ldh', '2003-01-27', 'ce', '2', '7.00','btech','4');
+
 
 INSERT INTO `admin` (`admin_id`, `name`, `emailid`, `password`, role) VALUES ('1', 'sqyw', 'sqyw@sqyw.com', '81dc9bdb52d04dc20036dbd8313ed055', 'acad');
 INSERT INTO `admin` (`admin_id`, `name`, `emailid`, `password`, role) VALUES ('2', 'qwsr', 'qwsr@qwsr.com', '81dc9bdb52d04dc20036dbd8313ed055', 'acad');
