@@ -319,6 +319,100 @@ def admin_faculty_list():
 
     return render_template('admin/faculty_list.html', facultyList = faculty)
 
+def admin_faculty_view(faculty_id):
+    if 'id' not in session or 'role' not in session:
+        return render_template('error.html')
+    elif session['role'] != "admin":
+        return render_template('error.html')
+
+    cur = mysql.connection.cursor()
+    cur.execute(''' select faculty_id, first_name, last_name, gender, dob, phone, address, emailid,
+            salary, research_interests, position from faculty where faculty_id = '%s'; '''%(faculty_id))
+    faculty = cur.fetchall()
+    cur.execute(''' select name from department where dept_id in (select dept_id from works where faculty_id = '%s'); '''%(faculty_id))
+    department = cur.fetchall()
+    department = department[0][0] if department else None
+    mysql.connection.commit()
+    cur.close()
+
+    return render_template('admin/faculty-detail.html', facultyDetails = faculty[0], department = department)
+
+def admin_faculty_list_edit():
+    if 'id' not in session or 'role' not in session:
+        return render_template('error.html')
+    elif session['role'] != "admin":
+        return render_template('error.html')
+
+    cur = mysql.connection.cursor()
+    cur.execute(''' select faculty_id, first_name, last_name, DOB, phone, address, emailid, position from faculty; ''')
+    faculty = cur.fetchall()
+    mysql.connection.commit()
+    cur.close()
+
+    return render_template('/admin/faculty.html', facultyList = faculty)
+
+def admin_faculty_edit(faculty_id):
+    if 'id' not in session or 'role' not in session:
+        return render_template('error.html')
+    elif session['role'] != "admin":
+        return render_template('error.html')
+
+    if request.method == 'POST':
+
+        faculty_details = request.form
+        first_name = faculty_details['first_name']
+        last_name = faculty_details['last_name']
+        gender = faculty_details['gender']
+        dob = faculty_details['dob']
+        phone = faculty_details['phone']
+        address = faculty_details['address']
+        email = faculty_details['email']
+        salary = faculty_details['salary']
+        researchint = faculty_details['ri']
+        position = faculty_details['position']
+        dept_id = faculty_details['department']
+        if salary!= 'None':
+            salary = int(salary) if salary else -1
+        cur = mysql.connection.cursor()
+        if(len(phone) > 0 and len(faculty_id) > 0 and len(first_name) > 0 and len(email) > 0 and salary != -1 and len(position) > 0 and len(dob) > 0):
+            cur = mysql.connection.cursor()
+            cur.execute(''' UPDATE faculty SET first_name = '%s', last_name = '%s', gender = '%s', dob = '%s', phone = '%s', address = '%s', emailid = '%s',
+            salary = '%d', research_interests = '%s', position = '%s' where faculty_id = '%s' ;'''%(first_name, last_name, gender, dob, phone, address, email, salary, researchint, position, faculty_id))
+            if(dept_id!=None):
+                cur.execute(''' UPDATE works set dept_id = '%s' WHERE faculty_id = '%s';'''%(dept_id,faculty_id))
+            mysql.connection.commit()
+            cur.close()
+        return redirect(url_for('admin_faculty_list'))
+    cur = mysql.connection.cursor()
+    cur.execute(''' select faculty_id, first_name, last_name, gender, dob, phone, address, emailid,
+            salary, research_interests, position from faculty where faculty_id = '%s'; '''%(faculty_id))
+    faculty = cur.fetchall()
+    cur.execute(''' select dept_id,name from department where dept_id in (select dept_id from works where faculty_id = '%s'); '''%(faculty_id))
+    department = cur.fetchall()
+    department = department[0] if department else None
+    mysql.connection.commit()
+    cur = mysql.connection.cursor()
+    cur.execute(''' select dept_id,name from department; ''')
+    depts = cur.fetchall()
+    mysql.connection.commit()
+    cur.close()
+    return render_template('/admin/edit-faculty.html', facultyDetails = faculty[0], department = department, deptList=depts)
+
+def admin_faculty_delete():
+    if 'id' not in session or 'role' not in session:
+        return render_template('error.html')
+    elif session['role'] != "admin":
+        return render_template('error.html')
+    if(request.method == 'POST'):
+        faculty_id = str(request.json['id'])
+        cur = mysql.connection.cursor()
+        cur.execute(''' DELETE FROM faculty WHERE faculty_id= '%s'; '''%(faculty_id))
+        mysql.connection.commit()
+        cur.close()
+        return "Executed" 
+
+# faculty end
+
 # department
 
 # course
