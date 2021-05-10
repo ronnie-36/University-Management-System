@@ -107,6 +107,11 @@ app.add_url_rule('/admin/edit-faculty/<faculty_id>', view_func=admin.admin_facul
 app.add_url_rule('/admin/delete-faculty', view_func=admin.admin_faculty_delete, methods=['GET','POST'])
 # admin faculty end
 
+# admin department start 
+app.add_url_rule('/admin/department_list', view_func=admin.admin_department_list, methods=['GET','POST'])
+app.add_url_rule('/admin/add_department', view_func=admin.admin_add_department, methods=['GET','POST'])
+# admin department end
+
 app.add_url_rule('/admin/add_course', view_func=admin.admin_add_course, methods=['GET','POST'])
 app.add_url_rule('/admin/course_list', view_func=admin.admin_course_list, methods=['GET','POST'])
 app.add_url_rule('/admin/course_edit/<c_id>', view_func=admin.admin_course_edit, methods=['GET','POST'])
