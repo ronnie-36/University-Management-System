@@ -1,6 +1,7 @@
 from flask import *
 from flask_cors import CORS, cross_origin
 from flask_mysqldb import MySQL
+import datetime
 
 app = Flask(__name__)
 CORS(app)
@@ -137,17 +138,98 @@ def student_enrolled_courses():
         return render_template('error.html')
     elif session['role'] != "student":
         return render_template('error.html')
-    
-    return render_template('student_panel/dashboard-enrolled-courses.html')
+        
+    if request.method == 'POST':
+        details = request.form
+        sec_id = details['sec_id']
+        sec_name = details['sec_name']
+        dt = datetime.datetime.now()
+        dt = str(dt)
+        cur = mysql.connection.cursor()
+        cur.execute(''' select first_name from student where student_id = '%s' ;'''%(session['id']))
+        rv = cur.fetchall()
+        name = rv[0][0]
+        note = "Request for enroll course %s name %s for student id %s"%(sec_id, sec_name, session['id'])
+        cur.execute(''' insert ignore into requests (name, id, notes, dob) VALUES ('%s','%s','%s','%s');'''%(name, session['id'], note, dt))
+        rv = cur.fetchall()
+        mysql.connection.commit()
+        cur.close()
+        return redirect(url_for('student_enrolled_courses'))
+
+    cur = mysql.connection.cursor()
+    cur.execute('''
+    select 
+	section.sec_id, course.name, section.sem, course.credits, course.hours, student.sem
+    from
+        student
+            join
+        enroll
+			join
+		section
+			join
+        course
+    where
+    section.c_id = course.c_id and
+    student.student_id = enroll.student_id and
+    enroll.sec_id = section.sec_id and
+    student.sem = section.sem and
+    student.student_id = '%s';'''%(session['id']))
+    rv = cur.fetchall()
+    my_courses = rv
+
+    cur.execute('''
+    select DISTINCT
+	section.sec_id, course.name, student.sem, course.credits, course.hours, student.sem
+    from
+        student
+            join
+		section
+			join
+        course
+			join
+		has_course
+    where
+    section.c_id = course.c_id and
+    student.sem = section.sem and
+    has_course.branch = student.branch and
+    has_course.c_id = course.c_id and
+    student.student_id = '%s';'''%(session['id']))
+    rv = cur.fetchall()
+    sem_courses = rv
+
+    mysql.connection.commit()
+    cur.close()
+    return render_template('student_panel/dashboard-enrolled-courses.html', list = my_courses, list2 = sem_courses)
 
 def student_my_courses():
     if 'id' not in session or 'role' not in session:
         return render_template('error.html')
     elif session['role'] != "student":
         return render_template('error.html')
-    
-    return render_template('student_panel/dashboard-courses.html')
+        
+    cur = mysql.connection.cursor()
+    cur.execute('''
+    select 
+	section.sec_id, course.name, section.sem, course.credits, course.hours, student.sem
+    from
+        student
+            join
+        enroll
+			join
+		section
+			join
+        course
+    where
+    section.c_id = course.c_id and
+    student.student_id = enroll.student_id and
+    enroll.sec_id = section.sec_id and
+    student.student_id = '%s';'''%(session['id']))
+    rv = cur.fetchall()
+    my_courses = rv
 
+    mysql.connection.commit()
+    cur.close()
+    return render_template('student_panel/dashboard-courses.html', list = my_courses)
 
 def student_submit_course():
     if 'id' not in session or 'role' not in session:

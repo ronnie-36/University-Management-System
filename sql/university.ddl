@@ -213,7 +213,7 @@ CREATE TABLE requests (
 	r_id INT UNIQUE AUTO_INCREMENT,
 	name VARCHAR(45) NOT NULL,
     id VARCHAR(45) NOT NULL,
-    notes VARCHAR(45),
+    notes VARCHAR(200),
     dob datetime,
     status VARCHAR(10) DEFAULT 'pending',
     PRIMARY KEY(r_id)
@@ -223,7 +223,7 @@ CREATE TABLE notifications (
     n_id INT UNIQUE AUTO_INCREMENT,
     name VARCHAR(45) NOT NULL,
     id VARCHAR(45) NOT NULL,
-    notes VARCHAR(45),
+    notes VARCHAR(200),
     dob datetime,
     status VARCHAR(10) DEFAULT 'unseen',
     PRIMARY KEY(n_id)

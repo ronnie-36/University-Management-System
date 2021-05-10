@@ -251,12 +251,12 @@
 <!-- Page Wrapper -->
 {% block wrapper %}
 
-
 <div class="dashboard-content-wrap">
     <div class="dashboard-menu-toggler btn theme-btn theme-btn-sm lh-28 theme-btn-transparent mb-4 ml-3">
         <i class="la la-bars mr-1"></i> Dashboard Nav
     </div>
     <div class="container-fluid">
+        {% block namebar %}
         <div class="breadcrumb-content d-flex flex-wrap align-items-center justify-content-between mb-5">
             <div class="media media-card align-items-center">
                 <div class="media-img media--img media-img-md rounded-full">
@@ -279,7 +279,7 @@
                 <span class="file-upload-text"><i class="la la-upload mr-2"></i>Upload a Resume</span>
             </div><!-- file-upload-wrap -->
         </div><!-- end breadcrumb-content -->
-        
+        {% endblock %}
         {% block body1 %}
         <div class="section-block mb-5"></div>
         <div class="dashboard-heading mb-5">
