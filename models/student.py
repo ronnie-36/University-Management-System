@@ -104,8 +104,17 @@ def student_profile():
     
 
     if request.method == 'POST':
-        debug()
-
+        details = request.form
+        address = details['address']
+        dob = details['dob']
+        gender = details['gender']
+        emailid = details['emailid']
+        cur = mysql.connection.cursor()
+        cur.execute(''' update student set dob='%s', gender='%s', address='%s', emailid='%s' where student_id = '%s'; '''%(str(dob), gender, address, emailid ,session['id']))
+        mysql.connection.commit()
+        cur.close()
+        return redirect(url_for('student_profile'))
+ 
     cur = mysql.connection.cursor()
     cur.execute(''' select * from student where student_id = '%s'; '''%(session['id']))
     rv = cur.fetchall()
@@ -128,8 +137,17 @@ def student_enrolled_courses():
         return render_template('error.html')
     elif session['role'] != "student":
         return render_template('error.html')
-        
+    
     return render_template('student_panel/dashboard-enrolled-courses.html')
+
+def student_my_courses():
+    if 'id' not in session or 'role' not in session:
+        return render_template('error.html')
+    elif session['role'] != "student":
+        return render_template('error.html')
+    
+    return render_template('student_panel/dashboard-courses.html')
+
 
 def student_submit_course():
     if 'id' not in session or 'role' not in session:

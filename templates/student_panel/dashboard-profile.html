@@ -6,34 +6,53 @@
         border-radius: 10px;
         padding-left: 10px;
     }
+  
 </style>
 
 {% extends 'student_panel/dashboard.html' %}
 <!-- Page body -->
+{% block profile_sidebar %}
+    <li class="page-active">
+{% endblock %}
+{% block dashboard_sidebar %}
+    <li>
+{% endblock %}
+
 {% block body1 %}
         <div class="section-block mb-5"></div>
         <div class="dashboard-heading mb-5">
             <h3 class="fs-22 font-weight-semi-bold">My Profile</h3>
         </div>
+        <form method="POST">
+
         <div class="profile-detail mb-5">
             <ul class="generic-list-item generic-list-item-flash">
                 <li><span class="profile-name">Student Id:</span><input class="profile-desc input1" value="{{ details[0] }}" disabled></li>
-                <li><span class="profile-name">First Name:</span><span class="profile-desc">Alex</span></li>
-                <li><span class="profile-name">Last Name:</span><span class="profile-desc">Smith</span></li>
-                <li><span class="profile-name">User Name:</span><span class="profile-desc">alex-admin</span>
-                </li>
-                <li><span class="profile-name">Email:</span><span class="profile-desc">alexsmith@gmail.com</span></li>
-                <li><span class="profile-name">Email:</span><span class="profile-desc">alexsmith@gmail.com</span></li>
-                <li><span class="profile-name">Email:</span><span class="profile-desc">alexsmith@gmail.com</span></li>
-                <li><span class="profile-name">Email:</span><span class="profile-desc">alexsmith@gmail.com</span></li>
-                <li><span class="profile-name">Phone Number:</span><span class="profile-desc">(91) 7547
-                    622250</span></li>
+                <li><span class="profile-name">First Name:</span><input class="profile-desc input1" value="{{ details[1] }}" disabled></li>
+                <li><span class="profile-name">Last Name:</span><input class="profile-desc input1" value="{{ details[2] }}" disabled></li>
+                <li><span class="profile-name">Address:</span><input class="profile-desc input1" value="{{ details[4] }}" name="address"></li>
+                <li><span class="profile-name">Email:</span><input class="profile-desc input1" value="{{ details[3] }}" name="emailid"></li>
+                <li><span class="profile-name">Gender:</span><input class="profile-desc input1" value="{{ details[5] }}" name="gender"></li>
+                <li><span class="profile-name">Dob:</span><input class="profile-desc input1" value="{{ details[7] }}" type="date" name="dob"></li>
                 <li>
-                    <span class="profile-name">Bio:</span>
-                    <span class="profile-desc">Hello! I am a Alex Smith, Washington area graphic designer with
-                        over 6 years of graphic design experience. I specialize in designing infographics,
-                        icons, brochures, and flyers.</span>
+                    <div class="row" style="width: 100%;">
+                        <div class="col col-md-3">
+                            <span class="profile-name">CPI: <input class="profile-desc input1" style="width: auto;" value="{{details[10]}}" disabled/></span>
+                        </div>
+                        <div class="col col-md-3">
+                            <span class="profile-name">Sem: <input class="profile-desc input1" style="width: auto;" value="{{details[9]}}" disabled/></span>
+                        </div>
+                        <div class="col col-md-3">
+                            <span class="profile-name">Branch: <input class="profile-desc input1" style="width: auto;" value="{{details[11]}}" disabled/></span>
+                        </div>
+                        <div class="col col-md-3">
+                            <span class="profile-name">Program: <input class="profile-desc input1" style="width: auto;" value="{{details[12]}}" disabled/></span>
+                        </div>
+                    </div>
                 </li>
             </ul>
+            <br />
+            <input type="submit" class="btn btn-primary" />
         </div>
+        </form>
 {% endblock %}
