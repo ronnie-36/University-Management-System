@@ -1,5 +1,17 @@
 {% extends 'department/departmentbase.html' %}
 
+{% block style %}
+
+
+<!-- Main CSS -->
+<link rel="stylesheet" type="text/css"
+    href="{{ url_for('static',filename='assets/faculty_assets/css/instructor-dashboard.css') }}">
+<link rel="stylesheet" type="text/css"
+    href="{{ url_for('static',filename='assets/faculty_assets/css/instructor-responsive.css') }}">
+
+
+{% endblock %}
+
 <!-- Sidebar -->
 {% block sidebar %}
 <nav class="vertical_nav">
@@ -24,7 +36,7 @@
                             <a href="/department/cse" class="sub_menu--link">CSE</a>
                         </li>
                         <li class="sub_menu--item">
-                            <a href="/department/cse/student_list" class="sub_menu--link active">Students List</a>
+                            <a href="/department/cse/student_list" class="sub_menu--link ">Students List</a>
                         </li>
                         <li class="sub_menu--item">
                             <a href="/department/cse/faculty_list" class="sub_menu--link">Faculty List</a>
@@ -55,328 +67,156 @@
     <div class="sa4d25">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-xl-12 col-lg-8">
-                    <div class="section3125">
-                        <div class="explore_search">
-                            <div class="ui search focus">
-                                <div class="ui left icon input swdh11">
-                                    <input class="prompt srch_explore" type="text"
-                                        placeholder="Search for Courses, Faculty and more..">
-                                    <i class="uil uil-search-alt icon icon2"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-lg-12">
+                    <h2 class="st_title"><i class="uil uil-book-alt"></i>Programs</h2>
                 </div>
-
+            </div>
+            <div class="row">
                 <div class="col-md-12">
-                    <div class="_14d25">
-                        <div class="row">
-                            <div class="col-lg-3 col-md-4">
-                                <div class="fcrse_1 mt-30">
-                                    <a href="#.html" class="fcrse_img">
-                                        <img src="../../static/assets/faculty_assets/images/courses/img-1.jpg" alt="">
-                                        <div class="course-overlay">
-                                            <div class="crse_reviews">
-                                                <i class="uil uil-star"></i>4.5
-                                            </div>
-                                            <span class="play_btn1"><i class="uil uil-play"></i></span>
-                                            <div class="crse_timer">
-                                                25 hours
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <div class="fcrse_content">
-                                        <div class="eps_dots more_dropdown">
-                                            <a href="#"><i class="uil uil-ellipsis-v"></i></a>
-                                            <div class="dropdown-content">
-                                                <span><i class='uil uil-share-alt'></i>Share</span>
-                                                <span><i class="uil uil-clock-three"></i>Watch Later</span>
-                                                <span><i class='uil uil-ban'></i>Not Interested</span>
-                                                <span><i class="uil uil-windsock"></i>Report</span>
-                                            </div>
-                                        </div>
-                                        <div class="vdtodt">
-                                            <span class="vdt14">109k views</span>
-                                            <span class="vdt14">15 days ago</span>
-                                        </div>
-                                        <a href="#.html" class="crse14s">Complete Python Bootcamp:
-                                            Go from zero to hero in Python 3</a>
-                                        <a href="#" class="crse-cate">Web Development | Python</a>
-                                        <div class="auth1lnkprce">
-                                            <p class="cr1fot">By <a href="#">John Doe</a></p>
-                                            <div class="prce142">$10</div>
-                                        </div>
-                                    </div>
+                    <div class="my_courses_tabs">
+                        <ul class="nav nav-pills my_crse_nav" id="pills-tab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="pills-my-courses-tab" data-toggle="pill"
+                                    href="#pills-my-courses" role="tab" aria-controls="pills-my-courses"
+                                    aria-selected="true"><i class="uil uil-book-alt"></i>Active Programs</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" id="pills-upcoming-courses-tab" data-toggle="pill"
+                                    href="#pills-upcoming-courses" role="tab" aria-controls="pills-upcoming-courses"
+                                    aria-selected="false"><i class="uil uil-upload-alt"></i>Upcoming Programs</a>
+                            </li>
+
+                        </ul>
+                        <div class="tab-content" id="pills-tabContent">
+                            <div class="tab-pane fade show active" id="pills-my-courses" role="tabpanel">
+                                <div class="table-responsive mt-30">
+                                    <table class="table ucp-table">
+                                        <thead class="thead-s">
+                                            <tr>
+                                                <th class="text-center" scope="col">Item No.</th>
+                                                <th>Name</th>
+                                                <th class="text-center" scope="col">Publish Date</th>
+                                                <th class="text-center" scope="col">Enrolled</th>
+                                                <th class="text-center" scope="col">Parts</th>
+                                                <th class="text-center" scope="col">Category</th>
+                                                <th class="text-center" scope="col">Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-center">IT-001</td>
+                                                <td>Course Title Here</td>
+                                                <td class="text-center">06 April 2020 | 08:31</td>
+                                                <td class="text-center">15</td>
+                                                <td class="text-center">5</td>
+                                                <td class="text-center"><a href="#">Web Development</a></td>
+                                                <td class="text-center"><b class="course_active">Active</b></td>
+
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">IT-002</td>
+                                                <td>Course Title Here</td>
+                                                <td class="text-center">05 April 2020 | 05:15</td>
+                                                <td class="text-center">30</td>
+                                                <td class="text-center">3</td>
+                                                <td class="text-center"><a href="#">Graphic Design</a></td>
+                                                <td class="text-center"><b class="course_active">Active</b></td>
+
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">IT-003</td>
+                                                <td>Course Title</td>
+                                                <td class="text-center">03 April 2020 | 01:30</td>
+                                                <td class="text-center">14</td>
+                                                <td class="text-center">5</td>
+                                                <td class="text-center"><a href="#">Bootstrap</a></td>
+                                                <td class="text-center"><b class="course_active">Active</b></td>
+
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">IT-004</td>
+                                                <td>Course Title Here</td>
+                                                <td class="text-center">02 April 2020 | 05:15</td>
+                                                <td class="text-center">110</td>
+                                                <td class="text-center">9</td>
+                                                <td class="text-center"><a href="#">Game Development</a></td>
+                                                <td class="text-center"><b class="course_active">Active</b></td>
+
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">IT-002</td>
+                                                <td>Course Title Here</td>
+                                                <td class="text-center">28 March 2020 | 05:15</td>
+                                                <td class="text-center">185</td>
+                                                <td class="text-center">10</td>
+                                                <td class="text-center"><a href="#">C++</a></td>
+                                                <td class="text-center"><b class="course_active">Active</b></td>
+
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-md-4">
-                                <div class="fcrse_1 mt-30">
-                                    <a href="#.html" class="fcrse_img">
-                                        <img src="../../static/assets/faculty_assets/images/courses/img-2.jpg" alt="">
-                                        <div class="course-overlay">
-                                            <div class="crse_reviews">
-                                                <i class="uil uil-star"></i>4.5
-                                            </div>
-                                            <span class="play_btn1"><i class="uil uil-play"></i></span>
-                                            <div class="crse_timer">
-                                                28 hours
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <div class="fcrse_content">
-                                        <div class="eps_dots more_dropdown">
-                                            <a href="#"><i class="uil uil-ellipsis-v"></i></a>
-                                            <div class="dropdown-content">
-                                                <span><i class='uil uil-share-alt'></i>Share</span>
-                                                <span><i class="uil uil-clock-three"></i>Watch Later</span>
-                                                <span><i class='uil uil-ban'></i>Not Interested</span>
-                                                <span><i class="uil uil-windsock"></i>Report</span>
-                                            </div>
-                                        </div>
-                                        <div class="vdtodt">
-                                            <span class="vdt14">5M views</span>
-                                            <span class="vdt14">15 days ago</span>
-                                        </div>
-                                        <a href="#.html" class="crse14s">The Complete JavaScript
-                                            Course 2020: Build Real Projects!</a>
-                                        <a href="#" class="crse-cate">Development | JavaScript</a>
-                                        <div class="auth1lnkprce">
-                                            <p class="cr1fot">By <a href="#">Jassica William</a></p>
-                                            <div class="prce142">$5</div>
-                                        </div>
-                                    </div>
+
+                            <div class="tab-pane fade" id="pills-upcoming-courses" role="tabpanel">
+                                <div class="table-responsive mt-30">
+                                    <table class="table ucp-table">
+                                        <thead class="thead-s">
+                                            <tr>
+                                                <th class="text-center" scope="col">Item No.</th>
+                                                <th class="cell-ta">Name</th>
+                                                <th class="text-center" scope="col">Thumbnail</th>
+                                                <th class="text-center">Category</th>
+                                                <th class="text-center">Duration</th>
+                                                <th class="text-center">Date</th>
+                                                <th class="text-center" scope="col">Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-center">01</td>
+                                                <td class="cell-ta">Course Title Here</td>
+                                                <td class="text-center"><a href="#">View</a></td>
+                                                <td class="text-center"><a href="#">Web Development</a></td>
+                                                <td class="text-center">15 hr</td>
+                                                <td class="text-center">9 April 2020</td>
+                                                <td class="text-center"><b class="course_active">Pending</b></td>
+
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">02</td>
+                                                <td class="cell-ta">Course Title Here</td>
+                                                <td class="text-center"><a href="#">View</a></td>
+                                                <td class="text-center"><a href="#">Graphic Design</a></td>
+                                                <td class="text-center">12 hr</td>
+                                                <td class="text-center">8 April 2020</td>
+                                                <td class="text-center"><b class="course_active">Pending</b></td>
+
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">03</td>
+                                                <td class="cell-ta">Course Title Here</td>
+                                                <td class="text-center"><a href="#">View</a></td>
+                                                <td class="text-center"><a href="#">Photography</a></td>
+                                                <td class="text-center">26 hr</td>
+                                                <td class="text-center">7 April 2020</td>
+                                                <td class="text-center"><b class="course_active">Pending</b></td>
+
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-md-4">
-                                <div class="fcrse_1 mt-30">
-                                    <a href="#.html" class="fcrse_img">
-                                        <img src="../../static/assets/faculty_assets/images/courses/img-20.jpg" alt="">
-                                        <div class="course-overlay">
-                                            <div class="crse_reviews">
-                                                <i class="uil uil-star"></i>5.0
-                                            </div>
-                                            <span class="play_btn1"><i class="uil uil-play"></i></span>
-                                            <div class="crse_timer">
-                                                21 hours
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <div class="fcrse_content">
-                                        <div class="eps_dots more_dropdown">
-                                            <a href="#"><i class="uil uil-ellipsis-v"></i></a>
-                                            <div class="dropdown-content">
-                                                <span><i class='uil uil-share-alt'></i>Share</span>
-                                                <span><i class="uil uil-clock-three"></i>Watch Later</span>
-                                                <span><i class='uil uil-ban'></i>Not Interested</span>
-                                                <span><i class="uil uil-windsock"></i>Report</span>
-                                            </div>
-                                        </div>
-                                        <div class="vdtodt">
-                                            <span class="vdt14">200 Views</span>
-                                            <span class="vdt14">4 days ago</span>
-                                        </div>
-                                        <a href="#.html" class="crse14s">WordPress Development -
-                                            Themes, Plugins &amp; Gutenberg</a>
-                                        <a href="#" class="crse-cate">Design | Wordpress</a>
-                                        <div class="auth1lnkprce">
-                                            <p class="cr1fot">By <a href="#">Joy Dua</a></p>
-                                            <div class="prce142">$14</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4">
-                                <div class="fcrse_1 mt-30">
-                                    <a href="#.html" class="fcrse_img">
-                                        <img src="../../static/assets/faculty_assets/images/courses/img-4.jpg" alt="">
-                                        <div class="course-overlay">
-                                            <div class="crse_reviews">
-                                                <i class="uil uil-star"></i>5.0
-                                            </div>
-                                            <span class="play_btn1"><i class="uil uil-play"></i></span>
-                                            <div class="crse_timer">
-                                                1 hour
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <div class="fcrse_content">
-                                        <div class="eps_dots more_dropdown">
-                                            <a href="#"><i class="uil uil-ellipsis-v"></i></a>
-                                            <div class="dropdown-content">
-                                                <span><i class='uil uil-share-alt'></i>Share</span>
-                                                <span><i class="uil uil-clock-three"></i>Watch Later</span>
-                                                <span><i class='uil uil-ban'></i>Not Interested</span>
-                                                <span><i class="uil uil-windsock"></i>Report</span>
-                                            </div>
-                                        </div>
-                                        <div class="vdtodt">
-                                            <span class="vdt14">153k views</span>
-                                            <span class="vdt14">3 months ago</span>
-                                        </div>
-                                        <a href="#.html" class="crse14s">The Complete Digital
-                                            Marketing Course - 12 Courses in 1</a>
-                                        <a href="#" class="crse-cate">Digital Marketing | Marketing</a>
-                                        <div class="auth1lnkprce">
-                                            <p class="cr1fot">By <a href="#">Poonam Verma</a></p>
-                                            <div class="prce142">$12</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4">
-                                <div class="fcrse_1 mt-30">
-                                    <a href="#.html" class="fcrse_img">
-                                        <img src="../../static/assets/faculty_assets/images/courses/img-13.jpg" alt="">
-                                        <div class="course-overlay">
-                                            <span class="play_btn1"><i class="uil uil-play"></i></span>
-                                            <div class="crse_timer">
-                                                30 hours
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <div class="fcrse_content">
-                                        <div class="eps_dots more_dropdown">
-                                            <a href="#"><i class="uil uil-ellipsis-v"></i></a>
-                                            <div class="dropdown-content">
-                                                <span><i class='uil uil-share-alt'></i>Share</span>
-                                                <span><i class="uil uil-clock-three"></i>Watch Later</span>
-                                                <span><i class='uil uil-ban'></i>Not Interested</span>
-                                                <span><i class="uil uil-windsock"></i>Report</span>
-                                            </div>
-                                        </div>
-                                        <div class="vdtodt">
-                                            <span class="vdt14">20 Views</span>
-                                            <span class="vdt14">1 day ago</span>
-                                        </div>
-                                        <a href="#.html" class="crse14s">The Complete Node.js
-                                            Developer Course (3rd Edition)</a>
-                                        <a href="#" class="crse-cate">Development | Node.js</a>
-                                        <div class="auth1lnkprce">
-                                            <p class="cr1fot">By <a href="#">John Doe</a></p>
-                                            <div class="prce142">$3</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4">
-                                <div class="fcrse_1 mt-30">
-                                    <a href="#.html" class="fcrse_img">
-                                        <img src="../../static/assets/faculty_assets/images/courses/img-7.jpg" alt="">
-                                        <div class="course-overlay">
-                                            <div class="crse_reviews">
-                                                <i class="uil uil-star"></i>5.0
-                                            </div>
-                                            <span class="play_btn1"><i class="uil uil-play"></i></span>
-                                            <div class="crse_timer">
-                                                5.4 hours
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <div class="fcrse_content">
-                                        <div class="eps_dots more_dropdown">
-                                            <a href="#"><i class="uil uil-ellipsis-v"></i></a>
-                                            <div class="dropdown-content">
-                                                <span><i class='uil uil-share-alt'></i>Share</span>
-                                                <span><i class="uil uil-clock-three"></i>Watch Later</span>
-                                                <span><i class='uil uil-ban'></i>Not Interested</span>
-                                                <span><i class="uil uil-windsock"></i>Report</span>
-                                            </div>
-                                        </div>
-                                        <div class="vdtodt">
-                                            <span class="vdt14">109k views</span>
-                                            <span class="vdt14">15 days ago</span>
-                                        </div>
-                                        <a href="#.html" class="crse14s">WordPress for Beginners:
-                                            Create a Website Step by Step</a>
-                                        <a href="#" class="crse-cate">Design | Wordpress</a>
-                                        <div class="auth1lnkprce">
-                                            <p class="cr1fot">By <a href="#">Sabnam SIngh</a></p>
-                                            <div class="prce142">$18</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4">
-                                <div class="fcrse_1 mt-30">
-                                    <a href="#.html" class="fcrse_img">
-                                        <img src="../../static/assets/faculty_assets/images/courses/img-8.jpg" alt="">
-                                        <div class="course-overlay">
-                                            <div class="crse_reviews">
-                                                <i class="uil uil-star"></i>4.0
-                                            </div>
-                                            <span class="play_btn1"><i class="uil uil-play"></i></span>
-                                            <div class="crse_timer">
-                                                23 hours
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <div class="fcrse_content">
-                                        <div class="eps_dots more_dropdown">
-                                            <a href="#"><i class="uil uil-ellipsis-v"></i></a>
-                                            <div class="dropdown-content">
-                                                <span><i class='uil uil-share-alt'></i>Share</span>
-                                                <span><i class="uil uil-clock-three"></i>Watch Later</span>
-                                                <span><i class='uil uil-ban'></i>Not Interested</span>
-                                                <span><i class="uil uil-windsock"></i>Report</span>
-                                            </div>
-                                        </div>
-                                        <div class="vdtodt">
-                                            <span class="vdt14">196k views</span>
-                                            <span class="vdt14">1 month ago</span>
-                                        </div>
-                                        <a href="#.html" class="crse14s">CSS - The Complete Guide
-                                            2020 (incl. Flexbox, Grid &amp; Sass)</a>
-                                        <a href="#" class="crse-cate">Design | CSS</a>
-                                        <div class="auth1lnkprce">
-                                            <p class="cr1fot">By <a href="#">Jashanpreet Singh</a></p>
-                                            <div class="prce142">$10</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4">
-                                <div class="fcrse_1 mt-30">
-                                    <a href="#" class="fcrse_img">
-                                        <img src="../../static/assets/faculty_assets/images/courses/img-16.jpg" alt="">
-                                        <div class="course-overlay">
-                                            <span class="play_btn1"><i class="uil uil-play"></i></span>
-                                            <div class="crse_timer">
-                                                22 hours
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <div class="fcrse_content">
-                                        <div class="eps_dots more_dropdown">
-                                            <a href="#"><i class="uil uil-ellipsis-v"></i></a>
-                                            <div class="dropdown-content">
-                                                <span><i class='uil uil-share-alt'></i>Share</span>
-                                                <span><i class="uil uil-clock-three"></i>Watch Later</span>
-                                                <span><i class='uil uil-ban'></i>Not Interested</span>
-                                                <span><i class="uil uil-windsock"></i>Report</span>
-                                            </div>
-                                        </div>
-                                        <div class="vdtodt">
-                                            <span class="vdt14">11 Views</span>
-                                            <span class="vdt14">5 Days ago</span>
-                                        </div>
-                                        <a href="#.html" class="crse14s">Vue JS 2 - The Complete
-                                            Guide (incl. Vue Router &amp; Vuex)</a>
-                                        <a href="#" class="crse-cate">Development | Vue JS</a>
-                                        <div class="auth1lnkprce">
-                                            <p class="cr1fot">By <a href="#">Manreet Kaur</a></p>
-                                            <div class="prce142">$10</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="main-loader mt-50">
-                                    <div class="spinner">
-                                        <div class="bounce1"></div>
-                                        <div class="bounce2"></div>
-                                        <div class="bounce3"></div>
-                                    </div>
+
+                            <div class="tab-pane fade" id="pills-promotions" role="tabpanel"
+                                aria-labelledby="pills-promotions-tab">
+                                <div class="promotion_tab mb-10">
+                                    <img src="../../static/assets/faculty_assets/images/dashboard/promotion.svg" alt="">
+                                    <h4>Baby promotion plan is activated!</h4>
+                                    <p>By activating promotion plans you can improve courses and Enrolled.</p>
+                                    <button class="plan_link_btn" onclick="window.location.href = '#';">Change New
+                                        Plan</button>
                                 </div>
                             </div>
                         </div>
