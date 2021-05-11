@@ -49,6 +49,7 @@ Clone this project
       
 ### Testing  
 '''
+Library used - unittest, flask_testing  
 For running test file
 STEPS: 
 
@@ -62,13 +63,13 @@ FOR DETAILED COVERAGE
 
 
 TestCase Details - 
-1. Home section
-2. Admin section
-3. Student section
-4. Faculty section
+1. Home section - 100%(test.py)
+2. Admin section - 98%(test.py)
+3. Student section - 100%(test_student.py)
+4. Faculty section - 90%
 '''
 
-#### See [Coverage file](/htmlcov/index.html)
+#### See [Coverage file](/htmlcov)
 
       
 
