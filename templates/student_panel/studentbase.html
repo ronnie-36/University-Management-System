@@ -37,30 +37,6 @@
 
     {% block style %}
     {% endblock %}
-
-    {% endblock %}
-</head>
-
-<body>
-
-
-    {% block body %}
-
-    {% block loader %}
-    <!-- start cssload-loader -->
-    <div class="preloader">
-        <div class="loader">
-            <svg class="spinner" viewBox="0 0 50 50">
-                <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
-            </svg>
-        </div>
-    </div>
-    <!-- end cssload-loader -->
-    {% endblock %}
-
-
-    <!-- HEADER Area -->
-    {% block nav %}
     <header class="header-menu-area">
         <div class="header-menu-content dashboard-menu-content pr-30px pl-30px bg-white shadow-sm">
             <div class="container-fluid">
@@ -82,6 +58,8 @@
 
                                 <div class="nav-right-button d-flex align-items-center">
                                     <div class="user-action-wrap d-flex align-items-center">
+
+
                                         <div
                                             class="shop-cart notification-cart pr-3 mr-3 border-right border-right-gray">
                                             <ul>
@@ -142,7 +120,8 @@
                                                             </div>
                                                         </li>
                                                         <li class="menu-heading-block">
-                                                            <a href="dashboard.html" class="btn theme-btn w-100">Show
+                                                            <a href="/student/dashboard#notification"
+                                                                class="btn theme-btn w-100">Show
                                                                 All Notifications <i
                                                                     class="la la-arrow-right icon ml-1"></i></a>
                                                         </li>
@@ -171,10 +150,10 @@
                                                                     alt="Avatar image">
                                                             </a>
                                                             <div class="ml-2">
-                                                                <h4><a href="teacher-detail.html"
-                                                                        class="text-black"> Name </a></h4>
+                                                                <h4><a href="#" class="text-black">Kuldeep
+                                                                        Singh</a></h4>
                                                                 <span
-                                                                    class="d-block fs-14 lh-20">name@example.com</span>
+                                                                    class="d-block fs-14 lh-20">Kuldeep@example.com</span>
                                                             </div>
                                                         </li>
                                                         <li>
@@ -230,7 +209,7 @@
                                                                     <div class="section-block"></div>
                                                                 </li>
                                                                 <li>
-                                                                    <a href="dashboard.html">
+                                                                    <a href="/student/dashboard#notification">
                                                                         <i class="la la-bell mr-1"></i> Notifications
                                                                         <span
                                                                             class="badge bg-info text-white ml-2 p-1">9+</span>
@@ -249,12 +228,12 @@
                                                                 <li>
                                                                     <div class="section-block"></div>
                                                                 </li>
-
                                                                 <li>
-                                                                    <a href="/student/setting">
-                                                                        <i class="la la-edit mr-1"></i> Edit profile
+                                                                    <a href="/student/profile">
+                                                                        <i class="la la-user mr-1"></i> profile
                                                                     </a>
                                                                 </li>
+
                                                                 <li>
                                                                     <div class="section-block"></div>
                                                                 </li>
@@ -282,9 +261,96 @@
                 </div>
             </div><!-- end container-fluid -->
         </div><!-- end header-menu-content -->
+        <div class="off-canvas-menu custom-scrollbar-styled main-off-canvas-menu">
+            <div class="off-canvas-menu-close main-menu-close icon-element icon-element-sm shadow-sm"
+                data-toggle="tooltip" data-placement="left" title="Close menu">
+                <i class="la la-times"></i>
+            </div><!-- end off-canvas-menu-close -->
+            <h4 class="off-canvas-menu-heading pt-90px">Alerts</h4>
+            <ul class="generic-list-item off-canvas-menu-list pt-1 pb-2 border-bottom border-bottom-gray">
+                <li><a href="/student/dashboard#notification">Notifications</a></li>
+            </ul>
+            <h4 class="off-canvas-menu-heading pt-20px">Account</h4>
+            <ul class="generic-list-item off-canvas-menu-list pt-1 pb-2 border-bottom border-bottom-gray">
+                <li><a href="/student/setting">Account settings</a></li>
+                <li><a href="/student/placement_offers">Placement Offers</a></li>
+            </ul>
+            <h4 class="off-canvas-menu-heading pt-20px">Profile</h4>
+            <ul class="generic-list-item off-canvas-menu-list pt-1 pb-2 border-bottom border-bottom-gray">
+                <li><a href="/student/profile">profile</a></li>
+                <li><a href="/logout">Log out</a></li>
+            </ul>
 
+            <div class="theme-picker d-flex align-items-center justify-content-center mt-4 px-3">
+                <button
+                    class="theme-picker-btn dark-mode-btn btn theme-btn-sm theme-btn-white w-100 font-weight-semi-bold justify-content-center"
+                    title="Dark mode">
+                    <svg class="mr-1" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    Dark Mode
+                </button>
+                <button
+                    class="theme-picker-btn light-mode-btn btn theme-btn-sm theme-btn-white w-100 font-weight-semi-bold justify-content-center"
+                    title="Light mode">
+                    <svg class="mr-1" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    Light Mode
+                </button>
+            </div>
+        </div><!-- end off-canvas-menu -->
+
+        <div class="mobile-search-form">
+            <div class="d-flex align-items-center">
+                <form method="post" class="flex-grow-1 mr-3">
+                    <div class="form-group mb-0">
+                        <input class="form-control form--control pl-3" type="text" name="search"
+                            placeholder="Search for anything">
+                        <span class="la la-search search-icon"></span>
+                    </div>
+                </form>
+                <div class="search-bar-close icon-element icon-element-sm shadow-sm">
+                    <i class="la la-times"></i>
+                </div><!-- end off-canvas-menu-close -->
+            </div>
+        </div><!-- end mobile-search-form -->
         <div class="body-overlay"></div>
     </header><!-- end header-menu-area -->
+    {% endblock %}
+</head>
+
+<body>
+
+
+    {% block body %}
+
+    {% block loader %}
+    <!-- start cssload-loader -->
+    <div class="preloader">
+        <div class="loader">
+            <svg class="spinner" viewBox="0 0 50 50">
+                <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+            </svg>
+        </div>
+    </div>
+    <!-- end cssload-loader -->
+    {% endblock %}
+
+
+    <!-- HEADER Area -->
+    {% block nav %}
+
     {% endblock %}
     <!-- End HEADER Area -->
 

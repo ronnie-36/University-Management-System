@@ -84,7 +84,6 @@ app.add_url_rule('/student/gradesheet', view_func=student.student_gradesheet, me
 app.add_url_rule('/faculty/dashboard', view_func=faculty.faculty_dashboard, methods=['GET','POST'])
 app.add_url_rule('/faculty/setting', view_func=faculty.faculty_setting, methods=['GET','POST'])
 app.add_url_rule('/faculty/profile', view_func=faculty.faculty_profile, methods=['GET','POST'])
-
 # faculty end
 
 # admin start
