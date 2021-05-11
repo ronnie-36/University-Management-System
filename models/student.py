@@ -34,7 +34,7 @@ def student_dashboard():
     details = rv[0]
 
     cur.execute('''
-    select 
+    select
 	count(*)
     from
         student
@@ -53,7 +53,7 @@ def student_dashboard():
     enrolled_courses = int(rv[0][0])
 
     cur.execute('''
-    select 
+    select
 	count(*)
     from
         student
@@ -75,7 +75,7 @@ def student_dashboard():
     completed_courses = enrolled_courses - active_courses
 
     cur.execute('''
-    select 
+    select
 	course.name, grade
     from
         student
@@ -96,7 +96,6 @@ def student_dashboard():
 
     mysql.connection.commit()
     cur.close()
-    print(details)
     return render_template('student_panel/dashboard.html', details = details, enrolled_courses = enrolled_courses,
     active_courses = active_courses, completed_courses = completed_courses,
     current_grades = current_grades)
@@ -106,11 +105,10 @@ def student_profile():
         return render_template('error.html')
     elif session['role'] != "student":
         return render_template('error.html')
-    
+
 
     if request.method == 'POST':
         details = request.form
-        print(details)
         address = details['address']
         dob = details['dob']
         gender = details['gender']
@@ -120,7 +118,7 @@ def student_profile():
         mysql.connection.commit()
         cur.close()
         return redirect(url_for('student_profile'))
- 
+
     cur = mysql.connection.cursor()
     cur.execute(''' select * from student where student_id = '%s'; '''%(session['id']))
     rv = cur.fetchall()
@@ -135,7 +133,7 @@ def student_setting():
         return render_template('error.html')
     elif session['role'] != "student":
         return render_template('error.html')
-    
+
 
     if request.method == 'POST':
         details = request.form
@@ -148,7 +146,7 @@ def student_setting():
         mysql.connection.commit()
         cur.close()
         return redirect(url_for('student_setting'))
- 
+
     cur = mysql.connection.cursor()
     cur.execute(''' select * from student where student_id = '%s'; '''%(session['id']))
     rv = cur.fetchall()
@@ -163,7 +161,7 @@ def student_enrolled_courses():
         return render_template('error.html')
     elif session['role'] != "student":
         return render_template('error.html')
-        
+
     if request.method == 'POST':
         details = request.form
         sec_id = details['sec_id']
@@ -183,7 +181,7 @@ def student_enrolled_courses():
 
     cur = mysql.connection.cursor()
     cur.execute('''
-    select 
+    select
 	section.sec_id, course.name, section.sem, course.credits, course.hours, student.sem
     from
         student
@@ -231,10 +229,10 @@ def student_my_courses():
         return render_template('error.html')
     elif session['role'] != "student":
         return render_template('error.html')
-        
+
     cur = mysql.connection.cursor()
     cur.execute('''
-    select 
+    select
 	section.sec_id, course.name, section.sem, course.credits, course.hours, student.sem
     from
         student
@@ -256,24 +254,16 @@ def student_my_courses():
     cur.close()
     return render_template('student_panel/dashboard-courses.html', list = my_courses)
 
-def student_submit_course():
-    if 'id' not in session or 'role' not in session:
-        return render_template('error.html')
-    elif session['role'] != "student":
-        return render_template('error.html')
-        
-    return render_template('student_panel/dashboard-submit-assignment.html')
-
 def student_grades():
     if 'id' not in session or 'role' not in session:
         return render_template('error.html')
     elif session['role'] != "student":
         return render_template('error.html')
-    
+
     cur = mysql.connection.cursor()
     cur.execute('''
-    select 
-        student.student_id, assignment.a_id, course.name, submission.marks_got, assignment.marks_total,  
+    select
+        student.student_id, assignment.a_id, course.name, submission.marks_got, assignment.marks_total,
         submission.marks_got/assignment.marks_total*100 as percentage, assignment.created_at
     from
         assignment
@@ -287,7 +277,7 @@ def student_grades():
         submission
             join
         faculty
-    where 
+    where
         assignment.a_id = submission.a_id and
         student.student_id = submission.student_id and
         section.sec_id = assignment.sec_id and
@@ -307,14 +297,14 @@ def student_gradesheet():
         return render_template('error.html')
     elif session['role'] != "student":
         return render_template('error.html')
-    
+
     if request.method == 'POST':
         sem = request.form['sem']
         cur = mysql.connection.cursor()
         cur.execute('''
-        select 
+        select
                 student.student_id, section.sec_id, course.name, student.sem, final_grade.grades,
-                course.credits, course.credits*final_grade.grades/10 as credits_obtained  
+                course.credits, course.credits*final_grade.grades/10 as credits_obtained
         from
             enroll
                 join
@@ -326,16 +316,15 @@ def student_gradesheet():
                 join
             final_grade
         where
-            student.student_id = enroll.student_id and 
+            student.student_id = enroll.student_id and
             enroll.sec_id = section.sec_id and
             section.c_id = course.c_id and
             final_grade.c_id = course.c_id and
             student.sem = section.sem and
             final_grade.student_id = student.student_id and
-            student.student_id = '%s' and 
+            student.student_id = '%s' and
             student.sem = '%s';'''%(session['id'], sem))
         rv = cur.fetchall()
-        print(rv)
         debug()
         mysql.connection.commit()
         cur.close()
@@ -363,7 +352,7 @@ def student_submit_assignment():
         return render_template('error.html')
     elif session['role'] != "student":
         return render_template('error.html')
-    
+
     cur = mysql.connection.cursor()
     cur.execute('''
     select  DISTINCT
@@ -383,10 +372,10 @@ def student_submit_assignment():
         faculty
             join
         enroll
-    where 
+    where
         student.student_id = enroll.student_id and
         enroll.sec_id = section.sec_id and
-        course.c_id = section.c_id and 
+        course.c_id = section.c_id and
         assignment.sec_id = enroll.sec_id and
         faculty.faculty_id = assignment.faculty_id and
         student.sem = section.sem and
@@ -402,7 +391,7 @@ def student_submit_assign(a_id):
         return render_template('error.html')
     elif session['role'] != "student":
         return render_template('error.html')
-    
+
     if request.method == 'POST':
         details = request.form
         answer = details['answer']
@@ -411,7 +400,7 @@ def student_submit_assign(a_id):
         dt = datetime.datetime.now()
         dt = str(dt)
         cur = mysql.connection.cursor()
-        cur.execute('''insert ignore into submission (a_id, student_id, submitted_at, text, files_link) 
+        cur.execute('''insert ignore into submission (a_id, student_id, submitted_at, text, files_link)
         values ('%s','%s','%s','%s','%s');'''%(a_id, session['id'], dt, answer, url))
         rv = cur.fetchall()
         mysql.connection.commit()
