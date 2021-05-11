@@ -110,6 +110,7 @@ def student_profile():
 
     if request.method == 'POST':
         details = request.form
+        print(details)
         address = details['address']
         dob = details['dob']
         gender = details['gender']
