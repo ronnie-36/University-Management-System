@@ -1,0 +1,163 @@
+{% extends 'faculty/facultybase.html' %}
+
+<!-- Sidebar -->
+
+<!-- /Sidebar -->
+
+<!-- Page Wrapper -->
+{% block wrapper %}
+<div class="wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+
+                <div class="card">
+                    <div class="card-body">
+                        <form method="POST">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h2 class="st_title"> Your Profile</h2>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Faculty ID</label>
+                                        <input type="text" class="form-control" name="faculty_id"
+                                            value="{{ facultyDetails[0] }}" disabled>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>First Name</label>
+                                        <input type="text" class="form-control" name="first_name"
+                                            value="{{ facultyDetails[1] }}" disabled>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Last Name</label>
+                                        <input type="text" class="form-control" name="last_name"
+                                            value="{{ facultyDetails[2] }}" disabled>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Gender</label>
+                                        <select class="form-control" name="gender" disabled>
+                                            <option>{{ facultyDetails[3] }}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Date of Birth</label>
+                                        <input type="date" class="form-control" name="dob"
+                                            value="{{ facultyDetails[4] }}" disabled>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Mobile</label>
+                                        <input type="tel" class="form-control" name="phone" pattern="[0-9]{10}"
+                                            maxlength="10" value="{{ facultyDetails[5] }}">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Address</label>
+                                        <input class="form-control" type="text" name="address"
+                                            value="{{ facultyDetails[6] }}">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Email ID</label>
+                                        <input type="email" class="form-control" name="email"
+                                            value="{{ facultyDetails[7] }}" required>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Salary</label>
+                                        <input type="number" class="form-control" name="salary"
+                                            value="{{ facultyDetails[8] }}" disabled>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Research Interests</label>
+                                        <input type="text" class="form-control" name="ri"
+                                            value="{{ facultyDetails[9] }}">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Position</label>
+                                        <select name="position" class="form-control" disabled>
+                                            <option>
+                                                {{ facultyDetails[10] }}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Department</label>
+                                        <select name="department" class="form-control" disabled>
+                                            <option>
+                                                {{ department }}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary">Update</button>
+                                </div>
+                            </div>
+                        </form>
+                        {% if msg != '' %}
+                        <h5 style="color: rgb(255, 25, 25);">
+                            {{msg}}</h5>
+                        {% endif %}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <footer class="footer mt-40">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 my-2">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="fotb_left">
+                                <li>
+                                    <a href="index.html">
+                                        <div class="footer_logo">
+                                            <img src="../../static/assets/faculty_assets/images/logo1.svg" alt="">
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <p>© 2021 <strong>UMS - IIT Indore</strong>. All Rights Reserved.</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="edu_social_links">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+</div>
+{% endblock %}
+<!-- /Page Wrapper -->

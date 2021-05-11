@@ -1,55 +1,122 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block body %}
-<section class="section loginPage">
-  <img class="wave" src="/static/img/wave.png">
-  <div>
-    <div class="imgg ">
-      <img src="/static/img/bg.svg"  class="wave">
-    </div>
-    <div class="login-content">
-    
-      <form id=form method="POST" action="/resetpassword/{{user}}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+  <title>UMS - Login</title>
 
-        {% if user=="student" %}
-        <img src="/static/img/avatar.svg">
-        {% elif user=="faculty" %}
-        <img src="/static/img/teacher.png">
-        {% else %}
-        <img src="/static/img/admin.png">
-        {% endif %}
-        <h2 class="title">{{ user }}</h2>
-        <div class="input-div one">
-          <div class="i">
-            <i class="fas fa-user"></i>
-          </div>
-          <div class="ddiv">
-            <input type="text" name="user_id" class="input" placeholder="Username">
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="../../static/assets/Admin_assets/img/favicon.ico">
+
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,700;1,400&amp;display=swap">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="../../static/assets/Admin_assets/plugins/bootstrap/css/bootstrap.min.css">
+
+  <!-- Fontawesome CSS -->
+  <link rel="stylesheet" href="../../static/assets/Admin_assets/plugins/fontawesome/css/fontawesome.min.css">
+  <link rel="stylesheet" href="../../static/assets/Admin_assets/plugins/fontawesome/css/all.min.css">
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="../../static/assets/Admin_assets/css/style.css">
+
+  <!-- Plugins CSS -->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='LandingPage/css/plugins.css') }}">
+  <!-- <link href="css/plugins.css" rel="stylesheet"> -->
+
+  <!-- Custom CSS -->
+  <!-- <link href="css/style.css" rel="stylesheet"> -->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='LandingPage/css/style.css') }}">
+
+  <!-- Favicon -->
+  <!-- <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico"> -->
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+  <link rel="shortcut icon" type="image/x-icon"
+    href="{{ url_for('static',filename='LandingPage/images/favicon.ico') }}">
+
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <div class="logo"> <a href="/">
+          <h3><img src="../static/LandingPage/images/logo1.png" alt=""></h3>
+        </a> </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span
+          class="navbar-toggler-icon"></span> </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+          <li class="nav-item"> <a href="/" class="nav-link"> Home </a> </li>
+          <li class="nav-item"> <a href="/#about" class="nav-link"> About </a> </li>
+          <li class="nav-item"> <a href="/#services" class="nav-link"> Services </a> </li>
+          <li class="nav-item"> <a href="/#portfolio" class="nav-link"> Portfolio </a> </li>
+          <li class="nav-item"> <a href="/#team" class="nav-link"> Our Team </a> </li>
+          <li class="nav-item"> <a href="/#contact" class="nav-link"> Contact </a> </li>
+        </ul>
+        <div class="others-option">
+          <div class="d-flex align-items-center">
+            <div class="option-item">
+              <ul class="social-icon">
+                <!-- <li> <a href="#"> <i class="ti-twitter"></i> </a> </li> -->
+                <li class="getstarted">
+                  <a href="/getStarted" class="btn btn__primary btn__lg mr-3"> <span>Get Started</span> </a>
+                </li>
+
+              </ul>
+            </div>
           </div>
         </div>
-        <input type="submit" class="btn" value="Request Password Reset">
-        <!-- <a id=a href="/"  ></a> -->
-        {% if flash != '' %}
-        <h5 style="color: rgb(255, 25, 25);">{{flash}}</h5>
-        {% endif %}
-      </form>
+      </div>
+    </div>
+  </nav>
+  <!-- Main Wrapper -->
+  <div class="main-wrapper login-body">
+    <div class="login-wrapper">
+      <div class="container">
+        <div class="loginbox">
+          <div class="login-left">
+          </div>
+          <div class="login-right">
+            <div class="login-right-wrap">
+              <h1>Forgot Password</h1>
+              <p class="account-subtitle">{{ user }}</p>
+
+              <form id=form method="POST" action="/resetpassword/{{user}}">
+                <div class="form-group">
+									<input class="form-control" type="text" placeholder="Username" name="user_id">
+								</div>
+                <div class="form-group">
+									<button class="btn btn-primary btn-block" type="submit">Request Password Reset</button>
+								</div>
+                <!-- <a id=a href="/"  ></a> -->
+                {% if flash != '' %}
+                <h5 style="color: rgb(255, 25, 25);">{{flash}}</h5>
+                {% endif %}
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</section> 
+  <!-- /Main Wrapper -->
+
+  <!-- jQuery -->
+  <script src="../../static/assets/Admin_assets/js/jquery-3.5.1.min.js"></script>
+
+  <!-- Bootstrap Core JS -->
+  <script src="../../static/assets/Admin_assets/js/popper.min.js"></script>
+  <script src="../../static/assets/Admin_assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+  <!-- Custom JS -->
+  <script src="../../static/assets/Admin_assets/js/script.js"></script>
+
+</body>
 
 
-<!-- <form class="form-center" method="POST" action="">
-       
-
-        <input type="text" name="rollno" placeholder="rollno" />
-        <br>
-        <input type="password" name="password" placeholder="password" />
-        <br>
-        <input type="submit">
-         {% if flash != '' %}
-        <h5 style="color: red;">{{flash}}!!</h5>
-        {% endif %}
-      </form>
-</section>    -->
-
-{% endblock %}
+</html>

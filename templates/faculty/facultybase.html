@@ -74,10 +74,6 @@
 
         <div class="header_right">
             <ul>
-                <li>
-                    <a href="/faculty/create_new_course" class="upload_btn">Create New Assignment</a>
-                </li>
-
 
                 <li class="ui dropdown">
                     <a href="#" class="option_links"><i class='uil uil-bell'></i><span class="noti_count">3</span></a>
@@ -87,7 +83,7 @@
                                 <img src="../../static/assets/faculty_assets/images/left-imgs/img-1.jpg" alt="">
                                 <div class="pd_content">
                                     <h6>Rock William</h6>
-                                    <p>Like Your Comment On Assignment <strong>How to create sidebar menu</strong>.</p>
+                                    <p>Like Your Comment On Video <strong>How to create sidebar menu</strong>.</p>
                                     <span class="nm_time">2 min ago</span>
                                 </div>
                             </div>
@@ -97,7 +93,7 @@
                                 <img src="../../static/assets/faculty_assets/images/left-imgs/img-2.jpg" alt="">
                                 <div class="pd_content">
                                     <h6>Jassica Smith</h6>
-                                    <p>Added New Review In Assignment <strong>Full Stack PHP Developer</strong>.</p>
+                                    <p>Added New Review In Video <strong>Full Stack PHP Developer</strong>.</p>
                                     <span class="nm_time">12 min ago</span>
                                 </div>
                             </div>
@@ -106,7 +102,7 @@
                             <div class="profile_link">
                                 <img src="../../static/assets/faculty_assets/images/left-imgs/img-9.jpg" alt="">
                                 <div class="pd_content">
-                                    <p> Your account Approved <strong>Upload Assignment</strong>.</p>
+                                    <p> Your Membership Approved <strong>Upload Video</strong>.</p>
                                     <span class="nm_time">20 min ago</span>
                                 </div>
                             </div>
@@ -125,7 +121,7 @@
                                 <img src="../../static/assets/faculty_assets/images/hd_dp.jpg" alt="">
                                 <div class="pd_content">
                                     <div class="rhte85">
-                                        <h6>Kuldeep Singh</h6>
+                                        <h6>{{ name }}</h6>
                                         <div class="mef78" title="Verify">
                                             <i class='uil uil-check-circle'></i>
                                         </div>
@@ -137,13 +133,13 @@
                         </div>
                         <div class="night_mode_switch__btn">
                             <a href="#" id="night-mode" class="btn-night-mode">
-                                <i class="uil uil-moon"></i> Night mode
+                                <i class="uil uil-moon"></i>Night mode
                                 <span class="btn-night-mode-switch">
                                     <span class="uk-switch-button"></span>
                                 </span>
                             </a>
                         </div>
-                        <a href="/faculty/setting" class="item channel_item">Setting</a>
+                        <a href="/faculty/setting" class="item channel_item">Settings</a>
                         <a href="/logout" class="item channel_item">Sign Out</a>
                     </div>
                 </li>
@@ -155,10 +151,76 @@
 
     <!-- Sidebar -->
     {% block sidebar %}
-
+    <nav class="vertical_nav">
+        <div class="left_section menu_left" id="js-menu">
+            <div class="left_section">
+                <ul>
+                    {% block sidebar_dashboard %}
+                    <li class="menu--item">
+                        <a href="/faculty/dashboard" class="menu--link" title="Dashboard">
+                            <i class="uil uil-apps menu--icon"></i>
+                            <span class="menu--label">Dashboard</span>
+                        </a>
+                    </li>
+                    {% endblock %}
+                    {% block sidebar_courses %}
+                    <li class="menu--item">
+                        <a href="/faculty/courses" class="menu--link" title="Courses">
+                            <i class='uil uil-book-alt menu--icon'></i>
+                            <span class="menu--label">Courses</span>
+                        </a>
+                    </li>
+                    {% endblock %}
+                    {% block sidebar_createassignment %}
+                    <li class="menu--item">
+                        <a href="/faculty/create_new_assignment" class="menu--link" title="Create Assignment">
+                            <i class='uil uil-plus-circle menu--icon'></i>
+                            <span class="menu--label">Create Assignment</span>
+                        </a>
+                    </li>
+                    {% endblock %}
+                    {% block sidebar_grades %}
+                    <li class="menu--item">
+                        <a href="instructor_my_certificates.html" class="menu--link" title="Check Assignments">
+                            <i class='uil uil-award menu--icon'></i>
+                            <span class="menu--label">Check Assignments </span>
+                        </a>
+                    </li>
+                    {% endblock %}
+                    {% block sidebar_notifications %}
+                    <li class="menu--item">
+                        <a href="/faculty/notifications" class="menu--link" title="Notifications">
+                            <i class='uil uil-bell menu--icon'></i>
+                            <span class="menu--label">Notifications</span>
+                        </a>
+                    </li>
+                    {% endblock %}
+                    {% block sidebar_timetable %}
+                    <li class="menu--item">
+                        <a href="/faculty/time-table" class="menu--link" title="Time Table">
+                            <i class='uil uil-file-alt menu--icon'></i>
+                            <span class="menu--label">Time-Table</span>
+                        </a>
+                    </li>
+                    {% endblock %}
+                </ul>
+            </div>
+            <div class="left_section pt-2">
+                <ul>
+                    {% block sidebar_settings %}
+                    <li class="menu--item">
+                        <a href="/faculty/setting" class="menu--link" title="Settings">
+                            <i class='uil uil-cog menu--icon'></i>
+                            <span class="menu--label">Settings</span>
+                        </a>
+                    </li>
+                    {% endblock %}
+                </ul>
+            </div>
+        </div>
+    </nav>
     {% endblock %}
     <!-- /Sidebar -->
-
     <!-- Page Wrapper -->
     {% block wrapper %}
 

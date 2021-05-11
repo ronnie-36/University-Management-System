@@ -78,6 +78,9 @@ app.add_url_rule('/student/enrolled-courses', view_func=student.student_enrolled
 app.add_url_rule('/student/my-courses', view_func=student.student_my_courses, methods=['GET','POST'])
 app.add_url_rule('/student/grades', view_func=student.student_grades, methods=['GET','POST'])
 app.add_url_rule('/student/gradesheet', view_func=student.student_gradesheet, methods=['GET','POST'])
+app.add_url_rule('/student/placement-offers', view_func=student.student_placement_offers, methods=['GET','POST'])
+app.add_url_rule('/student/submit-assignment', view_func=student.student_submit_assignment, methods=['GET','POST'])
+app.add_url_rule('/student/submit-assign/<a_id>', view_func=student.student_submit_assign, methods=['GET','POST'])
 
 # student end
 
@@ -85,6 +88,10 @@ app.add_url_rule('/student/gradesheet', view_func=student.student_gradesheet, me
 app.add_url_rule('/faculty/dashboard', view_func=faculty.faculty_dashboard, methods=['GET','POST'])
 app.add_url_rule('/faculty/setting', view_func=faculty.faculty_setting, methods=['GET','POST'])
 app.add_url_rule('/faculty/profile', view_func=faculty.faculty_profile, methods=['GET','POST'])
+app.add_url_rule('/faculty/changepassword', view_func=faculty.faculty_change_password, methods=['GET','POST'])
+app.add_url_rule('/faculty/courses', view_func=faculty.faculty_course, methods=['GET','POST'])
+app.add_url_rule('/faculty/create_new_assignment', view_func=faculty.faculty_create_new_assignment, methods=['GET','POST'])
+
 # faculty end
 
 # admin start
