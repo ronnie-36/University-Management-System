@@ -329,3 +329,78 @@ def student_gradesheet():
 
     return render_template('student_panel/dashboard-gradesheet.html', list = [])
 
+def student_placement_offers():
+    if 'id' not in session or 'role' not in session:
+        return render_template('error.html')
+    elif session['role'] != "student":
+        return render_template('error.html')
+
+    return render_template('student_panel/dashboard-placement-offers.html')
+
+def student_submit_assignment():
+    if 'id' not in session or 'role' not in session:
+        return render_template('error.html')
+    elif session['role'] != "student":
+        return render_template('error.html')
+    
+    cur = mysql.connection.cursor()
+    cur.execute('''
+    select  DISTINCT
+        student.student_id, assignment.a_id, assignment.text, assignment.notes, assignment.start_at,
+        assignment.end_at, assignment.marks_total, course.name, faculty.first_name
+    from
+        assignment
+            join
+        section
+            join
+        course
+            join
+        student
+            join
+        submission
+            join
+        faculty
+            join
+        enroll
+    where 
+        student.student_id = enroll.student_id and
+        enroll.sec_id = section.sec_id and
+        course.c_id = section.c_id and 
+        assignment.sec_id = enroll.sec_id and
+        faculty.faculty_id = assignment.faculty_id and
+        student.sem = section.sem and
+        student.student_id = '%s'
+        order by assignment.start_at;'''%(session['id']))
+    rv = cur.fetchall()
+    mysql.connection.commit()
+    cur.close()
+    return render_template('student_panel/dashboard-assignment-submit.html', list = rv)
+
+def student_submit_assign(a_id):
+    if 'id' not in session or 'role' not in session:
+        return render_template('error.html')
+    elif session['role'] != "student":
+        return render_template('error.html')
+    
+    if request.method == 'POST':
+        details = request.form
+        answer = details['answer']
+        desc = details['desc']
+        url = details['url']
+        dt = datetime.datetime.now()
+        dt = str(dt)
+        cur = mysql.connection.cursor()
+        cur.execute('''insert ignore into submission (a_id, student_id, submitted_at, text, files_link) 
+        values ('%s','%s','%s','%s','%s');'''%(a_id, session['id'], dt, answer, url))
+        rv = cur.fetchall()
+        mysql.connection.commit()
+        cur.close()
+        return redirect(url_for('student_submit_assignment'))
+
+    cur = mysql.connection.cursor()
+    cur.execute('''select * from assignment where a_id = '%s';'''%(session['id']))
+    rv = cur.fetchall()
+    mysql.connection.commit()
+    cur.close()
+
+    return render_template('student_panel/dashboard-submit-assignment.html', list = rv[0])

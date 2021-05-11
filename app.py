@@ -77,6 +77,9 @@ app.add_url_rule('/student/enrolled-courses', view_func=student.student_enrolled
 app.add_url_rule('/student/my-courses', view_func=student.student_my_courses, methods=['GET','POST'])
 app.add_url_rule('/student/grades', view_func=student.student_grades, methods=['GET','POST'])
 app.add_url_rule('/student/gradesheet', view_func=student.student_gradesheet, methods=['GET','POST'])
+app.add_url_rule('/student/placement-offers', view_func=student.student_placement_offers, methods=['GET','POST'])
+app.add_url_rule('/student/submit-assignment', view_func=student.student_submit_assignment, methods=['GET','POST'])
+app.add_url_rule('/student/submit-assign/<a_id>', view_func=student.student_submit_assign, methods=['GET','POST'])
 
 # student end
 
