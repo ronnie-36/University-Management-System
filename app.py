@@ -83,6 +83,7 @@ app.add_url_rule('/student/my-courses', view_func=student.student_my_courses, me
 app.add_url_rule('/faculty/dashboard', view_func=faculty.faculty_dashboard, methods=['GET','POST'])
 app.add_url_rule('/faculty/setting', view_func=faculty.faculty_setting, methods=['GET','POST'])
 app.add_url_rule('/faculty/profile', view_func=faculty.faculty_profile, methods=['GET','POST'])
+app.add_url_rule('/faculty/changepassword', view_func=faculty.change_password, methods=['GET','POST'])
 
 # faculty end
 
