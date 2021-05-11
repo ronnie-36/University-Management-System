@@ -5,6 +5,12 @@ STEPS:
     pip install -r requirements.txt
     python test.py
 
+FOR DETAILED COVERAGE
+
+    coverage run --source models -m unittest discover && coverage report
+    coverage html
+
+
 TestCase Details - 
 1. Home section
 2. Admin section
