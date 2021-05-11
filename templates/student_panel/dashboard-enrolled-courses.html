@@ -1,116 +1,121 @@
+{% extends 'student_panel/dashboard.html' %}
+{% block style %}
 <style>
-    .input1{
+    .input1 {
         outline: none;
         border: 1px solid grey;
         padding: 2px;
         border-radius: 10px;
         padding-left: 10px;
     }
-  
 </style>
+{% endblock %}
 
-{% extends 'student_panel/dashboard.html' %}
 {% block enrolled_sidebar %}
-    <li class="page-active">
-{% endblock %}
-{% block dashboard_sidebar %}
-    <li>
-{% endblock %}
-{% block namebar %}
-{% endblock %}
-<!-- Page body -->
-{% block body1 %}
-<div class="row">
-    <div class="col-sm-12">
+<li class="page-active">
+    {% endblock %}
+    {% block dashboard_sidebar %}
+<li>
+    {% endblock %}
+    {% block namebar %}
+    {% endblock %}
+    <!-- Page body -->
+    {% block body1 %}
+    <div class="row">
+        <div class="col-sm-12">
 
-        <div class="card card-table">
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-hover table-center mb-0 datatable">
-                        <h3>Enrolled Courses</h3><br />
-                        <thead>
-                            <tr>
-                                <th>Course ID</th>
-                                <th>Name</th>
-                                <th>Credits</th>
-                                <th>Hours</th>
-                                <th>Sem</th>
-                                <th class="text-right">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody class="card-text fs-18">
-                            {% for item in list %}
-                            <tr>
-                                <td>{{item[0]}}</td>
-                                <td>
-                                    <h2 class="card-text fs-18">
-                                        <a>{{item[1]}}</a>
-                                    </h2>
-                                </td>
-                                <td>{{item[3]}}</td>
-                                <td>{{item[4]}}</td>
-                                <td>{{item[2]}}</td>
-                                <td class="text-right">
-                                    <div class="actions">
-                                        <button class="btn btn-primary">Ongoing</button>
-                                    </div>
-                                </td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
+            <div class="card card-table">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-center mb-0 datatable">
+                            <h3>Enrolled Courses</h3><br />
+                            <thead>
+                                <tr>
+                                    <th>Course ID</th>
+                                    <th>Name</th>
+                                    <th>Credits</th>
+                                    <th>Hours</th>
+                                    <th>Sem</th>
+                                    <th class="text-right">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody class="card-text fs-18">
+                                {% for item in list %}
+                                <tr>
+                                    <td>{{item[0]}}</td>
+                                    <td>
+                                        <h2 class="card-text fs-18">
+                                            <a>{{item[1]}}</a>
+                                        </h2>
+                                    </td>
+                                    <td>{{item[3]}}</td>
+                                    <td>{{item[4]}}</td>
+                                    <td>{{item[2]}}</td>
+                                    <td class="text-right">
+                                        <div class="actions">
+                                            <button class="btn btn-primary">Ongoing</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 
-<span style="margin: 100px;"><hr></span>
+    <span style="margin: 100px;">
+        <hr>
+    </span>
 
-<div class="row">
-    <div class="col-sm-12">
+    <div class="row">
+        <div class="col-sm-12">
 
-        <div class="card card-table">
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-hover table-center mb-0 datatable">
-                        <h3>Enrolled Courses</h3><br />
-                        <thead>
-                            <tr>
-                                <th>Course ID</th>
-                                <th>Name</th>
-                                <th>Credits</th>
-                                <th>Hours</th>
-                                <th>Sem</th>
-                                <th class="text-right">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody class="card-text fs-18">
-                            {% for item in list2 %}
-                            <tr>
-                                <td>{{item[0]}}</td>
-                                <td>
-                                    <h2 class="card-text fs-18">
-                                        <a>{{item[1]}}</a>
-                                    </h2>
-                                </td>
-                                <td>{{item[3]}}</td>
-                                <td>{{item[4]}}</td>
-                                <td>{{item[2]}}</td>
-                                <td class="text-right">
-                                    <form method='POST' class="actions">
-                                        <button class="btn btn-danger" name="sec_id" value="{{item[0]}}">Enroll</button>
-                                        <input type="text" name="sec_name" value="{{item[1]}}" style="display: none;"/>
-                                    </form>
-                                </td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
+            <div class="card card-table">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-center mb-0 datatable">
+                            <h3>Enrolled Courses</h3><br />
+                            <thead>
+                                <tr>
+                                    <th>Course ID</th>
+                                    <th>Name</th>
+                                    <th>Credits</th>
+                                    <th>Hours</th>
+                                    <th>Sem</th>
+                                    <th class="text-right">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody class="card-text fs-18">
+                                {% for item in list2 %}
+                                <tr>
+                                    <td>{{item[0]}}</td>
+                                    <td>
+                                        <h2 class="card-text fs-18">
+                                            <a>{{item[1]}}</a>
+                                        </h2>
+                                    </td>
+                                    <td>{{item[3]}}</td>
+                                    <td>{{item[4]}}</td>
+                                    <td>{{item[2]}}</td>
+                                    <td class="text-right">
+                                        <form method='POST' class="actions">
+                                            <button class="btn btn-danger" name="sec_id"
+                                                value="{{item[0]}}">Enroll</button>
+                                            <input type="text" name="sec_name" value="{{item[1]}}"
+                                                style="display: none;" />
+                                        </form>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-{% endblock %}
+    {% endblock %}
