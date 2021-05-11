@@ -18,3 +18,6 @@ admin_faculty_add = dict([('faculty_id', '12'), ('first_name', 'Sharon'), ('last
 admin_faculty_edit = dict([('first_name', 'Sharon'), ('last_name', 'mailk'), ('gender', 'Male'), ('dob', '2021-05-01'), ('phone', '9191020294'), ('address', '123-abcd'), ('email', 'sharon@123.com'), ('salary', '1233332'), ('ri', 'software'), ('position', 'Associate Professor'), ('department', 'cse')])
 admin_faculty_delete = dict([('faculty_id', '12')])
 
+admin_department_add = dict([('dept_id', 'bio'), ('name', 'biology'), ('hod_id', '1'), ('budget', '120000'), ('phone', '1919230301')])
+admin_department_edit = dict([('name', 'Computer Science and Engineering'), ('hod_id', '1'), ('budget', '120000'), ('phone', '9876512121')])
+

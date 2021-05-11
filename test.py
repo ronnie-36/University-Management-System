@@ -23,6 +23,7 @@ import unittest
 import flask_testing
 from app import app
 import data_requests
+from flask import json
 
 ''' Section 1 - Home Section '''
 class TestHome(flask_testing.TestCase):
@@ -667,10 +668,11 @@ class TestAdmin(flask_testing.TestCase):
             # login done
             response= TestClient.get('/admin/department_list')
             self.assertEqual(response.status_code, 200)
-            self.assert_template_used('/admin/inbox.html')
+            self.assert_template_used('admin/department_list.html')
 
     def testAdminDepartment_add(self):
         data = data_requests.admin_login
+        new_dept = data_requests.admin_department_add
         with app.test_client() as TestClient:
             # login sequence
             response= TestClient.post('/login/admin', data = data)
@@ -680,7 +682,10 @@ class TestAdmin(flask_testing.TestCase):
             # login done
             response= TestClient.get('/admin/add_department')
             self.assertEqual(response.status_code, 200)
-            self.assert_template_used('/admin/inbox.html')
+            self.assert_template_used('admin/add-department.html')
+            # post
+            response= TestClient.post('/admin/add_department', data = new_dept)
+            self.assertEqual(response.status_code, 302)
 
     def testAdminDepartment_list_edit(self):
         data = data_requests.admin_login
@@ -693,10 +698,11 @@ class TestAdmin(flask_testing.TestCase):
             # login done
             response= TestClient.get('/admin/department_list_edit')
             self.assertEqual(response.status_code, 200)
-            self.assert_template_used('/admin/inbox.html')
+            self.assert_template_used('/admin/department.html')
 
     def testAdminDepartment_edit(self):
         data = data_requests.admin_login
+        admin_dept_edit = data_requests.admin_department_edit
         with app.test_client() as TestClient:
             # login sequence
             response= TestClient.post('/login/admin', data = data)
@@ -704,9 +710,12 @@ class TestAdmin(flask_testing.TestCase):
             self.assertEqual(flask.session['id'], '1')
             self.assertEqual(flask.session['role'], 'admin')
             # login done
-            response= TestClient.get('/admin/edit-department/2')
+            response= TestClient.get('/admin/edit-department/cse')
             self.assertEqual(response.status_code, 200)
-            self.assert_template_used('/admin/inbox.html')
+            self.assert_template_used('/admin/edit-department.html')
+            # post
+            response= TestClient.post('/admin/edit-department/cse', data = admin_dept_edit)
+            self.assertEqual(response.status_code, 302)
 
     def testAdminDepartment_delete(self):
         data = data_requests.admin_login
@@ -717,10 +726,9 @@ class TestAdmin(flask_testing.TestCase):
             self.assertEqual(flask.session['id'], '1')
             self.assertEqual(flask.session['role'], 'admin')
             # login done
-            response= TestClient.get('/admin/delete-department')
+            response= TestClient.post('/admin/delete-department', data=json.dumps(dict(id='bio')),
+                       content_type='application/json')
             self.assertEqual(response.status_code, 200)
-            self.assert_template_used('/admin/inbox.html')
-
 
 if __name__ == "__main__":
     unittest.main()

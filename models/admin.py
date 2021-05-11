@@ -451,7 +451,7 @@ def admin_add_department():
         cur = mysql.connection.cursor()
         if(len(dept_id) > 0 and len(name) > 0 and len(contact_no) > 0):
             cur = mysql.connection.cursor()
-            cur.execute(''' INSERT INTO department (dept_id, name, budget,contact_no,hod_id)
+            cur.execute(''' insert ignore into department (dept_id, name, budget,contact_no,hod_id)
             values ('%s','%s','%d','%s','%s');'''%(dept_id, name, budget, contact_no, hod_id ))
             mysql.connection.commit()
             cur.close()
@@ -517,6 +517,7 @@ def admin_department_delete():
         return render_template('error.html')
     if(request.method == 'POST'):
         dept_id = str(request.json['id'])
+        print(dept_id)
         cur = mysql.connection.cursor()
         cur.execute(''' DELETE FROM department WHERE dept_id= '%s'; '''%(dept_id))
         mysql.connection.commit()
