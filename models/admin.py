@@ -407,6 +407,7 @@ def admin_faculty_delete():
         return render_template('error.html')
     if(request.method == 'POST'):
         faculty_id = str(request.json['id'])
+        print(faculty_id)
         cur = mysql.connection.cursor()
         cur.execute(''' DELETE FROM faculty WHERE faculty_id= '%s'; '''%(faculty_id))
         mysql.connection.commit()

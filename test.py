@@ -636,8 +636,8 @@ class TestAdmin(flask_testing.TestCase):
             self.assertEqual(response.status_code, 200)
             self.assert_template_used('/admin/edit-faculty.html')
             # post
-            response= TestClient.get('/admin/edit-faculty/2', data = admin_fac_edit)
-            self.assertEqual(response.status_code, 200)
+            response= TestClient.post('/admin/edit-faculty/2', data = admin_fac_edit)
+            self.assertEqual(response.status_code, 302)
 
     def testAdminFaculty_delete(self):
         data = data_requests.admin_login
@@ -651,7 +651,8 @@ class TestAdmin(flask_testing.TestCase):
             # login done
             response= TestClient.get('/admin/delete-faculty')
             self.assertEqual(response.status_code, 200)
-            response= TestClient.get('/admin/delete-faculty', data = admin_fac_delete)
+            response= TestClient.post('/admin/delete-faculty', data=json.dumps(dict(id='12')),
+                       content_type='application/json')
             self.assertEqual(response.status_code, 200)
 
 
