@@ -169,7 +169,6 @@ def admin_student_edit(student_id):
     if request.method == 'POST':
 
         student_details = request.form
-        debug()
         first_name = student_details['first_name']
         last_name = student_details['last_name']
         phone = student_details['phone']
@@ -254,8 +253,6 @@ def admin_modal_update():
     if request.method == 'POST':
         
         form_details = request.form
-        debug()
-        print(form_details)
         sem = form_details['sem']
         sem = (int)(sem)
         cur = mysql.connection.cursor()
@@ -602,11 +599,11 @@ def admin_course_edit(c_id):
         return redirect(url_for('admin_course_list'))
 
     cur = mysql.connection.cursor()
+    debug()
     cur.execute(''' select c_id, name, description, syllabus, year, credits from course where c_id = '%s'; '''%(c_id))
     rv = cur.fetchall()
     mysql.connection.commit()
     cur.close()
-
     return render_template('/admin/edit_course.html', list = rv[0])
 
 def admin_course_delete():
@@ -623,13 +620,7 @@ def admin_course_delete():
         cur.close()
         return redirect(url_for('admin_course_list'))
 
-    cur = mysql.connection.cursor()
-    cur.execute(''' select c_id, name, description, syllabus, year, credits from course where c_id = '%s'; '''%(c_id))
-    rv = cur.fetchall()
-    mysql.connection.commit()
-    cur.close()
-
-    return render_template('/admin/edit_course.html', list = rv[0])
+    return "ok no get here"
 
 def admin_course_sem_assign():
     if 'id' not in session or 'role' not in session:

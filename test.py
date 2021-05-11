@@ -91,6 +91,8 @@ class TestAdmin(flask_testing.TestCase):
             self.assertEqual(flask.session['role'], 'admin')
             # login done
 
+# Student
+
     def testAdmin_logged_out(self):
         data = data_requests.admin_login
         with app.test_client() as TestClient:
@@ -112,7 +114,7 @@ class TestAdmin(flask_testing.TestCase):
             response= TestClient.get('/admin/student_excel')
             self.assert_template_used('error.html')
             
-            response= TestClient.get('/admin/admin_add_course')
+            response= TestClient.get('/admin/add_course')
             self.assert_template_used('error.html')
             response= TestClient.get('/admin/course_list')
             self.assert_template_used('error.html')
@@ -187,7 +189,7 @@ class TestAdmin(flask_testing.TestCase):
             response= TestClient.get('/admin/student_excel')
             self.assert_template_used('error.html')
             
-            response= TestClient.get('/admin/admin_add_course')
+            response= TestClient.get('/admin/add_course')
             self.assert_template_used('error.html')
             response= TestClient.get('/admin/course_list')
             self.assert_template_used('error.html')
@@ -345,7 +347,6 @@ class TestAdmin(flask_testing.TestCase):
             response= TestClient.get('/admin/student_excel')
             self.assertEqual(response.status_code, 200)
 
-
     def testAdminStudent_delete(self):
         data = data_requests.admin_login
         with app.test_client() as TestClient:
@@ -358,6 +359,9 @@ class TestAdmin(flask_testing.TestCase):
             # deleting student 12 which was added before
             response= TestClient.get('/admin/delete-student/12')
             self.assertEqual(response.status_code, 302)
+
+
+# Course
 
     def testAdminCourse_add(self):
         data = data_requests.admin_login
@@ -400,11 +404,11 @@ class TestAdmin(flask_testing.TestCase):
             self.assertEqual(flask.session['id'], '1')
             self.assertEqual(flask.session['role'], 'admin')
             # login done
-            response= TestClient.get('/admin/course_edit/2')
+            response= TestClient.get('/admin/course_edit/3')
             self.assertEqual(response.status_code, 200)
             self.assert_template_used('/admin/edit_course.html')
             # post
-            response = TestClient.post('/admin/course_edit/2', data = edit_course)
+            response = TestClient.post('/admin/course_edit/3', data = edit_course)
             self.assertEqual(response.status_code, 302)
             self.assert_template_used('/admin/edit_course.html')
             
@@ -459,8 +463,8 @@ class TestAdmin(flask_testing.TestCase):
             response= TestClient.get('/admin/course_sem_edit/2')
             self.assertEqual(response.status_code, 200)
             # post
-            response= TestClient.get('/admin/course_sem_edit/2', data = sem_assign)
-            self.assertEqual(response.status_code, 200)
+            response= TestClient.post('/admin/course_sem_edit/2', data = sem_assign)
+            self.assertEqual(response.status_code, 302)
             
     def testAdminCourse_sem_delete(self):
         data = data_requests.admin_login
@@ -495,7 +499,7 @@ class TestAdmin(flask_testing.TestCase):
 
     def testAdminCourse_student_add(self):
         data = data_requests.admin_login
-        new_course = data_requests.admin_course_add
+        course_student_data = data_requests.admin_course_student_assign
         with app.test_client() as TestClient:
             # login sequence
             response= TestClient.post('/login/admin', data = data)
@@ -503,13 +507,15 @@ class TestAdmin(flask_testing.TestCase):
             self.assertEqual(flask.session['id'], '1')
             self.assertEqual(flask.session['role'], 'admin')
             # login done
-            response= TestClient.get('/admin/add_course')
+            response= TestClient.get('/admin/course_student_add/2')
             self.assertEqual(response.status_code, 200)
-            self.assert_template_used('admin/add_course.html')
+            # post
+            response= TestClient.post('/admin/course_student_add/2', data = course_student_data)
+            self.assertEqual(response.status_code, 302)
 
     def testAdminCourse_student_delete(self):
         data = data_requests.admin_login
-        new_course = data_requests.admin_course_add
+        course_student_del = data_requests.admin_course_student_delete
         with app.test_client() as TestClient:
             # login sequence
             response= TestClient.post('/login/admin', data = data)
@@ -517,9 +523,11 @@ class TestAdmin(flask_testing.TestCase):
             self.assertEqual(flask.session['id'], '1')
             self.assertEqual(flask.session['role'], 'admin')
             # login done
-            response= TestClient.get('/admin/add_course')
+            response= TestClient.get('/admin/course_student_delete/2')
             self.assertEqual(response.status_code, 200)
-            self.assert_template_used('admin/add_course.html')
+            # POST
+            response= TestClient.post('/admin/course_student_delete/2', data = course_student_del)
+            self.assertEqual(response.status_code, 302)
 
 if __name__ == "__main__":
     unittest.main()
