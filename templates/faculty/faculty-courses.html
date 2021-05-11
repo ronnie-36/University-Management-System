@@ -1,0 +1,132 @@
+﻿{% extends 'faculty/facultybase.html' %}
+
+<!-- Sidebar -->
+{% block sidebar_courses %}
+<li class="menu--item">
+    <a href="/faculty/courses" class="menu--link active" title="Courses">
+        <i class='uil uil-book-alt menu--icon'></i>
+        <span class="menu--label">Courses</span>
+    </a>
+</li>
+{% endblock %}
+<!-- /Sidebar -->
+
+<!-- Page Wrapper -->
+{% block wrapper %}
+
+
+<div class="wrapper">
+    <div class="sa4d25">
+        <div class="container-fluid">
+            <div class="row">
+
+                <div class="col-md-8">
+                    <div class="_14d25 mb-20">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 class="mhs_title">Your Courses</h4>
+                                <div class="row">
+                                    <div class="col-sm-12">
+
+                                        <div class="card card-table">
+                                            <div class="card-body">
+                                                <div class="table-responsive">
+                                                    <table class="table table-hover table-center mb-0 datatable">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Course ID</th>
+                                                                <th>Name</th>
+                                                                <th>Credits</th>
+                                                                <th>Hours</th>
+                                                                <th>Year</th>
+                                                                <th class="text-right">Status</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody class="card-text fs-18">
+                                                            {% for item in ongoingList %}
+                                                            <tr>
+                                                                <td>{{item[0]}}</td>
+                                                                <td>
+                                                                    <h2 class="card-text fs-18">
+                                                                        <a>{{item[1]}}</a>
+                                                                    </h2>
+                                                                </td>
+                                                                <td>{{item[2]}}</td>
+                                                                <td>{{item[3]}}</td>
+                                                                <td>{{item[4]}}</td>
+                                                                <td class="text-right">
+                                                                    <div class="actions">
+                                                                        <button class="btn btn-warning">Ongoing</button>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            {% endfor %}
+                                                            {% for item in completedList %}
+                                                            <tr>
+                                                                <td>{{item[0]}}</td>
+                                                                <td>
+                                                                    <h2 class="card-text fs-18">
+                                                                        <a>{{item[1]}}</a>
+                                                                    </h2>
+                                                                </td>
+                                                                <td>{{item[2]}}</td>
+                                                                <td>{{item[3]}}</td>
+                                                                <td>{{item[4]}}</td>
+                                                                <td class="text-right">
+                                                                    <div class="actions">
+                                                                        <button class="btn btn-info">Completed</button>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            {% endfor %}
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer mt-30">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-12 my-2">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="fotb_left">
+                                <li>
+                                    <a href="index.html">
+                                        <div class="footer_logo">
+                                            <img src="../../static/assets/faculty_assets/images/logo1.svg" alt="">
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <p>© 2021 <strong>UMS - IIT Indore</strong>. All Rights Reserved.</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="edu_social_links">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+{% endblock %}
+<!-- /Page Wrapper -->

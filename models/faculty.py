@@ -28,8 +28,13 @@ def faculty_setting():
         return render_template('error.html')
     elif session['role'] != "faculty":
         return render_template('error.html')
-        
-    return render_template('faculty/setting.html')
+    fid = session['id']
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT first_name FROM faculty WHERE faculty_id = '%s' "% (fid))
+    name = cur.fetchall()
+    cur.close()
+    name = name[0][0]
+    return render_template('faculty/setting.html', name=name)
 
 def faculty_profile():
     if 'id' not in session or 'role' not in session:
@@ -60,9 +65,9 @@ def faculty_profile():
     department = department[0][0] if department else None
     mysql.connection.commit()
     cur.close()
-    return render_template('faculty/faculty-profile.html', facultyDetails = faculty[0], department = department)
+    return render_template('faculty/faculty-profile.html', facultyDetails = faculty[0], department = department, name=faculty[0][1])
 
-def change_password():
+def faculty_change_password():
     if 'id' not in session or 'role' not in session:
         return render_template('error.html')
     elif session['role'] != "faculty":
@@ -97,4 +102,67 @@ def change_password():
             mysql.connection.commit()
             flash="Password Changed."
             return render_template('faculty/setting.html',flash=flash)
+
+def faculty_course():
+    if 'id' not in session or 'role' not in session:
+        return render_template('error.html')
+    elif session['role'] != "faculty":
+        return render_template('error.html')
+    fid = session['id']
+    cur = mysql.connection.cursor()
+    cur.execute(''' select course.c_id,course.name, course.credits, course.hours, section.year from 
+                            teaches
+                                join 
+                            section 
+                                join 
+                            course 
+    where teaches.sec_id = section.sec_id and section.c_id = course.c_id and section.year = year(curdate()) and teaches.faculty_id = '%s' '''% (fid))
+    ongoing = cur.fetchall()
+    cur = mysql.connection.cursor()
+    cur.execute(''' select course.c_id,course.name, course.credits, course.hours, section.year from 
+                            teaches
+                                join 
+                            section 
+                                join 
+                            course 
+    where teaches.sec_id = section.sec_id and section.c_id = course.c_id and section.year != year(curdate()) and teaches.faculty_id = '%s' '''% (fid))
+    completed = cur.fetchall()
+    cur.close()
+        
+    return render_template('faculty/faculty-courses.html',ongoingList=ongoing,completedList=completed)
+
+def faculty_create_new_assignment():
+    if 'id' not in session or 'role' not in session:
+        return render_template('error.html')
+    elif session['role'] != "faculty":
+        return render_template('error.html')
+    fid = session['id']
+    if request.method == 'POST':
+        formDetails = request.form
+        marks = formDetails['marks']
+        text = formDetails['text']
+        sec_id = formDetails['sec_id']
+        start = formDetails['start']
+        end = formDetails['end']
+        sec_id = int(sec_id)
+        marks = int(marks)
+        cur = mysql.connection.cursor()
+        cur.execute(''' INSERT INTO assignment (faculty_id, sec_id, created_at, start_at, end_at, text, marks_total) 
+        values ('%s','%d',NOw(),'%s','%s','%s','%d');'''% (fid,sec_id,start,end,text,marks))
+        flash("Assignment created",'success')
+        mysql.connection.commit()
+        cur.close()
+        return redirect(url_for('faculty_create_new_assignment'))
+    cur = mysql.connection.cursor()
+    cur.execute(''' select course.c_id,course.name, course.credits, course.hours, section.year, section.sec_id from 
+                            teaches
+                                join 
+                            section 
+                                join 
+                            course 
+    where teaches.sec_id = section.sec_id and section.c_id = course.c_id and section.year = year(curdate()) and teaches.faculty_id = '%s' '''% (fid))
+    ongoing = cur.fetchall()
+    cur.close()
+    return render_template('faculty/create_new_assignment.html',ongoingList=ongoing)
+    
     
