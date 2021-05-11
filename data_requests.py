@@ -8,10 +8,10 @@ admin_modal_next = dict([('sem', '1')])
 admin_course_add = dict([('c_id', '12'), ('name', 'Chem'), ('credits', '2')])
 admin_course_edit = dict([('name', 'Chemistry'), ('credits', '2.0'), ('description', 'Ok'), ('syllabus', 'Good')])
 admin_course_delete = dict([('c_id', 12)])
-admin_course_sem_assign = dict([('sem', '3')]) # cid = 1
-admin_course_sem_delete = dict([('sem', '3')]) # cid = 1
-admin_course_sem_assign = dict([('sec_id', '2')]) # student_id = 2
-admin_course_sem_delete = dict([('sec_id', '2')]) # student_id = 2
+admin_course_sem_assign = dict([('sem', '3')]) # cid = 2
+admin_course_sem_delete = dict([('sem', '3')]) # cid = 2
+admin_course_student_assign = dict([('sec_id', '2')]) # student_id = 2
+admin_course_student_delete = dict([('sec_id', '2')]) # student_id = 2
 admin_all_reqests = dict([('r_id', 3)])
 
 

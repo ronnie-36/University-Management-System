@@ -442,13 +442,13 @@ class TestAdmin(flask_testing.TestCase):
             self.assertEqual(flask.session['id'], '1')
             self.assertEqual(flask.session['role'], 'admin')
             # login done
-            response= TestClient.get('/admin/course_section_assign')
+            response= TestClient.get('/admin/course_sem_assign')
             self.assertEqual(response.status_code, 200)
-            self.assert_template_used('admin/course_section_assign.html')
+            self.assert_template_used('/admin/course_section_assign.html')
             
     def testAdminCourse_sem_edit(self):
         data = data_requests.admin_login
-        new_course = data_requests.admin_course_add
+        sem_assign = data_requests.admin_course_sem_assign
         with app.test_client() as TestClient:
             # login sequence
             response= TestClient.post('/login/admin', data = data)
@@ -456,13 +456,16 @@ class TestAdmin(flask_testing.TestCase):
             self.assertEqual(flask.session['id'], '1')
             self.assertEqual(flask.session['role'], 'admin')
             # login done
-            response= TestClient.get('/admin/add_course')
+            response= TestClient.get('/admin/course_sem_edit/2')
             self.assertEqual(response.status_code, 200)
-            self.assert_template_used('admin/add_course.html')
+            # post
+            response= TestClient.get('/admin/course_sem_edit/2', data = sem_assign)
+            self.assertEqual(response.status_code, 200)
             
     def testAdminCourse_sem_delete(self):
         data = data_requests.admin_login
-        new_course = data_requests.admin_course_add
+        del_course_sem = data_requests.admin_course_sem_delete
+
         with app.test_client() as TestClient:
             # login sequence
             response= TestClient.post('/login/admin', data = data)
@@ -470,10 +473,12 @@ class TestAdmin(flask_testing.TestCase):
             self.assertEqual(flask.session['id'], '1')
             self.assertEqual(flask.session['role'], 'admin')
             # login done
-            response= TestClient.get('/admin/add_course')
+            response= TestClient.get('/admin/course_sem_delete/12')
             self.assertEqual(response.status_code, 200)
-            self.assert_template_used('admin/add_course.html')
-            
+            # post
+            response= TestClient.post('/admin/course_sem_delete/12', data = del_course_sem)
+            self.assertEqual(response.status_code, 302)
+
     def testAdminCourse_student_assign(self):
         data = data_requests.admin_login
         new_course = data_requests.admin_course_add
@@ -484,9 +489,9 @@ class TestAdmin(flask_testing.TestCase):
             self.assertEqual(flask.session['id'], '1')
             self.assertEqual(flask.session['role'], 'admin')
             # login done
-            response= TestClient.get('/admin/add_course')
+            response= TestClient.get('/admin/course_student_assign')
             self.assertEqual(response.status_code, 200)
-            self.assert_template_used('admin/add_course.html')
+            self.assert_template_used('/admin/course_student_assign.html')
 
     def testAdminCourse_student_add(self):
         data = data_requests.admin_login
