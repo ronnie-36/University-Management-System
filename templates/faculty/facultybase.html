@@ -74,7 +74,7 @@
 
         <div class="header_right">
             <ul>
-            
+
                 <li class="ui dropdown">
                     <a href="#" class="option_links"><i class='uil uil-bell'></i><span class="noti_count">3</span></a>
                     <div class="menu dropdown_mn">
@@ -151,10 +151,76 @@
 
     <!-- Sidebar -->
     {% block sidebar %}
-
+    <nav class="vertical_nav">
+        <div class="left_section menu_left" id="js-menu">
+            <div class="left_section">
+                <ul>
+                    {% block sidebar_dashboard %}
+                    <li class="menu--item">
+                        <a href="/faculty/dashboard" class="menu--link" title="Dashboard">
+                            <i class="uil uil-apps menu--icon"></i>
+                            <span class="menu--label">Dashboard</span>
+                        </a>
+                    </li>
+                    {% endblock %}
+                    {% block sidebar_courses %}
+                    <li class="menu--item">
+                        <a href="/faculty/courses" class="menu--link" title="Courses">
+                            <i class='uil uil-book-alt menu--icon'></i>
+                            <span class="menu--label">Courses</span>
+                        </a>
+                    </li>
+                    {% endblock %}
+                    {% block sidebar_createassignment %}
+                    <li class="menu--item">
+                        <a href="/faculty/create_new_assignment" class="menu--link" title="Create Assignment">
+                            <i class='uil uil-plus-circle menu--icon'></i>
+                            <span class="menu--label">Create Assignment</span>
+                        </a>
+                    </li>
+                    {% endblock %}
+                    {% block sidebar_grades %}
+                    <li class="menu--item">
+                        <a href="instructor_my_certificates.html" class="menu--link" title="Check Assignments">
+                            <i class='uil uil-award menu--icon'></i>
+                            <span class="menu--label">Check Assignments </span>
+                        </a>
+                    </li>
+                    {% endblock %}
+                    {% block sidebar_notifications %}
+                    <li class="menu--item">
+                        <a href="/faculty/notifications" class="menu--link" title="Notifications">
+                            <i class='uil uil-bell menu--icon'></i>
+                            <span class="menu--label">Notifications</span>
+                        </a>
+                    </li>
+                    {% endblock %}
+                    {% block sidebar_timetable %}
+                    <li class="menu--item">
+                        <a href="/faculty/time-table" class="menu--link" title="Time Table">
+                            <i class='uil uil-file-alt menu--icon'></i>
+                            <span class="menu--label">Time-Table</span>
+                        </a>
+                    </li>
+                    {% endblock %}
+                </ul>
+            </div>
+            <div class="left_section pt-2">
+                <ul>
+                    {% block sidebar_settings %}
+                    <li class="menu--item">
+                        <a href="/faculty/setting" class="menu--link" title="Settings">
+                            <i class='uil uil-cog menu--icon'></i>
+                            <span class="menu--label">Settings</span>
+                        </a>
+                    </li>
+                    {% endblock %}
+                </ul>
+            </div>
+        </div>
+    </nav>
     {% endblock %}
     <!-- /Sidebar -->
-
     <!-- Page Wrapper -->
     {% block wrapper %}
 
