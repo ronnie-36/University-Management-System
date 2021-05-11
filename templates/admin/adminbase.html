@@ -262,6 +262,7 @@
 
     <!-- Custom JS -->
     <script src="../../static/assets/admin_assets/js/script.js"></script>
+
     <script>
         $(document).on("click", "#toggle_btn", function () {
             if ($("body").hasClass("mini-sidebar")) {
@@ -279,6 +280,9 @@
         });
     </script>
 
+    {% endblock %}
+
+    {% block somescript %}
     {% endblock %}
 
 </body>
