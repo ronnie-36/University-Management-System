@@ -111,7 +111,56 @@ class TestAdmin(flask_testing.TestCase):
             self.assert_template_used('error.html')
             response= TestClient.get('/admin/student_excel')
             self.assert_template_used('error.html')
-    
+            
+            response= TestClient.get('/admin/admin_add_course')
+            self.assert_template_used('error.html')
+            response= TestClient.get('/admin/course_list')
+            self.assert_template_used('error.html')
+            response= TestClient.get('/admin/course_edit/1')
+            self.assert_template_used('error.html')
+            response= TestClient.get('/admin/course_delete')
+            self.assert_template_used('error.html')
+            response= TestClient.get('/admin/course_excel')
+            self.assert_template_used('error.html')
+            response= TestClient.get('/admin/course_sem_assign')
+            self.assert_template_used('error.html')
+            response= TestClient.get('/admin/course_sem_edit/1')
+            self.assert_template_used('error.html')
+            response= TestClient.get('/admin/course_student_assign')
+            self.assert_template_used('error.html')
+            response= TestClient.get('/admin/course_student_add/2')
+            self.assert_template_used('error.html')
+            response= TestClient.get('/admin/course_student_delete/2')
+            self.assert_template_used('error.html')
+            response= TestClient.get('/admin/course_student_assign')
+            self.assert_template_used('error.html')
+            response= TestClient.get('/admin/course_sem_delete')
+            self.assert_template_used('error.html')
+
+            response= TestClient.get('/admin/add_faculty')
+            self.assert_template_used('error.html')
+            response= TestClient.get('/admin/faculty_list')
+            self.assert_template_used('error.html')
+            response= TestClient.get('/admin/faculty_view/2')
+            self.assert_template_used('error.html')
+            response= TestClient.get('/admin/faculty_list_edit')
+            self.assert_template_used('error.html')
+            response= TestClient.get('/admin/edit-faculty/2')
+            self.assert_template_used('error.html')
+            response= TestClient.get('/admin/delete-faculty')
+            self.assert_template_used('error.html')
+
+            response= TestClient.get('/admin/department_list')
+            self.assert_template_used('error.html')
+            response= TestClient.get('/admin/add_department')
+            self.assert_template_used('error.html')
+            response= TestClient.get('/admin/department_list_edit')
+            self.assert_template_used('error.html')
+            response= TestClient.get('/admin/edit-department/2')
+            self.assert_template_used('error.html')
+            response= TestClient.get('/admin/delete-department')
+            self.assert_template_used('error.html')
+
     def testAdmin_partial_logged_out(self):
         data = data_requests.admin_login
         with app.test_client() as TestClient:
@@ -136,6 +185,55 @@ class TestAdmin(flask_testing.TestCase):
             response= TestClient.get('/admin/modal_update')
             self.assert_template_used('error.html')
             response= TestClient.get('/admin/student_excel')
+            self.assert_template_used('error.html')
+            
+            response= TestClient.get('/admin/admin_add_course')
+            self.assert_template_used('error.html')
+            response= TestClient.get('/admin/course_list')
+            self.assert_template_used('error.html')
+            response= TestClient.get('/admin/course_edit/1')
+            self.assert_template_used('error.html')
+            response= TestClient.get('/admin/course_delete')
+            self.assert_template_used('error.html')
+            response= TestClient.get('/admin/course_excel')
+            self.assert_template_used('error.html')
+            response= TestClient.get('/admin/course_sem_assign')
+            self.assert_template_used('error.html')
+            response= TestClient.get('/admin/course_sem_edit/1')
+            self.assert_template_used('error.html')
+            response= TestClient.get('/admin/course_student_assign')
+            self.assert_template_used('error.html')
+            response= TestClient.get('/admin/course_student_add/2')
+            self.assert_template_used('error.html')
+            response= TestClient.get('/admin/course_student_delete/2')
+            self.assert_template_used('error.html')
+            response= TestClient.get('/admin/course_student_assign')
+            self.assert_template_used('error.html')
+            response= TestClient.get('/admin/course_sem_delete')
+            self.assert_template_used('error.html')
+
+            response= TestClient.get('/admin/add_faculty')
+            self.assert_template_used('error.html')
+            response= TestClient.get('/admin/faculty_list')
+            self.assert_template_used('error.html')
+            response= TestClient.get('/admin/faculty_view/2')
+            self.assert_template_used('error.html')
+            response= TestClient.get('/admin/faculty_list_edit')
+            self.assert_template_used('error.html')
+            response= TestClient.get('/admin/edit-faculty/2')
+            self.assert_template_used('error.html')
+            response= TestClient.get('/admin/delete-faculty')
+            self.assert_template_used('error.html')
+
+            response= TestClient.get('/admin/department_list')
+            self.assert_template_used('error.html')
+            response= TestClient.get('/admin/add_department')
+            self.assert_template_used('error.html')
+            response= TestClient.get('/admin/department_list_edit')
+            self.assert_template_used('error.html')
+            response= TestClient.get('/admin/edit-department/2')
+            self.assert_template_used('error.html')
+            response= TestClient.get('/admin/delete-department')
             self.assert_template_used('error.html')
 
     def testAdminDashboard(self):
@@ -260,6 +358,163 @@ class TestAdmin(flask_testing.TestCase):
             # deleting student 12 which was added before
             response= TestClient.get('/admin/delete-student/12')
             self.assertEqual(response.status_code, 302)
+
+    def testAdminCourse_add(self):
+        data = data_requests.admin_login
+        new_course = data_requests.admin_course_add
+        with app.test_client() as TestClient:
+            # login sequence
+            response= TestClient.post('/login/admin', data = data)
+            self.assertEqual(response.status_code, 302)
+            self.assertEqual(flask.session['id'], '1')
+            self.assertEqual(flask.session['role'], 'admin')
+            # login done
+            response= TestClient.get('/admin/add_course')
+            self.assertEqual(response.status_code, 200)
+            self.assert_template_used('admin/add_course.html')
+            # post
+            response= TestClient.post('/admin/add_course', data = new_course)
+            self.assertEqual(response.status_code, 302)
+            self.assert_template_used('admin/add_course.html')
+
+    def testAdminCourse_list(self):
+        data = data_requests.admin_login
+        with app.test_client() as TestClient:
+            # login sequence
+            response= TestClient.post('/login/admin', data = data)
+            self.assertEqual(response.status_code, 302)
+            self.assertEqual(flask.session['id'], '1')
+            self.assertEqual(flask.session['role'], 'admin')
+            # login done
+            response= TestClient.get('/admin/course_list')
+            self.assertEqual(response.status_code, 200)
+            self.assert_template_used('/admin/course_list.html')
+            
+    def testAdminCourse_edit(self):
+        data = data_requests.admin_login
+        edit_course = data_requests.admin_course_edit
+        with app.test_client() as TestClient:
+            # login sequence
+            response= TestClient.post('/login/admin', data = data)
+            self.assertEqual(response.status_code, 302)
+            self.assertEqual(flask.session['id'], '1')
+            self.assertEqual(flask.session['role'], 'admin')
+            # login done
+            response= TestClient.get('/admin/course_edit/2')
+            self.assertEqual(response.status_code, 200)
+            self.assert_template_used('/admin/edit_course.html')
+            # post
+            response = TestClient.post('/admin/course_edit/2', data = edit_course)
+            self.assertEqual(response.status_code, 302)
+            self.assert_template_used('/admin/edit_course.html')
+            
+    def testAdminCourse_delete(self):
+        data = data_requests.admin_login
+        delete_course = data_requests.admin_course_delete
+        with app.test_client() as TestClient:
+            # login sequence
+            response= TestClient.post('/login/admin', data = data)
+            self.assertEqual(response.status_code, 302)
+            self.assertEqual(flask.session['id'], '1')
+            self.assertEqual(flask.session['role'], 'admin')
+            # login done
+            response= TestClient.post('/admin/course_delete', data = delete_course)
+            self.assertEqual(response.status_code, 302)
+            
+    def testAdminCourse_excel(self):
+        data = data_requests.admin_login
+        with app.test_client() as TestClient:
+            # login sequence
+            response= TestClient.post('/login/admin', data = data)
+            self.assertEqual(response.status_code, 302)
+            self.assertEqual(flask.session['id'], '1')
+            self.assertEqual(flask.session['role'], 'admin')
+            # login done
+            response= TestClient.get('/admin/course_excel')
+            self.assertEqual(response.status_code, 200)
+            
+    def testAdminCourse_sem_assign(self):
+        data = data_requests.admin_login
+        with app.test_client() as TestClient:
+            # login sequence
+            response= TestClient.post('/login/admin', data = data)
+            self.assertEqual(response.status_code, 302)
+            self.assertEqual(flask.session['id'], '1')
+            self.assertEqual(flask.session['role'], 'admin')
+            # login done
+            response= TestClient.get('/admin/course_section_assign')
+            self.assertEqual(response.status_code, 200)
+            self.assert_template_used('admin/course_section_assign.html')
+            
+    def testAdminCourse_sem_edit(self):
+        data = data_requests.admin_login
+        new_course = data_requests.admin_course_add
+        with app.test_client() as TestClient:
+            # login sequence
+            response= TestClient.post('/login/admin', data = data)
+            self.assertEqual(response.status_code, 302)
+            self.assertEqual(flask.session['id'], '1')
+            self.assertEqual(flask.session['role'], 'admin')
+            # login done
+            response= TestClient.get('/admin/add_course')
+            self.assertEqual(response.status_code, 200)
+            self.assert_template_used('admin/add_course.html')
+            
+    def testAdminCourse_sem_delete(self):
+        data = data_requests.admin_login
+        new_course = data_requests.admin_course_add
+        with app.test_client() as TestClient:
+            # login sequence
+            response= TestClient.post('/login/admin', data = data)
+            self.assertEqual(response.status_code, 302)
+            self.assertEqual(flask.session['id'], '1')
+            self.assertEqual(flask.session['role'], 'admin')
+            # login done
+            response= TestClient.get('/admin/add_course')
+            self.assertEqual(response.status_code, 200)
+            self.assert_template_used('admin/add_course.html')
+            
+    def testAdminCourse_student_assign(self):
+        data = data_requests.admin_login
+        new_course = data_requests.admin_course_add
+        with app.test_client() as TestClient:
+            # login sequence
+            response= TestClient.post('/login/admin', data = data)
+            self.assertEqual(response.status_code, 302)
+            self.assertEqual(flask.session['id'], '1')
+            self.assertEqual(flask.session['role'], 'admin')
+            # login done
+            response= TestClient.get('/admin/add_course')
+            self.assertEqual(response.status_code, 200)
+            self.assert_template_used('admin/add_course.html')
+
+    def testAdminCourse_student_add(self):
+        data = data_requests.admin_login
+        new_course = data_requests.admin_course_add
+        with app.test_client() as TestClient:
+            # login sequence
+            response= TestClient.post('/login/admin', data = data)
+            self.assertEqual(response.status_code, 302)
+            self.assertEqual(flask.session['id'], '1')
+            self.assertEqual(flask.session['role'], 'admin')
+            # login done
+            response= TestClient.get('/admin/add_course')
+            self.assertEqual(response.status_code, 200)
+            self.assert_template_used('admin/add_course.html')
+
+    def testAdminCourse_student_delete(self):
+        data = data_requests.admin_login
+        new_course = data_requests.admin_course_add
+        with app.test_client() as TestClient:
+            # login sequence
+            response= TestClient.post('/login/admin', data = data)
+            self.assertEqual(response.status_code, 302)
+            self.assertEqual(flask.session['id'], '1')
+            self.assertEqual(flask.session['role'], 'admin')
+            # login done
+            response= TestClient.get('/admin/add_course')
+            self.assertEqual(response.status_code, 200)
+            self.assert_template_used('admin/add_course.html')
 
 if __name__ == "__main__":
     unittest.main()
