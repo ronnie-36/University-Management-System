@@ -8,9 +8,6 @@ Deepkamal Singh 190001011
 <hr>
 
 Visit [http://softwarep012.com](http://softwarep012.pythonanywhere.com/) for live demo. Frontend and Backend working.
-ER Model  
-![alt text](https://github.com/ronnie-36/University-Management-System/blob/main/sql/ums_ER.jpg)
-  
   
 Clone this project  
   
@@ -73,6 +70,9 @@ TestCase Details -
 '''
 
 #### See [Coverage file](/htmlcov)
-
+  
+<br /><br />
+### ER Model  
+![alt text](https://github.com/ronnie-36/University-Management-System/blob/main/sql/ums_ER.jpg)
       
 
