@@ -61,7 +61,7 @@ CREATE TABLE section (
 CREATE TABLE student (
   `student_id` VARCHAR(45) NOT NULL,
   `first_name` VARCHAR(90) NOT NULL,
-  `last_name` VARCHAR(90),
+  `last_name` VARCHAR(90) DEFAULT '',
   `emailid` VARCHAR(90),
   `address` VARCHAR(200),
   `gender` VARCHAR(10) DEFAULT 'Male',

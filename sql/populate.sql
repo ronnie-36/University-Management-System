@@ -69,10 +69,10 @@ INSERT INTO teaches (faculty_id, sec_id, year, notes) VALUES ('2','3',"2006-06-0
 INSERT INTO teaches (faculty_id, sec_id, year, notes) VALUES ('1','4',"2009-12-30","");
 INSERT INTO teaches (faculty_id, sec_id, year, notes) VALUES ('2','2',"2010-01-30","");
 
-INSERT INTO assignment (sec_id, faculty_id, created_at, start_at, end_at, text, marks_total) VALUES ('1','1',NOW(),DATE_ADD(NOW(), INTERVAL 3 HOUR), NOW() + INTERVAL 1 DAY, 'Sort an array in O(n) using radix sort', '30');
-INSERT INTO assignment (sec_id, faculty_id, created_at, start_at, end_at, text, marks_total) VALUES ('2','1',NOW() - INTERVAL 3 DAY, NOW() - INTERVAL 2 DAY,NOW() - INTERVAL 1 DAY, 'reverse an array in O(n)', '10');
-INSERT INTO assignment (sec_id, faculty_id, created_at, start_at, end_at, text, marks_total) VALUES ('2','1',NOW()- INTERVAL 2 DAY,DATE_ADD(NOW(), INTERVAL 1 HOUR), DATE_ADD(NOW(), INTERVAL 3 HOUR), 'End semester exam', '60');
-INSERT INTO assignment (sec_id, faculty_id, created_at, start_at, end_at, text, marks_total) VALUES ('3','2',NOW()- INTERVAL 1 DAY,DATE_ADD(NOW(), INTERVAL 0 HOUR), DATE_ADD(NOW(), INTERVAL 3 HOUR), 'End semester exam', '100');
+INSERT INTO assignment (sec_id, faculty_id, created_at, start_at, end_at, text, marks_total, notes) VALUES ('1','1',NOW(),DATE_ADD(NOW(), INTERVAL 3 HOUR), NOW() + INTERVAL 1 DAY, 'Sort an array in O(n) using radix sort', '30','Assg1');
+INSERT INTO assignment (sec_id, faculty_id, created_at, start_at, end_at, text, marks_total, notes) VALUES ('2','1',NOW() - INTERVAL 3 DAY, NOW() - INTERVAL 2 DAY,NOW() - INTERVAL 1 DAY, 'reverse an array in O(n)', '10','Assg2');
+INSERT INTO assignment (sec_id, faculty_id, created_at, start_at, end_at, text, marks_total, notes) VALUES ('2','1',NOW()- INTERVAL 2 DAY,DATE_ADD(NOW(), INTERVAL 1 HOUR), DATE_ADD(NOW(), INTERVAL 3 HOUR), 'End semester exam', '60','Assg3');
+INSERT INTO assignment (sec_id, faculty_id, created_at, start_at, end_at, text, marks_total, notes) VALUES ('3','2',NOW()- INTERVAL 1 DAY,DATE_ADD(NOW(), INTERVAL 0 HOUR), DATE_ADD(NOW(), INTERVAL 3 HOUR), 'End semester exam', '100','Assg4');
 
 INSERT INTO submission (a_id, student_id, submitted_at, text, marks_got) VALUES ('1','1', DATE_ADD(NOW(), INTERVAL 3 HOUR),'answer 1 text', '30');
 INSERT INTO submission (a_id, student_id, submitted_at, text, marks_got) VALUES ('2','1', DATE_ADD(NOW(), INTERVAL 1 HOUR),'answer 2 text', '10');
