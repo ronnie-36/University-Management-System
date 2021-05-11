@@ -14,4 +14,7 @@ admin_course_student_assign = dict([('sec_id', '2')]) # student_id = 2
 admin_course_student_delete = dict([('sec_id', '2')]) # student_id = 2
 admin_all_requests = dict([('r_id', 3)])
 
+admin_faculty_add = dict([('faculty_id', '12'), ('first_name', 'Sharon'), ('last_name', 'mailk'), ('gender', 'Male'), ('dob', '2021-05-01'), ('phone', '9191020293'), ('address', '123-abc'), ('email', 'sharon@123.com'), ('salary', '123333'), ('ri', 'software'), ('position', 'Associate Professor'), ('department', 'cse')])
+admin_faculty_edit = dict([('first_name', 'Sharon'), ('last_name', 'mailk'), ('gender', 'Male'), ('dob', '2021-05-01'), ('phone', '9191020294'), ('address', '123-abcd'), ('email', 'sharon@123.com'), ('salary', '1233332'), ('ri', 'software'), ('position', 'Associate Professor'), ('department', 'cse')])
+admin_faculty_delete = dict([('faculty_id', '12')])
 

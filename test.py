@@ -563,5 +563,164 @@ class TestAdmin(flask_testing.TestCase):
             self.assertEqual(response.status_code, 302)
 
 
+# faculty
+
+    def testAdminFaculty_add(self):
+        data = data_requests.admin_login
+        new_faculty = data_requests.admin_faculty_add
+        with app.test_client() as TestClient:
+            # login sequence
+            response= TestClient.post('/login/admin', data = data)
+            self.assertEqual(response.status_code, 302)
+            self.assertEqual(flask.session['id'], '1')
+            self.assertEqual(flask.session['role'], 'admin')
+            # login done
+            response= TestClient.get('/admin/add_faculty')
+            self.assertEqual(response.status_code, 200)
+            self.assert_template_used('admin/add-faculty.html')
+            # post
+            response= TestClient.post('/admin/add_faculty', data = new_faculty)
+            self.assertEqual(response.status_code, 302)
+
+    def testAdminFaculty_list(self):
+        data = data_requests.admin_login
+        with app.test_client() as TestClient:
+            # login sequence
+            response= TestClient.post('/login/admin', data = data)
+            self.assertEqual(response.status_code, 302)
+            self.assertEqual(flask.session['id'], '1')
+            self.assertEqual(flask.session['role'], 'admin')
+            # login done
+            response= TestClient.get('/admin/faculty_list')
+            self.assertEqual(response.status_code, 200)
+            self.assert_template_used('admin/faculty_list.html')
+
+    def testAdminFaculty_view(self):
+        data = data_requests.admin_login
+        with app.test_client() as TestClient:
+            # login sequence
+            response= TestClient.post('/login/admin', data = data)
+            self.assertEqual(response.status_code, 302)
+            self.assertEqual(flask.session['id'], '1')
+            self.assertEqual(flask.session['role'], 'admin')
+            # login done
+            response= TestClient.get('/admin/faculty_view/2')
+            self.assertEqual(response.status_code, 200)
+            self.assert_template_used('admin/faculty-detail.html')
+
+    def testAdminFaculty_list_edit(self):
+        data = data_requests.admin_login
+        with app.test_client() as TestClient:
+            # login sequence
+            response= TestClient.post('/login/admin', data = data)
+            self.assertEqual(response.status_code, 302)
+            self.assertEqual(flask.session['id'], '1')
+            self.assertEqual(flask.session['role'], 'admin')
+            # login done
+            response= TestClient.get('/admin/faculty_list_edit')
+            self.assertEqual(response.status_code, 200)
+            self.assert_template_used('/admin/faculty.html')
+
+    def testAdminFaculty_edit(self):
+        data = data_requests.admin_login
+        admin_fac_edit = data_requests.admin_faculty_edit
+        with app.test_client() as TestClient:
+            # login sequence
+            response= TestClient.post('/login/admin', data = data)
+            self.assertEqual(response.status_code, 302)
+            self.assertEqual(flask.session['id'], '1')
+            self.assertEqual(flask.session['role'], 'admin')
+            # login done
+            response= TestClient.get('/admin/edit-faculty/2')
+            self.assertEqual(response.status_code, 200)
+            self.assert_template_used('/admin/edit-faculty.html')
+            # post
+            response= TestClient.get('/admin/edit-faculty/2', data = admin_fac_edit)
+            self.assertEqual(response.status_code, 200)
+
+    def testAdminFaculty_delete(self):
+        data = data_requests.admin_login
+        admin_fac_delete = data_requests.admin_faculty_delete
+        with app.test_client() as TestClient:
+            # login sequence
+            response= TestClient.post('/login/admin', data = data)
+            self.assertEqual(response.status_code, 302)
+            self.assertEqual(flask.session['id'], '1')
+            self.assertEqual(flask.session['role'], 'admin')
+            # login done
+            response= TestClient.get('/admin/delete-faculty')
+            self.assertEqual(response.status_code, 200)
+            response= TestClient.get('/admin/delete-faculty', data = admin_fac_delete)
+            self.assertEqual(response.status_code, 200)
+
+
+# department
+
+    def testAdminDepartment_list(self):
+        data = data_requests.admin_login
+        with app.test_client() as TestClient:
+            # login sequence
+            response= TestClient.post('/login/admin', data = data)
+            self.assertEqual(response.status_code, 302)
+            self.assertEqual(flask.session['id'], '1')
+            self.assertEqual(flask.session['role'], 'admin')
+            # login done
+            response= TestClient.get('/admin/department_list')
+            self.assertEqual(response.status_code, 200)
+            self.assert_template_used('/admin/inbox.html')
+
+    def testAdminDepartment_add(self):
+        data = data_requests.admin_login
+        with app.test_client() as TestClient:
+            # login sequence
+            response= TestClient.post('/login/admin', data = data)
+            self.assertEqual(response.status_code, 302)
+            self.assertEqual(flask.session['id'], '1')
+            self.assertEqual(flask.session['role'], 'admin')
+            # login done
+            response= TestClient.get('/admin/add_department')
+            self.assertEqual(response.status_code, 200)
+            self.assert_template_used('/admin/inbox.html')
+
+    def testAdminDepartment_list_edit(self):
+        data = data_requests.admin_login
+        with app.test_client() as TestClient:
+            # login sequence
+            response= TestClient.post('/login/admin', data = data)
+            self.assertEqual(response.status_code, 302)
+            self.assertEqual(flask.session['id'], '1')
+            self.assertEqual(flask.session['role'], 'admin')
+            # login done
+            response= TestClient.get('/admin/department_list_edit')
+            self.assertEqual(response.status_code, 200)
+            self.assert_template_used('/admin/inbox.html')
+
+    def testAdminDepartment_edit(self):
+        data = data_requests.admin_login
+        with app.test_client() as TestClient:
+            # login sequence
+            response= TestClient.post('/login/admin', data = data)
+            self.assertEqual(response.status_code, 302)
+            self.assertEqual(flask.session['id'], '1')
+            self.assertEqual(flask.session['role'], 'admin')
+            # login done
+            response= TestClient.get('/admin/edit-department/2')
+            self.assertEqual(response.status_code, 200)
+            self.assert_template_used('/admin/inbox.html')
+
+    def testAdminDepartment_delete(self):
+        data = data_requests.admin_login
+        with app.test_client() as TestClient:
+            # login sequence
+            response= TestClient.post('/login/admin', data = data)
+            self.assertEqual(response.status_code, 302)
+            self.assertEqual(flask.session['id'], '1')
+            self.assertEqual(flask.session['role'], 'admin')
+            # login done
+            response= TestClient.get('/admin/delete-department')
+            self.assertEqual(response.status_code, 200)
+            self.assert_template_used('/admin/inbox.html')
+
+
 if __name__ == "__main__":
     unittest.main()
