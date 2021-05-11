@@ -7,7 +7,12 @@ Kuldeep Singh 190001030  <br>
 Deepkamal Singh 190001011    
 <hr>
 
-Visit [http://softwarep012.com](http://softwarep012.pythonanywhere.com/) for live demo. Frontend and Backend working.
+Visit [http://softwarep012.com](http://softwarep012.pythonanywhere.com/) for live demo. Frontend and Backend working.  
+Note for every id field: 
+
+      user-id = 1
+      password = 1234
+      
   
 Clone this project  
   
