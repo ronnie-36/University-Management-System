@@ -80,6 +80,14 @@ def admin_dashboard():
         count_faculty = count_faculty, count_course = count_course, count_dept = count_dept,
         count_year = count_year, star_student = star_student, star_faculty = star_faculty)
 
+def admin_profile():
+    if 'id' not in session or 'role' not in session:
+        return render_template('error.html')
+    elif session['role'] != "admin":
+        return render_template('error.html')
+
+    return render_template('admin_panel_extras/profile.html')
+
 def admin_add_student():
     if 'id' not in session or 'role' not in session:
         return render_template('error.html')
