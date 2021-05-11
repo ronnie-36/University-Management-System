@@ -48,7 +48,7 @@ Clone this project
       The application runs on localhost:5000
       
 ### Testing  
-'''
+
 Library used - unittest, flask_testing  
 For running test file
 STEPS: 
@@ -63,13 +63,13 @@ FOR DETAILED COVERAGE
 
 
 TestCase Details - 
-1. Home section - 100%(test.py)
-2. Admin section - 98%(test.py)
+1. Auth section - 100%(test.py)
+2. Admin section - 97%(test.py)
 3. Student section - 100%(test_student.py)
-4. Faculty section - 90%
-'''
+4. Faculty section - 97%(test_faculty.py)
 
-#### See [Coverage file](/htmlcov)
+#### See [Coverage file](/htmlcov)  
+Please Download the folder and open index.html
   
 <br /><br />
 ### ER Model  
