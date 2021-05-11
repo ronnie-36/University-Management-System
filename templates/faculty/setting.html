@@ -1,0 +1,185 @@
+﻿{% extends 'faculty/facultybase.html' %}
+
+<!-- Sidebar -->
+{% block sidebar %}
+<nav class="vertical_nav">
+        <div class="left_section menu_left" id="js-menu">
+                <div class="left_section">
+                        <ul>
+                                <li class="menu--item">
+                                        <a href="/faculty/dashboard" class="menu--link " title="Dashboard">
+                                                <i class="uil uil-apps menu--icon"></i>
+                                                <span class="menu--label">Dashboard</span>
+                                        </a>
+                                </li>
+                                <li class="menu--item">
+                                        <a href="/faculty/courses" class="menu--link" title="Courses">
+                                                <i class='uil uil-book-alt menu--icon'></i>
+                                                <span class="menu--label">Courses</span>
+                                        </a>
+                                </li>
+                                <li class="menu--item">
+                                        <a href="/faculty/create_new_course" class="menu--link" title="Create Course">
+                                                <i class='uil uil-plus-circle menu--icon'></i>
+                                                <span class="menu--label">Create Assignment</span>
+                                        </a>
+                                </li>
+
+                                <li class="menu--item">
+                                        <a href="instructor_my_certificates.html" class="menu--link"
+                                                title="My Certificates">
+                                                <i class='uil uil-award menu--icon'></i>
+                                                <span class="menu--label">Set Grades </span>
+                                        </a>
+                                </li>
+                                <li class="menu--item">
+                                        <a href="/faculty/notifications" class="menu--link" title="Notifications">
+                                                <i class='uil uil-bell menu--icon'></i>
+                                                <span class="menu--label">Notifications</span>
+                                        </a>
+                                </li>
+
+
+                                <li class="menu--item">
+                                        <a href="/faculty/time-table" class="menu--link" title="Statements">
+                                                <i class='uil uil-file-alt menu--icon'></i>
+                                                <span class="menu--label">Time-Table</span>
+                                        </a>
+                                </li>
+
+                        </ul>
+                </div>
+                <div class="left_section pt-2">
+                        <ul>
+                                <li class="menu--item">
+                                        <a href="/faculty/setting" class="menu--link active" title="Settings">
+                                                <i class='uil uil-cog menu--icon'></i>
+                                                <span class="menu--label">Settings</span>
+                                        </a>
+                                </li>
+
+                        </ul>
+                </div>
+        </div>
+</nav>
+{% endblock %}
+<!-- /Sidebar -->
+
+
+<!-- Page Wrapper -->
+{% block wrapper %}
+<div class="wrapper">
+        <div class="sa4d25">
+                <div class="container-fluid">
+                        <div class="row">
+                                <div class="col-lg-12">
+                                        <h2 class="st_title"><i class='uil uil-cog'></i> Settings</h2>
+                                        <div class="setting_tabs">
+                                                <ul class="nav nav-pills mb-4" id="pills-tab" role="tablist">
+                                                        <li class="nav-item">
+                                                                <a class="nav-link active" id="pills-closeaccount-tab"
+                                                                        data-toggle="pill" href="#pills-closeaccount"
+                                                                        role="tab" aria-selected="false">Change
+                                                                        password</a>
+                                                        </li>
+                                                </ul>
+                                        </div>
+                                        <div class="tab-content" id="pills-tabContent">
+
+                                                <div class="tab-pane fade show active" id="pills-closeaccount"
+                                                        role="tabpanel" aria-labelledby="pills-closeaccount-tab">
+                                                        <div class="account_setting">
+                                                                <h4>Change password</h4>
+                                                        </div>
+                                                        <div class="row">
+                                                                <div class="col-lg-4">
+                                                                        <form method="POST"
+                                                                                action="/faculty/changepassword">
+                                                                                <div class="ui search focus mt-30">
+                                                                                        <div
+                                                                                                class="ui left icon input swdh11 swdh19">
+                                                                                                <input class="prompt srch_explore"
+                                                                                                        type="password"
+                                                                                                        name="curpassword"
+                                                                                                        maxlength="64"
+                                                                                                        placeholder="Enter Current Password"
+                                                                                                        required>
+                                                                                        </div>
+                                                                                </div>
+                                                                                <div class="ui search focus mt-30">
+                                                                                        <div
+                                                                                                class="ui left icon input swdh11 swdh19">
+                                                                                                <input class="prompt srch_explore"
+                                                                                                        type="password"
+                                                                                                        name="newpassword"
+                                                                                                        placeholder="Enter New Password"
+                                                                                                        required>
+                                                                                        </div>
+                                                                                </div>
+                                                                                <div class="ui search focus mt-30">
+                                                                                        <div
+                                                                                                class="ui left icon input swdh11 swdh19">
+                                                                                                <input class="prompt srch_explore"
+                                                                                                        type="password"
+                                                                                                        name="conpassword"
+                                                                                                        placeholder="Confirm Password"
+                                                                                                        required>
+                                                                                        </div>
+                                                                                </div>
+                                                                                <button class="save_payout_btn mbs20"
+                                                                                        type="submit">Change
+                                                                                        password</button>
+                                                                                {% if flash != '' %}
+                                                                                <h5 style="color: rgb(255, 25, 25);">
+                                                                                        {{flash}}</h5>
+                                                                                {% endif %}
+                                                                        </form>
+                                                                </div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+        </div>
+        <footer class="footer mt-30 ">
+                <div class="container ">
+                        <div class="row ">
+
+                                <div class="col-lg-12 my-2">
+                                        <div class="row ">
+                                                <div class="col-md-6 ">
+                                                        <ul class="fotb_left ">
+                                                                <li>
+                                                                        <a href="index.html">
+                                                                                <div class="footer_logo">
+                                                                                        <img src="../../static/assets/faculty_assets/images/logo1.svg"
+                                                                                                alt="">
+                                                                                </div>
+                                                                        </a>
+                                                                </li>
+                                                                <li>
+                                                                        <p>© 2021 <strong>UMS - IIT
+                                                                                        Indore</strong>. All
+                                                                                Rights Reserved.</p>
+                                                                </li>
+                                                        </ul>
+                                                </div>
+                                                <div class="col-md-6">
+                                                        <div class="edu_social_links">
+                                                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                                                <a href="#"><i class="fab fa-twitter"></i></a>
+
+                                                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                                                <a href="#"><i class="fab fa-instagram"></i></a>
+
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+        </footer>
+</div>
+{% endblock %}
+<!-- /Page Wrapper -->
