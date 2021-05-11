@@ -46,4 +46,29 @@ Clone this project
       Use python 3.7 u
 
       The application runs on localhost:5000
+      
+### Testing  
+'''
+For running test file
+STEPS: 
+
+    pip install -r requirements.txt
+    python test.py
+
+FOR DETAILED COVERAGE
+
+    coverage run --source models -m unittest discover && coverage report
+    coverage html
+
+
+TestCase Details - 
+1. Home section
+2. Admin section
+3. Student section
+4. Faculty section
+'''
+
+#### See [Coverage file](/htmlcov/index.html)
+
+      
 
