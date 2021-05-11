@@ -1,7 +1,7 @@
 {% extends 'admin/adminbase.html' %}
 
 {% block department_sidebar %}
-<li class="submenu">
+<li class="submenu active">
     <a href="#"><i class="fas fa-building"></i> <span> Departments</span> <span class="menu-arrow"></span></a>
     <ul>
         <li><a href="/admin/department_list">Department List</a></li>
@@ -21,12 +21,12 @@
     function Delete() {
         const Url = '/admin/delete-department';
         axios({
-                method: 'post',
-                url: Url,
-                data: {
-                    id: sessionStorage.getItem('deleteId')
-                }
-            })
+            method: 'post',
+            url: Url,
+            data: {
+                id: sessionStorage.getItem('deleteId')
+            }
+        })
             .then(() => {
                 $("#" + sessionStorage.getItem('deleteId')).closest('tr').css('background', 'tomato');
                 $("#" + sessionStorage.getItem('deleteId')).closest('tr').fadeOut(1000, function () {

@@ -140,6 +140,8 @@ def faculty_create_new_assignment():
     if request.method == 'POST':
         formDetails = request.form
         marks = formDetails['marks']
+        # currently storing name in notes
+        name = formDetails['name'] 
         text = formDetails['text']
         sec_id = formDetails['sec_id']
         start = formDetails['start']
@@ -147,11 +149,14 @@ def faculty_create_new_assignment():
         sec_id = int(sec_id)
         marks = int(marks)
         cur = mysql.connection.cursor()
-        cur.execute(''' INSERT INTO assignment (faculty_id, sec_id, created_at, start_at, end_at, text, marks_total) 
-        values ('%s','%d',NOw(),'%s','%s','%s','%d');'''% (fid,sec_id,start,end,text,marks))
-        flash("Assignment created",'success')
-        mysql.connection.commit()
-        cur.close()
+        if(len(fid) > 0 and sec_id > 0 and len(name)>0):
+            cur.execute(''' INSERT INTO assignment (faculty_id, sec_id, created_at, start_at, end_at, text, marks_total, notes) 
+            values ('%s','%d',NOw(),'%s','%s','%s','%d', '%s');'''% (fid,sec_id,start,end,text,marks,name))
+            flash("Assignment created",'success') 
+            mysql.connection.commit()
+            cur.close()
+        else:
+            flash("Some error occured",'error')
         return redirect(url_for('faculty_create_new_assignment'))
     cur = mysql.connection.cursor()
     cur.execute(''' select course.c_id,course.name, course.credits, course.hours, section.year, section.sec_id from 
@@ -164,5 +169,118 @@ def faculty_create_new_assignment():
     ongoing = cur.fetchall()
     cur.close()
     return render_template('faculty/create_new_assignment.html',ongoingList=ongoing)
-    
-    
+
+def select_section_for_assignment():
+    if 'id' not in session or 'role' not in session:
+        return render_template('error.html')
+    elif session['role'] != "faculty":
+        return render_template('error.html')
+    fid = session['id']
+    if request.method == 'POST':
+        return redirect(url_for('select_section_for_assignment'))
+    cur = mysql.connection.cursor()
+    cur.execute(''' select course.c_id,course.name, course.credits, course.hours, section.year, section.sec_id from 
+                            teaches
+                                join 
+                            section 
+                                join 
+                            course 
+    where teaches.sec_id = section.sec_id and section.c_id = course.c_id and section.year = year(curdate()) and teaches.faculty_id = '%s' '''% (fid))
+    ongoing = cur.fetchall()
+    cur.close()
+    return render_template('faculty/select_section_for_assignment.html',ongoingList=ongoing)
+
+def select_assignment_for_grade(sec_id):
+    if 'id' not in session or 'role' not in session:
+        return render_template('error.html')
+    elif session['role'] != "faculty":
+        return render_template('error.html')
+    fid = session['id']
+    if request.method == 'POST':
+        return redirect(url_for('select_assignment_for_grade',sec_id=sec_id))
+    sec_id = int(sec_id)
+    cur = mysql.connection.cursor()
+    cur.execute(''' select * from 
+                            assignment
+    where sec_id='%d' and faculty_id = '%s' '''% (sec_id,fid))
+    assignments = cur.fetchall()
+    cur.close()
+    return render_template('faculty/select_assignment_for_grade.html',assgList=assignments, sec_id=sec_id)
+
+def select_student_for_grade(sec_id,a_id):
+    if 'id' not in session or 'role' not in session:
+        return render_template('error.html')
+    elif session['role'] != "faculty":
+        return render_template('error.html')
+    fid = session['id']
+    if request.method == 'POST':
+        return redirect(url_for('select_student_for_grade',sec_id=sec_id, a_id=a_id))
+    sec_id = int(sec_id)
+    a_id = int(a_id)
+    cur = mysql.connection.cursor()
+    cur.execute(''' select * from 
+                            assignment
+    where a_id= '%s' '''% (a_id))
+    assignment = cur.fetchall()
+    cur.execute(''' 
+    select 
+        submission.student_id,first_name, last_name, submitted_at, marks_got, submission_id 
+    from 
+        submission 
+        join 
+        student 
+    where 
+    a_id= '%s' and submission.student_id = student.student_id '''
+    % (a_id))
+    submission = cur.fetchall()
+    cur.close()
+    return render_template('faculty/select_student_for_grade.html',assgDetails=assignment[0], submissionList=submission)
+
+def faculty_assignment_grade_submission(submission_id):
+    if 'id' not in session or 'role' not in session:
+        return render_template('error.html')
+    elif session['role'] != "faculty":
+        return render_template('error.html')
+    fid = session['id']
+    if request.method == 'POST':
+        formDetails = request.form
+        marksobtained = formDetails['marksobtained']
+        # currently storing feedback in notes(submission table)
+        feedback = formDetails['feedback']
+        submission_id = int(submission_id)
+        marksobtained = int(marksobtained)
+        cur = mysql.connection.cursor()
+        if(submission_id > 0):
+            cur.execute(''' 
+            UPDATE 
+                submission
+            SET 
+                marks_got = '%d', notes = '%s' 
+            WHERE 
+                submission_id ='%d' ;'''% (marksobtained,feedback,submission_id))
+            flash("Marks Updated",'success') 
+            mysql.connection.commit()
+            cur.close()
+        else:
+            flash("Some error occured",'error')
+        return redirect(request.referrer)
+    cur = mysql.connection.cursor()
+    cur.execute(''' 
+    select 
+        student.student_id, student.first_name, student.last_name, submission.marks_got, submission.text,
+        submission.a_id, submission.submitted_at, submission.files_link, submission.notes 
+    from  
+        submission 
+        join 
+        student
+    where 
+    submission.student_id = student.student_id and submission.submission_id= '%s' '''% (submission_id))
+    submission = cur.fetchall()
+    a_id = submission[0][5]
+    a_id = int(a_id)
+    cur.execute(''' select * from 
+                            assignment
+    where a_id= '%s' '''% (a_id))
+    assignment = cur.fetchall()
+    cur.close()
+    return render_template('faculty/grade_submission.html',assgDetails=assignment[0], submissionDetails=submission[0])

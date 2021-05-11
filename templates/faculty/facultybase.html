@@ -37,7 +37,7 @@
     <link rel="stylesheet" type="text/css"
         href="{{ url_for('static',filename='assets/faculty_assets/vendor/OwlCarousel/assets/owl.carousel.css') }}">
     <link rel="stylesheet" type="text/css"
-        href="{{ url_for('static',filename='assets/faculty_assets/vendor/OwlCarousel/assets/owl.theme.default.min.csss') }}">
+        href="{{ url_for('static',filename='assets/faculty_assets/vendor/OwlCarousel/assets/owl.theme.default.min.css') }}">
     <link rel="stylesheet" type="text/css"
         href="{{ url_for('static',filename='assets/faculty_assets/vendor/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css"
@@ -67,9 +67,9 @@
             <span class="collapse_menu--label"></span>
         </button>
         <div class="main_logo" id="logo">
-            <a href="/faculty/dashboard"><img src="../../static/assets/faculty_assets/images/logo1.png" alt=""></a>
+            <a href="/faculty/dashboard"><img src="{{ url_for('static',filename='assets/faculty_assets/images/logo1.png') }}" alt=""></a>
             <a href="/faculty/dashboard"><img class="logo-inverse"
-                    src="../../static/assets/faculty_assets/images/logo1.png" alt=""></a>
+                    src="{{ url_for('static',filename='assets/faculty_assets/images/logo1.png') }}" alt=""></a>
         </div>
 
         <div class="header_right">
@@ -80,7 +80,7 @@
                     <div class="menu dropdown_mn">
                         <a href="#" class="channel_my item">
                             <div class="profile_link">
-                                <img src="../../static/assets/faculty_assets/images/left-imgs/img-1.jpg" alt="">
+                                <img src="{{ url_for('static',filename='assets/faculty_assets/images/left-imgs/img-1.jpg') }}" alt="">
                                 <div class="pd_content">
                                     <h6>Rock William</h6>
                                     <p>Like Your Comment On Video <strong>How to create sidebar menu</strong>.</p>
@@ -90,7 +90,7 @@
                         </a>
                         <a href="#" class="channel_my item">
                             <div class="profile_link">
-                                <img src="../../static/assets/faculty_assets/images/left-imgs/img-2.jpg" alt="">
+                                <img src="{{ url_for('static',filename='assets/faculty_assets/images/left-imgs/img-2.jpg' )}}" alt="">
                                 <div class="pd_content">
                                     <h6>Jassica Smith</h6>
                                     <p>Added New Review In Video <strong>Full Stack PHP Developer</strong>.</p>
@@ -100,7 +100,7 @@
                         </a>
                         <a href="#" class="channel_my item">
                             <div class="profile_link">
-                                <img src="../../static/assets/faculty_assets/images/left-imgs/img-9.jpg" alt="">
+                                <img src="{{ url_for('static',filename='assets/faculty_assets/images/left-imgs/img-9.jpg' )}}" alt="">
                                 <div class="pd_content">
                                     <p> Your Membership Approved <strong>Upload Video</strong>.</p>
                                     <span class="nm_time">20 min ago</span>
@@ -113,12 +113,12 @@
                 </li>
                 <li class="ui dropdown">
                     <a href="#" class="opts_account">
-                        <img src="../../static/assets/faculty_assets/images/hd_dp.jpg" alt="">
+                        <img src="{{ url_for('static',filename='assets/faculty_assets/images/hd_dp.jpg')}}" alt="">
                     </a>
                     <div class="menu dropdown_account">
                         <div class="channel_my">
                             <div class="profile_link">
-                                <img src="../../static/assets/faculty_assets/images/hd_dp.jpg" alt="">
+                                <img src="{{ url_for('static',filename='/assets/faculty_assets/images/hd_dp.jpg')}}" alt="">
                                 <div class="pd_content">
                                     <div class="rhte85">
                                         <h6>{{ name }}</h6>
@@ -181,17 +181,9 @@
                     {% endblock %}
                     {% block sidebar_grades %}
                     <li class="menu--item">
-                        <a href="instructor_my_certificates.html" class="menu--link" title="Check Assignments">
+                        <a href="/faculty/grade_assignment" class="menu--link" title="Check Assignments">
                             <i class='uil uil-award menu--icon'></i>
-                            <span class="menu--label">Check Assignments </span>
-                        </a>
-                    </li>
-                    {% endblock %}
-                    {% block sidebar_notifications %}
-                    <li class="menu--item">
-                        <a href="/faculty/notifications" class="menu--link" title="Notifications">
-                            <i class='uil uil-bell menu--icon'></i>
-                            <span class="menu--label">Notifications</span>
+                            <span class="menu--label">Grade Assignments </span>
                         </a>
                     </li>
                     {% endblock %}
@@ -234,13 +226,13 @@
 
     {% block script %}
     <!-- jQuery -->
-    <script src="../../static/assets/faculty_assets/js/vertical-responsive-menu.min.js"></script>
-    <script src="../../static/assets/faculty_assets/js/jquery-3.3.1.min.js"></script>
-    <script src="../../static/assets/faculty_assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="../../static/assets/faculty_assets/vendor/OwlCarousel/owl.carousel.js"></script>
-    <script src="../../static/assets/faculty_assets/vendor/semantic/semantic.min.js"></script>
-    <script src="../../static/assets/faculty_assets/js/custom1.js"></script>
-    <script src="../../static/assets/faculty_assets/js/night-mode.js"></script>
+    <script src="{{ url_for('static',filename='assets/faculty_assets/js/vertical-responsive-menu.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='assets/faculty_assets/js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='assets/faculty_assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='assets/faculty_assets/vendor/OwlCarousel/owl.carousel.js') }}"></script>
+    <script src="{{ url_for('static',filename='assets/faculty_assets/vendor/semantic/semantic.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='assets/faculty_assets/js/custom1.js') }}"></script>
+    <script src="{{ url_for('static',filename='assets/faculty_assets/js/night-mode.js') }}"></script>
     {% endblock %}
 
 </body>

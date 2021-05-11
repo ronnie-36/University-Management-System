@@ -91,7 +91,10 @@ app.add_url_rule('/faculty/profile', view_func=faculty.faculty_profile, methods=
 app.add_url_rule('/faculty/changepassword', view_func=faculty.faculty_change_password, methods=['GET','POST'])
 app.add_url_rule('/faculty/courses', view_func=faculty.faculty_course, methods=['GET','POST'])
 app.add_url_rule('/faculty/create_new_assignment', view_func=faculty.faculty_create_new_assignment, methods=['GET','POST'])
-
+app.add_url_rule('/faculty/grade_assignment', view_func=faculty.select_section_for_assignment, methods=['GET','POST'])
+app.add_url_rule('/faculty/grade_assignment/<sec_id>', view_func=faculty.select_assignment_for_grade, methods=['GET','POST'])
+app.add_url_rule('/faculty/grade_assignment/<sec_id>/<a_id>', view_func=faculty.select_student_for_grade, methods=['GET','POST'])
+app.add_url_rule('/faculty/grade_assignment/submission/<submission_id>', view_func=faculty.faculty_assignment_grade_submission, methods=['GET','POST'])
 # faculty end
 
 # admin start

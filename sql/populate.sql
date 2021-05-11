@@ -8,14 +8,14 @@ INSERT INTO program (name,duration) VALUES ('bsc',4);
 INSERT INTO program (name,duration) VALUES ('msc',2);
 INSERT INTO program (name,duration) VALUES ('mba',2);
 
-INSERT INTO `faculty` (`faculty_id`, `first_name`, `emailid`, `password`, `address`, `DOB`, salary, position) VALUES ('1', 'Shaan', 'sh@sh.com', '81dc9bdb52d04dc20036dbd8313ed055', '02-gandhi-marg new-delhi', '1980-12-30', 80000, 'Professor');
-INSERT INTO `faculty` (`faculty_id`, `first_name`, `emailid`, `password`, `address`, `DOB`, salary, position) VALUES ('2', 'Rohan', 'rr@trr.com', '81dc9bdb52d04dc20036dbd8313ed055', '02-Hauz-Khas new-delhi', '1965-12-30', 85000, 'Assistant Professor');
-INSERT INTO `faculty` (`faculty_id`, `first_name`, `emailid`, `password`, `address`, `DOB`, salary, position) VALUES ('3', 'Mohan', 'sha@sh.com', '81dc9bdb52d04dc20036dbd8313ed055', '082-gandhi-marg new-delhi', '1990-12-30', 90000, 'Professor');
-INSERT INTO `faculty` (`faculty_id`, `first_name`, `emailid`, `password`, `address`, `DOB`, salary, position) VALUES ('4', 'Sohan', 'rar@trr.com', '81dc9bdb52d04dc20036dbd8313ed055', '012-Hauz-Khas new-delhi', '1975-12-07', 80000, 'Associate Professor');
-INSERT INTO `faculty` (`faculty_id`, `first_name`, `emailid`, `password`, `address`, `DOB`, salary, position) VALUES ('5', 'Soham', 'shm@trr.com', '81dc9bdb52d04dc134236dbd8313ed055', '21-ranjit-nagar new-delhi', '1995-12-07', 60000, 'Associate Professor');
-INSERT INTO `faculty` (`faculty_id`, `first_name`, `emailid`, `password`, `address`, `DOB`, salary, position) VALUES ('6', 'Ram', 'rm@trr.com', '81dc9bdb52d023424bd8313ed055', '211-dugri- new-delhi', '1976-12-07', 80000, 'Professor');
-INSERT INTO `faculty` (`faculty_id`, `first_name`, `emailid`, `password`, `address`, `DOB`, salary, position) VALUES ('7', 'Dinesh', 'dnsh@trr.com', '81dc9bdb234244dc20036dbd8313ed055', '32-old-delhi new-delhi', '1985-12-07', 85000, 'Professor');
-INSERT INTO `faculty` (`faculty_id`, `first_name`, `emailid`, `password`, `address`, `DOB`, salary, position) VALUES ('8', 'Archana', 'rch@trr.com', '81dc9bdb5223424dc20036dbd8313ed055', '221-ansal-plaze new-delhi', '1978-12-07', 65000, 'Associate Professor');
+INSERT INTO `faculty` (`faculty_id`, `first_name`, `emailid`, `password`, `address`, `DOB`, salary, position) VALUES ('1', 'Shaan Sharma', 'sh@sh.com', '81dc9bdb52d04dc20036dbd8313ed055', '02-gandhi-marg new-delhi', '1980-12-30', 80000, 'Professor');
+INSERT INTO `faculty` (`faculty_id`, `first_name`, `emailid`, `password`, `address`, `DOB`, salary, position) VALUES ('2', 'Rohan Verma', 'rr@trr.com', '81dc9bdb52d04dc20036dbd8313ed055', '02-Hauz-Khas new-delhi', '1965-12-30', 85000, 'Assistant Professor');
+INSERT INTO `faculty` (`faculty_id`, `first_name`, `emailid`, `password`, `address`, `DOB`, salary, position) VALUES ('3', 'Mohan Kumar', 'sha@sh.com', '81dc9bdb52d04dc20036dbd8313ed055', '082-gandhi-marg new-delhi', '1990-12-30', 90000, 'Professor');
+INSERT INTO `faculty` (`faculty_id`, `first_name`, `emailid`, `password`, `address`, `DOB`, salary, position) VALUES ('4', 'Kuldeep Singh', 'rar@trr.com', '81dc9bdb52d04dc20036dbd8313ed055', '012-Hauz-Khas new-delhi', '1975-12-07', 80000, 'Associate Professor');
+INSERT INTO `faculty` (`faculty_id`, `first_name`, `emailid`, `password`, `address`, `DOB`, salary, position) VALUES ('5', 'Soham Singh', 'shm@trr.com', '81dc9bdb52d04dc134236dbd8313ed055', '21-ranjit-nagar new-delhi', '1995-12-07', 60000, 'Associate Professor');
+INSERT INTO `faculty` (`faculty_id`, `first_name`, `emailid`, `password`, `address`, `DOB`, salary, position) VALUES ('6', 'Rahul Kumar', 'rm@trr.com', '81dc9bdb52d023424bd8313ed055', '211-dugri- new-delhi', '1976-12-07', 80000, 'Professor');
+INSERT INTO `faculty` (`faculty_id`, `first_name`, `emailid`, `password`, `address`, `DOB`, salary, position) VALUES ('7', 'Krishannu Saini', 'dnsh@trr.com', '81dc9bdb234244dc20036dbd8313ed055', '32-old-delhi new-delhi', '1985-12-07', 85000, 'Professor');
+INSERT INTO `faculty` (`faculty_id`, `first_name`, `emailid`, `password`, `address`, `DOB`, salary, position) VALUES ('8', 'Deepkamal Singh', 'rch@trr.com', '81dc9bdb5223424dc20036dbd8313ed055', '221-ansal-plaze new-delhi', '1978-12-07', 65000, 'Associate Professor');
 
 INSERT INTO department (dept_id, name, budget, hod_id, contact_no) VALUES ('cse','Computer Science and Engineering',120000,'1','98765');
 INSERT INTO department (dept_id, name, budget, hod_id, contact_no) VALUES ('mech','Mechanical Engineering',120000,'2','98765');
@@ -69,10 +69,10 @@ INSERT INTO teaches (faculty_id, sec_id, year, notes) VALUES ('2','3',"2006-06-0
 INSERT INTO teaches (faculty_id, sec_id, year, notes) VALUES ('1','4',"2009-12-30","");
 INSERT INTO teaches (faculty_id, sec_id, year, notes) VALUES ('2','2',"2010-01-30","");
 
-INSERT INTO assignment (sec_id, faculty_id, created_at, start_at, end_at, text, marks_total) VALUES ('1','1',NOW(),DATE_ADD(NOW(), INTERVAL 3 HOUR), NOW() + INTERVAL 1 DAY, 'Sort an array in O(n) using radix sort', '30');
-INSERT INTO assignment (sec_id, faculty_id, created_at, start_at, end_at, text, marks_total) VALUES ('2','1',NOW() - INTERVAL 3 DAY, NOW() - INTERVAL 2 DAY,NOW() - INTERVAL 1 DAY, 'reverse an array in O(n)', '10');
-INSERT INTO assignment (sec_id, faculty_id, created_at, start_at, end_at, text, marks_total) VALUES ('2','1',NOW()- INTERVAL 2 DAY,DATE_ADD(NOW(), INTERVAL 1 HOUR), DATE_ADD(NOW(), INTERVAL 3 HOUR), 'End semester exam', '60');
-INSERT INTO assignment (sec_id, faculty_id, created_at, start_at, end_at, text, marks_total) VALUES ('3','2',NOW()- INTERVAL 1 DAY,DATE_ADD(NOW(), INTERVAL 0 HOUR), DATE_ADD(NOW(), INTERVAL 3 HOUR), 'End semester exam', '100');
+INSERT INTO assignment (sec_id, faculty_id, created_at, start_at, end_at, text, marks_total, notes) VALUES ('1','1',NOW(),DATE_ADD(NOW(), INTERVAL 3 HOUR), NOW() + INTERVAL 1 DAY, 'Sort an array in O(n) using radix sort', '30','Assg1');
+INSERT INTO assignment (sec_id, faculty_id, created_at, start_at, end_at, text, marks_total, notes) VALUES ('2','1',NOW() - INTERVAL 3 DAY, NOW() - INTERVAL 2 DAY,NOW() - INTERVAL 1 DAY, 'reverse an array in O(n)', '10','Assg2');
+INSERT INTO assignment (sec_id, faculty_id, created_at, start_at, end_at, text, marks_total, notes) VALUES ('2','1',NOW()- INTERVAL 2 DAY,DATE_ADD(NOW(), INTERVAL 1 HOUR), DATE_ADD(NOW(), INTERVAL 3 HOUR), 'End semester exam', '60','Assg3');
+INSERT INTO assignment (sec_id, faculty_id, created_at, start_at, end_at, text, marks_total, notes) VALUES ('3','2',NOW()- INTERVAL 1 DAY,DATE_ADD(NOW(), INTERVAL 0 HOUR), DATE_ADD(NOW(), INTERVAL 3 HOUR), 'End semester exam', '100','Assg4');
 
 INSERT INTO submission (a_id, student_id, submitted_at, text, marks_got) VALUES ('1','1', DATE_ADD(NOW(), INTERVAL 3 HOUR),'answer 1 text', '30');
 INSERT INTO submission (a_id, student_id, submitted_at, text, marks_got) VALUES ('2','1', DATE_ADD(NOW(), INTERVAL 1 HOUR),'answer 2 text', '10');
