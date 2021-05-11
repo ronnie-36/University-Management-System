@@ -1,0 +1,100 @@
+{% extends 'faculty/facultybase.html' %}
+
+<!-- Sidebar -->
+{% block sidebar_grades %}
+<li class="menu--item">
+    <a href="/faculty/grade_assignment" class="menu--link active" title="Check Assignments">
+        <i class='uil uil-award menu--icon'></i>
+        <span class="menu--label">Grade Assignments </span>
+    </a>
+</li>
+{% endblock %}
+<!-- /Sidebar -->
+
+<!-- Page Wrapper -->
+{% block wrapper %}
+<div class="wrapper">
+    <div class="sa4d25">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="st_title"><i class="uil uil-book"></i> Select a Course</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="mt-10">
+                        <div class="table-cerificate">
+                            <div class="table-responsive">
+                                <table class="table ucp-table" id="content-table">
+                                    <thead class="thead-s">
+                                        <tr>
+                                            <th class="text-center" scope="col">Course ID</th>
+                                            <th scope="col">Name</th>
+                                            <th class="text-center" scope="col">Credits</th>
+                                            <th class="text-center" scope="col">Hours</th>
+                                            <th class="text-center" scope="col">Year</th>
+                                            <th class="text-center" scope="col">Select</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for item in ongoingList %}
+                                        <tr>
+                                            <td class="text-center">{{item[0]}}</td>
+                                            <td class="cell-ta">{{item[1]}}</td>
+                                            <td class="text-center">{{item[2]}}</td>
+                                            <td class="text-center">{{item[3]}}</td>
+                                            <td class="text-center">{{item[4]}}</td>
+                                            <td class="text-center">
+                                                <a href="/faculty/grade_assignment/{{item[5]}}" title="Select" class="gray-s"><i
+                                                        class="uil uil-arrow-circle-right"></i></a>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer mt-40">
+        <div class="container-fluid">
+            <div class="row">
+
+                <div class="col-lg-12 my-2">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="fotb_left">
+                                <li>
+                                    <a href="index.html">
+                                        <div class="footer_logo">
+                                            <img src="../../static/assets/faculty_assets/images/logo1.svg" alt="">
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <p>© 2021 <strong>UMS - IIT Indore</strong>. All Rights Reserved.</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="edu_social_links">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+{% endblock %}
+<!-- /Page Wrapper -->
