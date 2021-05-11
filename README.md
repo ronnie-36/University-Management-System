@@ -8,7 +8,10 @@ Deepkamal Singh 190001011
 <hr>
 
 Visit [http://softwarep012.com](http://softwarep012.pythonanywhere.com/) for live demo. Frontend and Backend working.
-
+ER Model  
+![alt text](https://github.com/ronnie-36/University-Management-System/blob/main/sql/ums_ER.jpg)
+  
+  
 Clone this project  
   
 ## Installing Requirements  
@@ -16,7 +19,6 @@ Clone this project
       
       2. Python 3.8 / 3.7 / 3.6 ( Not compatible with python 3.9 )  
  <br ><br ><br > 
- ![alt text](https://github.com/ronnie-36/University-Management-System/blob/main/sql/ums_ER.jpg)
   
 ## STEP 1  ( IMPORTING MYSQL DATABASE)
       1. Run DDL commands in university.ddl and SQL commands populate.sql in /sql folder  
