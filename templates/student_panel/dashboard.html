@@ -263,7 +263,7 @@
 
 <div class="dashboard-content-wrap">
     <div class="dashboard-menu-toggler btn theme-btn theme-btn-sm lh-28 theme-btn-transparent mb-4 ml-3">
-        <i class="la la-bars mr-1"></i> Dashboard Nav
+        <i class="la la-bars mr-1"></i> Dashboard
     </div>
     <div class="container-fluid">
         {% block namebar %}
@@ -596,37 +596,20 @@
                     </div>
                 </div><!-- end card -->
             </div><!-- end col-lg-4 -->
+
             <div class="col-lg-4 responsive-column-half">
-                <div class="card card-chart">
+                <div class="card card-item">
                     <div class="card-body">
                         <h3 class="fs-18 font-weight-semi-bold pb-4">Grades </h3>
-
-                        <table class="graph">
-                            <caption>
-                                Student Year-Wise Distribution
-                            </caption>
-                            <thead>
-                                <tr>
-                                    <th scope="col">Item</th>
-                                    <th scope="col">Percent</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for items in current_grades %}
-                                <tr style="height: {{items[1]*8~'%'}}">
-                                    <th scope="row">{{items[0]}}</th>
-                                    <td><span>{{items[1]}}</span></td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-
+                        <canvas id="bar-chart"></canvas>
                         <ul class="chart-legend mt-40px text-center">
-                            <li>Grades for this semester</li>
+                            <li>Your Annual Grades</li>
                         </ul>
                     </div>
                 </div><!-- end card -->
-            </div><!-- end col-lg-4 -->
+            </div>
+
+
             <div class="col-lg-4">
                 <div class="card card-item">
                     <div class="card-body">
@@ -794,3 +777,47 @@
 </div><!-- end dashboard-content-wrap -->
 {% endblock %}
 <!-- /Page Wrapper -->
+
+{% block somescript %}
+<script>
+    var ctx = document.getElementById("bar-chart");
+    (Chart.defaults.global.defaultFontFamily = "Arial"),
+        (Chart.defaults.global.defaultFontSize = 14),
+        (Chart.defaults.global.defaultFontStyle = "500"),
+        (Chart.defaults.global.defaultFontColor = "#233d63");
+    var chart = new Chart(ctx, {
+        type: "bar",
+        data: {
+            labels: ["1yr", "2yr", "3yr", "4yr"],
+            datasets: [
+                {
+                    label: "Grade",
+                    data: [9, 7.5, 8.8, 0],
+                    backgroundColor: "rgba(108, 92, 231, .2)",
+                    hoverBackgroundColor: "rgba(108, 92, 231, .6)",
+                    hoverBorderColor: "rgba(108, 92, 231, .6)",
+                    borderColor: "#7E3CF9",
+                    pointBackgroundColor: "#fff",
+                    borderWidth: 1,
+                },
+            ],
+        },
+        options: {
+            tooltips: { xPadding: 14, yPadding: 14, backgroundColor: "#2e3d62" },
+            legend: { display: !1 },
+            scales: {
+                xAxes: [{ display: !0, gridLines: { color: "transparent" } }],
+                yAxes: [
+                    {
+                        display: !0,
+                        gridLines: { color: "transparent" },
+                        ticks: { fontSize: 14 },
+                    },
+                ],
+            },
+        },
+    });
+
+</script>
+
+{% endblock %}
