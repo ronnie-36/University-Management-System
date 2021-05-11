@@ -140,7 +140,16 @@
 
   /* grid only */
 </style>
-{% endblock %} {% block pagewrapper %}
+{% endblock %}
+
+{% block dashboard %}
+<li class="active">
+  <a href="/admin/dashboard"><i class="fas fa-th-large"></i> <span>Dashboard</span></a>
+</li>
+{% endblock %}
+
+
+{% block pagewrapper %}
 <!-- Page Wrapper -->
 <div class="page-wrapper">
   <div class="content container-fluid">
@@ -263,6 +272,7 @@
         </div>
         <!-- /Star Students -->
       </div>
+
 
       <div class="col-md-12 col-lg-6">
         <!-- Student Chart -->
