@@ -95,7 +95,7 @@
 
 
 							<!-- Form -->
-							<form method="POST">
+							<form method="POST" action="/login/student">
 								<div class="form-group">
 									<input class="form-control" type="text" placeholder="User Id" name="user_id">
 								</div>
@@ -117,7 +117,10 @@
 
 
 
-							<div class="text-center forgotpass"><a href="forgot-password.html">Forgot Password?</a>
+							<div class="text-center forgotpass"><a href="/resetpassword/student">Forgot Password?</a>
+							{% if flash != '' %}
+							<h5 style="color: rgb(255, 25, 25);">{{flash}}</h5>
+							{% endif %}
 							</div>
 						</div>
 					</div>
