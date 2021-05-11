@@ -7,3 +7,5 @@ flask_cors
 flask_mail
 gunicorn
 python-dotenv
+coverage
+flask_testing

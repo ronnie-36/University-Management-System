@@ -104,7 +104,7 @@ def admin_add_student():
         hashedpassword = hashlib.md5(student_id.encode()).hexdigest()
         if (gender == 'Select Gender'):
             gender = 'Male'
-        cur.execute(''' insert into student (student_id, gender, first_name, last_name, 
+        cur.execute(''' insert ignore into student (student_id, gender, first_name, last_name, 
         phone, sem, program, branch, dob, address, password) values ('%s','%s','%s','%s','%d',%d,'%s','%s','%s','%s','%s');
         '''%(student_id, gender, first_name, last_name, phone, sem, program, branch, dob, address, hashedpassword))
         
@@ -169,6 +169,7 @@ def admin_student_edit(student_id):
     if request.method == 'POST':
 
         student_details = request.form
+        debug()
         first_name = student_details['first_name']
         last_name = student_details['last_name']
         phone = student_details['phone']
@@ -251,7 +252,10 @@ def admin_modal_update():
     cur.close()
 
     if request.method == 'POST':
+        
         form_details = request.form
+        debug()
+        print(form_details)
         sem = form_details['sem']
         sem = (int)(sem)
         cur = mysql.connection.cursor()

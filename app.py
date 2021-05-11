@@ -72,6 +72,7 @@ def faculty_profile_view():
 # student start
 app.add_url_rule('/student/dashboard', view_func=student.student_dashboard, methods=['GET','POST'])
 app.add_url_rule('/student/profile', view_func=student.student_profile, methods=['GET','POST'])
+app.add_url_rule('/student/setting', view_func=student.student_setting, methods=['GET','POST'])
 app.add_url_rule('/student/submit', view_func=student.student_submit_course, methods=['GET','POST'])
 app.add_url_rule('/student/enrolled-courses', view_func=student.student_enrolled_courses, methods=['GET','POST'])
 app.add_url_rule('/student/my-courses', view_func=student.student_my_courses, methods=['GET','POST'])

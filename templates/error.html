@@ -150,13 +150,12 @@
 <!-- End Navbar Area -->
 {% endblock %}
 
-{% block body %}
 
-<div style="text-align: center; color: red;"><h2>Sorry some error occurred please login again!</h2></div>
+{% block body %}
 
 <section id="login" class="about" style="padding-top: 100px">
     <div class="container ">
-
+        <h3>Sorry Not Logged In!</h3>
         <div class="section-title" data-aos="zoom-out">
             <h2>LogIn/SignUp</h2>
             <p class="text-primary font-weight-bold">Who we are</p>
@@ -164,7 +163,7 @@
 
         <div class="container text-center" data-aos="fade-out">
             <div class="row">
-                <div class="col-12 col-sm-6 col-md-4 ">
+                <div class="col-12 col-sm-6 col-md-3 ">
                     <div class="our-team">
                         <div class="picture">
                             <img class="img-fluid" src="../static/LandingPage/images/Extra_images/avatar7.png">
@@ -178,7 +177,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-12 col-sm-6 col-md-4 ">
+                <div class="col-12 col-sm-6 col-md-3 ">
                     <div class="our-team">
                         <div class="picture">
                             <img class="img-fluid" src="../static/LandingPage/images/Extra_images/admin.png">
@@ -192,7 +191,8 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-12 col-sm-6 col-md-4 ">
+
+                <div class="col-12 col-sm-6 col-md-3 ">
                     <div class="our-team">
                         <div class="picture">
                             <img class="img-fluid" src="../static/LandingPage/images/Extra_images/graduate.png">
@@ -208,10 +208,29 @@
                         </ul>
                     </div>
                 </div>
-
+                <div class="col-12 col-sm-6 col-md-3 ">
+                    <div class="our-team">
+                        <div class="picture">
+                            <img class="img-fluid" src="../static/LandingPage/images/Extra_images/department.png">
+                        </div>
+                        <div class="team-content">
+                            <h3 class="name">Department</h3>
+                            <h4 class="title">Avail</h4>
+                        </div>
+                        <ul class="social">
+                            <li>
+                                <a href="/department"><i class='bx bxs-check-circle'></i> </i> CHECK</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
 </section>
+
+{% block footer %}
+
+{% endblock %}
 
 {% block script %}
 <!-- jQuery Min JS -->

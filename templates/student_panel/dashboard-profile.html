@@ -1,59 +1,216 @@
-<style>
-    .input1{
-        outline: none;
-        border: 1px solid grey;
-        padding: 2px;
-        border-radius: 10px;
-        padding-left: 10px;
-    }
-  
-</style>
-
 {% extends 'student_panel/dashboard.html' %}
-<!-- Page body -->
-{% block profile_sidebar %}
-    <li class="page-active">
-{% endblock %}
-{% block dashboard_sidebar %}
-    <li>
-{% endblock %}
-{% block namebar %}
-{% endblock %}
-{% block body1 %}
-        <div class="section-block mb-5"></div>
-        <div class="dashboard-heading mb-5">
-            <h3 class="fs-22 font-weight-semi-bold">My Profile</h3>
-        </div>
-        <form method="POST">
 
-        <div class="profile-detail mb-5">
-            <ul class="generic-list-item generic-list-item-flash">
-                <li><span class="profile-name">Student Id:</span><input class="profile-desc input1" value="{{ details[0] }}" disabled></li>
-                <li><span class="profile-name">First Name:</span><input class="profile-desc input1" value="{{ details[1] }}" disabled></li>
-                <li><span class="profile-name">Last Name:</span><input class="profile-desc input1" value="{{ details[2] }}" disabled></li>
-                <li><span class="profile-name">Address:</span><input class="profile-desc input1" value="{{ details[4] }}" name="address"></li>
-                <li><span class="profile-name">Email:</span><input class="profile-desc input1" value="{{ details[3] }}" name="emailid"></li>
-                <li><span class="profile-name">Gender:</span><input class="profile-desc input1" value="{{ details[5] }}" name="gender"></li>
-                <li><span class="profile-name">Dob:</span><input class="profile-desc input1" value="{{ details[7] }}" type="date" name="dob"></li>
-                <li>
-                    <div class="row" style="width: 100%;">
-                        <div class="col col-md-3">
-                            <span class="profile-name">CPI: <input class="profile-desc input1" style="width: 100%;" value="{{details[10]}}" disabled/></span>
-                        </div>
-                        <div class="col col-md-3">
-                            <span class="profile-name">Sem: <input class="profile-desc input1" style="width: 100%;" value="{{details[9]}}" disabled/></span>
-                        </div>
-                        <div class="col col-md-3">
-                            <span class="profile-name">Branch: <input class="profile-desc input1" style="width: 100%;" value="{{details[11]}}" disabled/></span>
-                        </div>
-                        <div class="col col-md-3">
-                            <span class="profile-name">Program: <input class="profile-desc input1" style="width: 100%;" value="{{details[12]}}" disabled/></span>
-                        </div>
-                    </div>
+!-- Page body -->
+{% block profile_sidebar %}
+<li class="page-active">
+    {% endblock %}
+    {% block dashboard_sidebar %}
+<li>
+    {% endblock %}
+
+    <!-- Page Wrapper -->
+    {% block wrapper %}
+    <div class="dashboard-content-wrap">
+        <div class="dashboard-menu-toggler btn theme-btn theme-btn-sm lh-28 theme-btn-transparent mb-4 ml-3">
+            <i class="la la-bars mr-1"></i> Dashboard Nav
+        </div>
+        <div class="container-fluid">
+            <div class="dashboard-heading mb-5">
+                <h3 class="fs-22 font-weight-semi-bold">Profile</h3>
+            </div>
+            <ul class="nav nav-tabs generic-tab pb-30px" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="edit-profile-tab" data-toggle="tab" href="#edit-profile" role="tab"
+                        aria-controls="edit-profile" aria-selected="false">
+                        Profile
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="password-tab" data-toggle="tab" href="#password" role="tab"
+                        aria-controls="password" aria-selected="true">
+                        Password
+                    </a>
                 </li>
             </ul>
-            <br />
-            <input type="submit" class="btn btn-primary" />
-        </div>
-        </form>
-{% endblock %}
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="edit-profile" role="tabpanel"
+                    aria-labelledby="edit-profile-tab">
+                    <div class="setting-body">
+                        <h3 class="fs-17 font-weight-semi-bold pb-4">Edit Profile</h3>
+                        <div class="media media-card align-items-center">
+                            <div class="media-img media-img-lg mr-4 bg-gray">
+                                <img class="mr-3" src="../../static/assets/user_assets/images/team11.jpg"
+                                    alt="avatar image">
+                            </div>
+                            <div class="media-body">
+                                <div class="file-upload-wrap file-upload-wrap-2">
+                                    <input type="file" name="files[]" class="multi file-upload-input with-preview"
+                                        multiple>
+                                    <span class="file-upload-text"><i class="la la-photo mr-2"></i>Upload a
+                                        Photo</span>
+                                </div><!-- file-upload-wrap -->
+                                <p class="fs-14">Max file size is 5MB, And Suitable files
+                                    are .jpg & .png</p>
+                            </div>
+                        </div><!-- end media -->
+                        <form method="POST" class=" profile-detail row pt-40px">
+                            <div class="input-box col-lg-6">
+                                <label class="label-text">Student ID</label>
+                                <div class="form-group">
+                                    <input class="form-control form--control" type="text" name="text" disabled
+                                        value="{{ details[0] }}">
+                                    <span class="la la-user input-icon"></span>
+                                </div>
+                            </div><!-- end input-box -->
+                            <div class="input-box col-lg-6">
+                                <label class="label-text">Email Address</label>
+                                <div class="form-group">
+                                    <input class="form-control form--control" type="email" name="emailid"
+                                        value="{{ details[3] }}">
+                                    <span class="la la-envelope input-icon"></span>
+                                </div>
+                            </div><!-- end input-box -->
+                            <div class="input-box col-lg-6">
+                                <label class="label-text">First Name</label>
+                                <div class="form-group">
+                                    <input class="form-control form--control" type="text" name="fname" disabled
+                                        value="{{ details[1] }}">
+                                    <span class="la la-user input-icon"></span>
+                                </div>
+                            </div><!-- end input-box -->
+                            <div class="input-box col-lg-6">
+                                <label class="label-text">Last Name</label>
+                                <div class="form-group">
+                                    <input class="form-control form--control" type="text" name="lname" disabled
+                                        value="{{ details[2] }}">
+                                    <span class="la la-user input-icon"></span>
+                                </div>
+                            </div><!-- end input-box -->
+                            <div class="input-box col-lg-6">
+                                <label class="label-text">Gender </label>
+                                <div class="form-group">
+                                    <input class="form-control form--control" type="text" name="gender"
+                                        value="{{ details[5] }}">
+                                    <span class="la la-user input-icon"></span>
+                                </div>
+                            </div><!-- end input-box -->
+                            <div class="input-box col-lg-6">
+                                <label class="label-text">DOB </label>
+                                <div class="form-group">
+                                    <input class="form-control form--control" type="date" name="dob"
+                                        value="{{ details[7] }}">
+                                    <span class="la la-user input-icon"></span>
+                                </div>
+                            </div><!-- end input-box -->
+
+                            <div class="input-box col-lg-12">
+                                <label class="label-text">Phone Number</label>
+                                <div class="form-group">
+                                    <input class="form-control form--control" type="text" name="phone"
+                                        placeholder="(91) 7547 622250">
+                                    <span class="la la-phone input-icon"></span>
+                                </div>
+                            </div><!-- end input-box -->
+                            <div class="input-box col-lg-12">
+                                <label class="label-text">Address </label>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form--control user-text-editor pl-3"
+                                        name="address" value="{{details[4]}}" >
+                                </div>
+                            </div><!-- end input-box -->
+
+                            <!-- Grades CPI -->
+                            <div class="input-box col-lg-3">
+                                <label class="label-text">SEM </label>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form--control user-text-editor pl-3"
+                                        name="address" disabled value="{{details[9]}}"></input>
+                                </div>
+                            </div><!-- end input-box -->
+                            <div class="input-box col-lg-3">
+                                <label class="label-text">CPI </label>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form--control user-text-editor pl-3"
+                                        name="address" disabled value="{{details[10]}}"></input>
+                                </div>
+                            </div><!-- end input-box -->
+                            <div class="input-box col-lg-3">
+                                <label class="label-text">Branch </label>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form--control user-text-editor pl-3"
+                                        name="address" disabled value="{{details[11]}}"></input>
+                                </div>
+                            </div><!-- end input-box -->
+                            <div class="input-box col-lg-3">
+                                <label class="label-text">Program </label>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form--control user-text-editor pl-3"
+                                        name="address" disabled value="{{details[12]}}"></input>
+                                </div>
+                            </div><!-- end input-box -->
+                            <div class="input-box col-lg-12 py-2">
+                                <button class="btn theme-btn">Save Changes</button>
+                            </div><!-- end input-box -->
+                        </form>
+                    </div><!-- end setting-body -->
+                </div><!-- end tab-pane -->
+                <div class="tab-pane fade" id="password" role="tabpanel" aria-labelledby="password-tab">
+                    <div class="setting-body">
+                        <h3 class="fs-17 font-weight-semi-bold pb-4">Change Password</h3>
+                        <div class="row">
+                            <div class="input-box col-lg-4">
+                                <label class="label-text">Old Password</label>
+                                <div class="form-group">
+                                    <input class="form-control form--control" type="text" name="text"
+                                        placeholder="Old Password">
+                                    <span class="la la-lock input-icon"></span>
+                                </div>
+                            </div><!-- end input-box -->
+                            <div class="input-box col-lg-4">
+                                <label class="label-text">New Password</label>
+                                <div class="form-group">
+                                    <input class="form-control form--control" type="text" name="text"
+                                        placeholder="New Password">
+                                    <span class="la la-lock input-icon"></span>
+                                </div>
+                            </div><!-- end input-box -->
+                            <div class="input-box col-lg-4">
+                                <label class="label-text">Confirm New Password</label>
+                                <div class="form-group">
+                                    <input class="form-control form--control" type="text" name="text"
+                                        placeholder="Confirm New Password">
+                                    <span class="la la-lock input-icon"></span>
+                                </div>
+                            </div><!-- end input-box -->
+                            <div class="input-box col-lg-12 py-2">
+                                <button class="btn theme-btn">Change Password</button>
+                            </div><!-- end input-box -->
+                        </div>
+                        <div class="pt-5 mt-5 border-top border-top-gray">
+                            <h3 class="fs-17 font-weight-semi-bold pb-1">Forgot Password then Recover Password</h3>
+                            <p class="pb-4">Enter the email of your account to reset password. Then you will receive
+                                a link to email
+                                to reset the password. If you have any issue about reset password
+                                <a href="/#contact" class="text-color">contact us</a>
+                            </p>
+                            <div class="input-box">
+                                <label class="label-text">Email Address</label>
+                                <div class="form-group">
+                                    <input class="form-control form--control" type="email" name="email"
+                                        placeholder="Enter email address">
+                                    <span class="la la-envelope input-icon"></span>
+                                </div>
+                            </div><!-- end input-box -->
+                            <div class="input-box py-2">
+                                <button class="btn theme-btn">Recover Password</button>
+                            </div><!-- end input-box -->
+                        </div>
+                    </div><!-- end setting-body -->
+                </div><!-- end tab-pane -->
+
+            </div><!-- end tab-content -->
+        </div><!-- end container-fluid -->
+    </div><!-- end dashboard-content-wrap -->
+
+    {% endblock %}
+    <!-- /Page Wrapper -->

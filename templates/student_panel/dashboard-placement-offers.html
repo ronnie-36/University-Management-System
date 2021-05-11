@@ -1,25 +1,27 @@
+{% extends 'student_panel/dashboard.html' %}
+
+{% block style %}
 <style>
-    .input1{
+    .input1 {
         outline: none;
         border: 1px solid grey;
         padding: 2px;
         border-radius: 10px;
         padding-left: 10px;
     }
-  
 </style>
+{% endblock %}
 
-{% extends 'student_panel/dashboard.html' %}
 {% block placement_sidebar %}
-    <li class="page-active">
-{% endblock %}
-{% block dashboard_sidebar %}
-    <li>
-{% endblock %}
-{% block namebar %}
-{% endblock %}
-<!-- Page body -->
-{% block body1 %}
+<li class="page-active">
+    {% endblock %}
+    {% block dashboard_sidebar %}
+<li>
+    {% endblock %}
+    {% block namebar %}
+    {% endblock %}
+    <!-- Page body -->
+    {% block body1 %}
     <div class="container-fluid">
         <div class="section-block mb-5"></div>
         <div class="dashboard-heading mb-5">
@@ -193,8 +195,8 @@
                 </tbody>
             </table>
         </div>
-      
-        
+
+
     </div><!-- end container-fluid -->
-{% endblock %}
-<!-- /Page Wrapper -->
+    {% endblock %}
+    <!-- /Page Wrapper -->
