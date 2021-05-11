@@ -1,7 +1,7 @@
 {% extends 'admin/adminbase.html' %}
 
 {% block department_sidebar %}
-<li class="submenu">
+<li class="submenu active">
 	<a href="#"><i class="fas fa-building"></i> <span> Departments</span> <span class="menu-arrow"></span></a>
 	<ul>
 		<li><a href="/admin/department_list">Department List</a></li>
@@ -43,13 +43,15 @@
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Department ID</label>
-										<input type="text" class="form-control" name="dept_id" value="{{deptDetails[0]}}" disabled>
+										<input type="text" class="form-control" name="dept_id"
+											value="{{deptDetails[0]}}" disabled>
 									</div>
 								</div>
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Department Name</label>
-										<input type="text" class="form-control" name="name" value="{{deptDetails[1]}}" required>
+										<input type="text" class="form-control" name="name" value="{{deptDetails[1]}}"
+											required>
 									</div>
 								</div>
 								<div class="col-12 col-sm-6">
@@ -58,7 +60,8 @@
 										<select name="hod_id" class="form-control">
 											<option value="">Select HOD</option>
 											{% for faculty in facultyList %}
-											<option value="{{ faculty[0] }}" {% if faculty[0] == deptDetails[3] %}selected{% endif %}>
+											<option value="{{ faculty[0] }}" {% if faculty[0]==deptDetails[3]
+												%}selected{% endif %}>
 												{{ faculty[1] + " " + faculty[2] }}
 											</option>
 											{% endfor %}
@@ -68,7 +71,8 @@
 								<div class="col-12 col-sm-6">
 									<div class="form-group">
 										<label>Department Budget</label>
-										<input type="number" class="form-control" name="budget" value="{{deptDetails[2]}}">
+										<input type="number" class="form-control" name="budget"
+											value="{{deptDetails[2]}}">
 									</div>
 								</div>
 								<div class="col-12 col-sm-6">

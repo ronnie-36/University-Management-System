@@ -98,6 +98,7 @@ app.add_url_rule('/faculty/grade_assignment/submission/<submission_id>', view_fu
 
 # admin start
 app.add_url_rule('/admin/dashboard', view_func=admin.admin_dashboard, methods=['GET','POST'])
+app.add_url_rule('/admin/profile', view_func=admin.admin_profile, methods=['GET','POST'])
 
 # admin student start
 app.add_url_rule('/admin/add_student', view_func=admin.admin_add_student, methods=['GET','POST'])
