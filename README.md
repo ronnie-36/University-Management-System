@@ -46,4 +46,30 @@ Clone this project
       Use python 3.7 u
 
       The application runs on localhost:5000
+      
+### Testing  
+'''
+Library used - unittest, flask_testing  
+For running test file
+STEPS: 
+
+    pip install -r requirements.txt
+    python test.py
+
+FOR DETAILED COVERAGE
+
+    coverage run --source models -m unittest discover && coverage report
+    coverage html
+
+
+TestCase Details - 
+1. Home section - 100%(test.py)
+2. Admin section - 98%(test.py)
+3. Student section - 100%(test_student.py)
+4. Faculty section - 90%
+'''
+
+#### See [Coverage file](/htmlcov)
+
+      
 

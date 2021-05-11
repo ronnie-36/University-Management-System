@@ -112,10 +112,10 @@ def admin_add_student():
         hashedpassword = hashlib.md5(student_id.encode()).hexdigest()
         if (gender == 'Select Gender'):
             gender = 'Male'
-        cur.execute(''' insert ignore into student (student_id, gender, first_name, last_name, 
+        cur.execute(''' insert ignore into student (student_id, gender, first_name, last_name,
         phone, sem, program, branch, dob, address, password) values ('%s','%s','%s','%s','%d',%d,'%s','%s','%s','%s','%s');
         '''%(student_id, gender, first_name, last_name, phone, sem, program, branch, dob, address, hashedpassword))
-        
+
         cur.execute(''' select * from student; ''')
         rv = cur.fetchall()
         mysql.connection.commit()
@@ -177,7 +177,6 @@ def admin_student_edit(student_id):
     if request.method == 'POST':
 
         student_details = request.form
-        debug()
         first_name = student_details['first_name']
         last_name = student_details['last_name']
         phone = student_details['phone']
@@ -193,11 +192,11 @@ def admin_student_edit(student_id):
             gender = 'Male'
         cur = mysql.connection.cursor()
         hashedpassword = hashlib.md5(student_id.encode()).hexdigest()
-        cur.execute(''' update student set first_name = '%s', last_name = '%s', gender = '%s', 
+        cur.execute(''' update student set first_name = '%s', last_name = '%s', gender = '%s',
         phone = '%s', sem = %d, program = '%s', branch = '%s', dob = '%s', address = '%s'
         where student_id = '%s';
         '''%(first_name, last_name, gender, phone, sem, program, branch, dob, address, student_id))
-        
+
         cur = mysql.connection.cursor()
         cur.execute(''' select * from student; ''')
         rv = cur.fetchall()
@@ -229,11 +228,11 @@ def admin_student_view(student_id):
 
 def ExcelDownload_student():
     cur = mysql.connection.cursor()
-    cur.execute('''select student_id, first_name, last_name, gender, 
+    cur.execute('''select student_id, first_name, last_name, gender,
         phone, sem, program, branch, cpi,dob, address, password from student;''')
     rv = cur.fetchall()
 
-    studentlist = [['student_id', 'first_name', 'last_name', 'gender', 
+    studentlist = [['student_id', 'first_name', 'last_name', 'gender',
         'phone', 'sem', 'program', 'branch','cpi', 'dob', 'address', 'password']]
     for rows in rv:
         temp = []
@@ -251,7 +250,7 @@ def admin_modal_update():
     if 'id' not in session or 'role' not in session:
         return render_template('error.html')
     elif session['role'] != "admin":
-        return render_template('error.html') 
+        return render_template('error.html')
 
     cur = mysql.connection.cursor()
     cur.execute(''' select * from student; ''')
@@ -260,10 +259,8 @@ def admin_modal_update():
     cur.close()
 
     if request.method == 'POST':
-        
+
         form_details = request.form
-        debug()
-        print(form_details)
         sem = form_details['sem']
         sem = (int)(sem)
         cur = mysql.connection.cursor()
@@ -302,11 +299,11 @@ def admin_add_faculty():
         hashedpassword = hashlib.md5(faculty_id.encode()).hexdigest()
         if(phone != -1 and len(faculty_id) > 0 and len(first_name) > 0 and len(email) > 0 and salary != -1 and len(position) > 0 and len(dob) > 0):
             cur = mysql.connection.cursor()
-            cur.execute(''' INSERT INTO faculty (faculty_id, first_name, last_name, gender, dob, phone, address, emailid,
+            cur.execute(''' insert ignore into faculty (faculty_id, first_name, last_name, gender, dob, phone, address, emailid,
             salary, research_interests, position, password) values ('%s','%s','%s','%s','%s',%d,'%s','%s','%d','%s','%s','%s');
             '''%(faculty_id, first_name, last_name, gender, dob, phone, address, email, salary, researchint, position, hashedpassword))
             if(dept_id!=None):
-                cur.execute(''' INSERT INTO works (faculty_id, dept_id) VALUES ('%s','%s');'''%((faculty_id,dept_id)))
+                cur.execute(''' insert ignore into works (faculty_id, dept_id) VALUES ('%s','%s');'''%((faculty_id,dept_id)))
             mysql.connection.commit()
             cur.close()
         return redirect(url_for('admin_faculty_list'))
@@ -372,6 +369,7 @@ def admin_faculty_edit(faculty_id):
     if request.method == 'POST':
 
         faculty_details = request.form
+
         first_name = faculty_details['first_name']
         last_name = faculty_details['last_name']
         gender = faculty_details['gender']
@@ -417,11 +415,13 @@ def admin_faculty_delete():
         return render_template('error.html')
     if(request.method == 'POST'):
         faculty_id = str(request.json['id'])
+        print(faculty_id)
         cur = mysql.connection.cursor()
         cur.execute(''' DELETE FROM faculty WHERE faculty_id= '%s'; '''%(faculty_id))
         mysql.connection.commit()
         cur.close()
-        return "Executed" 
+        return "Executed"
+    return "ok no get here"
 
 # faculty end
 
@@ -434,7 +434,7 @@ def admin_department_list():
 
     cur = mysql.connection.cursor()
     cur.execute(''' select department.dept_id, department.name, budget, faculty.first_name,faculty.last_name,
-                (SELECT count(*) FROM student where student.branch=department.dept_id) as noofstudent 
+                (SELECT count(*) FROM student where student.branch=department.dept_id) as noofstudent
                 from department JOIN faculty WHERE department.hod_id = faculty.faculty_id; ''')
     departments = cur.fetchall()
     mysql.connection.commit()
@@ -442,7 +442,7 @@ def admin_department_list():
 
     return render_template('admin/department_list.html', departmentList = departments)
 
-def admin_add_department(): 
+def admin_add_department():
     if 'id' not in session or 'role' not in session:
         return render_template('error.html')
     elif session['role'] != "admin":
@@ -460,7 +460,7 @@ def admin_add_department():
         cur = mysql.connection.cursor()
         if(len(dept_id) > 0 and len(name) > 0 and len(contact_no) > 0):
             cur = mysql.connection.cursor()
-            cur.execute(''' INSERT INTO department (dept_id, name, budget,contact_no,hod_id) 
+            cur.execute(''' insert ignore into department (dept_id, name, budget,contact_no,hod_id)
             values ('%s','%s','%d','%s','%s');'''%(dept_id, name, budget, contact_no, hod_id ))
             mysql.connection.commit()
             cur.close()
@@ -480,7 +480,7 @@ def admin_department_list_edit():
 
     cur = mysql.connection.cursor()
     cur.execute(''' select department.dept_id, department.name, budget, faculty.first_name,faculty.last_name,
-                (SELECT count(*) FROM student where student.branch=department.dept_id) as noofstudent 
+                (SELECT count(*) FROM student where student.branch=department.dept_id) as noofstudent
                 from department JOIN faculty WHERE department.hod_id = faculty.faculty_id; ''')
     departments = cur.fetchall()
     mysql.connection.commit()
@@ -506,7 +506,7 @@ def admin_department_edit(dept_id):
         cur = mysql.connection.cursor()
         if(len(dept_id) > 0 and len(name) > 0 and len(contact_no) > 0):
             cur = mysql.connection.cursor()
-            cur.execute(''' UPDATE department SET name = '%s', budget = '%d', contact_no = '%s',hod_id = '%s' 
+            cur.execute(''' UPDATE department SET name = '%s', budget = '%d', contact_no = '%s',hod_id = '%s'
             WHERE dept_id = '%s';'''%(name, budget, contact_no, hod_id, dept_id ))
             mysql.connection.commit()
             cur.close()
@@ -526,11 +526,12 @@ def admin_department_delete():
         return render_template('error.html')
     if(request.method == 'POST'):
         dept_id = str(request.json['id'])
+        print(dept_id)
         cur = mysql.connection.cursor()
         cur.execute(''' DELETE FROM department WHERE dept_id= '%s'; '''%(dept_id))
         mysql.connection.commit()
         cur.close()
-        return "Executed" 
+        return "Executed"
 # department end
 
 # course
@@ -549,7 +550,7 @@ def admin_add_course():
         year = (str)(datetime.datetime.now().date())
         _credits = course_details['credits']
         cur = mysql.connection.cursor()
-        cur.execute(''' insert ignore into course (c_id, name, credits, year) 
+        cur.execute(''' insert ignore into course (c_id, name, credits, year)
                 values ('%s','%s','%s','%s'); '''%(c_id, name, _credits, year))
         mysql.connection.commit()
         cur.close()
@@ -562,7 +563,7 @@ def admin_course_list():
         return render_template('error.html')
     elif session['role'] != "admin":
         return render_template('error.html')
-    
+
     cur = mysql.connection.cursor()
     cur.execute(''' select * from course; ''')
     rv = cur.fetchall()
@@ -594,7 +595,7 @@ def admin_course_edit(c_id):
         return render_template('error.html')
     elif session['role'] != "admin":
         return render_template('error.html')
-    
+
     if (request.method == 'POST'):
         course_details = request.form
         name = course_details['name']
@@ -610,11 +611,11 @@ def admin_course_edit(c_id):
         return redirect(url_for('admin_course_list'))
 
     cur = mysql.connection.cursor()
+    debug()
     cur.execute(''' select c_id, name, description, syllabus, year, credits from course where c_id = '%s'; '''%(c_id))
     rv = cur.fetchall()
     mysql.connection.commit()
     cur.close()
-
     return render_template('/admin/edit_course.html', list = rv[0])
 
 def admin_course_delete():
@@ -622,7 +623,7 @@ def admin_course_delete():
         return render_template('error.html')
     elif session['role'] != "admin":
         return render_template('error.html')
-    
+
     if (request.method == 'POST'):
         c_id = request.form['c_id']
         cur = mysql.connection.cursor()
@@ -631,23 +632,17 @@ def admin_course_delete():
         cur.close()
         return redirect(url_for('admin_course_list'))
 
-    cur = mysql.connection.cursor()
-    cur.execute(''' select c_id, name, description, syllabus, year, credits from course where c_id = '%s'; '''%(c_id))
-    rv = cur.fetchall()
-    mysql.connection.commit()
-    cur.close()
-
-    return render_template('/admin/edit_course.html', list = rv[0])
+    return "ok no get here"
 
 def admin_course_sem_assign():
     if 'id' not in session or 'role' not in session:
         return render_template('error.html')
     elif session['role'] != "admin":
         return render_template('error.html')
-    
+
     cur = mysql.connection.cursor()
-    cur.execute(''' 
-    SELECT 
+    cur.execute('''
+    SELECT
     course.c_id, course.name, course.credits, section.sec_id, section.sem
     FROM
         course
@@ -676,7 +671,7 @@ def admin_course_sem_edit(c_id):
         mysql.connection.commit()
         cur.close()
         return redirect(url_for('admin_course_sem_assign'))
-    
+
     return "ok no get here"
 
 def admin_course_sem_delete(c_id):
@@ -693,7 +688,7 @@ def admin_course_sem_delete(c_id):
         mysql.connection.commit()
         cur.close()
         return redirect(url_for('admin_course_sem_assign'))
-    
+
     return "ok no get here"
 
 def admin_course_student_assign():
@@ -701,10 +696,10 @@ def admin_course_student_assign():
         return render_template('error.html')
     elif session['role'] != "admin":
         return render_template('error.html')
-    
+
     cur = mysql.connection.cursor()
-    cur.execute(''' 
-    select 
+    cur.execute('''
+    select
 	student.student_id, student.first_name, course.name, section.sec_id, student.sem
     from
         student
@@ -717,8 +712,8 @@ def admin_course_student_assign():
     section.c_id = course.c_id order by student.student_id;''')
     rv = cur.fetchall()
 
-    cur.execute(''' 
-    select 
+    cur.execute('''
+    select
 	student.student_id, student.first_name, course.name, section.sec_id
     from
         student
@@ -755,7 +750,7 @@ def admin_course_student_add(student_id):
         mysql.connection.commit()
         cur.close()
         return redirect(url_for('admin_course_student_assign'))
-    
+
     return "ok no get here"
 
 def admin_course_student_delete(student_id):
@@ -773,7 +768,7 @@ def admin_course_student_delete(student_id):
         mysql.connection.commit()
         cur.close()
         return redirect(url_for('admin_course_student_assign'))
-    
+
     return "ok no get here"
 
 def admin_inbox():
@@ -781,7 +776,7 @@ def admin_inbox():
         return render_template('error.html')
     elif session['role'] != "admin":
         return render_template('error.html')
-    
+
     cur = mysql.connection.cursor()
     cur.execute(''' select * from requests where status = 'pending' order by dob desc; ''')
     rv = cur.fetchall()
