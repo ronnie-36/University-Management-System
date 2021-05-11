@@ -91,7 +91,7 @@ class TestAdmin(flask_testing.TestCase):
             self.assertEqual(flask.session['role'], 'admin')
             # login done
 
-# Student
+# Admin-Student
 
     def testAdmin_logged_out(self):
         data = data_requests.admin_login
@@ -361,7 +361,7 @@ class TestAdmin(flask_testing.TestCase):
             self.assertEqual(response.status_code, 302)
 
 
-# Course
+# Admin-Course
 
     def testAdminCourse_add(self):
         data = data_requests.admin_login
@@ -528,6 +528,40 @@ class TestAdmin(flask_testing.TestCase):
             # POST
             response= TestClient.post('/admin/course_student_delete/2', data = course_student_del)
             self.assertEqual(response.status_code, 302)
+
+
+# requests
+
+    def testAdmin_requests(self):
+        data = data_requests.admin_login
+        with app.test_client() as TestClient:
+            # login sequence
+            response= TestClient.post('/login/admin', data = data)
+            self.assertEqual(response.status_code, 302)
+            self.assertEqual(flask.session['id'], '1')
+            self.assertEqual(flask.session['role'], 'admin')
+            # login done
+            response= TestClient.get('/admin/all_requests')
+            self.assertEqual(response.status_code, 200)
+            self.assert_template_used('/admin/inbox.html')
+
+    def testAdmin_completed_requests(self):
+        data = data_requests.admin_login
+        accept_message = data_requests.admin_all_requests
+        with app.test_client() as TestClient:
+            # login sequence
+            response= TestClient.post('/login/admin', data = data)
+            self.assertEqual(response.status_code, 302)
+            self.assertEqual(flask.session['id'], '1')
+            self.assertEqual(flask.session['role'], 'admin')
+            # login done
+            response= TestClient.get('/admin/accepted_requests')
+            self.assertEqual(response.status_code, 200)
+            self.assert_template_used('/admin/inbox.html')
+            # post
+            response= TestClient.post('/admin/accepted_requests', data = accept_message)
+            self.assertEqual(response.status_code, 302)
+
 
 if __name__ == "__main__":
     unittest.main()
