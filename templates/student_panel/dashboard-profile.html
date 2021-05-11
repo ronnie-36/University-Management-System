@@ -1,53 +1,66 @@
+{% extends 'student_panel/dashboard.html' %}
+
+{% block style %}
 <style>
-    .input1{
+    .input1 {
         outline: none;
         border: 1px solid grey;
         padding: 2px;
         border-radius: 10px;
         padding-left: 10px;
     }
-  
 </style>
+{% endblock %}
 
-{% extends 'student_panel/dashboard.html' %}
 <!-- Page body -->
 {% block profile_sidebar %}
-    <li class="page-active">
-{% endblock %}
-{% block dashboard_sidebar %}
-    <li>
-{% endblock %}
-{% block namebar %}
-{% endblock %}
-{% block body1 %}
-        <div class="section-block mb-5"></div>
-        <div class="dashboard-heading mb-5">
-            <h3 class="fs-22 font-weight-semi-bold">My Profile</h3>
-        </div>
-        <form method="POST">
+<li class="page-active">
+    {% endblock %}
+    {% block dashboard_sidebar %}
+<li>
+    {% endblock %}
+    {% block namebar %}
+    {% endblock %}
+    {% block body1 %}
+    <div class="section-block mb-5"></div>
+    <div class="dashboard-heading mb-5">
+        <h3 class="fs-22 font-weight-semi-bold">My Profile</h3>
+    </div>
+    <form method="POST">
 
         <div class="profile-detail mb-5">
             <ul class="generic-list-item generic-list-item-flash">
-                <li><span class="profile-name">Student Id:</span><input class="profile-desc input1" value="{{ details[0] }}" disabled></li>
-                <li><span class="profile-name">First Name:</span><input class="profile-desc input1" value="{{ details[1] }}" disabled></li>
-                <li><span class="profile-name">Last Name:</span><input class="profile-desc input1" value="{{ details[2] }}" disabled></li>
-                <li><span class="profile-name">Address:</span><input class="profile-desc input1" value="{{ details[4] }}" name="address"></li>
-                <li><span class="profile-name">Email:</span><input class="profile-desc input1" value="{{ details[3] }}" name="emailid"></li>
-                <li><span class="profile-name">Gender:</span><input class="profile-desc input1" value="{{ details[5] }}" name="gender"></li>
-                <li><span class="profile-name">Dob:</span><input class="profile-desc input1" value="{{ details[7] }}" type="date" name="dob"></li>
+                <li><span class="profile-name">Student Id:</span><input class="profile-desc input1"
+                        value="{{ details[0] }}" disabled></li>
+                <li><span class="profile-name">First Name:</span><input class="profile-desc input1"
+                        value="{{ details[1] }}" disabled></li>
+                <li><span class="profile-name">Last Name:</span><input class="profile-desc input1"
+                        value="{{ details[2] }}" disabled></li>
+                <li><span class="profile-name">Address:</span><input class="profile-desc input1"
+                        value="{{ details[4] }}" name="address"></li>
+                <li><span class="profile-name">Email:</span><input class="profile-desc input1" value="{{ details[3] }}"
+                        name="emailid"></li>
+                <li><span class="profile-name">Gender:</span><input class="profile-desc input1" value="{{ details[5] }}"
+                        name="gender"></li>
+                <li><span class="profile-name">Dob:</span><input class="profile-desc input1" value="{{ details[7] }}"
+                        type="date" name="dob"></li>
                 <li>
                     <div class="row" style="width: 100%;">
                         <div class="col col-md-3">
-                            <span class="profile-name">CPI: <input class="profile-desc input1" style="width: 100%;" value="{{details[10]}}" disabled/></span>
+                            <span class="profile-name">CPI: <input class="profile-desc input1" style="width: 100%;"
+                                    value="{{details[10]}}" disabled /></span>
                         </div>
                         <div class="col col-md-3">
-                            <span class="profile-name">Sem: <input class="profile-desc input1" style="width: 100%;" value="{{details[9]}}" disabled/></span>
+                            <span class="profile-name">Sem: <input class="profile-desc input1" style="width: 100%;"
+                                    value="{{details[9]}}" disabled /></span>
                         </div>
                         <div class="col col-md-3">
-                            <span class="profile-name">Branch: <input class="profile-desc input1" style="width: 100%;" value="{{details[11]}}" disabled/></span>
+                            <span class="profile-name">Branch: <input class="profile-desc input1" style="width: 100%;"
+                                    value="{{details[11]}}" disabled /></span>
                         </div>
                         <div class="col col-md-3">
-                            <span class="profile-name">Program: <input class="profile-desc input1" style="width: 100%;" value="{{details[12]}}" disabled/></span>
+                            <span class="profile-name">Program: <input class="profile-desc input1" style="width: 100%;"
+                                    value="{{details[12]}}" disabled /></span>
                         </div>
                     </div>
                 </li>
@@ -55,5 +68,5 @@
             <br />
             <input type="submit" class="btn btn-primary" />
         </div>
-        </form>
-{% endblock %}
+    </form>
+    {% endblock %}

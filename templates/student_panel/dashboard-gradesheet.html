@@ -1,78 +1,89 @@
-<style>
-  .input1{
-      outline: none;
-      border: 1px solid grey;
-      padding: 2px;
-      border-radius: 10px;
-      padding-left: 10px;
-  }
-
-</style>
-
 {% extends 'student_panel/dashboard.html' %}
+{% block style %}
+<style>
+  .input1 {
+    outline: none;
+    border: 1px solid grey;
+    padding: 2px;
+    border-radius: 10px;
+    padding-left: 10px;
+  }
+</style>
+{% endblock %}
+
 <!-- Page body -->
 {% block gradesheet_sidebar %}
-  <li class="page-active">
-{% endblock %}
-{% block dashboard_sidebar %}
-  <li>
-{% endblock %}
-{% block namebar %}
-{% endblock %}
+<li class="page-active">
+  {% endblock %}
+  {% block dashboard_sidebar %}
+<li>
+  {% endblock %}
+  {% block namebar %}
+  {% endblock %}
 
-{% block body1 %}
-      <div class="row">
+  {% block body1 %}
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="edit-profile" role="tabpanel" aria-labelledby="edit-profile-tab">
+      <div class="setting-body">
         <form method="POST">
-          <i style="font-size: xx-large;">Select Sem: &nbsp;</i> <input style="padding: 5px;" type="number" min="0" max="8" name="sem"/>
+          <div class="input-box col-lg-3">
+            <label class="label-text text-uppercase text-danger">Semester Num: </label>
+            <div class="form-group">
+              <input class="form-control form--control" type="number" name="sem">
+              <span class="la la-list input-icon"></span>
+            </div>
+          </div>
         </form>
       </div>
-      <hr>
-      <div class="row">
-        <div class="col-sm-12">
-    
-            <div class="card card-table">
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-hover table-center mb-0 datatable">
-                            <h3>Grades Sem {{sem}}</h3><br />
-                            <thead>
-                                <tr>
-                                    <th>Course ID</th>
-                                    <th>Name</th>
-                                    <th>Credits Total</th>
-                                    <th>Credits Obtained</th>
-                                    <th>Percentage</th>
-                                    <th class="text-right">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody class="card-text fs-18">
-                                {% for item in list %}
-                                <tr>
-                                    <td>{{item[1]}}</td>
-                                    <td>
-                                        <h2 class="card-text fs-18">
-                                            <a>{{item[2]}}</a>
-                                        </h2>
-                                    </td>
-                                    <td>{{item[5]}}</td>
-                                    <td>{{item[6]}}</td>
-                                    <td>{{item[4]*10}}%</td>
-                                    <td class="text-right">
-                                        <div class="actions">
-                                          {% if item[4] > 3.33 %}
-                                            <button class="btn btn-success">PASS</button>
-                                          {% else %}
-                                            <button class="btn btn-danger">FAIL</button>
-                                          {% endif %}
-                                        </div>
-                                    </td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
-{% endblock %}
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-sm-12">
+
+      <div class="card card-table">
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-hover table-center mb-0 datatable">
+              <h3>Grades Sem {{sem}}</h3><br />
+              <thead>
+                <tr>
+                  <th>Course ID</th>
+                  <th>Name</th>
+                  <th>Credits Total</th>
+                  <th>Credits Obtained</th>
+                  <th>Percentage</th>
+                  <th class="text-right">Action</th>
+                </tr>
+              </thead>
+              <tbody class="card-text fs-18">
+                {% for item in list %}
+                <tr>
+                  <td>{{item[1]}}</td>
+                  <td>
+                    <h2 class="card-text fs-18">
+                      <a>{{item[2]}}</a>
+                    </h2>
+                  </td>
+                  <td>{{item[5]}}</td>
+                  <td>{{item[6]}}</td>
+                  <td>{{item[4]*10}}%</td>
+                  <td class="text-right">
+                    <div class="actions">
+                      {% if item[4] > 3.33 %}
+                      <button class="btn btn-success">PASS</button>
+                      {% else %}
+                      <button class="btn btn-danger">FAIL</button>
+                      {% endif %}
+                    </div>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock %}
