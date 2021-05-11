@@ -21,3 +21,11 @@ admin_faculty_delete = dict([('faculty_id', '12')])
 admin_department_add = dict([('dept_id', 'bio'), ('name', 'biology'), ('hod_id', '1'), ('budget', '120000'), ('phone', '1919230301')])
 admin_department_edit = dict([('name', 'Computer Science and Engineering'), ('hod_id', '1'), ('budget', '120000'), ('phone', '9876512121')])
 
+
+# student
+student_login = {'user_id': '1', 'password': '1234'}
+student_profile = dict([('emailid', 'ron@ron.com'), ('gender', 'Male'), ('dob', '2001-01-11'), ('phone', ''), ('address', '100-england')])
+student_settings = dict([('emailid', 'ron@ron.com'), ('gender', 'Male'), ('dob', '2001-01-11'), ('phone', ''), ('address', '100-england')])
+student_enroll_course = dict([('sec_id', '3'), ('sec_name', 'OS')])
+student_gradesheet = dict([('sem','4')])
+student_submit_assignment = dict([('id', '1'), ('text', '30'), ('text', 'Rohan'), ('text', '1'), ('message', 'Sort an array in O(n) using radix sort'), ('answer', 'Ok'), ('desc', 'Google'), ('url', 'Link1')])
