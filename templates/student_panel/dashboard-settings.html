@@ -99,35 +99,8 @@
         <i class="la la-bars mr-1"></i> Dashboard Nav
     </div>
     <div class="container-fluid">
-        <div class="breadcrumb-content d-flex flex-wrap align-items-center justify-content-between mb-5">
-            <div class="media media-card align-items-center">
-                <div class="media-img media--img media-img-md rounded-full">
-                    <img class="rounded-full" src="../../static/assets/user_assets/images/small-avatar-1.jpg"
-                        alt="Student thumbnail image">
-                </div>
-                <div class="media-body">
-                    <h2 class="section__title fs-30">Howdy, Tim Buchalka</h2>
-                    <div class="rating-wrap d-flex align-items-center pt-2">
-                        <div class="review-stars">
-                            <span class="rating-number">4.4</span>
-                            <span class="la la-star"></span>
-                            <span class="la la-star"></span>
-                            <span class="la la-star"></span>
-                            <span class="la la-star"></span>
-                            <span class="la la-star-o"></span>
-                        </div>
-                        <span class="rating-total pl-1">(20,230)</span>
-                    </div><!-- end rating-wrap -->
-                </div><!-- end media-body -->
-            </div><!-- end media -->
-            <div class="file-upload-wrap file-upload-wrap-2 file--upload-wrap">
-                <input type="file" name="files[]" class="multi file-upload-input">
-                <span class="file-upload-text"><i class="la la-upload mr-2"></i>Upload a course</span>
-            </div><!-- file-upload-wrap -->
-        </div><!-- end breadcrumb-content -->
-        <div class="section-block mb-5"></div>
         <div class="dashboard-heading mb-5">
-            <h3 class="fs-22 font-weight-semi-bold">Settings</h3>
+            <h3 class="fs-22 font-weight-semi-bold">Profile</h3>
         </div>
         <ul class="nav nav-tabs generic-tab pb-30px" id="myTab" role="tablist">
             <li class="nav-item">
@@ -140,24 +113,6 @@
                 <a class="nav-link" id="password-tab" data-toggle="tab" href="#password" role="tab"
                     aria-controls="password" aria-selected="true">
                     Password
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="change-email-tab" data-toggle="tab" href="#change-email" role="tab"
-                    aria-controls="change-email" aria-selected="false">
-                    Change Email
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="withdraw-tab" data-toggle="tab" href="#withdraw" role="tab"
-                    aria-controls="withdraw" aria-selected="false">
-                    Withdraw
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="account-tab" data-toggle="tab" href="#account" role="tab"
-                    aria-controls="account" aria-selected="false">
-                    Account
                 </a>
             </li>
         </ul>
@@ -180,25 +135,12 @@
                                 are .jpg & .png</p>
                         </div>
                     </div><!-- end media -->
-                    <form method="post" class="row pt-40px">
+                    <form method="POST" class=" profile-detail row pt-40px">
                         <div class="input-box col-lg-6">
-                            <label class="label-text">First Name</label>
+                            <label class="label-text">Student ID</label>
                             <div class="form-group">
-                                <input class="form-control form--control" type="text" name="text" value="Alex">
-                                <span class="la la-user input-icon"></span>
-                            </div>
-                        </div><!-- end input-box -->
-                        <div class="input-box col-lg-6">
-                            <label class="label-text">Last Name</label>
-                            <div class="form-group">
-                                <input class="form-control form--control" type="text" name="text" value="Smith">
-                                <span class="la la-user input-icon"></span>
-                            </div>
-                        </div><!-- end input-box -->
-                        <div class="input-box col-lg-6">
-                            <label class="label-text">User Name</label>
-                            <div class="form-group">
-                                <input class="form-control form--control" type="text" name="text" value="alex-admin">
+                                <input class="form-control form--control" type="text" name="text"
+                                    value="{{ details[0] }}">
                                 <span class="la la-user input-icon"></span>
                             </div>
                         </div><!-- end input-box -->
@@ -206,23 +148,80 @@
                             <label class="label-text">Email Address</label>
                             <div class="form-group">
                                 <input class="form-control form--control" type="email" name="email"
-                                    value="alexsmith@gmail.com">
+                                    value="{{ details[3] }}">
                                 <span class="la la-envelope input-icon"></span>
                             </div>
                         </div><!-- end input-box -->
+                        <div class="input-box col-lg-6">
+                            <label class="label-text">First Name</label>
+                            <div class="form-group">
+                                <input class="form-control form--control" type="text" name="text"
+                                    value="{{ details[1] }}">
+                                <span class="la la-user input-icon"></span>
+                            </div>
+                        </div><!-- end input-box -->
+                        <div class="input-box col-lg-6">
+                            <label class="label-text">Last Name</label>
+                            <div class="form-group">
+                                <input class="form-control form--control" type="text" name="text"
+                                    value="{{ details[2] }}">
+                                <span class="la la-user input-icon"></span>
+                            </div>
+                        </div><!-- end input-box -->
+                        <div class="input-box col-lg-6">
+                            <label class="label-text">Gender </label>
+                            <div class="form-group">
+                                <input class="form-control form--control" type="text" name="text"
+                                    value="{{ details[4] }}">
+                                <span class="la la-user input-icon"></span>
+                            </div>
+                        </div><!-- end input-box -->
+                        <div class="input-box col-lg-6">
+                            <label class="label-text">DOB </label>
+                            <div class="form-group">
+                                <input class="form-control form--control" type="date" name="text"
+                                    value="{{ details[7] }}">
+                                <span class="la la-user input-icon"></span>
+                            </div>
+                        </div><!-- end input-box -->
+
                         <div class="input-box col-lg-12">
                             <label class="label-text">Phone Number</label>
                             <div class="form-group">
                                 <input class="form-control form--control" type="text" name="text"
-                                    value="(91) 7547 622250">
+                                    placeholder="(91) 7547 622250">
                                 <span class="la la-phone input-icon"></span>
                             </div>
                         </div><!-- end input-box -->
                         <div class="input-box col-lg-12">
-                            <label class="label-text">Bio</label>
+                            <label class="label-text">Address </label>
                             <div class="form-group">
-                                <textarea class="form-control form--control user-text-editor pl-3"
-                                    name="message">Hello! I am Alex Smith Washington area graphic designer with over 6 years of graphic design experience. I specialize in designing infographics, icons, brochures, and flyers</textarea>
+                                <input type="text" class="form-control form--control user-text-editor pl-3"
+                                    name="address" placeholder="New York, America"></input>
+                            </div>
+                        </div><!-- end input-box -->
+
+
+                        <!-- Grades CPI -->
+                        <div class="input-box col-lg-3">
+                            <label class="label-text">Address </label>
+                            <div class="form-group">
+                                <input type="text" class="form-control form--control user-text-editor pl-3"
+                                    name="address" placeholder="New York, America"></input>
+                            </div>
+                        </div><!-- end input-box -->
+                        <div class="input-box col-lg-3">
+                            <label class="label-text">Address </label>
+                            <div class="form-group">
+                                <input type="text" class="form-control form--control user-text-editor pl-3"
+                                    name="address" placeholder="New York, America"></input>
+                            </div>
+                        </div><!-- end input-box -->
+                        <div class="input-box col-lg-3">
+                            <label class="label-text">Address </label>
+                            <div class="form-group">
+                                <input type="text" class="form-control form--control user-text-editor pl-3"
+                                    name="address" placeholder="New York, America"></input>
                             </div>
                         </div><!-- end input-box -->
                         <div class="input-box col-lg-12 py-2">
@@ -460,18 +459,6 @@
                 </div><!-- end setting-body -->
             </div><!-- end tab-pane -->
         </div><!-- end tab-content -->
-        <div class="row align-items-center dashboard-copyright-content pb-4">
-            <div class="col-lg-6">
-                <p class="copy-desc">&copy; 2021 IIT Indore. All Rights Reserved. by <a
-                        href="https://IIT Indore.com/">IIT Indore</a></p>
-            </div><!-- end col-lg-6 -->
-            <div class="col-lg-6">
-                <ul class="generic-list-item d-flex flex-wrap align-items-center fs-14 justify-content-end">
-                    <li class="mr-3"><a href="terms-and-conditions.html">Terms & Conditions</a></li>
-                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                </ul>
-            </div><!-- end col-lg-6 -->
-        </div><!-- end row -->
     </div><!-- end container-fluid -->
 </div><!-- end dashboard-content-wrap -->
 {% endblock %}
