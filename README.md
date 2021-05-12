@@ -13,7 +13,10 @@ Note for every id field:
       user-id = 1
       password = 1234
       
-  
+Link for SRS: [SRS Document](https://github.com/ronnie-36/University-Management-System/blob/main/documents/DesignDoc-P012_University_Manager_190001011_190001029_190001030_190001049.pdf)  
+Link for Design Document: [Design Document](https://github.com/ronnie-36/University-Management-System/blob/main/documents/DesignDoc-P012_University_Manager_190001011_190001029_190001030_190001049.pdf)
+
+# Steps To Install 
 Clone this project  
   
 ## Installing Requirements  
@@ -68,10 +71,11 @@ FOR DETAILED COVERAGE
 
 
 TestCase Details - 
-1. Auth section - 100%(test.py)
+1. Home section - 100%(test.py)
 2. Admin section - 97%(test.py)
-3. Student section - 100%(test_student.py)
-4. Faculty section - 97%(test_faculty.py)
+3. Auth section - 76%(test_auth.py)
+4. Student section - 100%(test_student.py)
+5. Faculty section - 97%(test_faculty.py)
 
 #### See [Coverage file](/htmlcov)  
 Please Download the folder and open index.html
