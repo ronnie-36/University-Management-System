@@ -15,7 +15,8 @@ Visit [http://softwarep012.com](http://softwarep012.pythonanywhere.com/) for liv
       password = 1234
       
 Link for SRS: [SRS Document](https://github.com/ronnie-36/University-Management-System/blob/main/documents/SRS-P012_University_Manager_190001011_190001029_190001030_190001049.pdf)  
-Link for Design Document: [Design Document](https://github.com/ronnie-36/University-Management-System/blob/main/documents/DesignDoc-P012_University_Manager_190001011_190001029_190001030_190001049.pdf)
+Link for Design Document: [Design Document](https://github.com/ronnie-36/University-Management-System/blob/main/documents/DesignDoc-P012_University_Manager_190001011_190001029_190001030_190001049.pdf)  
+Link for Instruction Manual: [Instruction Manual](https://github.com/ronnie-36/University-Management-System/blob/main/documents/Instruction-manual-P012_190001011_190001029_190001030_190001049.pdf)
 
 # Steps To Install 
 Clone this project  
