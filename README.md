@@ -13,7 +13,7 @@ Note for every id field:
       user-id = 1
       password = 1234
       
-Link for SRS: [SRS Document](https://github.com/ronnie-36/University-Management-System/blob/main/documents/DesignDoc-P012_University_Manager_190001011_190001029_190001030_190001049.pdf)  
+Link for SRS: [SRS Document](https://github.com/ronnie-36/University-Management-System/blob/main/documents/SRS-P012_University_Manager_190001011_190001029_190001030_190001049.pdf)  
 Link for Design Document: [Design Document](https://github.com/ronnie-36/University-Management-System/blob/main/documents/DesignDoc-P012_University_Manager_190001011_190001029_190001030_190001049.pdf)
 
 # Steps To Install 
