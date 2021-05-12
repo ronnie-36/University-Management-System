@@ -7,8 +7,13 @@ Kuldeep Singh 190001030  <br>
 Deepkamal Singh 190001011    
 <hr>
 
-Visit {link to be added} for live demo. Frontend and Backend working.
+Visit [http://softwarep012.com](http://softwarep012.pythonanywhere.com/) for live demo. Frontend and Backend working.  
+Note for every id field: 
 
+      user-id = 1
+      password = 1234
+      
+  
 Clone this project  
   
 ## Installing Requirements  
@@ -16,9 +21,9 @@ Clone this project
       
       2. Python 3.8 / 3.7 / 3.6 ( Not compatible with python 3.9 )  
  <br ><br ><br > 
-        
+  
 ## STEP 1  ( IMPORTING MYSQL DATABASE)
-      1. Run DDL commands in university.ddl in /sql folder  
+      1. Run DDL commands in university.ddl and SQL commands populate.sql in /sql folder  
       
       2. Put host / port / password / database name in db.yaml  
       
@@ -48,7 +53,7 @@ Clone this project
       The application runs on localhost:5000
       
 ### Testing  
-'''
+
 Library used - unittest, flask_testing  
 For running test file
 STEPS: 
@@ -63,13 +68,16 @@ FOR DETAILED COVERAGE
 
 
 TestCase Details - 
-1. Home section - 100%(test.py)
-2. Admin section - 98%(test.py)
+1. Auth section - 100%(test.py)
+2. Admin section - 97%(test.py)
 3. Student section - 100%(test_student.py)
-4. Faculty section - 90%
-'''
+4. Faculty section - 97%(test_faculty.py)
 
-#### See [Coverage file](/htmlcov)
-
+#### See [Coverage file](/htmlcov)  
+Please Download the folder and open index.html
+  
+<br /><br />
+### ER Model  
+![alt text](https://github.com/ronnie-36/University-Management-System/blob/main/sql/ums_ER.jpg)
       
 
