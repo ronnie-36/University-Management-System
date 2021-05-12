@@ -1,13 +1,13 @@
 # University-Management-System
 #### This is Course project for CS-258. Project Number - P012 
-"University Management System" is a website with main goal to inculcate technology in the process of managing University data and activites. "University Management System" is a platform where the students can access their academic information and interact with faculty in order to streamline the daily activities of an educational institute.
+"University Management System" is a website with main goal to inculcate technology in the process of managing University data and activites. "University Management System" is a platform where the students can access their academic information and interact with faculty in order to streamline the daily activities of an educational institute.<br>
 The project consists of multiple subsystems -
 1. Academic Information Delivery System
 2. Assignment Creation and Submission
 3. Grading System
 4. Admin Section(For managing students, faculty, courses and departments)
 
-For more information of University-Management-System you can refer to following documents -
+For more information of University-Management-System you can refer to following documents - <br>
 Link for SRS: [SRS Document](https://github.com/ronnie-36/University-Management-System/blob/main/documents/SRS-P012_University_Manager_190001011_190001029_190001030_190001049.pdf)  
 Link for Design Document: [Design Document](https://github.com/ronnie-36/University-Management-System/blob/main/documents/DesignDoc-P012_University_Manager_190001011_190001029_190001030_190001049.pdf)
 
@@ -25,8 +25,6 @@ Visit [http://softwarep012.com](http://softwarep012.pythonanywhere.com/) for liv
       user-id = 1
       password = 1234
       
-Link for SRS: [SRS Document](https://github.com/ronnie-36/University-Management-System/blob/main/documents/SRS-P012_University_Manager_190001011_190001029_190001030_190001049.pdf)  
-Link for Design Document: [Design Document](https://github.com/ronnie-36/University-Management-System/blob/main/documents/DesignDoc-P012_University_Manager_190001011_190001029_190001030_190001049.pdf)  
 Link for Instruction Manual: [Instruction Manual](https://github.com/ronnie-36/University-Management-System/blob/main/documents/Instruction-manual-P012_190001011_190001029_190001030_190001049.pdf)
 
 # Steps To Install 
@@ -46,7 +44,7 @@ Link for Instruction Manual: [Instruction Manual](https://github.com/ronnie-36/U
 <br ><br ><br >
   
 ## STEP 2 ( IMPORTING MYSQL DATABASE)
-      1. Run DDL commands in [university.ddl](https://github.com/ronnie-36/University-Management-System/blob/main/sql/university.ddl) and SQL commands in [populate.sql](https://github.com/ronnie-36/University-Management-System/blob/main/sql/populate.sql) present in /sql folder  
+      1. Run DDL commands in university.ddl and SQL commands in populate.sql present in /sql folder  
       
       2. Create a db.yaml file similar to db.yaml.example file and populate MySQL connection parameters in it. Keep 'mysql_db' field equal to university.
       
