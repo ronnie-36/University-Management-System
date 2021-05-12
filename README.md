@@ -8,7 +8,8 @@ Deepkamal Singh 190001011
 <hr>
 
 Visit [http://softwarep012.com](http://softwarep012.pythonanywhere.com/) for live demo. Frontend and Backend working.  
-Note for every id field: 
+
+> Note for every id field
 
       user-id = 1
       password = 1234
@@ -57,20 +58,25 @@ Clone this project
       
 ### Testing  
 
-Library used - unittest, flask_testing  
-For running test file
-STEPS: 
+#### Libraries used 
+  
+      unittest
+      flask_testing
+      
+#### For running test file  
+#### STEPS: 
 
     pip install -r requirements.txt
     python test.py
 
-FOR DETAILED COVERAGE
+#### FOR DETAILED COVERAGE
 
     coverage run --source models -m unittest discover && coverage report
     coverage html
 
+----
 
-TestCase Details - 
+#### TestCase Details - 
 1. Home section - 100%(test.py)
 2. Admin section - 97%(test.py)
 3. Auth section - 76%(test_auth.py)
@@ -81,6 +87,7 @@ TestCase Details -
 Please Download the folder and open index.html
   
 <br /><br />
+----
 ### ER Model  
 ![alt text](https://github.com/ronnie-36/University-Management-System/blob/main/sql/ums_ER.jpg)
       
