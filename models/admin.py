@@ -345,6 +345,26 @@ def admin_faculty_view(faculty_id):
     cur.close()
 
     return render_template('admin/faculty-detail.html', facultyDetails = faculty[0], department = department)
+    
+def ExcelDownload_faculty():
+    cur = mysql.connection.cursor()
+    cur.execute('''select faculty_id, first_name, last_name, gender, dob, phone, address, emailid,
+            salary, research_interests, position from faculty;''')
+    rv = cur.fetchall()
+
+    facultylist = [['faculty_id', 'first_name', 'last_name', 'gender',
+        'dob', 'phone', 'address', 'emailid','salary', 'research_interests', 'position']]
+    for rows in rv:
+        temp = []
+        for items in rows:
+            item = (str)(items)
+            temp.append(item)
+        facultylist.append(temp)
+
+    mysql.connection.commit()
+    cur.close()
+
+    return excel.make_response_from_array(facultylist, "xlsx")
 
 def admin_faculty_list_edit():
     if 'id' not in session or 'role' not in session:
@@ -471,6 +491,27 @@ def admin_add_department():
     mysql.connection.commit()
     cur.close()
     return render_template('admin/add-department.html', facultyList=faculty)
+
+def ExcelDownload_department():
+    cur = mysql.connection.cursor()
+    cur.execute('''select department.dept_id, department.name, budget, faculty.first_name,faculty.last_name,
+                (SELECT count(*) FROM student where student.branch=department.dept_id) as noofstudent, department.contact_no
+                from department JOIN faculty WHERE department.hod_id = faculty.faculty_id;''')
+    rv = cur.fetchall()
+
+    deptlist = [['department_id', 'name', 'Budget', 'HOD first_name', 'HOD last_name',
+        'No of student', 'Contact']]
+    for rows in rv:
+        temp = []
+        for items in rows:
+            item = (str)(items)
+            temp.append(item)
+        deptlist.append(temp)
+
+    mysql.connection.commit()
+    cur.close()
+
+    return excel.make_response_from_array(deptlist, "xlsx")
 
 def admin_department_list_edit():
     if 'id' not in session or 'role' not in session:

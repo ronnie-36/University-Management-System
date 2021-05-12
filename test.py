@@ -655,6 +655,17 @@ class TestAdmin(flask_testing.TestCase):
                        content_type='application/json')
             self.assertEqual(response.status_code, 200)
 
+    def testAdminFacultyExcel(self):
+        data = data_requests.admin_login
+        with app.test_client() as TestClient:
+            # login sequence
+            response= TestClient.post('/login/admin', data = data)
+            self.assertEqual(response.status_code, 302)
+            self.assertEqual(flask.session['id'], '1')
+            self.assertEqual(flask.session['role'], 'admin')
+            # login done
+            response= TestClient.get('/admin/faculty_excel')
+            self.assertEqual(response.status_code, 200)
 
 # department
 
@@ -729,6 +740,18 @@ class TestAdmin(flask_testing.TestCase):
             # login done
             response= TestClient.post('/admin/delete-department', data=json.dumps(dict(id='bio')),
                        content_type='application/json')
+            self.assertEqual(response.status_code, 200)
+
+    def testAdminDepartmentExcel(self):
+        data = data_requests.admin_login
+        with app.test_client() as TestClient:
+            # login sequence
+            response= TestClient.post('/login/admin', data = data)
+            self.assertEqual(response.status_code, 302)
+            self.assertEqual(flask.session['id'], '1')
+            self.assertEqual(flask.session['role'], 'admin')
+            # login done
+            response= TestClient.get('/admin/dept_excel')
             self.assertEqual(response.status_code, 200)
 
 if __name__ == "__main__":
